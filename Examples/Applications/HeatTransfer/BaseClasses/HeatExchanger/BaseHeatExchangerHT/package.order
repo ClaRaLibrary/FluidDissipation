@@ -1,0 +1,4 @@
+coefficientOfHeatTransfer
+BaseHeatExchangerModel
+BaseHeatExchangerModel_TwoPhase
+BaseHeatExchangerModelWallState

@@ -1,0 +1,1604 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="210mm"
+   height="297mm"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.48.2 r9819"
+   sodipodi:docname="tubeBundle.svg"
+   inkscape:export-filename="C:\SVN_Daten\Projekte\FluidDissipation\trunk\FluidDissipation\Extras\Images\heatTransfer\heatExchanger\pic_tubeBundle.png"
+   inkscape:export-xdpi="600"
+   inkscape:export-ydpi="600">
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="2.195898"
+     inkscape:cx="514.08684"
+     inkscape:cy="409.95161"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="true"
+     inkscape:object-paths="true"
+     inkscape:snap-grids="true"
+     inkscape:snap-global="true"
+     inkscape:window-width="1920"
+     inkscape:window-height="1028"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1">
+    <inkscape:grid
+       type="xygrid"
+       id="grid3680" />
+  </sodipodi:namedview>
+  <defs
+     id="defs4">
+    <marker
+       style="overflow:visible"
+       id="Arrow1Mstart"
+       refX="0.0"
+       refY="0.0"
+       orient="auto"
+       inkscape:stockid="Arrow1Mstart">
+      <path
+         transform="scale(0.4) translate(10,0)"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1.0pt;marker-start:none"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         id="path4839" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="Arrow1Sstart"
+       refX="0.0"
+       refY="0.0"
+       orient="auto"
+       inkscape:stockid="Arrow1Sstart">
+      <path
+         transform="scale(0.2) translate(6,0)"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1.0pt;marker-start:none"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         id="path4845" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Mend"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="Arrow1Mend"
+       style="overflow:visible;">
+      <path
+         id="path5964"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1.0pt;marker-start:none;"
+         transform="scale(0.4) rotate(180) translate(10,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow2Lend"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="Arrow2Lend"
+       style="overflow:visible;">
+      <path
+         id="path5976"
+         style="font-size:12.0;fill-rule:evenodd;stroke-width:0.62500000;stroke-linejoin:round;"
+         d="M 8.7185878,4.0337352 L -2.2072895,0.016013256 L 8.7185884,-4.0017078 C 6.9730900,-1.6296469 6.9831476,1.6157441 8.7185878,4.0337352 z "
+         transform="scale(1.1) rotate(180) translate(1,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Send"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="Arrow1Send"
+       style="overflow:visible;">
+      <path
+         id="path5970"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1.0pt;marker-start:none;"
+         transform="scale(0.2) rotate(180) translate(6,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="Arrow1Lend"
+       style="overflow:visible;">
+      <path
+         id="path5958"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1.0pt;marker-start:none;"
+         transform="scale(0.8) rotate(180) translate(12.5,0)" />
+    </marker>
+    <inkscape:perspective
+       sodipodi:type="inkscape:persp3d"
+       inkscape:vp_x="103.6013 : 847.06955 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_z="588.91628 : 836.80789 : 1"
+       inkscape:persp3d-origin="370.23359 : 350.78739 : 1"
+       id="perspective10" />
+    <inkscape:perspective
+       id="perspective3690"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective3716"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective3716-0"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective3757"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective3807"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective3853"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective3875"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective3897"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective3927"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective3949"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective3949-2"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective3949-6"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective3989"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective4011"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective4011-6"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective4044"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective4066"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective4088"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <filter
+       id="filter4434"
+       inkscape:label="Lizard skin"
+       inkscape:menu="Materials"
+       inkscape:menu-tooltip="Stylized reptile skin texture"
+       color-interpolation-filters="sRGB">
+      <feGaussianBlur
+         id="feGaussianBlur4436"
+         stdDeviation="0.5"
+         in="SourceGraphic"
+         result="result0" />
+      <feTurbulence
+         id="feTurbulence4438"
+         result="result1"
+         numOctaves="1"
+         seed="488"
+         baseFrequency="0.095"
+         type="turbulence" />
+      <feComposite
+         id="feComposite4440"
+         in2="result1"
+         in="result0"
+         operator="in"
+         result="result2" />
+      <feComposite
+         id="feComposite4442"
+         in2="result2"
+         operator="arithmetic"
+         in="result4"
+         k3="1"
+         k1="3"
+         result="result91" />
+      <feBlend
+         id="feBlend4444"
+         in2="result91"
+         mode="multiply"
+         result="fbSourceGraphic" />
+      <feColorMatrix
+         id="feColorMatrix4446"
+         result="fbSourceGraphicAlpha"
+         in="fbSourceGraphic"
+         values="0 0 0 0 0 0 0 1 0 0 0 0 1 0 0 0 0 0 5 0" />
+      <feGaussianBlur
+         id="feGaussianBlur4448"
+         result="result0"
+         in="fbSourceGraphicAlpha"
+         stdDeviation="3" />
+      <feOffset
+         id="feOffset4450"
+         result="result3"
+         in="result0"
+         dy="2"
+         dx="2" />
+      <feSpecularLighting
+         id="feSpecularLighting4452"
+         specularExponent="30"
+         specularConstant="1.1"
+         surfaceScale="2"
+         lighting-color="rgb(111,236,253)"
+         result="result1"
+         in="result0">
+        <fePointLight
+           id="fePointLight4454"
+           z="20000"
+           y="-10000"
+           x="-5000" />
+      </feSpecularLighting>
+      <feComposite
+         id="feComposite4456"
+         in2="fbSourceGraphicAlpha"
+         k2="-1"
+         operator="in"
+         result="result2"
+         in="result1" />
+      <feComposite
+         id="feComposite4458"
+         in2="result2"
+         k3="1"
+         k2="3"
+         operator="arithmetic"
+         result="result4"
+         in="fbSourceGraphic" />
+      <feBlend
+         id="feBlend4460"
+         in2="result4"
+         mode="multiply" />
+    </filter>
+    <inkscape:perspective
+       id="perspective6978"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <marker
+       inkscape:stockid="Arrow1Mend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Mend-9"
+       style="overflow:visible">
+      <path
+         id="path5964-9"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;marker-start:none"
+         transform="matrix(-0.4,0,0,-0.4,-4,0)" />
+    </marker>
+    <inkscape:perspective
+       id="perspective6978-8"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <marker
+       inkscape:stockid="Arrow1Mend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Mend-6"
+       style="overflow:visible">
+      <path
+         id="path5964-6"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;marker-start:none"
+         transform="matrix(-0.4,0,0,-0.4,-4,0)" />
+    </marker>
+    <inkscape:perspective
+       id="perspective7036"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective7036-2"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       sodipodi:type="inkscape:persp3d"
+       inkscape:vp_x="0 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       id="perspective8500" />
+    <inkscape:perspective
+       sodipodi:type="inkscape:persp3d"
+       inkscape:vp_x="0 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       id="perspective8522" />
+    <inkscape:perspective
+       sodipodi:type="inkscape:persp3d"
+       inkscape:vp_x="0 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       id="perspective8583" />
+    <marker
+       inkscape:stockid="Arrow1Mend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Mend-5"
+       style="overflow:visible">
+      <path
+         id="path5964-7"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;marker-start:none"
+         transform="matrix(-0.4,0,0,-0.4,-4,0)" />
+    </marker>
+    <inkscape:perspective
+       sodipodi:type="inkscape:persp3d"
+       inkscape:vp_x="0 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       id="perspective11613" />
+    <inkscape:perspective
+       sodipodi:type="inkscape:persp3d"
+       inkscape:vp_x="0 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       id="perspective11613-8" />
+    <inkscape:perspective
+       sodipodi:type="inkscape:persp3d"
+       inkscape:vp_x="0 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       id="perspective2979" />
+    <inkscape:perspective
+       sodipodi:type="inkscape:persp3d"
+       inkscape:vp_x="0 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       id="perspective3124" />
+    <inkscape:perspective
+       sodipodi:type="inkscape:persp3d"
+       inkscape:vp_x="0 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       id="perspective3150" />
+    <inkscape:perspective
+       sodipodi:type="inkscape:persp3d"
+       inkscape:vp_x="0 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       id="perspective3178" />
+    <inkscape:perspective
+       sodipodi:type="inkscape:persp3d"
+       inkscape:vp_x="0 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       id="perspective3206" />
+    <inkscape:perspective
+       sodipodi:type="inkscape:persp3d"
+       inkscape:vp_x="0 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       id="perspective4138" />
+    <inkscape:perspective
+       sodipodi:type="inkscape:persp3d"
+       inkscape:vp_x="0 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       id="perspective4160" />
+    <inkscape:perspective
+       sodipodi:type="inkscape:persp3d"
+       inkscape:vp_x="0 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       id="perspective4192" />
+    <inkscape:perspective
+       sodipodi:type="inkscape:persp3d"
+       inkscape:vp_x="0 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       id="perspective4214" />
+    <inkscape:perspective
+       sodipodi:type="inkscape:persp3d"
+       inkscape:vp_x="0 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       id="perspective4242" />
+    <inkscape:perspective
+       sodipodi:type="inkscape:persp3d"
+       inkscape:vp_x="0 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       id="perspective4264" />
+    <inkscape:perspective
+       sodipodi:type="inkscape:persp3d"
+       inkscape:vp_x="0 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       id="perspective4286" />
+    <inkscape:perspective
+       sodipodi:type="inkscape:persp3d"
+       inkscape:vp_x="0 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       id="perspective4311" />
+    <inkscape:perspective
+       sodipodi:type="inkscape:persp3d"
+       inkscape:vp_x="0 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       id="perspective4341" />
+    <inkscape:perspective
+       sodipodi:type="inkscape:persp3d"
+       inkscape:vp_x="0 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       id="perspective7080" />
+    <marker
+       inkscape:stockid="Arrow1Send"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Send-6"
+       style="overflow:visible">
+      <path
+         id="path5970-6"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;marker-start:none"
+         transform="matrix(-0.2,0,0,-0.2,-1.2,0)" />
+    </marker>
+    <inkscape:perspective
+       sodipodi:type="inkscape:persp3d"
+       inkscape:vp_x="0 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       id="perspective7110" />
+    <inkscape:perspective
+       id="perspective8638"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <marker
+       style="overflow:visible"
+       id="Arrow1Mstart-4"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow1Mstart">
+      <path
+         transform="matrix(0.4,0,0,0.4,4,0)"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;marker-start:none"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         id="path4839-9" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Mend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Mend-5-6"
+       style="overflow:visible">
+      <path
+         id="path5964-7-3"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;marker-start:none"
+         transform="matrix(-0.4,0,0,-0.4,-4,0)" />
+    </marker>
+    <inkscape:perspective
+       id="perspective8768"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective8793"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective8815"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective8851"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective8873"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective8873-1"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective8906"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective8906-5"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective2986"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <marker
+       style="overflow:visible"
+       id="Arrow1Mstart-1"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow1Mstart">
+      <path
+         inkscape:connector-curvature="0"
+         transform="matrix(0.4,0,0,0.4,4,0)"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;marker-start:none"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         id="path4839-7" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Mend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Mend-5-4"
+       style="overflow:visible">
+      <path
+         inkscape:connector-curvature="0"
+         id="path5964-7-0"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;marker-start:none"
+         transform="matrix(-0.4,0,0,-0.4,-4,0)" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="marker3164"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow1Mstart">
+      <path
+         inkscape:connector-curvature="0"
+         transform="matrix(0.4,0,0,0.4,4,0)"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;marker-start:none"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         id="path3166" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Mend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker3168"
+       style="overflow:visible">
+      <path
+         inkscape:connector-curvature="0"
+         id="path3170"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;marker-start:none"
+         transform="matrix(-0.4,0,0,-0.4,-4,0)" />
+    </marker>
+  </defs>
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Ebene 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <g
+       id="g10072"
+       transform="matrix(0.19825938,0,0,0.19825938,525.46365,323.83004)" />
+    <path
+       style="fill:#808080;stroke:#000000;stroke-width:0.39816019000000002px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 367.125,378.14343 36.76102,-21.46739 c 2.58705,-1.51076 7.53215,-0.13906 7.90787,6.086 0.28207,4.67336 -1.45673,6.84368 -3.33339,7.9384 l -36,21"
+       id="path3678-4-1-6"
+       sodipodi:nodetypes="csssc" />
+    <path
+       style="fill:#333333;stroke:#000000;stroke-width:0.46500951000000001px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 370.29313,377.00506 c -4.26759,0.0127 -5.63154,4.78387 -5.62188,7.60571 0.01,2.79597 1.39336,7.51296 5.62188,7.51927 4.26237,0.007 5.71859,-4.74412 5.71859,-7.56249 0,-2.81837 -1.45625,-7.57522 -5.71859,-7.56249 z"
+       id="path3676-8-5-1"
+       sodipodi:nodetypes="cssss" />
+    <path
+       style="fill:#808080;stroke:#000000;stroke-width:0.39816019000000002px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 381.89836,378.1569 36.76102,-21.46739 c 2.58705,-1.51076 7.53215,-0.13906 7.90787,6.086 0.28207,4.67336 -1.45673,6.84368 -3.33339,7.9384 l -36,21"
+       id="path3678-4-1-6-7"
+       sodipodi:nodetypes="csssc" />
+    <path
+       style="fill:#333333;stroke:#000000;stroke-width:0.46500951000000001px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 385.06649,377.01853 c -4.26759,0.0127 -5.63154,4.78387 -5.62188,7.60571 0.01,2.79597 1.39336,7.51296 5.62188,7.51927 4.26237,0.007 5.71859,-4.74412 5.71859,-7.56249 0,-2.81837 -1.45625,-7.57522 -5.71859,-7.56249 z"
+       id="path3676-8-5-1-9"
+       sodipodi:nodetypes="cssss" />
+    <path
+       style="fill:#808080;stroke:#000000;stroke-width:0.39816019000000002px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 396.82842,378.13853 36.76102,-21.46739 c 2.58705,-1.51076 7.53215,-0.13906 7.90787,6.086 0.28207,4.67336 -1.45673,6.84368 -3.33339,7.9384 l -36,21"
+       id="path3678-4-1-6-7-4"
+       sodipodi:nodetypes="csssc" />
+    <path
+       style="fill:#333333;stroke:#000000;stroke-width:0.46500951000000001px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 399.99655,377.00016 c -4.26759,0.0127 -5.63154,4.78387 -5.62188,7.60571 0.01,2.79597 1.39336,7.51296 5.62188,7.51927 4.26237,0.007 5.71859,-4.74412 5.71859,-7.56249 0,-2.81837 -1.45625,-7.57522 -5.71859,-7.56249 z"
+       id="path3676-8-5-1-9-3"
+       sodipodi:nodetypes="cssss" />
+    <path
+       style="fill:#808080;stroke:#000000;stroke-width:0.39816019000000002px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 367.04552,354.56894 36.76102,-21.46739 c 2.58705,-1.51076 7.53215,-0.13906 7.90787,6.086 0.28207,4.67336 -1.45673,6.84368 -3.33339,7.9384 l -36,21"
+       id="path3678-4-1-6-2"
+       sodipodi:nodetypes="csssc" />
+    <path
+       style="fill:#333333;stroke:#000000;stroke-width:0.46500951000000001px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 370.21365,353.43057 c -4.26759,0.0127 -5.63154,4.78387 -5.62188,7.60571 0.01,2.79597 1.39336,7.51296 5.62188,7.51927 4.26237,0.007 5.71859,-4.74412 5.71859,-7.56249 0,-2.81837 -1.45625,-7.57522 -5.71859,-7.56249 z"
+       id="path3676-8-5-1-3"
+       sodipodi:nodetypes="cssss" />
+    <path
+       style="fill:#808080;stroke:#000000;stroke-width:0.39816019000000002px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 381.81888,354.58241 36.76102,-21.46739 c 2.58705,-1.51076 7.53215,-0.13906 7.90787,6.086 0.28207,4.67336 -1.45673,6.84368 -3.33339,7.9384 l -36,21"
+       id="path3678-4-1-6-7-41"
+       sodipodi:nodetypes="csssc" />
+    <path
+       style="fill:#333333;stroke:#000000;stroke-width:0.46500951000000001px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 384.98701,353.44404 c -4.26759,0.0127 -5.63154,4.78387 -5.62188,7.60571 0.01,2.79597 1.39336,7.51296 5.62188,7.51927 4.26237,0.007 5.71859,-4.74412 5.71859,-7.56249 0,-2.81837 -1.45625,-7.57522 -5.71859,-7.56249 z"
+       id="path3676-8-5-1-9-1"
+       sodipodi:nodetypes="cssss" />
+    <path
+       style="fill:#808080;stroke:#000000;stroke-width:0.39816019000000002px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 396.74894,354.56404 36.76102,-21.46739 c 2.58705,-1.51076 7.53215,-0.13906 7.90787,6.086 0.28207,4.67336 -1.45673,6.84368 -3.33339,7.9384 l -36,21"
+       id="path3678-4-1-6-7-4-8"
+       sodipodi:nodetypes="csssc" />
+    <path
+       style="fill:#333333;stroke:#000000;stroke-width:0.46500951000000001px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 399.91707,353.42567 c -4.26759,0.0127 -5.63154,4.78387 -5.62188,7.60571 0.01,2.79597 1.39336,7.51296 5.62188,7.51927 4.26237,0.007 5.71859,-4.74412 5.71859,-7.56249 0,-2.81837 -1.45625,-7.57522 -5.71859,-7.56249 z"
+       id="path3676-8-5-1-9-3-7"
+       sodipodi:nodetypes="cssss" />
+    <path
+       sodipodi:nodetypes="ccccc"
+       id="path4128"
+       d="m 357.62796,317.74669 69.37563,-0.0397 11.58545,-6.81063 -69.40013,0.0458 -11.56095,6.8045 z"
+       style="fill:#808080;fill-opacity:0.54273502;stroke:#000000;stroke-width:0.2;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+    <flowRoot
+       transform="matrix(0.63413807,0,0,0.57081822,152.78357,140.51712)"
+       style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;writing-mode:lr-tb;text-anchor:middle;fill:#ff6800;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Arial"
+       id="flowRoot4174"
+       xml:space="preserve"><flowRegion
+         id="flowRegion4176"><rect
+           style="fill:#ff6800;fill-opacity:1"
+           y="318.0318"
+           x="445.12372"
+           height="21.036427"
+           width="56.214989"
+           id="rect4178" /></flowRegion><flowPara
+         style="fill:#ff6800;fill-opacity:1"
+         id="flowPara4180">A_front</flowPara></flowRoot>    <path
+       style="fill:#800000;fill-opacity:0.86752135;stroke:#010000;stroke-width:0.29066356999999998;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:0.99145298000000004;stroke-dasharray:none"
+       d="m 396,280.36218 0,17 -5,0 8,16 8,-16 -5,0 0,-17"
+       id="path3841-1-3-8-7"
+       sodipodi:nodetypes="ccccccc" />
+    <path
+       sodipodi:nodetypes="cassc"
+       id="path4232"
+       d="m 370,397.36218 c 0,0 -5.59696,6.32134 -5,10 0.37755,2.32659 2.64298,5 5,5 2.35702,0 4.62245,-2.67341 5,-5 0.59696,-3.67866 -5,-10 -5,-10 z"
+       style="fill:#0055d6;fill-opacity:1;stroke:#000000;stroke-width:0.2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+    <path
+       sodipodi:nodetypes="cassc"
+       id="path4232-9"
+       d="m 390,397.36218 c 0,0 -5.59696,6.32134 -5,10 0.37755,2.32659 2.64298,5 5,5 2.35702,0 4.62245,-2.67341 5,-5 0.59696,-3.67866 -5,-10 -5,-10 z"
+       style="fill:#0055d6;fill-opacity:1;stroke:#000000;stroke-width:0.2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+    <path
+       sodipodi:nodetypes="cassc"
+       id="path4232-9-3"
+       d="m 410,397.36218 c 0,0 -5.59696,6.32134 -5,10 0.37755,2.32659 2.64298,5 5,5 2.35702,0 4.62245,-2.67341 5,-5 0.59696,-3.67866 -5,-10 -5,-10 z"
+       style="fill:#0055d6;fill-opacity:1;stroke:#000000;stroke-width:0.2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+    <path
+       sodipodi:nodetypes="ccccc"
+       id="path4128-2"
+       d="m 357.52392,330.64934 69.37563,-0.0397 11.58545,-6.81063 -69.40013,0.0458 -11.56095,6.8045 z"
+       style="fill:#ffb800;fill-opacity:1;stroke:#000000;stroke-width:0.2;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+    <path
+       sodipodi:nodetypes="ccccc"
+       id="path4126"
+       d="m 427.01924,408.34911 11.65825,-6.85853 -0.011,-90.61167 -11.66649,6.85827 0.0192,90.61193 z"
+       style="fill:#808080;fill-opacity:0.54273502;stroke:#000000;stroke-width:0.2;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+    <flowRoot
+       transform="translate(-6.1757812,-0.38735535)"
+       style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Arial"
+       id="flowRoot4325"
+       xml:space="preserve"><flowRegion
+         id="flowRegion4327"><rect
+           y="416.31964"
+           x="359.21024"
+           height="31.042542"
+           width="90.789764"
+           id="rect4329" /></flowRegion><flowPara
+         id="flowPara4331">Aligned Pattern</flowPara></flowRoot>    <path
+       id="path7100"
+       d="m 374,376.92468 -30,0 0,0 0,0"
+       style="fill:none;stroke:#000000;stroke-width:0.2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+    <path
+       id="path7100-8"
+       d="m 374,391.92468 -30,0 0,0 0,0"
+       style="fill:none;stroke:#000000;stroke-width:0.2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+    <path
+       id="path7124"
+       d="m 347,377.36218 0,14"
+       style="fill:none;stroke:#000000;stroke-width:0.3;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:url(#Arrow1Mstart);marker-end:url(#Arrow1Mend-5);stroke-miterlimit:4;stroke-dasharray:none" />
+    <text
+       sodipodi:linespacing="125%"
+       id="text8328"
+       y="343.6442"
+       x="-386.73859"
+       style="font-size:8.1641655px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Arial"
+       xml:space="preserve"
+       transform="matrix(0,-0.99319127,1.0068554,0,0,0)"><tspan
+         y="343.6442"
+         x="-386.73859"
+         id="tspan8330"
+         sodipodi:role="line">d</tspan></text>
+    <path
+       style="fill:#808080;stroke:#000000;stroke-width:0.39816019px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 202.125,378.14343 36.76102,-21.46739 c 2.58705,-1.51076 7.53215,-0.13906 7.90787,6.086 0.28207,4.67336 -1.45673,6.84368 -3.33339,7.9384 l -36,21"
+       id="path3678-4-1-6-78"
+       sodipodi:nodetypes="csssc" />
+    <path
+       style="fill:#333333;stroke:#000000;stroke-width:0.46500951px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 205.29313,377.00506 c -4.26759,0.0127 -5.63154,4.78387 -5.62188,7.60571 0.01,2.79597 1.39336,7.51296 5.62188,7.51927 4.26237,0.007 5.71859,-4.74412 5.71859,-7.56249 0,-2.81837 -1.45625,-7.57522 -5.71859,-7.56249 z"
+       id="path3676-8-5-1-8"
+       sodipodi:nodetypes="cssss" />
+    <path
+       style="fill:#808080;stroke:#000000;stroke-width:0.39816019px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 216.89836,378.1569 36.76102,-21.46739 c 2.58705,-1.51076 7.53215,-0.13906 7.90787,6.086 0.28207,4.67336 -1.45673,6.84368 -3.33339,7.9384 l -36,21"
+       id="path3678-4-1-6-7-2"
+       sodipodi:nodetypes="csssc" />
+    <path
+       style="fill:#333333;stroke:#000000;stroke-width:0.46500951px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 220.06649,377.01853 c -4.26759,0.0127 -5.63154,4.78387 -5.62188,7.60571 0.01,2.79597 1.39336,7.51296 5.62188,7.51927 4.26237,0.007 5.71859,-4.74412 5.71859,-7.56249 0,-2.81837 -1.45625,-7.57522 -5.71859,-7.56249 z"
+       id="path3676-8-5-1-9-9"
+       sodipodi:nodetypes="cssss" />
+    <path
+       style="fill:#808080;stroke:#000000;stroke-width:0.39816019px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 231.82842,378.13853 36.76102,-21.46739 c 2.58705,-1.51076 7.53215,-0.13906 7.90787,6.086 0.28207,4.67336 -1.45673,6.84368 -3.33339,7.9384 l -36,21"
+       id="path3678-4-1-6-7-4-1"
+       sodipodi:nodetypes="csssc" />
+    <path
+       style="fill:#333333;stroke:#000000;stroke-width:0.46500951px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 234.99655,377.00016 c -4.26759,0.0127 -5.63154,4.78387 -5.62188,7.60571 0.01,2.79597 1.39336,7.51296 5.62188,7.51927 4.26237,0.007 5.71859,-4.74412 5.71859,-7.56249 0,-2.81837 -1.45625,-7.57522 -5.71859,-7.56249 z"
+       id="path3676-8-5-1-9-3-3"
+       sodipodi:nodetypes="cssss" />
+    <path
+       style="fill:#808080;stroke:#000000;stroke-width:0.39816019px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 196.04552,354.56894 36.76102,-21.46739 c 2.58705,-1.51076 7.53215,-0.13906 7.90787,6.086 0.28207,4.67336 -1.45673,6.84368 -3.33339,7.9384 l -36,21"
+       id="path3678-4-1-6-2-5"
+       sodipodi:nodetypes="csssc" />
+    <path
+       style="fill:#333333;stroke:#000000;stroke-width:0.46500951px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 199.21365,353.43057 c -4.26759,0.0127 -5.63154,4.78387 -5.62188,7.60571 0.01,2.79597 1.39336,7.51296 5.62188,7.51927 4.26237,0.007 5.71859,-4.74412 5.71859,-7.56249 0,-2.81837 -1.45625,-7.57522 -5.71859,-7.56249 z"
+       id="path3676-8-5-1-3-9"
+       sodipodi:nodetypes="cssss" />
+    <path
+       style="fill:#808080;stroke:#000000;stroke-width:0.39816019px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 210.81888,354.58241 36.76102,-21.46739 c 2.58705,-1.51076 7.53215,-0.13906 7.90787,6.086 0.28207,4.67336 -1.45673,6.84368 -3.33339,7.9384 l -36,21"
+       id="path3678-4-1-6-7-41-8"
+       sodipodi:nodetypes="csssc" />
+    <path
+       style="fill:#333333;stroke:#000000;stroke-width:0.46500951px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 213.98701,353.44404 c -4.26759,0.0127 -5.63154,4.78387 -5.62188,7.60571 0.01,2.79597 1.39336,7.51296 5.62188,7.51927 4.26237,0.007 5.71859,-4.74412 5.71859,-7.56249 0,-2.81837 -1.45625,-7.57522 -5.71859,-7.56249 z"
+       id="path3676-8-5-1-9-1-4"
+       sodipodi:nodetypes="cssss" />
+    <path
+       style="fill:#808080;stroke:#000000;stroke-width:0.39816019px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 225.74894,354.56404 36.76102,-21.46739 c 2.58705,-1.51076 7.53215,-0.13906 7.90787,6.086 0.28207,4.67336 -1.45673,6.84368 -3.33339,7.9384 l -36,21"
+       id="path3678-4-1-6-7-4-8-0"
+       sodipodi:nodetypes="csssc" />
+    <path
+       style="fill:#333333;stroke:#000000;stroke-width:0.46500951px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 228.91707,353.42567 c -4.26759,0.0127 -5.63154,4.78387 -5.62188,7.60571 0.01,2.79597 1.39336,7.51296 5.62188,7.51927 4.26237,0.007 5.71859,-4.74412 5.71859,-7.56249 0,-2.81837 -1.45625,-7.57522 -5.71859,-7.56249 z"
+       id="path3676-8-5-1-9-3-7-7"
+       sodipodi:nodetypes="cssss" />
+    <path
+       sodipodi:nodetypes="ccccc"
+       id="path4128-6"
+       d="m 192.62796,317.74669 69.37563,-0.0397 11.58545,-6.81063 -69.40013,0.0458 -11.56095,6.8045 z"
+       style="fill:#808080;fill-opacity:0.54273502;stroke:#000000;stroke-width:0.2;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+    <flowRoot
+       transform="matrix(0.63413807,0,0,0.57081822,-12.21643,140.51712)"
+       style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;writing-mode:lr-tb;text-anchor:middle;fill:#ff6800;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Arial"
+       id="flowRoot4174-3"
+       xml:space="preserve"><flowRegion
+         id="flowRegion4176-6"><rect
+           style="fill:#ff6800;fill-opacity:1"
+           y="318.0318"
+           x="445.12372"
+           height="21.036427"
+           width="56.214989"
+           id="rect4178-1" /></flowRegion><flowPara
+         style="fill:#ff6800;fill-opacity:1"
+         id="flowPara4180-5">A_front</flowPara></flowRoot>    <path
+       style="fill:#800000;fill-opacity:0.86752134;stroke:#010000;stroke-width:0.29066357;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:0.99145298;stroke-dasharray:none"
+       d="m 231,280.36218 0,17 -5,0 8,16 8,-16 -5,0 0,-17"
+       id="path3841-1-3-8-7-4"
+       sodipodi:nodetypes="ccccccc" />
+    <path
+       sodipodi:nodetypes="cassc"
+       id="path4232-2"
+       d="m 205,397.36218 c 0,0 -5.59696,6.32134 -5,10 0.37755,2.32659 2.64298,5 5,5 2.35702,0 4.62245,-2.67341 5,-5 0.59696,-3.67866 -5,-10 -5,-10 z"
+       style="fill:#0055d6;fill-opacity:1;stroke:#000000;stroke-width:0.2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+    <path
+       sodipodi:nodetypes="cassc"
+       id="path4232-9-0"
+       d="m 225,397.36218 c 0,0 -5.59696,6.32134 -5,10 0.37755,2.32659 2.64298,5 5,5 2.35702,0 4.62245,-2.67341 5,-5 0.59696,-3.67866 -5,-10 -5,-10 z"
+       style="fill:#0055d6;fill-opacity:1;stroke:#000000;stroke-width:0.2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+    <path
+       sodipodi:nodetypes="cassc"
+       id="path4232-9-3-9"
+       d="m 245,397.36218 c 0,0 -5.59696,6.32134 -5,10 0.37755,2.32659 2.64298,5 5,5 2.35702,0 4.62245,-2.67341 5,-5 0.59696,-3.67866 -5,-10 -5,-10 z"
+       style="fill:#0055d6;fill-opacity:1;stroke:#000000;stroke-width:0.2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+    <path
+       sodipodi:nodetypes="ccccc"
+       id="path4128-2-3"
+       d="m 192.52392,330.64934 69.37563,-0.0397 11.58545,-6.81063 -69.40013,0.0458 -11.56095,6.8045 z"
+       style="fill:#ffb800;fill-opacity:1;stroke:#000000;stroke-width:0.2;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+    <flowRoot
+       transform="translate(-171.17578,-0.3873474)"
+       style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Arial"
+       id="flowRoot4325-2"
+       xml:space="preserve"><flowRegion
+         id="flowRegion4327-6"><rect
+           y="416.31964"
+           x="359.21024"
+           height="31.042542"
+           width="90.789764"
+           id="rect4329-0" /></flowRegion><flowPara
+         id="flowPara4331-1">Offset Pattern</flowPara></flowRoot>    <path
+       id="path7100-6"
+       d="m 209,376.92468 -30,0 0,0 0,0"
+       style="fill:none;stroke:#000000;stroke-width:0.2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+    <path
+       id="path7100-8-5"
+       d="m 209,391.92468 -30,0 0,0 0,0"
+       style="fill:none;stroke:#000000;stroke-width:0.2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+    <path
+       id="path7124-7"
+       d="m 182,377.36218 0,14"
+       style="fill:none;stroke:#000000;stroke-width:0.30000001;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-start:url(#Arrow1Mstart);marker-end:url(#Arrow1Mend-5)" />
+    <text
+       sodipodi:linespacing="125%"
+       id="text8328-5"
+       y="179.76764"
+       x="-386.73865"
+       style="font-size:8.1641655px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Arial"
+       xml:space="preserve"
+       transform="matrix(0,-0.99319127,1.0068554,0,0,0)"><tspan
+         y="179.76764"
+         x="-386.73865"
+         id="tspan8330-4"
+         sodipodi:role="line">d</tspan></text>
+    <path
+       style="fill:#808080;stroke:#000000;stroke-width:0.39816019px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 241.31144,354.56404 36.76102,-21.46739 c 2.58705,-1.51076 7.53215,-0.13906 7.90787,6.086 0.28207,4.67336 -1.45673,6.84368 -3.33339,7.9384 l -36,21"
+       id="path3678-4-1-6-7-4-8-0-1"
+       sodipodi:nodetypes="csssc" />
+    <path
+       style="fill:#333333;stroke:#000000;stroke-width:0.46500951px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 244.47957,353.42567 c -4.26759,0.0127 -5.63154,4.78387 -5.62188,7.60571 0.01,2.79597 1.39336,7.51296 5.62188,7.51927 4.26237,0.007 5.71859,-4.74412 5.71859,-7.56249 0,-2.81837 -1.45625,-7.57522 -5.71859,-7.56249 z"
+       id="path3676-8-5-1-9-3-7-7-2"
+       sodipodi:nodetypes="cssss" />
+    <path
+       sodipodi:nodetypes="ccccc"
+       id="path4126-7"
+       d="m 262.01924,408.34911 11.65825,-6.85853 -0.011,-90.61167 -11.66649,6.85827 0.0192,90.61193 z"
+       style="fill:#808080;fill-opacity:0.54273502;stroke:#000000;stroke-width:0.2;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+    <rect
+       rx="0"
+       ry="21.253908"
+       y="317.7157"
+       x="192.54248"
+       height="90.619835"
+       width="69.313797"
+       id="rect3256-7"
+       style="fill:#808080;fill-opacity:0.3162393;fill-rule:evenodd;stroke:#010000;stroke-width:0.2;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:2.70000005;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0" />
+    <path
+       style="fill:none;stroke:#ff0000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:round;stroke-opacity:1"
+       d="m 199,360.36218 6,25 9,-25 6,25 9,-24 6,24 9,-24"
+       id="path8829"
+       sodipodi:nodetypes="ccccccc" />
+    <rect
+       rx="0"
+       ry="21.253908"
+       y="317.68616"
+       x="357.62695"
+       height="90.619835"
+       width="69.313797"
+       id="rect3256"
+       style="fill:#808080;fill-opacity:0.3162393;fill-rule:evenodd;stroke:#010000;stroke-width:0.2;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:2.70000005;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0" />
+    <path
+       style="fill:none;stroke:#ff0000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 370,385.29483 30,0 0,0"
+       id="path8841" />
+    <path
+       style="fill:none;stroke:#ff0000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 400,361.23233 0,0 -30,0"
+       id="path8841-4"
+       sodipodi:nodetypes="ccc" />
+    <path
+       style="fill:none;stroke:#fc0000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 370,361.29483 0,24"
+       id="path8896" />
+    <path
+       style="fill:none;stroke:#fc0000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 385,361.16983 0,24"
+       id="path8896-5" />
+    <path
+       style="fill:none;stroke:#fc0000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 400,361.29483 0,24"
+       id="path8896-7" />
+    <path
+       inkscape:connector-curvature="0"
+       style="fill:#808080;stroke:#000000;stroke-width:0.39816019px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 362.125,598.14343 36.76102,-21.46739 c 2.58705,-1.51076 7.53215,-0.13906 7.90787,6.086 0.28207,4.67336 -1.45673,6.84368 -3.33339,7.9384 l -36,21"
+       id="path3678-4-1-6-9"
+       sodipodi:nodetypes="csssc"
+       inkscape:export-filename="C:\SVN_Daten\Projekte\FluidDissipation\trunk\FluidDissipation\Extras\Images\heatTransfer\heatExchanger\pic_tubeBundle186_1phase.png"
+       inkscape:export-xdpi="186.21452"
+       inkscape:export-ydpi="186.21452" />
+    <path
+       inkscape:connector-curvature="0"
+       style="fill:#333333;stroke:#000000;stroke-width:0.46500951px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 365.29313,597.00506 c -4.26759,0.0127 -5.63154,4.78387 -5.62188,7.60571 0.01,2.79597 1.39336,7.51296 5.62188,7.51927 4.26237,0.007 5.71859,-4.74412 5.71859,-7.56249 0,-2.81837 -1.45625,-7.57522 -5.71859,-7.56249 z"
+       id="path3676-8-5-1-4"
+       sodipodi:nodetypes="cssss"
+       inkscape:export-filename="C:\SVN_Daten\Projekte\FluidDissipation\trunk\FluidDissipation\Extras\Images\heatTransfer\heatExchanger\pic_tubeBundle186_1phase.png"
+       inkscape:export-xdpi="186.21452"
+       inkscape:export-ydpi="186.21452" />
+    <path
+       inkscape:connector-curvature="0"
+       style="fill:#808080;stroke:#000000;stroke-width:0.39816019px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 376.89836,598.1569 36.76102,-21.46739 c 2.58705,-1.51076 7.53215,-0.13906 7.90787,6.086 0.28207,4.67336 -1.45673,6.84368 -3.33339,7.9384 l -36,21"
+       id="path3678-4-1-6-7-8"
+       sodipodi:nodetypes="csssc"
+       inkscape:export-filename="C:\SVN_Daten\Projekte\FluidDissipation\trunk\FluidDissipation\Extras\Images\heatTransfer\heatExchanger\pic_tubeBundle186_1phase.png"
+       inkscape:export-xdpi="186.21452"
+       inkscape:export-ydpi="186.21452" />
+    <path
+       inkscape:connector-curvature="0"
+       style="fill:#333333;stroke:#000000;stroke-width:0.46500951px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 380.06649,597.01853 c -4.26759,0.0127 -5.63154,4.78387 -5.62188,7.60571 0.01,2.79597 1.39336,7.51296 5.62188,7.51927 4.26237,0.007 5.71859,-4.74412 5.71859,-7.56249 0,-2.81837 -1.45625,-7.57522 -5.71859,-7.56249 z"
+       id="path3676-8-5-1-9-8"
+       sodipodi:nodetypes="cssss"
+       inkscape:export-filename="C:\SVN_Daten\Projekte\FluidDissipation\trunk\FluidDissipation\Extras\Images\heatTransfer\heatExchanger\pic_tubeBundle186_1phase.png"
+       inkscape:export-xdpi="186.21452"
+       inkscape:export-ydpi="186.21452" />
+    <path
+       inkscape:connector-curvature="0"
+       style="fill:#808080;stroke:#000000;stroke-width:0.39816019px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 391.82842,598.13853 36.76102,-21.46739 c 2.58705,-1.51076 7.53215,-0.13906 7.90787,6.086 0.28207,4.67336 -1.45673,6.84368 -3.33339,7.9384 l -36,21"
+       id="path3678-4-1-6-7-4-2"
+       sodipodi:nodetypes="csssc"
+       inkscape:export-filename="C:\SVN_Daten\Projekte\FluidDissipation\trunk\FluidDissipation\Extras\Images\heatTransfer\heatExchanger\pic_tubeBundle186_1phase.png"
+       inkscape:export-xdpi="186.21452"
+       inkscape:export-ydpi="186.21452" />
+    <path
+       inkscape:connector-curvature="0"
+       style="fill:#333333;stroke:#000000;stroke-width:0.46500951px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 394.99655,597.00016 c -4.26759,0.0127 -5.63154,4.78387 -5.62188,7.60571 0.01,2.79597 1.39336,7.51296 5.62188,7.51927 4.26237,0.007 5.71859,-4.74412 5.71859,-7.56249 0,-2.81837 -1.45625,-7.57522 -5.71859,-7.56249 z"
+       id="path3676-8-5-1-9-3-4"
+       sodipodi:nodetypes="cssss"
+       inkscape:export-filename="C:\SVN_Daten\Projekte\FluidDissipation\trunk\FluidDissipation\Extras\Images\heatTransfer\heatExchanger\pic_tubeBundle186_1phase.png"
+       inkscape:export-xdpi="186.21452"
+       inkscape:export-ydpi="186.21452" />
+    <path
+       inkscape:connector-curvature="0"
+       style="fill:#808080;stroke:#000000;stroke-width:0.39816019px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 362.04552,574.56894 36.76102,-21.46739 c 2.58705,-1.51076 7.53215,-0.13906 7.90787,6.086 0.28207,4.67336 -1.45673,6.84368 -3.33339,7.9384 l -36,21"
+       id="path3678-4-1-6-2-55"
+       sodipodi:nodetypes="csssc"
+       inkscape:export-filename="C:\SVN_Daten\Projekte\FluidDissipation\trunk\FluidDissipation\Extras\Images\heatTransfer\heatExchanger\pic_tubeBundle186_1phase.png"
+       inkscape:export-xdpi="186.21452"
+       inkscape:export-ydpi="186.21452" />
+    <path
+       inkscape:connector-curvature="0"
+       style="fill:#333333;stroke:#000000;stroke-width:0.46500951px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 365.21365,573.43057 c -4.26759,0.0127 -5.63154,4.78387 -5.62188,7.60571 0.01,2.79597 1.39336,7.51296 5.62188,7.51927 4.26237,0.007 5.71859,-4.74412 5.71859,-7.56249 0,-2.81837 -1.45625,-7.57522 -5.71859,-7.56249 z"
+       id="path3676-8-5-1-3-1"
+       sodipodi:nodetypes="cssss"
+       inkscape:export-filename="C:\SVN_Daten\Projekte\FluidDissipation\trunk\FluidDissipation\Extras\Images\heatTransfer\heatExchanger\pic_tubeBundle186_1phase.png"
+       inkscape:export-xdpi="186.21452"
+       inkscape:export-ydpi="186.21452" />
+    <path
+       inkscape:connector-curvature="0"
+       style="fill:#808080;stroke:#000000;stroke-width:0.39816019px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 376.81888,574.58241 36.76102,-21.46739 c 2.58705,-1.51076 7.53215,-0.13906 7.90787,6.086 0.28207,4.67336 -1.45673,6.84368 -3.33339,7.9384 l -36,21"
+       id="path3678-4-1-6-7-41-7"
+       sodipodi:nodetypes="csssc"
+       inkscape:export-filename="C:\SVN_Daten\Projekte\FluidDissipation\trunk\FluidDissipation\Extras\Images\heatTransfer\heatExchanger\pic_tubeBundle186_1phase.png"
+       inkscape:export-xdpi="186.21452"
+       inkscape:export-ydpi="186.21452" />
+    <path
+       inkscape:connector-curvature="0"
+       style="fill:#333333;stroke:#000000;stroke-width:0.46500951px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 379.98701,573.44404 c -4.26759,0.0127 -5.63154,4.78387 -5.62188,7.60571 0.01,2.79597 1.39336,7.51296 5.62188,7.51927 4.26237,0.007 5.71859,-4.74412 5.71859,-7.56249 0,-2.81837 -1.45625,-7.57522 -5.71859,-7.56249 z"
+       id="path3676-8-5-1-9-1-1"
+       sodipodi:nodetypes="cssss"
+       inkscape:export-filename="C:\SVN_Daten\Projekte\FluidDissipation\trunk\FluidDissipation\Extras\Images\heatTransfer\heatExchanger\pic_tubeBundle186_1phase.png"
+       inkscape:export-xdpi="186.21452"
+       inkscape:export-ydpi="186.21452" />
+    <path
+       inkscape:connector-curvature="0"
+       style="fill:#808080;stroke:#000000;stroke-width:0.39816019px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 391.74894,574.56404 36.76102,-21.46739 c 2.58705,-1.51076 7.53215,-0.13906 7.90787,6.086 0.28207,4.67336 -1.45673,6.84368 -3.33339,7.9384 l -36,21"
+       id="path3678-4-1-6-7-4-8-1"
+       sodipodi:nodetypes="csssc"
+       inkscape:export-filename="C:\SVN_Daten\Projekte\FluidDissipation\trunk\FluidDissipation\Extras\Images\heatTransfer\heatExchanger\pic_tubeBundle186_1phase.png"
+       inkscape:export-xdpi="186.21452"
+       inkscape:export-ydpi="186.21452" />
+    <path
+       inkscape:connector-curvature="0"
+       style="fill:#333333;stroke:#000000;stroke-width:0.46500951px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 394.91707,573.42567 c -4.26759,0.0127 -5.63154,4.78387 -5.62188,7.60571 0.01,2.79597 1.39336,7.51296 5.62188,7.51927 4.26237,0.007 5.71859,-4.74412 5.71859,-7.56249 0,-2.81837 -1.45625,-7.57522 -5.71859,-7.56249 z"
+       id="path3676-8-5-1-9-3-7-5"
+       sodipodi:nodetypes="cssss"
+       inkscape:export-filename="C:\SVN_Daten\Projekte\FluidDissipation\trunk\FluidDissipation\Extras\Images\heatTransfer\heatExchanger\pic_tubeBundle186_1phase.png"
+       inkscape:export-xdpi="186.21452"
+       inkscape:export-ydpi="186.21452" />
+    <path
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccccc"
+       id="path4128-27"
+       d="m 352.62796,537.74669 69.37563,-0.0397 11.58545,-6.81063 -69.40013,0.0458 -11.56095,6.8045 z"
+       style="fill:#808080;fill-opacity:0.54273502;stroke:#000000;stroke-width:0.2;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       inkscape:export-filename="C:\SVN_Daten\Projekte\FluidDissipation\trunk\FluidDissipation\Extras\Images\heatTransfer\heatExchanger\pic_tubeBundle186_1phase.png"
+       inkscape:export-xdpi="186.21452"
+       inkscape:export-ydpi="186.21452" />
+    <flowRoot
+       transform="matrix(0.63413807,0,0,0.57081822,147.78357,360.51712)"
+       style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;writing-mode:lr-tb;text-anchor:middle;fill:#ff6800;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Arial"
+       id="flowRoot4174-6"
+       xml:space="preserve"
+       inkscape:export-filename="C:\SVN_Daten\Projekte\FluidDissipation\trunk\FluidDissipation\Extras\Images\heatTransfer\heatExchanger\pic_tubeBundle186_1phase.png"
+       inkscape:export-xdpi="186.21452"
+       inkscape:export-ydpi="186.21452"><flowRegion
+         id="flowRegion4176-1"><rect
+           style="fill:#ff6800;fill-opacity:1"
+           y="318.0318"
+           x="445.12372"
+           height="21.036427"
+           width="56.214989"
+           id="rect4178-4" /></flowRegion><flowPara
+         style="fill:#ff6800;fill-opacity:1"
+         id="flowPara4180-2">A_front</flowPara></flowRoot>    <path
+       inkscape:connector-curvature="0"
+       style="fill:#800000;fill-opacity:0.86752134;stroke:#010000;stroke-width:0.29066357;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:0.99145298;stroke-dasharray:none"
+       d="m 391,500.36218 0,17 -5,0 8,16 8,-16 -5,0 0,-17"
+       id="path3841-1-3-8-7-3"
+       sodipodi:nodetypes="ccccccc"
+       inkscape:export-filename="C:\SVN_Daten\Projekte\FluidDissipation\trunk\FluidDissipation\Extras\Images\heatTransfer\heatExchanger\pic_tubeBundle186_1phase.png"
+       inkscape:export-xdpi="186.21452"
+       inkscape:export-ydpi="186.21452" />
+    <path
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccccc"
+       id="path4128-2-8"
+       d="m 352.52392,550.64934 69.37563,-0.0397 11.58545,-6.81063 -69.40013,0.0458 -11.56095,6.8045 z"
+       style="fill:#ffb800;fill-opacity:1;stroke:#000000;stroke-width:0.2;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       inkscape:export-filename="C:\SVN_Daten\Projekte\FluidDissipation\trunk\FluidDissipation\Extras\Images\heatTransfer\heatExchanger\pic_tubeBundle186_1phase.png"
+       inkscape:export-xdpi="186.21452"
+       inkscape:export-ydpi="186.21452" />
+    <path
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccccc"
+       id="path4126-5"
+       d="m 422.01924,628.34911 11.65825,-6.85853 -0.011,-90.61167 -11.66649,6.85827 0.0192,90.61193 z"
+       style="fill:#808080;fill-opacity:0.54273502;stroke:#000000;stroke-width:0.2;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       inkscape:export-filename="C:\SVN_Daten\Projekte\FluidDissipation\trunk\FluidDissipation\Extras\Images\heatTransfer\heatExchanger\pic_tubeBundle186_1phase.png"
+       inkscape:export-xdpi="186.21452"
+       inkscape:export-ydpi="186.21452" />
+    <flowRoot
+       transform="translate(-11.17578,219.61265)"
+       style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Arial"
+       id="flowRoot4325-7"
+       xml:space="preserve"
+       inkscape:export-filename="C:\SVN_Daten\Projekte\FluidDissipation\trunk\FluidDissipation\Extras\Images\heatTransfer\heatExchanger\pic_tubeBundle186_1phase.png"
+       inkscape:export-xdpi="186.21452"
+       inkscape:export-ydpi="186.21452"><flowRegion
+         id="flowRegion4327-61"><rect
+           y="416.31964"
+           x="359.21024"
+           height="31.042542"
+           width="90.789764"
+           id="rect4329-8" /></flowRegion><flowPara
+         id="flowPara4331-9">Aligned Pattern</flowPara></flowRoot>    <path
+       inkscape:connector-curvature="0"
+       id="path7100-2"
+       d="m 369,596.92468 -30,0 0,0 0,0"
+       style="fill:none;stroke:#000000;stroke-width:0.2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       inkscape:export-filename="C:\SVN_Daten\Projekte\FluidDissipation\trunk\FluidDissipation\Extras\Images\heatTransfer\heatExchanger\pic_tubeBundle186_1phase.png"
+       inkscape:export-xdpi="186.21452"
+       inkscape:export-ydpi="186.21452" />
+    <path
+       inkscape:connector-curvature="0"
+       id="path7100-8-7"
+       d="m 369,611.92468 -30,0 0,0 0,0"
+       style="fill:none;stroke:#000000;stroke-width:0.2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       inkscape:export-filename="C:\SVN_Daten\Projekte\FluidDissipation\trunk\FluidDissipation\Extras\Images\heatTransfer\heatExchanger\pic_tubeBundle186_1phase.png"
+       inkscape:export-xdpi="186.21452"
+       inkscape:export-ydpi="186.21452" />
+    <path
+       inkscape:connector-curvature="0"
+       id="path7124-9"
+       d="m 342,597.36218 0,14"
+       style="fill:none;stroke:#000000;stroke-width:0.30000001;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-start:url(#Arrow1Mstart);marker-end:url(#Arrow1Mend-5)"
+       inkscape:export-filename="C:\SVN_Daten\Projekte\FluidDissipation\trunk\FluidDissipation\Extras\Images\heatTransfer\heatExchanger\pic_tubeBundle186_1phase.png"
+       inkscape:export-xdpi="186.21452"
+       inkscape:export-ydpi="186.21452" />
+    <text
+       sodipodi:linespacing="125%"
+       id="text8328-54"
+       y="338.67822"
+       x="-608.24677"
+       style="font-size:8.1641655px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Arial"
+       xml:space="preserve"
+       transform="matrix(0,-0.99319127,1.0068554,0,0,0)"
+       inkscape:export-filename="C:\SVN_Daten\Projekte\FluidDissipation\trunk\FluidDissipation\Extras\Images\heatTransfer\heatExchanger\pic_tubeBundle186_1phase.png"
+       inkscape:export-xdpi="186.21452"
+       inkscape:export-ydpi="186.21452"><tspan
+         y="338.67822"
+         x="-608.24677"
+         id="tspan8330-3"
+         sodipodi:role="line">d</tspan></text>
+    <path
+       inkscape:connector-curvature="0"
+       style="fill:#808080;stroke:#000000;stroke-width:0.39816019px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 197.125,598.14343 36.76102,-21.46739 c 2.58705,-1.51076 7.53215,-0.13906 7.90787,6.086 0.28207,4.67336 -1.45673,6.84368 -3.33339,7.9384 l -36,21"
+       id="path3678-4-1-6-78-1"
+       sodipodi:nodetypes="csssc"
+       inkscape:export-filename="C:\SVN_Daten\Projekte\FluidDissipation\trunk\FluidDissipation\Extras\Images\heatTransfer\heatExchanger\pic_tubeBundle186_1phase.png"
+       inkscape:export-xdpi="186.21452"
+       inkscape:export-ydpi="186.21452" />
+    <path
+       inkscape:connector-curvature="0"
+       style="fill:#333333;stroke:#000000;stroke-width:0.46500951px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 200.29313,597.00506 c -4.26759,0.0127 -5.63154,4.78387 -5.62188,7.60571 0.01,2.79597 1.39336,7.51296 5.62188,7.51927 4.26237,0.007 5.71859,-4.74412 5.71859,-7.56249 0,-2.81837 -1.45625,-7.57522 -5.71859,-7.56249 z"
+       id="path3676-8-5-1-8-2"
+       sodipodi:nodetypes="cssss"
+       inkscape:export-filename="C:\SVN_Daten\Projekte\FluidDissipation\trunk\FluidDissipation\Extras\Images\heatTransfer\heatExchanger\pic_tubeBundle186_1phase.png"
+       inkscape:export-xdpi="186.21452"
+       inkscape:export-ydpi="186.21452" />
+    <path
+       inkscape:connector-curvature="0"
+       style="fill:#808080;stroke:#000000;stroke-width:0.39816019px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 211.89836,598.1569 36.76102,-21.46739 c 2.58705,-1.51076 7.53215,-0.13906 7.90787,6.086 0.28207,4.67336 -1.45673,6.84368 -3.33339,7.9384 l -36,21"
+       id="path3678-4-1-6-7-2-3"
+       sodipodi:nodetypes="csssc"
+       inkscape:export-filename="C:\SVN_Daten\Projekte\FluidDissipation\trunk\FluidDissipation\Extras\Images\heatTransfer\heatExchanger\pic_tubeBundle186_1phase.png"
+       inkscape:export-xdpi="186.21452"
+       inkscape:export-ydpi="186.21452" />
+    <path
+       inkscape:connector-curvature="0"
+       style="fill:#333333;stroke:#000000;stroke-width:0.46500951px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 215.06649,597.01853 c -4.26759,0.0127 -5.63154,4.78387 -5.62188,7.60571 0.01,2.79597 1.39336,7.51296 5.62188,7.51927 4.26237,0.007 5.71859,-4.74412 5.71859,-7.56249 0,-2.81837 -1.45625,-7.57522 -5.71859,-7.56249 z"
+       id="path3676-8-5-1-9-9-3"
+       sodipodi:nodetypes="cssss"
+       inkscape:export-filename="C:\SVN_Daten\Projekte\FluidDissipation\trunk\FluidDissipation\Extras\Images\heatTransfer\heatExchanger\pic_tubeBundle186_1phase.png"
+       inkscape:export-xdpi="186.21452"
+       inkscape:export-ydpi="186.21452" />
+    <path
+       inkscape:connector-curvature="0"
+       style="fill:#808080;stroke:#000000;stroke-width:0.39816019px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 226.82842,598.13853 36.76102,-21.46739 c 2.58705,-1.51076 7.53215,-0.13906 7.90787,6.086 0.28207,4.67336 -1.45673,6.84368 -3.33339,7.9384 l -36,21"
+       id="path3678-4-1-6-7-4-1-4"
+       sodipodi:nodetypes="csssc"
+       inkscape:export-filename="C:\SVN_Daten\Projekte\FluidDissipation\trunk\FluidDissipation\Extras\Images\heatTransfer\heatExchanger\pic_tubeBundle186_1phase.png"
+       inkscape:export-xdpi="186.21452"
+       inkscape:export-ydpi="186.21452" />
+    <path
+       inkscape:connector-curvature="0"
+       style="fill:#333333;stroke:#000000;stroke-width:0.46500951px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 229.99655,597.00016 c -4.26759,0.0127 -5.63154,4.78387 -5.62188,7.60571 0.01,2.79597 1.39336,7.51296 5.62188,7.51927 4.26237,0.007 5.71859,-4.74412 5.71859,-7.56249 0,-2.81837 -1.45625,-7.57522 -5.71859,-7.56249 z"
+       id="path3676-8-5-1-9-3-3-1"
+       sodipodi:nodetypes="cssss"
+       inkscape:export-filename="C:\SVN_Daten\Projekte\FluidDissipation\trunk\FluidDissipation\Extras\Images\heatTransfer\heatExchanger\pic_tubeBundle186_1phase.png"
+       inkscape:export-xdpi="186.21452"
+       inkscape:export-ydpi="186.21452" />
+    <path
+       inkscape:connector-curvature="0"
+       style="fill:#808080;stroke:#000000;stroke-width:0.39816019px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 191.04552,574.56894 36.76102,-21.46739 c 2.58705,-1.51076 7.53215,-0.13906 7.90787,6.086 0.28207,4.67336 -1.45673,6.84368 -3.33339,7.9384 l -36,21"
+       id="path3678-4-1-6-2-5-1"
+       sodipodi:nodetypes="csssc"
+       inkscape:export-filename="C:\SVN_Daten\Projekte\FluidDissipation\trunk\FluidDissipation\Extras\Images\heatTransfer\heatExchanger\pic_tubeBundle186_1phase.png"
+       inkscape:export-xdpi="186.21452"
+       inkscape:export-ydpi="186.21452" />
+    <path
+       inkscape:connector-curvature="0"
+       style="fill:#333333;stroke:#000000;stroke-width:0.46500951px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 194.21365,573.43057 c -4.26759,0.0127 -5.63154,4.78387 -5.62188,7.60571 0.01,2.79597 1.39336,7.51296 5.62188,7.51927 4.26237,0.007 5.71859,-4.74412 5.71859,-7.56249 0,-2.81837 -1.45625,-7.57522 -5.71859,-7.56249 z"
+       id="path3676-8-5-1-3-9-3"
+       sodipodi:nodetypes="cssss"
+       inkscape:export-filename="C:\SVN_Daten\Projekte\FluidDissipation\trunk\FluidDissipation\Extras\Images\heatTransfer\heatExchanger\pic_tubeBundle186_1phase.png"
+       inkscape:export-xdpi="186.21452"
+       inkscape:export-ydpi="186.21452" />
+    <path
+       inkscape:connector-curvature="0"
+       style="fill:#808080;stroke:#000000;stroke-width:0.39816019px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 205.81888,574.58241 36.76102,-21.46739 c 2.58705,-1.51076 7.53215,-0.13906 7.90787,6.086 0.28207,4.67336 -1.45673,6.84368 -3.33339,7.9384 l -36,21"
+       id="path3678-4-1-6-7-41-8-8"
+       sodipodi:nodetypes="csssc"
+       inkscape:export-filename="C:\SVN_Daten\Projekte\FluidDissipation\trunk\FluidDissipation\Extras\Images\heatTransfer\heatExchanger\pic_tubeBundle186_1phase.png"
+       inkscape:export-xdpi="186.21452"
+       inkscape:export-ydpi="186.21452" />
+    <path
+       inkscape:connector-curvature="0"
+       style="fill:#333333;stroke:#000000;stroke-width:0.46500951px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 208.98701,573.44404 c -4.26759,0.0127 -5.63154,4.78387 -5.62188,7.60571 0.01,2.79597 1.39336,7.51296 5.62188,7.51927 4.26237,0.007 5.71859,-4.74412 5.71859,-7.56249 0,-2.81837 -1.45625,-7.57522 -5.71859,-7.56249 z"
+       id="path3676-8-5-1-9-1-4-7"
+       sodipodi:nodetypes="cssss"
+       inkscape:export-filename="C:\SVN_Daten\Projekte\FluidDissipation\trunk\FluidDissipation\Extras\Images\heatTransfer\heatExchanger\pic_tubeBundle186_1phase.png"
+       inkscape:export-xdpi="186.21452"
+       inkscape:export-ydpi="186.21452" />
+    <path
+       inkscape:connector-curvature="0"
+       style="fill:#808080;stroke:#000000;stroke-width:0.39816019px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 220.74894,574.56404 36.76102,-21.46739 c 2.58705,-1.51076 7.53215,-0.13906 7.90787,6.086 0.28207,4.67336 -1.45673,6.84368 -3.33339,7.9384 l -36,21"
+       id="path3678-4-1-6-7-4-8-0-4"
+       sodipodi:nodetypes="csssc"
+       inkscape:export-filename="C:\SVN_Daten\Projekte\FluidDissipation\trunk\FluidDissipation\Extras\Images\heatTransfer\heatExchanger\pic_tubeBundle186_1phase.png"
+       inkscape:export-xdpi="186.21452"
+       inkscape:export-ydpi="186.21452" />
+    <path
+       inkscape:connector-curvature="0"
+       style="fill:#333333;stroke:#000000;stroke-width:0.46500951px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 223.91707,573.42567 c -4.26759,0.0127 -5.63154,4.78387 -5.62188,7.60571 0.01,2.79597 1.39336,7.51296 5.62188,7.51927 4.26237,0.007 5.71859,-4.74412 5.71859,-7.56249 0,-2.81837 -1.45625,-7.57522 -5.71859,-7.56249 z"
+       id="path3676-8-5-1-9-3-7-7-27"
+       sodipodi:nodetypes="cssss"
+       inkscape:export-filename="C:\SVN_Daten\Projekte\FluidDissipation\trunk\FluidDissipation\Extras\Images\heatTransfer\heatExchanger\pic_tubeBundle186_1phase.png"
+       inkscape:export-xdpi="186.21452"
+       inkscape:export-ydpi="186.21452" />
+    <path
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccccc"
+       id="path4128-6-7"
+       d="m 187.62796,537.74669 69.37563,-0.0397 11.58545,-6.81063 -69.40013,0.0458 -11.56095,6.8045 z"
+       style="fill:#808080;fill-opacity:0.54273502;stroke:#000000;stroke-width:0.2;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       inkscape:export-filename="C:\SVN_Daten\Projekte\FluidDissipation\trunk\FluidDissipation\Extras\Images\heatTransfer\heatExchanger\pic_tubeBundle186_1phase.png"
+       inkscape:export-xdpi="186.21452"
+       inkscape:export-ydpi="186.21452" />
+    <flowRoot
+       transform="matrix(0.63413807,0,0,0.57081822,-17.21643,360.51712)"
+       style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;writing-mode:lr-tb;text-anchor:middle;fill:#ff6800;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Arial"
+       id="flowRoot4174-3-9"
+       xml:space="preserve"
+       inkscape:export-filename="C:\SVN_Daten\Projekte\FluidDissipation\trunk\FluidDissipation\Extras\Images\heatTransfer\heatExchanger\pic_tubeBundle186_1phase.png"
+       inkscape:export-xdpi="186.21452"
+       inkscape:export-ydpi="186.21452"><flowRegion
+         id="flowRegion4176-6-3"><rect
+           style="fill:#ff6800;fill-opacity:1"
+           y="318.0318"
+           x="445.12372"
+           height="21.036427"
+           width="56.214989"
+           id="rect4178-1-1" /></flowRegion><flowPara
+         style="fill:#ff6800;fill-opacity:1"
+         id="flowPara4180-5-9">A_front</flowPara></flowRoot>    <path
+       inkscape:connector-curvature="0"
+       style="fill:#800000;fill-opacity:0.86752134;stroke:#010000;stroke-width:0.29066357;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:0.99145298;stroke-dasharray:none"
+       d="m 226,500.36218 0,17 -5,0 8,16 8,-16 -5,0 0,-17"
+       id="path3841-1-3-8-7-4-8"
+       sodipodi:nodetypes="ccccccc"
+       inkscape:export-filename="C:\SVN_Daten\Projekte\FluidDissipation\trunk\FluidDissipation\Extras\Images\heatTransfer\heatExchanger\pic_tubeBundle186_1phase.png"
+       inkscape:export-xdpi="186.21452"
+       inkscape:export-ydpi="186.21452" />
+    <path
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccccc"
+       id="path4128-2-3-2"
+       d="m 187.52392,550.64934 69.37563,-0.0397 11.58545,-6.81063 -69.40013,0.0458 -11.56095,6.8045 z"
+       style="fill:#ffb800;fill-opacity:1;stroke:#000000;stroke-width:0.2;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       inkscape:export-filename="C:\SVN_Daten\Projekte\FluidDissipation\trunk\FluidDissipation\Extras\Images\heatTransfer\heatExchanger\pic_tubeBundle186_1phase.png"
+       inkscape:export-xdpi="186.21452"
+       inkscape:export-ydpi="186.21452" />
+    <flowRoot
+       transform="translate(-176.17578,219.61265)"
+       style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Arial"
+       id="flowRoot4325-2-8"
+       xml:space="preserve"
+       inkscape:export-filename="C:\SVN_Daten\Projekte\FluidDissipation\trunk\FluidDissipation\Extras\Images\heatTransfer\heatExchanger\pic_tubeBundle186_1phase.png"
+       inkscape:export-xdpi="186.21452"
+       inkscape:export-ydpi="186.21452"><flowRegion
+         id="flowRegion4327-6-6"><rect
+           y="416.31964"
+           x="359.21024"
+           height="31.042542"
+           width="90.789764"
+           id="rect4329-0-0" /></flowRegion><flowPara
+         id="flowPara4331-1-2">Offset Pattern</flowPara></flowRoot>    <path
+       inkscape:connector-curvature="0"
+       id="path7100-6-4"
+       d="m 204,596.92468 -30,0 0,0 0,0"
+       style="fill:none;stroke:#000000;stroke-width:0.2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       inkscape:export-filename="C:\SVN_Daten\Projekte\FluidDissipation\trunk\FluidDissipation\Extras\Images\heatTransfer\heatExchanger\pic_tubeBundle186_1phase.png"
+       inkscape:export-xdpi="186.21452"
+       inkscape:export-ydpi="186.21452" />
+    <path
+       inkscape:connector-curvature="0"
+       id="path7100-8-5-8"
+       d="m 204,611.92468 -30,0 0,0 0,0"
+       style="fill:none;stroke:#000000;stroke-width:0.2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       inkscape:export-filename="C:\SVN_Daten\Projekte\FluidDissipation\trunk\FluidDissipation\Extras\Images\heatTransfer\heatExchanger\pic_tubeBundle186_1phase.png"
+       inkscape:export-xdpi="186.21452"
+       inkscape:export-ydpi="186.21452" />
+    <path
+       inkscape:connector-curvature="0"
+       id="path7124-7-6"
+       d="m 177,597.36218 0,14"
+       style="fill:none;stroke:#000000;stroke-width:0.30000001;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-start:url(#Arrow1Mstart);marker-end:url(#Arrow1Mend-5)"
+       inkscape:export-filename="C:\SVN_Daten\Projekte\FluidDissipation\trunk\FluidDissipation\Extras\Images\heatTransfer\heatExchanger\pic_tubeBundle186_1phase.png"
+       inkscape:export-xdpi="186.21452"
+       inkscape:export-ydpi="186.21452" />
+    <text
+       sodipodi:linespacing="125%"
+       id="text8328-5-5"
+       y="174.80168"
+       x="-608.24683"
+       style="font-size:8.1641655px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Arial"
+       xml:space="preserve"
+       transform="matrix(0,-0.99319127,1.0068554,0,0,0)"
+       inkscape:export-filename="C:\SVN_Daten\Projekte\FluidDissipation\trunk\FluidDissipation\Extras\Images\heatTransfer\heatExchanger\pic_tubeBundle186_1phase.png"
+       inkscape:export-xdpi="186.21452"
+       inkscape:export-ydpi="186.21452"><tspan
+         y="174.80168"
+         x="-608.24683"
+         id="tspan8330-4-0"
+         sodipodi:role="line">d</tspan></text>
+    <path
+       inkscape:connector-curvature="0"
+       style="fill:#808080;stroke:#000000;stroke-width:0.39816019px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 236.31144,574.56404 36.76102,-21.46739 c 2.58705,-1.51076 7.53215,-0.13906 7.90787,6.086 0.28207,4.67336 -1.45673,6.84368 -3.33339,7.9384 l -36,21"
+       id="path3678-4-1-6-7-4-8-0-1-9"
+       sodipodi:nodetypes="csssc"
+       inkscape:export-filename="C:\SVN_Daten\Projekte\FluidDissipation\trunk\FluidDissipation\Extras\Images\heatTransfer\heatExchanger\pic_tubeBundle186_1phase.png"
+       inkscape:export-xdpi="186.21452"
+       inkscape:export-ydpi="186.21452" />
+    <path
+       inkscape:connector-curvature="0"
+       style="fill:#333333;stroke:#000000;stroke-width:0.46500951px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 239.47957,573.42567 c -4.26759,0.0127 -5.63154,4.78387 -5.62188,7.60571 0.01,2.79597 1.39336,7.51296 5.62188,7.51927 4.26237,0.007 5.71859,-4.74412 5.71859,-7.56249 0,-2.81837 -1.45625,-7.57522 -5.71859,-7.56249 z"
+       id="path3676-8-5-1-9-3-7-7-2-0"
+       sodipodi:nodetypes="cssss"
+       inkscape:export-filename="C:\SVN_Daten\Projekte\FluidDissipation\trunk\FluidDissipation\Extras\Images\heatTransfer\heatExchanger\pic_tubeBundle186_1phase.png"
+       inkscape:export-xdpi="186.21452"
+       inkscape:export-ydpi="186.21452" />
+    <path
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccccc"
+       id="path4126-7-0"
+       d="m 257.01924,628.34911 11.65825,-6.85853 -0.011,-90.61167 -11.66649,6.85827 0.0192,90.61193 z"
+       style="fill:#808080;fill-opacity:0.54273502;stroke:#000000;stroke-width:0.2;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       inkscape:export-filename="C:\SVN_Daten\Projekte\FluidDissipation\trunk\FluidDissipation\Extras\Images\heatTransfer\heatExchanger\pic_tubeBundle186_1phase.png"
+       inkscape:export-xdpi="186.21452"
+       inkscape:export-ydpi="186.21452" />
+    <rect
+       rx="0"
+       ry="21.253908"
+       y="537.7157"
+       x="187.54248"
+       height="90.619835"
+       width="69.313797"
+       id="rect3256-7-6"
+       style="fill:#808080;fill-opacity:0.3162393;fill-rule:evenodd;stroke:#010000;stroke-width:0.2;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:2.70000005;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       inkscape:export-filename="C:\SVN_Daten\Projekte\FluidDissipation\trunk\FluidDissipation\Extras\Images\heatTransfer\heatExchanger\pic_tubeBundle186_1phase.png"
+       inkscape:export-xdpi="186.21452"
+       inkscape:export-ydpi="186.21452" />
+    <path
+       inkscape:connector-curvature="0"
+       style="fill:none;stroke:#ff0000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:round;stroke-opacity:1"
+       d="m 194,580.36218 6,25 9,-25 6,25 9,-24 6,24 9,-24"
+       id="path8829-1"
+       sodipodi:nodetypes="ccccccc"
+       inkscape:export-filename="C:\SVN_Daten\Projekte\FluidDissipation\trunk\FluidDissipation\Extras\Images\heatTransfer\heatExchanger\pic_tubeBundle186_1phase.png"
+       inkscape:export-xdpi="186.21452"
+       inkscape:export-ydpi="186.21452" />
+    <rect
+       rx="0"
+       ry="21.253908"
+       y="537.68616"
+       x="352.62695"
+       height="90.619835"
+       width="69.313797"
+       id="rect3256-3"
+       style="fill:#808080;fill-opacity:0.3162393;fill-rule:evenodd;stroke:#010000;stroke-width:0.2;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:2.70000005;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       inkscape:export-filename="C:\SVN_Daten\Projekte\FluidDissipation\trunk\FluidDissipation\Extras\Images\heatTransfer\heatExchanger\pic_tubeBundle186_1phase.png"
+       inkscape:export-xdpi="186.21452"
+       inkscape:export-ydpi="186.21452" />
+    <path
+       inkscape:connector-curvature="0"
+       style="fill:none;stroke:#ff0000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 365,605.29483 30,0 0,0"
+       id="path8841-8"
+       inkscape:export-filename="C:\SVN_Daten\Projekte\FluidDissipation\trunk\FluidDissipation\Extras\Images\heatTransfer\heatExchanger\pic_tubeBundle186_1phase.png"
+       inkscape:export-xdpi="186.21452"
+       inkscape:export-ydpi="186.21452" />
+    <path
+       inkscape:connector-curvature="0"
+       style="fill:none;stroke:#ff0000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 395,581.23233 0,0 -30,0"
+       id="path8841-4-9"
+       sodipodi:nodetypes="ccc"
+       inkscape:export-filename="C:\SVN_Daten\Projekte\FluidDissipation\trunk\FluidDissipation\Extras\Images\heatTransfer\heatExchanger\pic_tubeBundle186_1phase.png"
+       inkscape:export-xdpi="186.21452"
+       inkscape:export-ydpi="186.21452" />
+    <path
+       inkscape:connector-curvature="0"
+       style="fill:none;stroke:#fc0000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 365,581.29483 0,24"
+       id="path8896-3"
+       inkscape:export-filename="C:\SVN_Daten\Projekte\FluidDissipation\trunk\FluidDissipation\Extras\Images\heatTransfer\heatExchanger\pic_tubeBundle186_1phase.png"
+       inkscape:export-xdpi="186.21452"
+       inkscape:export-ydpi="186.21452" />
+    <path
+       inkscape:connector-curvature="0"
+       style="fill:none;stroke:#fc0000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 380,581.16983 0,24"
+       id="path8896-5-4"
+       inkscape:export-filename="C:\SVN_Daten\Projekte\FluidDissipation\trunk\FluidDissipation\Extras\Images\heatTransfer\heatExchanger\pic_tubeBundle186_1phase.png"
+       inkscape:export-xdpi="186.21452"
+       inkscape:export-ydpi="186.21452" />
+    <path
+       inkscape:connector-curvature="0"
+       style="fill:none;stroke:#fc0000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 395,581.29483 0,24"
+       id="path8896-7-4"
+       inkscape:export-filename="C:\SVN_Daten\Projekte\FluidDissipation\trunk\FluidDissipation\Extras\Images\heatTransfer\heatExchanger\pic_tubeBundle186_1phase.png"
+       inkscape:export-xdpi="186.21452"
+       inkscape:export-ydpi="186.21452" />
+  </g>
+</svg>

@@ -1,0 +1,16 @@
+LibraryInfoMenuSeparator(
+  category="libraries",
+  pos=9001)
+LibraryInfoMenuCommand(
+  category="libraries",
+  text="FluidDissipation 1.1.7",
+  reference="FluidDissipation",
+  version="1.1.7",
+  isModel=true,
+  description="FluidDissipation Library (version 1.1.7)",
+  ModelicaVersion=">=3.2.1",
+  pos=9003)
+ LibraryInfoMenuSeparator(
+  category="libraries",
+  pos=9020)
+

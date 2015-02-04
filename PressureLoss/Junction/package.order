@@ -1,0 +1,16 @@
+dp_Tjoin
+dp_Tjoin_IN_con
+dp_Tjoin_IN_var
+dp_Tjoin_symmetric
+dp_Tjoin_symmetric_IN_con
+dp_Tjoin_symmetric_IN_var
+dp_Tsplit
+dp_Tsplit_IN_con
+dp_Tsplit_IN_var
+dp_Tsplit_symmetric
+dp_Tsplit_symmetric_IN_con
+dp_Tsplit_symmetric_IN_var
+dp_Tjunction
+dp_Tjunction_IN_con
+dp_Tjunction_IN_var
+dp_Tzero

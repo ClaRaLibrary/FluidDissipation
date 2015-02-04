@@ -1,0 +1,10 @@
+Channel
+General
+HeatExchanger
+HeatExchanger_TwoPhase
+HeatExchanger_TubeBundle
+HelicalPipe
+Plate
+StraightPipe
+StateForHeatTransfer
+StateForHeatTransfer_TwoPhase
