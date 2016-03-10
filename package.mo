@@ -9,6 +9,10 @@ import TYP = FluidDissipation.Utilities.Types;
 extends Utilities.Icons.Package;
 
 
+
+
+
+
 annotation (
   preferredView="info",
   version="1.1.7",
@@ -42,7 +46,7 @@ For the following applications functions are provided:
                 <li> General: generic forced convection (e.g., Dittus and Boelter)</li>
                 <li> Heat Exchanger: air-side heat transfer for fin and tube heat exchangers, 
                                 2-phase heat transfer for tube and shell heat exchangers,
-		         1-phase heat transfer for tube bundle heat exchangers</li>
+                         1-phase heat transfer for tube bundle heat exchangers</li>
                 <li> Helical Pipe: forced convection within helical pipe heat exchangers</li>
                 <li> Plate: forced convection for even surfaces</li> 
                 <li> Straight Pipe: heat transfer in straight pipes</li>
@@ -110,6 +114,6 @@ Germany<br>
  
 "),
   Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{100,100}}),
-      graphics={                             Bitmap(extent={{-92,82},{94,-80}},
+      graphics={                             Bitmap(extent={{-92,-80},{94,80}},
           fileName="Modelica://FluidDissipation/Extras/Images/XRG_logo_3Streifen.png")}));
 end FluidDissipation;

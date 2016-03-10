@@ -1,23 +1,22 @@
 within FluidDissipation.PressureLoss.StraightPipe;
-record dp_twoPhaseOverall_IN_con
-  "Input record for function dp_twoPhaseOverall_DP"
+record dp_twoPhaseOverall_IN_con "Input record for function dp_twoPhaseOverall_DP"
 
   //choices
   FluidDissipation.Utilities.Types.TwoPhaseFrictionalPressureLoss frictionalPressureLoss=
-      FluidDissipation.Utilities.Types.TwoPhaseFrictionalPressureLoss.Friedel
-    "Choice of frictional pressure loss approach"
+      FluidDissipation.Utilities.Types.TwoPhaseFrictionalPressureLoss.Friedel "Choice of frictional pressure loss approach"
     annotation (Dialog(group="Choices"));
   FluidDissipation.Utilities.Types.VoidFractionApproach voidFractionApproach=
-      FluidDissipation.Utilities.Types.VoidFractionApproach.Homogeneous
-    "Choice of void fraction approach" annotation (Dialog(group="Choices"));
+      FluidDissipation.Utilities.Types.VoidFractionApproach.Homogeneous "Choice of void fraction approach"
+                                       annotation (Dialog(group="Choices"));
 
   Boolean momentumPressureLoss=false "Considering momentum pressure loss"
     annotation (Dialog(group="Choices"));
-  Boolean massFlowRateCorrection=false
-    "Consider heterogeneous mass flow rate correction" annotation (Dialog(group=
+  Boolean massFlowRateCorrection=false "Consider heterogeneous mass flow rate correction"
+                                                       annotation (Dialog(group=
          "Choices", enable=if momentumPressureLoss then true else false));
   Boolean geodeticPressureLoss=false "Considering geodetic pressure loss"
     annotation (Dialog(group="Choices"));
+  Real x_flow_smooth=0.05 "Mass flow rate quality at which smoothing for flow reversal or switch of phase change mechanism (boiling to condensation or vice versa) begins";
 
   extends FluidDissipation.Utilities.Records.General.TwoPhaseFlow_con;
   SI.Angle phi=0 "Tilt angle to horizontal"

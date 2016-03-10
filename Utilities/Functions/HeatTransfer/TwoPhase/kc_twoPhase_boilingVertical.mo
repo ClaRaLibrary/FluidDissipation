@@ -1,5 +1,5 @@
 within FluidDissipation.Utilities.Functions.HeatTransfer.TwoPhase;
-function kc_twoPhase_boilingVertical_KC "Local two phase heat transfer coefficient of straight pipe | vertical boiling"
+function kc_twoPhase_boilingVertical "Local two phase heat transfer coefficient of straight pipe | vertical boiling"
   extends Modelica.Icons.Function;
   //SOURCE_1: Bejan,A.: HEAT TRANSFER HANDBOOK, Wiley, 2003.
   //SOURCE_2: Gungor, K.E. and R.H.S. Winterton: A general correlation for flow boiling in tubes and annuli, Int.J. Heat Mass Transfer, Vol.29, p.351-358, 1986.
@@ -11,7 +11,10 @@ function kc_twoPhase_boilingVertical_KC "Local two phase heat transfer coefficie
     annotation (Dialog(group="Variable inputs"));
 
   output SI.CoefficientOfHeatTransfer kc "Local two phase heat transfer coefficient";
-
+  output SI.CoefficientOfHeatTransfer kc_FC "Local heat transfer coefficient due to forced convection";
+  output SI.CoefficientOfHeatTransfer kc_PB "Local heat transfer coefficient due to nucleate pool boiling";
+  output Real E;
+  output Real recXtt "1/X_tt";
 protected
   Real MIN=Modelica.Constants.eps;
 
@@ -50,6 +53,10 @@ protected
 
   //SOURCE_2: p.354, sec. final equations: Calculation of two phase heat transfer coefficient for vertical pipes w.r.t. equation of Gungor-Winterton
 algorithm
+  kc_FC :=E_fc*kc_fc;
+  kc_PB :=S_nb*kc_nb;
   kc := E_fc*kc_fc + S_nb*kc_nb;
+  E:=E_fc;
+  recXtt:=1/max(1e-3,X_tt);
   annotation (Inline=false, smoothOrder=5);
-end kc_twoPhase_boilingVertical_KC;
+end kc_twoPhase_boilingVertical;

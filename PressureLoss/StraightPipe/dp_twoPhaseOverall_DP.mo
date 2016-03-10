@@ -1,6 +1,5 @@
 within FluidDissipation.PressureLoss.StraightPipe;
-function dp_twoPhaseOverall_DP
-  "Pressure loss of straight pipe for two phase flow | calculate (frictional, momentum, geodetic) pressure loss"
+function dp_twoPhaseOverall_DP "Pressure loss of straight pipe for two phase flow | calculate (frictional, momentum, geodetic) pressure loss"
   extends Modelica.Icons.Function;
   //SOURCE_1: Friedel,L.:IMPROVED FRICTION PRESSURE DROP CORRELATIONS FOR HORIZONTAL AND VERTICAL TWO PHASE PIPE FLOW, 3R International, Vol. 18, Issue 7, pp. 485-491, 1979
   //SOURCE_2: Chisholm,D.:PRESSURE GRADIENTS DUE TO FRICTION DURING THE FLOW OF EVAPORATING TWO-PHASE MIXTURES IN SMOOTH TUBES AND CHANNELS, Int. J. Heat Mass Transfer, Vol. 16, pp. 347-358, Pergamon Press 1973
@@ -9,11 +8,9 @@ function dp_twoPhaseOverall_DP
   //SOURCE_5: Thome, J.R., Engineering Data Book 3, Swiss Federal Institute of Technology Lausanne (EPFL), 2009.
 
   //input records
-  input FluidDissipation.PressureLoss.StraightPipe.dp_twoPhaseOverall_IN_con IN_con
-    "Input record for function dp_twoPhaseOverall_DP"
+  input FluidDissipation.PressureLoss.StraightPipe.dp_twoPhaseOverall_IN_con IN_con "Input record for function dp_twoPhaseOverall_DP"
     annotation (Dialog(group="Constant inputs"));
-  input FluidDissipation.PressureLoss.StraightPipe.dp_twoPhaseOverall_IN_var IN_var
-    "Input record for function dp_twoPhaseOverall_DP"
+  input FluidDissipation.PressureLoss.StraightPipe.dp_twoPhaseOverall_IN_var IN_var "Input record for function dp_twoPhaseOverall_DP"
     annotation (Dialog(group="Variable inputs"));
   input SI.MassFlowRate m_flow "Mass flow rate"
     annotation (Dialog(group="Input"));
@@ -27,14 +24,11 @@ protected
   Real MIN=Modelica.Constants.eps;
 
   SI.Area A_cross=max(MIN, IN_con.A_cross) "Cross sectional area";
-  SI.Diameter d_hyd=max(MIN, 4*A_cross/max(MIN, IN_con.perimeter))
-    "Hydraulic diameter";
+  SI.Diameter d_hyd=max(MIN, 4*A_cross/max(MIN, IN_con.perimeter)) "Hydraulic diameter";
 
   Real mdot_A=abs(m_flow)/A_cross "Mass flux";
-  Real xflowEnd=min(1, max(0, abs(IN_var.x_flow_end)))
-    "Mass flow rate quality at end of length";
-  Real xflowSta=min(1, max(0, abs(IN_var.x_flow_sta)))
-    "Mass flow rate quality at start of length";
+  Real xflowEnd=min(1, max(0, abs(IN_var.x_flow_end))) "Mass flow rate quality at end of length";
+  Real xflowSta=min(1, max(0, abs(IN_var.x_flow_sta))) "Mass flow rate quality at start of length";
   Real x_flow=(xflowEnd + xflowSta)/2 "Mean mass flow rate quality over length";
 
   //SOURCE_5: p.17-1 to 17-5, sec. 17.1 to 17.2: Considering cross sectional void fraction [epsilon=A_g/(A_g+A_l)]
@@ -70,7 +64,8 @@ protected
       IN_var.rho_l,
       IN_var.x_flow_end,
       IN_var.x_flow_sta,
-      abs(m_flow)) else 0 "Momentum pressure loss";
+      abs(m_flow),
+      IN_con.x_flow_smooth) else 0 "Momentum pressure loss";
 
   //SOURCE_3: p.Lbb 1, eq. 4: Considering geodetic pressure loss assuming constant void fraction for flow length
   SI.Pressure DP_geo=if IN_con.geodeticPressureLoss then
