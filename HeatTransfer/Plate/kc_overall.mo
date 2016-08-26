@@ -1,16 +1,13 @@
 within FluidDissipation.HeatTransfer.Plate;
-function kc_overall
-  "Mean heat transfer coefficient of even plate | overall regime | constant wall temperature"
+function kc_overall "Mean heat transfer coefficient of even plate | overall regime | constant wall temperature"
   extends Modelica.Icons.Function;
   //SOURCE: VDI-Waermeatlas, Aufl. 9, Springer-Verlag, 2002, Section Gd 1
   //Notation of equations according to SOURCE
 
   //input records
-  input FluidDissipation.HeatTransfer.Plate.kc_overall_IN_con IN_con
-    "Input record for function kc_overall"
+  input FluidDissipation.HeatTransfer.Plate.kc_overall_IN_con IN_con "Input record for function kc_overall"
     annotation (Dialog(group="Constant inputs"));
-  input FluidDissipation.HeatTransfer.Plate.kc_overall_IN_var IN_var
-    "Input record for function kc_overall"
+  input FluidDissipation.HeatTransfer.Plate.kc_overall_IN_var IN_var "Input record for function kc_overall"
     annotation (Dialog(group="Variable inputs"));
   //output variables
   output SI.CoefficientOfHeatTransfer kc "Convective heat transfer coefficient"
@@ -20,12 +17,11 @@ function kc_overall
     annotation (Dialog(group="Output"));
   output SI.NusseltNumber Nu "Nusselt number"
     annotation (Dialog(group="Output"));
-  output Real failureStatus
-    "0== boundary conditions fulfilled | 1== failure >> check if still meaningful results"
+  output Real failureStatus "0== boundary conditions fulfilled | 1== failure >> check if still meaningful results"
     annotation (Dialog(group="Output"));
 
 protected
-  Real MIN=Modelica.Constants.eps;
+  Real MIN=Modelica.Constants.eps "Limiter";
 
   Real prandtlMax=2000 "Maximum Prandtl number";
   Real prandtlMin=0.6 "Minimum Prandtl number";
@@ -38,7 +34,7 @@ protected
   //Documentation
 algorithm
   Pr := IN_var.eta*IN_var.cp/max(MIN, IN_var.lambda);
-  Re := max(1e-3, abs(IN_var.rho*IN_var.velocity*IN_con.L/max(MIN, IN_var.eta)));
+  Re := abs(IN_var.rho*IN_var.velocity*IN_con.L/max(MIN, IN_var.eta));
   kc := FluidDissipation.HeatTransfer.Plate.kc_overall_KC(IN_con, IN_var);
   Nu := kc*IN_con.L/max(MIN, IN_var.lambda);
 
@@ -128,5 +124,7 @@ The mean Nusselt number <b> Nu = sqrt(Nu_lam^2 + Nu_turb^2) </b> representing th
 </dl>
  
 </html>
-"));
+", revisions="<html>
+<pre>2016-04-12 Stefan Wischhusen: Removed singularity for Re at zero mass flow rate. </pre>
+</html>"));
 end kc_overall;

@@ -1,6 +1,5 @@
 within FluidDissipation.PressureLoss.HeatExchanger;
-function dp_corrugatedPlate_1ph_DP
-  "1-phase pressure loss of corrugated plate heat exchanger"
+function dp_corrugatedPlate_1ph_DP "1-phase pressure loss of corrugated plate heat exchanger"
   extends Modelica.Icons.Function;
   //SOURCE: VDI-Waermeatlas, 9th edition, Springer-Verlag, 2002
   //Notation of equations according to SOURCE
@@ -9,13 +8,11 @@ function dp_corrugatedPlate_1ph_DP
   import SMOOTH = FluidDissipation.Utilities.Functions.General.Stepsmoother;
 
   //input records
-  input
-    FluidDissipation.PressureLoss.HeatExchanger.dp_corrugatedPlate_1ph_IN_con IN_con
-    "Input record for function dp_corrugatedPlate_1ph_DP"
+  input FluidDissipation.PressureLoss.HeatExchanger.dp_corrugatedPlate_1ph_IN_con
+                                                                              IN_con "Input record for function dp_corrugatedPlate_1ph_DP"
     annotation (Dialog(group="Constant inputs"));
-  input
-    FluidDissipation.PressureLoss.HeatExchanger.dp_corrugatedPlate_1ph_IN_var IN_var
-    "Input record for function dp_corrugatedPlate_1ph_DP"
+  input FluidDissipation.PressureLoss.HeatExchanger.dp_corrugatedPlate_1ph_IN_var
+                                                                              IN_var "Input record for function dp_corrugatedPlate_1ph_DP"
     annotation (Dialog(group="Variable inputs"));
   input SI.MassFlowRate m_flow "Mass flow rate"
     annotation (Dialog(group="Input"));
@@ -26,8 +23,7 @@ function dp_corrugatedPlate_1ph_DP
 protected
   Real MIN=Modelica.Constants.eps;
 
-  Modelica.SIunits.ReynoldsNumber Re = IN_var.rho*w*D_h/IN_var.eta
-    "Reynolds number based on hydraulic diameter";
+  Modelica.SIunits.ReynoldsNumber Re = IN_var.rho*w*D_h/IN_var.eta "Reynolds number based on hydraulic diameter";
 
   Real xi "pressure loss coefficient";
   Real xi_0 "pressure loss coefficient if phi=0°";

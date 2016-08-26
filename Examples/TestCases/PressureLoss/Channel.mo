@@ -57,14 +57,12 @@ public
         rotation=0,
         origin={-50,-40})));
 
-  Applications.PressureLoss.ChannelFlowModel from_dp(redeclare package Medium
-      = Modelica.Media.Water.ConstantPropertyLiquidWater)
-    "Calculate mass flow rate from pressure loss"
+  Applications.PressureLoss.ChannelFlowModel from_dp(redeclare package Medium =
+        Modelica.Media.Water.ConstantPropertyLiquidWater) "Calculate mass flow rate from pressure loss"
     annotation (Placement(transformation(extent={{-24,-4},{24,44}})));
 
-  Applications.PressureLoss.ChannelFlowModel from_mflow(redeclare package
-      Medium = Modelica.Media.Water.ConstantPropertyLiquidWater)
-    "Calculate pressure loss from mass flow rate"
+  Applications.PressureLoss.ChannelFlowModel from_mflow(redeclare package Medium =
+               Modelica.Media.Water.ConstantPropertyLiquidWater) "Calculate pressure loss from mass flow rate"
     annotation (Placement(transformation(extent={{-24,-64},{24,-16}})));
 
 equation

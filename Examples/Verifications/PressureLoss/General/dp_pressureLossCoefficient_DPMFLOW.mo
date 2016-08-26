@@ -1,30 +1,23 @@
 within FluidDissipation.Examples.Verifications.PressureLoss.General;
-model dp_pressureLossCoefficient_DPMFLOW
-  "Verification of function dp_pressureLossCoefficient_DP and dp_pressureLossCoefficient_MFLOW"
+model dp_pressureLossCoefficient_DPMFLOW "Verification of function dp_pressureLossCoefficient_DP and dp_pressureLossCoefficient_MFLOW"
 
   //general variables
   parameter Integer n=3 "Number of grid points";
 
-  parameter SI.Area A_cross=Modelica.Constants.pi*0.1^2/4
-    "Circular cross sectional area";
-  parameter TYP.PressureLossCoefficient zeta_TOT[n]={0.01,0.1,1}
-    "Pressure loss coefficient";
+  parameter SI.Area A_cross=Modelica.Constants.pi*0.1^2/4 "Circular cross sectional area";
+  parameter TYP.PressureLossCoefficient zeta_TOT[n]={0.01,0.1,1} "Pressure loss coefficient";
 
   //fluid property variables
   SI.Density rho=1.2 "Density of fluid";
 
   //target variables (here: mass flow rate as input for inverse calculation)
   //intended input variables for records
-  SI.MassFlowRate input_mdot[n](start=zeros(n))
-    "(Input) mass flow rate (for intended incompressible case)";
-  SI.Pressure input_dp[n](start=zeros(n)) = ones(n)*input_DP.y
-    "(Input) pressure loss (for intended compressible case)";
+  SI.MassFlowRate input_mdot[n](start=zeros(n)) "(Input) mass flow rate (for intended incompressible case)";
+  SI.Pressure input_dp[n](start=zeros(n)) = ones(n)*input_DP.y "(Input) pressure loss (for intended compressible case)";
 
   //intended output variables for records
-  SI.MassFlowRate M_FLOW[n](start=zeros(n))
-    "(Output) mass flow rate (for intended compressible case)";
-  SI.Pressure DP[n](start=zeros(n)) = {input_dp[i] for i in 1:n}
-    "(Output) pressure loss (for intended incompressible case)";
+  SI.MassFlowRate M_FLOW[n](start=zeros(n)) "(Output) mass flow rate (for intended compressible case)";
+  SI.Pressure DP[n](start=zeros(n)) = {input_dp[i] for i in 1:n} "(Output) pressure loss (for intended incompressible case)";
 
   //input record
   //target == DP (incompressible)
@@ -70,8 +63,7 @@ equation
     input_dp[i]) for i in 1:n};
 
   annotation (__Dymola_Commands(file=
-          "modelica://FluidDissipation/Extras/Scripts/pressureLoss/general/dp_pressureLossCoefficient_DPMFLOW.mos"
-        "Verification of dp_pressureLossCoefficient_DP and dp_pressureLossCoefficient_MFLOW"),
+          "modelica://FluidDissipation/Extras/Scripts/pressureLoss/general/dp_pressureLossCoefficient_DPMFLOW.mos" "Verification of dp_pressureLossCoefficient_DP and dp_pressureLossCoefficient_MFLOW"),
       Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},{
             100,100}}), graphics={Text(
           extent={{-100,50},{100,75}},

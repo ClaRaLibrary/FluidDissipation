@@ -7,8 +7,7 @@ model dp_laminar "Verification of function dp_laminar"
 
   //straight pipe variables
   SI.Area A_cross=PI*d_hyd^2/4 "Circular cross sectional area of straight pipe";
-  FluidDissipation.Utilities.Types.Roughness roughness=FluidDissipation.Utilities.Types.Roughness.Considered
-    "Choice of considering surface roughness"
+  FluidDissipation.Utilities.Types.Roughness roughness=FluidDissipation.Utilities.Types.Roughness.Considered "Choice of considering surface roughness"
     annotation (Dialog(group="Straight pipe"));
   SI.Diameter d_hyd=0.1 "Hydraulic diameter"
     annotation (Dialog(group="Straight pipe"));
@@ -22,10 +21,8 @@ model dp_laminar "Verification of function dp_laminar"
 
   //target variables (here: mass flow rate as input for inverse calculation)
   //intended input variables for records
-  SI.MassFlowRate input_mdot[n](start=zeros(n)) = ones(n)*input_mflow_0.y
-    "(Input) mass flow rate (for intended incompressible case)";
-  SI.Pressure input_dp[n]={DP[i] for i in 1:n}
-    "(Input) pressure loss (for intended compressible case)";
+  SI.MassFlowRate input_mdot[n](start=zeros(n)) = ones(n)*input_mflow_0.y "(Input) mass flow rate (for intended incompressible case)";
+  SI.Pressure input_dp[n]={DP[i] for i in 1:n} "(Input) pressure loss (for intended compressible case)";
 
   //input record
   //target == DP (incompressible)
@@ -58,15 +55,13 @@ model dp_laminar "Verification of function dp_laminar"
     annotation (Placement(transformation(extent={{90,-6},{110,14}})));
 
   //  //plotting
-  SI.Velocity velocity[n]={abs(input_mdot[i])/(rho*A_cross) for i in 1:n}
-    "Mean velocity";
+  SI.Velocity velocity[n]={abs(input_mdot[i])/(rho*A_cross) for i in 1:n} "Mean velocity";
   SI.ReynoldsNumber Re[n]={rho*abs(velocity[i])*d_hyd/eta for i in 1:n};
 
   Real DP_plot[n]={DP[i] for i in 1:n} "Pressure loss [Pa]";
   Real zeta_TOT[n]={2*abs(DP_plot[i])/max(MIN, rho*(velocity[i])^2) for i in 1:
       n} "Pressure loss coefficients";
-  Real lambda_FRI[n]={zeta_TOT[i]*d_hyd/L for i in 1:n}
-    "Frictional resistance coefficient";
+  Real lambda_FRI[n]={zeta_TOT[i]*d_hyd/L for i in 1:n} "Frictional resistance coefficient";
 
   Modelica.Blocks.Sources.Ramp input_mflow_0(
     startTime=0,
@@ -104,8 +99,8 @@ equation
   end for;
 
   annotation (__Dymola_Commands(file=
-          "modelica://FluidDissipation/Extras/Scripts/pressureLoss/straightPipe/dp_laminar.mos"
-        "Verification of dp_laminar"),Diagram(coordinateSystem(
+          "modelica://FluidDissipation/Extras/Scripts/pressureLoss/straightPipe/dp_laminar.mos" "Verification of dp_laminar"),
+                                      Diagram(coordinateSystem(
           preserveAspectRatio=false, extent={{-100,-100},{100,100}}), graphics={
            Text(
           extent={{-87,16},{-12,6}},

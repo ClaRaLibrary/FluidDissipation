@@ -1,25 +1,21 @@
 within FluidDissipation.PressureLoss.General;
-function dp_nominalPressureLossLawDensity_DP
-  "Generic pressure loss | calculate pressure loss | nominal operation point | pressure loss law (coefficient and exponent) | density dependence"
+function dp_nominalPressureLossLawDensity_DP "Generic pressure loss | calculate pressure loss | nominal operation point | pressure loss law (coefficient and exponent) | density dependence"
   extends Modelica.Icons.Function;
 
   import FD = FluidDissipation.PressureLoss.General;
 
   //input records
-  input
-    FluidDissipation.PressureLoss.General.dp_nominalPressureLossLawDensity_IN_con
+  input FluidDissipation.PressureLoss.General.dp_nominalPressureLossLawDensity_IN_con
     IN_con "Input record for function dp_nominalPressureLossLawDensity_DP"
     annotation (Dialog(group="Constant inputs"));
-  input
-    FluidDissipation.PressureLoss.General.dp_nominalPressureLossLawDensity_IN_var
+  input FluidDissipation.PressureLoss.General.dp_nominalPressureLossLawDensity_IN_var
     IN_var "Input record for function dp_nominalPressureLossLawDensity_DP"
     annotation (Dialog(group="Variable inputs"));
   input SI.MassFlowRate m_flow "Mass flow rate"
     annotation (Dialog(group="Input"));
 
   //output variables
-  output SI.Pressure DP
-    "Output for function dp_nominalPressureLossLawDensity_yesAJac_DP";
+  output SI.Pressure DP "Output for function dp_nominalPressureLossLawDensity_yesAJac_DP";
 
 protected
   Real exp_density=if IN_con.target ==FluidDissipation.Utilities.Types.MassOrVolumeFlowRate.MassFlowRate
@@ -27,13 +23,11 @@ protected
             1 - IN_con.exp else 1 "Exponent of density fraction (rho/rho_nom)";
   SI.MassFlowRate m_flow_nom=if IN_con.target ==FluidDissipation.Utilities.Types.MassOrVolumeFlowRate.MassFlowRate
                                                                                                then
-            IN_con.m_flow_nom else IN_var.rho*IN_con.V_flow_nom
-    "Nominal mean flow velocity at operation point";
+            IN_con.m_flow_nom else IN_var.rho*IN_con.V_flow_nom "Nominal mean flow velocity at operation point";
 
   SI.MassFlowRate m_flow_linear=(0.01*(IN_con.zeta_TOT_nom/IN_var.zeta_TOT)*(
       IN_con.rho_nom/IN_var.rho)^(exp_density)*(IN_con.A_cross/IN_con.A_cross_nom)
-      ^(IN_con.exp)*IN_con.m_flow_nom)^(1/IN_con.exp)
-    "Start of approximation for decreasing mass flow rate";
+      ^(IN_con.exp)*IN_con.m_flow_nom)^(1/IN_con.exp) "Start of approximation for decreasing mass flow rate";
 
   //Documentation
 

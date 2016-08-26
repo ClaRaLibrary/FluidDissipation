@@ -1,15 +1,12 @@
 within FluidDissipation.HeatTransfer.Channel;
-function kc_evenGapLaminar
-  "Mean heat transfer coefficient of even gap | laminar flow regime | considering boundary layer development | heat transfer at ONE or BOTH sides | identical and constant wall temperatures"
+function kc_evenGapLaminar "Mean heat transfer coefficient of even gap | laminar flow regime | considering boundary layer development | heat transfer at ONE or BOTH sides | identical and constant wall temperatures"
   extends Modelica.Icons.Function;
   //SOURCE: VDI-Waermeatlas, 9th edition, Springer-Verlag, 2002, Section Gb 6-10
 
   //input records
-  input FluidDissipation.HeatTransfer.Channel.kc_evenGapLaminar_IN_con IN_con
-    "Input record for function kc_evenGapLaminar"
+  input FluidDissipation.HeatTransfer.Channel.kc_evenGapLaminar_IN_con IN_con "Input record for function kc_evenGapLaminar"
     annotation (Dialog(group="Constant inputs"));
-  input FluidDissipation.HeatTransfer.Channel.kc_evenGapLaminar_IN_var IN_var
-    "Input record for function kc_evenGapLaminar"
+  input FluidDissipation.HeatTransfer.Channel.kc_evenGapLaminar_IN_var IN_var "Input record for function kc_evenGapLaminar"
     annotation (Dialog(group="Variable inputs"));
 
   //output variables
@@ -20,14 +17,13 @@ function kc_evenGapLaminar
     annotation (Dialog(group="Output"));
   output SI.NusseltNumber Nu "Nusselt number"
     annotation (Dialog(group="Output"));
-  output Real failureStatus
-    "0== boundary conditions fulfilled | 1== failure >> check if still meaningful results"
+  output Real failureStatus "0== boundary conditions fulfilled | 1== failure >> check if still meaningful results"
     annotation (Dialog(group="Output"));
 
-  import TYP = FluidDissipation.Utilities.Types.kc_evenGap;
-
 protected
-  Real MIN=Modelica.Constants.eps;
+  type TYP = Modelica.Fluid.Dissipation.Utilities.Types.kc_evenGap;
+
+  Real MIN=Modelica.Constants.eps "Limiter";
 
   Real laminar=2200 "Maximum Reynolds number of laminar flow regime";
 
@@ -39,8 +35,7 @@ protected
   Real prandtlMin=if IN_con.target == TYP.UndevOne or IN_con.target == TYP.UndevBoth then
             0.1 else 0 "Minimum Prandtl number";
 
-  SI.Velocity velocity=abs(IN_var.m_flow)/max(MIN, IN_var.rho*A_cross)
-    "Mean velocity in gap";
+  SI.Velocity velocity=abs(IN_var.m_flow)/max(MIN, IN_var.rho*A_cross) "Mean velocity in gap";
 
   //failure status
   Real fstatus[2] "Check of expected boundary conditions";
@@ -48,7 +43,7 @@ protected
   //Documentation
 algorithm
   Pr := abs(IN_var.eta*IN_var.cp/max(MIN, IN_var.lambda));
-  Re := max(1, abs(IN_var.rho*velocity*d_hyd/max(MIN, IN_var.eta)));
+  Re := abs(IN_var.rho*velocity*d_hyd/max(MIN, IN_var.eta));
   kc := FluidDissipation.HeatTransfer.Channel.kc_evenGapLaminar_KC(IN_con,
     IN_var);
   Nu := kc*d_hyd/max(MIN, IN_var.lambda);
@@ -193,5 +188,6 @@ the chosen fluid flow and heat transfer situations (targets) is shown in the fig
 </dl>
  
 </html>
-"));
+", revisions="<html>
+</html>"));
 end kc_evenGapLaminar;

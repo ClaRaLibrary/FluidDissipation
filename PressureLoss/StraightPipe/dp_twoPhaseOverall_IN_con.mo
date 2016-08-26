@@ -16,7 +16,6 @@ record dp_twoPhaseOverall_IN_con "Input record for function dp_twoPhaseOverall_D
          "Choices", enable=if momentumPressureLoss then true else false));
   Boolean geodeticPressureLoss=false "Considering geodetic pressure loss"
     annotation (Dialog(group="Choices"));
-  Real x_flow_smooth=0.05 "Mass flow rate quality at which smoothing for flow reversal or switch of phase change mechanism (boiling to condensation or vice versa) begins";
 
   extends FluidDissipation.Utilities.Records.General.TwoPhaseFlow_con;
   SI.Angle phi=0 "Tilt angle to horizontal"

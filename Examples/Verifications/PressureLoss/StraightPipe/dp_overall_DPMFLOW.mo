@@ -1,6 +1,5 @@
 within FluidDissipation.Examples.Verifications.PressureLoss.StraightPipe;
-model dp_overall_DPMFLOW
-  "Verification of function dp_overall_DP AND dp_overall_MFLOW"
+model dp_overall_DPMFLOW "Verification of function dp_overall_DP AND dp_overall_MFLOW"
 
   Real MIN=Modelica.Constants.eps;
 
@@ -8,13 +7,11 @@ model dp_overall_DPMFLOW
 
   //straight pipe variables
   SI.Area A_cross=PI*d_hyd^2/4 "Circular cross sectional area of straight pipe";
-  FluidDissipation.Utilities.Types.Roughness roughness=FluidDissipation.Utilities.Types.Roughness.Considered
-    "Choice of considering surface roughness"
+  FluidDissipation.Utilities.Types.Roughness roughness=FluidDissipation.Utilities.Types.Roughness.Considered "Choice of considering surface roughness"
     annotation (Dialog(group="Straight pipe"));
   SI.Diameter d_hyd=0.1 "Hydraulic diameter"
     annotation (Dialog(group="Straight pipe"));
-  SI.Length K[4]={0,2e-4*d_hyd,2e-3*d_hyd,2e-2*d_hyd}
-    "Roughness (average height of surface asperities)"
+  SI.Length K[4]={0,2e-4*d_hyd,2e-3*d_hyd,2e-2*d_hyd} "Roughness (average height of surface asperities)"
     annotation (Dialog(group="Straight pipe"));
   SI.Length L=1 "Length" annotation (Dialog(group="Straight pipe"));
 
@@ -24,16 +21,12 @@ model dp_overall_DPMFLOW
 
   //target variables (here: mass flow rate as input for inverse calculation)
   //intended input variables for records
-  SI.MassFlowRate input_mdot[n](start=zeros(n))
-    "(Input) mass flow rate (for intended incompressible case)";
-  SI.Pressure input_dp[n](start=zeros(n)) = ones(n)*input_DP.y
-    "(Input) pressure loss (for intended compressible case)";
+  SI.MassFlowRate input_mdot[n](start=zeros(n)) "(Input) mass flow rate (for intended incompressible case)";
+  SI.Pressure input_dp[n](start=zeros(n)) = ones(n)*input_DP.y "(Input) pressure loss (for intended compressible case)";
 
   //intended output variables for records
-  SI.MassFlowRate M_FLOW[n](start=zeros(n))
-    "(Output) mass flow rate (for intended compressible case)";
-  SI.Pressure DP[n](start=zeros(n)) = {input_dp[i] for i in 1:n}
-    "(Output) pressure loss (for intended incompressible case)";
+  SI.MassFlowRate M_FLOW[n](start=zeros(n)) "(Output) mass flow rate (for intended compressible case)";
+  SI.Pressure DP[n](start=zeros(n)) = {input_dp[i] for i in 1:n} "(Output) pressure loss (for intended incompressible case)";
 
   //input record
   //target == DP (incompressible)
@@ -61,15 +54,13 @@ model dp_overall_DPMFLOW
     annotation (Placement(transformation(extent={{50,20},{70,40}})));
 
   //plotting
-  SI.Velocity velocity[n]={M_FLOW[i]/(rho*A_cross) for i in 1:n}
-    "Mean velocity";
+  SI.Velocity velocity[n]={M_FLOW[i]/(rho*A_cross) for i in 1:n} "Mean velocity";
   SI.ReynoldsNumber Re[n]={rho*velocity[i]*d_hyd/eta for i in 1:n};
 
   Real DP_plot[n]={DP[i] for i in 1:n} "Pressure loss [Pa]";
   Real zeta_TOT[n]={2*abs(DP_plot[i])/max(MIN, rho*(velocity[i])^2) for i in 1:
       n} "Pressure loss coefficients";
-  Real lambda_FRI[n]={zeta_TOT[i]*d_hyd/L for i in 1:n}
-    "Frictional resistance coefficient";
+  Real lambda_FRI[n]={zeta_TOT[i]*d_hyd/L for i in 1:n} "Frictional resistance coefficient";
 
   Modelica.Blocks.Sources.Ramp input_DP(
     startTime=0,
@@ -91,8 +82,8 @@ equation
     input_dp[i]) for i in 1:n};
 
   annotation (__Dymola_Commands(file=
-          "modelica://FluidDissipation/Extras/Scripts/pressureLoss/straightPipe/dp_overall_DPMFLOW.mos"
-        "Verification of dp_overall_DPMFLOW"), Diagram(coordinateSystem(
+          "modelica://FluidDissipation/Extras/Scripts/pressureLoss/straightPipe/dp_overall_DPMFLOW.mos" "Verification of dp_overall_DPMFLOW"),
+                                               Diagram(coordinateSystem(
           preserveAspectRatio=true, extent={{-100,-100},{100,100}}), graphics={
           Text(
           extent={{-100,-50},{100,-25}},

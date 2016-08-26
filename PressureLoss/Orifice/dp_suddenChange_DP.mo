@@ -1,6 +1,5 @@
 within FluidDissipation.PressureLoss.Orifice;
-function dp_suddenChange_DP
-  "Pressure loss of orifice with sudden change in cross sectional area | calculate pressure loss | turbulent flow regime | smooth surface | arbitrary cross sectional area | without buffles | sharp edge"
+function dp_suddenChange_DP "Pressure loss of orifice with sudden change in cross sectional area | calculate pressure loss | turbulent flow regime | smooth surface | arbitrary cross sectional area | without buffles | sharp edge"
   extends Modelica.Icons.Function;
   //SOURCE_1: Idelchik, I.E.: HANDBOOK OF HYDRAULIC RESISTANCE, 3rd edition, 2006.
   //Notation of equations according to SOURCES
@@ -10,11 +9,9 @@ function dp_suddenChange_DP
   import SMOOTH = FluidDissipation.Utilities.Functions.General.Stepsmoother;
 
   //input records
-  input FluidDissipation.PressureLoss.Orifice.dp_suddenChange_IN_con IN_con
-    "Input record for function dp_suddenChange_DP"
+  input FluidDissipation.PressureLoss.Orifice.dp_suddenChange_IN_con IN_con "Input record for function dp_suddenChange_DP"
     annotation (Dialog(group="Constant inputs"));
-  input FluidDissipation.PressureLoss.Orifice.dp_suddenChange_IN_var IN_var
-    "Input record for function dp_suddenChange_DP"
+  input FluidDissipation.PressureLoss.Orifice.dp_suddenChange_IN_var IN_var "Input record for function dp_suddenChange_DP"
     annotation (Dialog(group="Variable inputs"));
   input SI.MassFlowRate m_flow "Mass flow rate"
     annotation (Dialog(group="Input"));
@@ -26,19 +23,13 @@ protected
   Real MIN=Modelica.Constants.eps;
   SI.ReynoldsNumber Re_min=10 "Minimum Reynolds number for linear smoothing";
   //restriction of local resistance coefficient zeta_LOC >> numerical improvement
-  TYP.LocalResistanceCoefficient zeta_LOC_min=1e-3
-    "Minimal local resistance coefficient";
+  TYP.LocalResistanceCoefficient zeta_LOC_min=1e-3 "Minimal local resistance coefficient";
 
-  SI.Area A_1=max(MIN, min(IN_con.A_1, IN_con.A_2))
-    "Small cross sectional area of orifice";
-  SI.Area A_2=max(MIN, max(IN_con.A_1, IN_con.A_2))
-    "Large cross sectional area of orifice";
-  SI.Length C_1=max(MIN, min(IN_con.C_1, IN_con.C_2))
-    "Perimeter of small cross sectional area of orifice";
-  SI.Length C_2=max(MIN, max(IN_con.C_1, IN_con.C_2))
-    "perimeter of large cross sectional area of orifice";
-  SI.Diameter d_hyd=4*A_1/C_1
-    "Hydraulic diameter of small cross sectional area of orifice";
+  SI.Area A_1=max(MIN, min(IN_con.A_1, IN_con.A_2)) "Small cross sectional area of orifice";
+  SI.Area A_2=max(MIN, max(IN_con.A_1, IN_con.A_2)) "Large cross sectional area of orifice";
+  SI.Length C_1=max(MIN, min(IN_con.C_1, IN_con.C_2)) "Perimeter of small cross sectional area of orifice";
+  SI.Length C_2=max(MIN, max(IN_con.C_1, IN_con.C_2)) "perimeter of large cross sectional area of orifice";
+  SI.Diameter d_hyd=4*A_1/C_1 "Hydraulic diameter of small cross sectional area of orifice";
 
   //sudden expansion  :  SOURCE_1, section 4, diagram 4-1, page 208
   //assumption of Re >= 3.3e3 for sudden expansion
@@ -48,8 +39,7 @@ protected
   //assumption of Re >= 1.0e4 for sudden contraction
   TYP.LocalResistanceCoefficient zeta_LOC_con=max(zeta_LOC_min, 0.5*(1 - A_1/A_2)^0.75);
 
-  SI.Velocity velocity_1=m_flow/(IN_var.rho*A_1)
-    "Mean velocity in smaller cross sectional area";
+  SI.Velocity velocity_1=m_flow/(IN_var.rho*A_1) "Mean velocity in smaller cross sectional area";
 
   //determine Reynolds number for small cross sectional area of orifice
   SI.ReynoldsNumber Re=IN_var.rho*d_hyd*velocity_1/IN_var.eta;

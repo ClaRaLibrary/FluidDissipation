@@ -1,20 +1,17 @@
 within FluidDissipation.HeatTransfer.HeatExchanger;
-function kc_tubeBundle_1ph_KC
-  "Heat transfer for a lateral flow through a tube row or a bundle of staggered or inline tube rows (laminar and turbulent flow schemes)"
+function kc_tubeBundle_1ph_KC "Heat transfer for a lateral flow through a tube row or a bundle of staggered or inline tube rows (laminar and turbulent flow schemes)"
   extends Modelica.Icons.Function;
   //SOURCE: Gnielinski, V.. Heat Transfer in laterally passed single tube rows and tube bundles (in German). in VDI-Waermeatlas, 9th edition, VDI-Verlag, 2002.
   //input records
-  input FluidDissipation.HeatTransfer.HeatExchanger.kc_tubeBundle_1ph_IN_con IN_con
-    "Input record for function kc_FilmCondensationTubeBundle"
+  input FluidDissipation.HeatTransfer.HeatExchanger.kc_tubeBundle_1ph_IN_con IN_con "Input record for function kc_FilmCondensationTubeBundle"
     annotation (Dialog(group="Constant inputs"));
-  input FluidDissipation.HeatTransfer.HeatExchanger.kc_tubeBundle_1ph_IN_var IN_var
-    "Input record for function kc_FilmCondensationTubeBundle"
+  input FluidDissipation.HeatTransfer.HeatExchanger.kc_tubeBundle_1ph_IN_var IN_var "Input record for function kc_FilmCondensationTubeBundle"
     annotation (Dialog(group="Variable inputs"));
 
-  output Modelica.SIunits.CoefficientOfHeatTransfer kc;
+  output Modelica.SIunits.CoefficientOfHeatTransfer kc "Output for function kc_tubeBundle_1ph_KC";
 
 protected
-  Real MIN=1e-5;
+  Real MIN=1e-5 "Limiter";
   Real Nu_L_lam "Nusselt number of laminar flow, one tube";
   Real Nu_L_turb "Nusselt number of turbulent flow, one tube";
   Real Nu_L "Nusselt number one tube";

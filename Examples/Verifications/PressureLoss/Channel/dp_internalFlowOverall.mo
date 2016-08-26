@@ -1,6 +1,5 @@
 within FluidDissipation.Examples.Verifications.PressureLoss.Channel;
-model dp_internalFlowOverall
-  "Verification of function dp_internalFlowOverall_DP AND dp_internalFlowOverall_MFLOW"
+model dp_internalFlowOverall "Verification of function dp_internalFlowOverall_DP AND dp_internalFlowOverall_MFLOW"
 
   type TYP =
       FluidDissipation.Utilities.Types.GeometryOfInternalFlow;
@@ -8,13 +7,11 @@ model dp_internalFlowOverall
   parameter Integer n=size(geometry, 1) "Number of different geometries";
 
   //channel variables
-  FluidDissipation.Utilities.Types.Roughness roughness=FluidDissipation.Utilities.Types.Roughness.Considered
-    "Choice of considering surface roughness";
+  FluidDissipation.Utilities.Types.Roughness roughness=FluidDissipation.Utilities.Types.Roughness.Considered "Choice of considering surface roughness";
   SI.Length K=0 "Roughness (average height of surface asperities)";
   SI.Length L=1 "Length";
   FluidDissipation.Utilities.Types.GeometryOfInternalFlow geometry[5]={TYP.Annular,
-      TYP.Circular,TYP.Elliptical,TYP.Rectangular,TYP.Isosceles}
-    "Choice of geometry for internal flow";
+      TYP.Circular,TYP.Elliptical,TYP.Rectangular,TYP.Isosceles} "Choice of geometry for internal flow";
   SI.Diameter d_ann=d_hyd "Small diameter";
   SI.Diameter D_ann=2*d_ann "Large diameter";
   SI.Diameter d_cir=d_hyd "Internal diameter";
@@ -33,10 +30,8 @@ model dp_internalFlowOverall
   //target variables (here: mass flow rate as input for inverse calculation)
   //intended input variables for records
   SI.MassFlowRate input_mdot_1[n](start=zeros(n)) = {input_mflow_0.y*(d_hydT[2]
-    /d_hydT[i])*(A_crossT[i]/A_crossT[2]) for i in 1:n}
-    "(Input) mass flow rate (for intended incompressible case)";
-  SI.Pressure input_dp_1[n]={DP_1[i] for i in 1:n}
-    "(Input) pressure loss (for intended compressible case)";
+    /d_hydT[i])*(A_crossT[i]/A_crossT[2]) for i in 1:n} "(Input) mass flow rate (for intended incompressible case)";
+  SI.Pressure input_dp_1[n]={DP_1[i] for i in 1:n} "(Input) pressure loss (for intended compressible case)";
 
   //input record
   //target == DP (incompressible)
@@ -98,14 +93,12 @@ protected
       if geometry[i] == TYP.Rectangular then 2*(a_rec + b_rec) else if geometry[i]
        == TYP.Isosceles then a_tri + 2*((h_tri)^2 + (a_tri/2)^2)^0.5 else 0) for i in
           1:n} "Perimeter";
-  SI.Diameter d_hydT[n]={4*A_crossT[i]/perimeterT[i] for i in 1:n}
-    "Hydraulic diameter";
+  SI.Diameter d_hydT[n]={4*A_crossT[i]/perimeterT[i] for i in 1:n} "Hydraulic diameter";
   SI.Area A_cross=(PI/4)*d_hyd^2;
   SI.Diameter d_hyd=0.1;
   SI.Diameter perimeter=4*A_cross/d_hyd;
 
-  SI.Velocity velocity_1[n]={input_mdot_1[i]/(rho*A_crossT[i]) for i in 1:n}
-    "Mean velocity";
+  SI.Velocity velocity_1[n]={input_mdot_1[i]/(rho*A_crossT[i]) for i in 1:n} "Mean velocity";
   SI.ReynoldsNumber Re_1[n]={rho*velocity_1[i]*d_hydT[i]/eta for i in 1:n};
 
   Real DP_plot_1[n]={DP_1[i] for i in 1:n} "Pressure loss [Pa]";
@@ -165,8 +158,7 @@ equation
 
   annotation (
     __Dymola_Commands(file=
-          "modelica://FluidDissipation/Extras/Scripts/pressureLoss/channel/dp_internalFlowOverall.mos"
-        "Verification of dp_internalFlowOverall"),
+          "modelica://FluidDissipation/Extras/Scripts/pressureLoss/channel/dp_internalFlowOverall.mos" "Verification of dp_internalFlowOverall"),
     Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},{
             100,100}}), graphics={Text(
           extent={{-100,50},{100,75}},

@@ -55,12 +55,10 @@ model Orifice "Test cases of pressure loss functions for orifice"
 
   //flow models
   FluidDissipation.Examples.Applications.PressureLoss.OrificeFlowModel from_dp(
-      redeclare package Medium = Modelica.Media.Air.DryAirNasa)
-    "Calculate mass flow rate from pressure loss"
+      redeclare package Medium = Modelica.Media.Air.DryAirNasa) "Calculate mass flow rate from pressure loss"
     annotation (Placement(transformation(extent={{-24,-4},{24,44}})));
   FluidDissipation.Examples.Applications.PressureLoss.OrificeFlowModel from_mflow(
-      redeclare package Medium = Modelica.Media.Air.DryAirNasa)
-    "Calculate pressure loss from mass flow rate"
+      redeclare package Medium = Modelica.Media.Air.DryAirNasa) "Calculate pressure loss from mass flow rate"
     annotation (Placement(transformation(extent={{-24,-64},{24,-16}})));
 equation
   connect(IN_p.ports[1], from_dp.port_a) annotation (Line(

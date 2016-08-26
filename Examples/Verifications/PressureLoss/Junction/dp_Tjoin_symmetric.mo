@@ -71,8 +71,8 @@ equation
     m_flow_IN_var,
     m_flow);
   annotation (__Dymola_Commands(file=
-          "modelica://FluidDissipation/Extras/Scripts/pressureLoss/junction/dp_Tjoin_symmetric.mos"
-        "verification of dp_Tjoin_symmetric"),  Diagram(
+          "modelica://FluidDissipation/Extras/Scripts/pressureLoss/junction/dp_Tjoin_symmetric.mos" "verification of dp_Tjoin_symmetric"),
+                                                Diagram(
         coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},
             {100,100}}), graphics={Text(
                     extent={{-100,50},{100,75}},

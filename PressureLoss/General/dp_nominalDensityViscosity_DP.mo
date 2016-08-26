@@ -1,6 +1,5 @@
 within FluidDissipation.PressureLoss.General;
-function dp_nominalDensityViscosity_DP
-  "Generic pressure loss | calculate mass flow rate | nominal operation point | pressure loss law (exponent) | density and dynamic viscosity dependence"
+function dp_nominalDensityViscosity_DP "Generic pressure loss | calculate mass flow rate | nominal operation point | pressure loss law (exponent) | density and dynamic viscosity dependence"
   extends Modelica.Icons.Function;
 
   import FD = FluidDissipation.PressureLoss.General;

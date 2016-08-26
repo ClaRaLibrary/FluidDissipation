@@ -1,20 +1,17 @@
 within FluidDissipation.Examples.Applications.PressureLoss.BaseClasses.General.PressureLossCoefficient;
-model PressureLossCoefficientFlowModel
-  "PressureLossCoefficient: Application flow model for generic function in Modelica.Fluid"
+model PressureLossCoefficientFlowModel "PressureLossCoefficient: Application flow model for generic function in Modelica.Fluid"
 
   //base flow model
-  extends
-    FluidDissipation.Examples.Applications.PressureLoss.BaseClasses.General.BaseGeneralPL.BaseGeneralModel;
+  extends FluidDissipation.Examples.Applications.PressureLoss.BaseClasses.General.BaseGeneralPL.BaseGeneralModel;
 
   //pressure loss calculation
-  parameter SI.Area A_cross=Modelica.Constants.pi*0.1^2/4
-    "cross sectional area" annotation (Dialog(group="Generic variables"));
-  parameter FluidDissipation.Utilities.Types.PressureLossCoefficient zeta_TOT=0.5
-    "pressure loss coefficient" annotation (Dialog(group="Generic variables"));
+  parameter SI.Area A_cross=Modelica.Constants.pi*0.1^2/4 "cross sectional area"
+                           annotation (Dialog(group="Generic variables"));
+  parameter FluidDissipation.Utilities.Types.PressureLossCoefficient zeta_TOT=0.5 "pressure loss coefficient"
+                                annotation (Dialog(group="Generic variables"));
 
   //linearisation
-  parameter SI.Pressure dp_smooth=1e-3
-    "Start linearisation for decreasing pressure loss"
+  parameter SI.Pressure dp_smooth=1e-3 "Start linearisation for decreasing pressure loss"
     annotation (Dialog(group="Linearisation"));
 
   FluidDissipation.Examples.Applications.PressureLoss.BaseClasses.General.PressureLossCoefficient.PressureLossInput_con

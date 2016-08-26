@@ -1,6 +1,5 @@
 within FluidDissipation.Utilities.Functions.PressureLoss.TwoPhase;
-function TwoPhaseMultiplierChisholm
-  "Calculation of two phase multiplier according to Chisholm | constant mass flow rate quality"
+function TwoPhaseMultiplierChisholm "Calculation of two phase multiplier according to Chisholm | constant mass flow rate quality"
   extends Modelica.Icons.Function;
   //SOURCE_1: Chisholm,D.:PRESSURE GRADIENTS DUE TO FRICTION DURING THE FLOW OF EVAPORATING TWO-PHASE MIXTURES IN SMOOTH TUBES AND CHANNELS, Int. J. Heat Mass Transfer, Vol. 16, pp. 347-358, Pergamon Press 1973
   //SOURCE_2: VDI-Waermeatlas, 10th edition, Springer-Verlag, 2006.
@@ -20,8 +19,7 @@ protected
   Real MIN=Modelica.Constants.eps;
 
   SI.Area A_cross=max(MIN, IN_con.A_cross) "Cross sectional area";
-  SI.Diameter d_hyd=max(MIN, 4*A_cross/max(MIN, IN_con.perimeter))
-    "Hydraulic diameter";
+  SI.Diameter d_hyd=max(MIN, 4*A_cross/max(MIN, IN_con.perimeter)) "Hydraulic diameter";
 
   Real mdot_A=abs(m_flow)/A_cross "Mass flux";
   Real x_flow=max(0, min(1, abs(IN_var.x_flow))) "Mass flow rate quality";

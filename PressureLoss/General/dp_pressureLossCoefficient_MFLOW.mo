@@ -1,6 +1,5 @@
 within FluidDissipation.PressureLoss.General;
-function dp_pressureLossCoefficient_MFLOW
-  "Generic pressure loss | calculate mass flow rate | pressure loss coefficient (zeta_TOT)"
+function dp_pressureLossCoefficient_MFLOW "Generic pressure loss | calculate mass flow rate | pressure loss coefficient (zeta_TOT)"
   extends Modelica.Icons.Function;
 
   import FD = FluidDissipation.PressureLoss.General;
@@ -16,8 +15,7 @@ function dp_pressureLossCoefficient_MFLOW
   input SI.Pressure dp "Pressure loss" annotation (Dialog(group="Input"));
 
   //output variables
-  output SI.MassFlowRate M_FLOW
-    "Output for function dp_pressureLossCoefficientt_MFLOW";
+  output SI.MassFlowRate M_FLOW "Output for function dp_pressureLossCoefficientt_MFLOW";
 
   //Documentation
 

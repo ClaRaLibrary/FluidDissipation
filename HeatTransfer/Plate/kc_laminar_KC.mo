@@ -1,34 +1,31 @@
 within FluidDissipation.HeatTransfer.Plate;
-function kc_laminar_KC
-  "Mean heat transfer coefficient of plate | laminar regime"
+function kc_laminar_KC "Mean heat transfer coefficient of plate | laminar regime"
   extends Modelica.Icons.Function;
   //SOURCE: VDI-Waermeatlas, Aufl. 9, Springer-Verlag, 2002, Section Gd 1
   //Notation of equations according to SOURCE
 
   //input records
-  input FluidDissipation.HeatTransfer.Plate.kc_laminar_IN_con IN_con
-    "Input record for function kc_laminar_KC"
+  input FluidDissipation.HeatTransfer.Plate.kc_laminar_IN_con IN_con "Input record for function kc_laminar_KC"
     annotation (Dialog(group="Constant inputs"));
-  input FluidDissipation.HeatTransfer.Plate.kc_laminar_IN_var IN_var
-    "Input record for function kc_laminar_KC"
+  input FluidDissipation.HeatTransfer.Plate.kc_laminar_IN_var IN_var "Input record for function kc_laminar_KC"
     annotation (Dialog(group="Variable inputs"));
 
   //output variables
   output SI.CoefficientOfHeatTransfer kc "Output for function kc_laminar_KC";
 
 protected
-  Real MIN=Modelica.Constants.eps;
+  Real MIN=Modelica.Constants.eps "Limiter";
 
-  SI.Length L=max(MIN, IN_con.L);
+  SI.Length L=max(MIN, IN_con.L) "Plate length";
 
-  SI.SpecificHeatCapacityAtConstantPressure cp=IN_var.cp;
-  SI.DynamicViscosity eta=max(MIN, IN_var.eta);
-  SI.ThermalConductivity lambda=max(MIN, IN_var.lambda);
-  SI.Density rho=IN_var.rho;
+  SI.SpecificHeatCapacityAtConstantPressure cp=IN_var.cp "Specific heat capacity";
+  SI.DynamicViscosity eta=max(MIN, IN_var.eta) "Dynamic viscosity";
+  SI.ThermalConductivity lambda=max(MIN, IN_var.lambda) "Thermal conductivity";
+  SI.Density rho=IN_var.rho "Density";
 
   SI.Velocity velocity=abs(IN_var.velocity) "Mean velocity";
-  SI.ReynoldsNumber Re=max(1e-3, rho*velocity*L/eta);
-  SI.PrandtlNumber Pr=eta*cp/lambda;
+  SI.ReynoldsNumber Re=abs(rho*velocity*L/eta) "Reynolds number";
+  SI.PrandtlNumber Pr=abs(eta*cp/lambda) "Prandtl number";
 
   //Documentation
 algorithm
@@ -109,5 +106,7 @@ Note that the verification for <a href=\"Modelica://FluidDissipation.HeatTransfe
 </dl>
  
 </html>
-"));
+", revisions="<html>
+<pre>2016-04-12 Stefan Wischhusen: Removed singularity for Re at zero mass flow rate. </pre>
+</html>"));
 end kc_laminar_KC;

@@ -35,8 +35,7 @@ public
   Applications.PressureLoss.NozzleFlowModel from_mflow(
                                       redeclare package Medium =
         Modelica.Media.Air.SimpleAir, redeclare model FlowModel =
-        FluidDissipation.Examples.Applications.PressureLoss.BaseClasses.Nozzle.ConicalOverall.ConicalOverallFlowModel
-        (
+        FluidDissipation.Examples.Applications.PressureLoss.BaseClasses.Nozzle.ConicalOverall.ConicalOverallFlowModel (
         A_1=PI*0.1^2/4,
         A_2=PI*0.05^2/4,
         C_1=PI*0.1,

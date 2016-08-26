@@ -1,31 +1,27 @@
 within FluidDissipation.HeatTransfer.StraightPipe;
-function kc_turbulent_KC
-  "Mean heat transfer coefficient of straight pipe | hydrodynamically developed turbulent flow regime | pressure loss dependence"
+function kc_turbulent_KC "Mean heat transfer coefficient of straight pipe | hydrodynamically developed turbulent flow regime | pressure loss dependence"
   extends Modelica.Icons.Function;
   //input records
-  input FluidDissipation.HeatTransfer.StraightPipe.kc_turbulent_IN_con IN_con
-    "Input record for function kc_turbulent_KC"
+  input FluidDissipation.HeatTransfer.StraightPipe.kc_turbulent_IN_con IN_con "Input record for function kc_turbulent_KC"
     annotation (Dialog(group="Constant inputs"));
-  input FluidDissipation.HeatTransfer.StraightPipe.kc_turbulent_IN_var IN_var
-    "Input record for function kc_turbulent_KC"
+  input FluidDissipation.HeatTransfer.StraightPipe.kc_turbulent_IN_var IN_var "Input record for function kc_turbulent_KC"
     annotation (Dialog(group="Variable inputs"));
 
   //output variables
   output SI.CoefficientOfHeatTransfer kc "Output for function kc_turbulent_KC";
 
-  import TYP = FluidDissipation.Utilities.Types.Roughness;
-
 protected
-  Real MIN=Modelica.Constants.eps;
+  type TYP = Modelica.Fluid.Dissipation.Utilities.Types.Roughness;
+
+  Real MIN=Modelica.Constants.eps "Limiter";
 
   SI.Area A_cross=PI*IN_con.d_hyd^2/4 "Circular cross sectional area";
 
   SI.Velocity velocity=abs(IN_var.m_flow)/(IN_var.rho*A_cross) "Mean velocity";
-  SI.ReynoldsNumber Re=max(2.6, IN_var.rho*velocity*IN_con.d_hyd/IN_var.eta);
-  SI.PrandtlNumber Pr=abs(IN_var.eta*IN_var.cp/IN_var.lambda);
+  SI.ReynoldsNumber Re=max(MIN, (IN_var.rho*velocity*IN_con.d_hyd/IN_var.eta)) "Reynolds number";
+  SI.PrandtlNumber Pr=abs(IN_var.eta*IN_var.cp/IN_var.lambda) "Prandtl number";
 
-  Real zeta=abs(1/max(MIN, 1.8*Modelica.Math.log10(abs(Re)) - 1.5)^2)
-    "Pressure loss coefficient";
+  Real zeta=abs(1/max(MIN, 1.8*Modelica.Math.log10(abs(Re)) - 1.5)^2) "Pressure loss coefficient";
 
   //Documentation
 algorithm
@@ -166,5 +162,7 @@ Note that the higher the Prandtl number <b> Pr </b> there is a higher difference
 </dl>
  
 </html>
-"));
+", revisions="<html>
+<pre>2016-04-12 Stefan Wischhusen: Limited Re to very small value (Modelica.Constant.eps). </pre>
+</html>"));
 end kc_turbulent_KC;

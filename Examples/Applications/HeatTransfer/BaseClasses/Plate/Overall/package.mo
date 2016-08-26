@@ -1,7 +1,6 @@
 within FluidDissipation.Examples.Applications.HeatTransfer.BaseClasses.Plate;
 package Overall "FluidDissipation: fluid flow around plate for overall fluid flow regime"
-extends
-  FluidDissipation.Examples.Applications.HeatTransfer.BaseClasses.Plate.BasePlateHT;
+extends FluidDissipation.Examples.Applications.HeatTransfer.BaseClasses.Plate.BasePlateHT;
 constant String fluidFlowRegime="overall regime";
 
 

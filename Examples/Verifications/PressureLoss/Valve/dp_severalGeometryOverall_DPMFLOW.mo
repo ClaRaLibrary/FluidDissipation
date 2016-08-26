@@ -1,6 +1,5 @@
 within FluidDissipation.Examples.Verifications.PressureLoss.Valve;
-model dp_severalGeometryOverall_DPMFLOW
-  "Verification of function dp_severalGeometryOverall_DP AND dp_severalGeometryOverall_MFLOW"
+model dp_severalGeometryOverall_DPMFLOW "Verification of function dp_severalGeometryOverall_DP AND dp_severalGeometryOverall_MFLOW"
 
   parameter Integer n=size(geometry, 1) "Number of different geometries";
 
@@ -9,12 +8,10 @@ model dp_severalGeometryOverall_DPMFLOW
   FluidDissipation.Utilities.Types.ValveGeometry.Diaphragm,
   FluidDissipation.Utilities.Types.ValveGeometry.Butterfly,
   FluidDissipation.Utilities.Types.ValveGeometry.Gate,
-  FluidDissipation.Utilities.Types.ValveGeometry.Sluice}
-    "Choice of geometry for valve";
+  FluidDissipation.Utilities.Types.ValveGeometry.Sluice} "Choice of geometry for valve";
   SI.Diameter d_hyd=0.1 "Hydraulic diamter";
   Real Av=PI*d_hyd^2/4 "Av (metric) flow coefficient [Av]=m^2";
-  Real opening=input_opening.y
-    "Opening of valve | 0==closed and 1== fully opened";
+  Real opening=input_opening.y "Opening of valve | 0==closed and 1== fully opened";
 
   //fluid property variables
   SI.DynamicViscosity eta=1e-3 "Dynamic viscosity of fluid";
@@ -23,41 +20,29 @@ model dp_severalGeometryOverall_DPMFLOW
   //target variables (here: mass flow rate as input for inverse calculation)
   //compressible case
   //intended input variables for records
-  SI.MassFlowRate input_mdot_1[n](start=zeros(n))
-    "(Input) mass flow rate (for intended incompressible case)";
-  SI.Pressure input_dp_1[n](start=zeros(n)) = ones(n)*input_DP.y
-    "(Input) pressure loss (for intended compressible case)";
+  SI.MassFlowRate input_mdot_1[n](start=zeros(n)) "(Input) mass flow rate (for intended incompressible case)";
+  SI.Pressure input_dp_1[n](start=zeros(n)) = ones(n)*input_DP.y "(Input) pressure loss (for intended compressible case)";
   //variable opening
-  SI.MassFlowRate input_mdot_2[n](start=zeros(n))
-    "(Input) mass flow rate (for intended incompressible case)";
-  SI.Pressure input_dp_2[n](start=zeros(n)) = ones(n)*1e3
-    "(Input) pressure loss (for intended compressible case)";
+  SI.MassFlowRate input_mdot_2[n](start=zeros(n)) "(Input) mass flow rate (for intended incompressible case)";
+  SI.Pressure input_dp_2[n](start=zeros(n)) = ones(n)*1e3 "(Input) pressure loss (for intended compressible case)";
 
   //incompressible case
   //constant opening
-  SI.MassFlowRate input_mdot_3[n](start=zeros(n)) = ones(n)*input_mdot.y
-    "(Input) mass flow rate (for intended incompressible case)";
-  SI.Pressure input_dp_3[n](start=zeros(n))
-    "(Input) pressure loss (for intended incompressible case)";
+  SI.MassFlowRate input_mdot_3[n](start=zeros(n)) = ones(n)*input_mdot.y "(Input) mass flow rate (for intended incompressible case)";
+  SI.Pressure input_dp_3[n](start=zeros(n)) "(Input) pressure loss (for intended incompressible case)";
 
   //intended output variables for records
   //compressible case
   //constant opening
-  SI.MassFlowRate M_FLOW_1[n](start=zeros(n))
-    "(Output) mass flow rate (for intended compressible case)";
-  SI.Pressure DP_1[n](start=zeros(n)) = {input_dp_1[i] for i in 1:n}
-    "(Output) pressure loss (for intended incompressible case)";
+  SI.MassFlowRate M_FLOW_1[n](start=zeros(n)) "(Output) mass flow rate (for intended compressible case)";
+  SI.Pressure DP_1[n](start=zeros(n)) = {input_dp_1[i] for i in 1:n} "(Output) pressure loss (for intended incompressible case)";
   //variable opening
-  SI.MassFlowRate M_FLOW_2[n](start=zeros(n))
-    "(Output) mass flow rate (for intended compressible case)";
-  SI.Pressure DP_2[n](start=zeros(n)) = {input_dp_2[i] for i in 1:n}
-    "(Output) pressure loss (for intended incompressible case)";
+  SI.MassFlowRate M_FLOW_2[n](start=zeros(n)) "(Output) mass flow rate (for intended compressible case)";
+  SI.Pressure DP_2[n](start=zeros(n)) = {input_dp_2[i] for i in 1:n} "(Output) pressure loss (for intended incompressible case)";
   //incompressible case
   //constant opening
-  SI.MassFlowRate M_FLOW_3[n](start=zeros(n))
-    "(Output) mass flow rate (for intended incompressible case)";
-  SI.Pressure DP_3[n](start=zeros(n)) = input_dp_3
-    "(Output) pressure loss (for intended incompressible case)";
+  SI.MassFlowRate M_FLOW_3[n](start=zeros(n)) "(Output) mass flow rate (for intended incompressible case)";
+  SI.Pressure DP_3[n](start=zeros(n)) = input_dp_3 "(Output) pressure loss (for intended incompressible case)";
 
   //compressible case
   //constant opening
@@ -204,8 +189,7 @@ equation
 
   annotation (
     __Dymola_Commands(file=
-          "modelica://FluidDissipation/Extras/Scripts/pressureLoss/valve/dp_severalGeometryOverall_DPMFLOW.mos"
-        "Verification of dp_severalGeometryOverall_DP and dp_severalGeometryOverall_MFLOW (inverse)"),
+          "modelica://FluidDissipation/Extras/Scripts/pressureLoss/valve/dp_severalGeometryOverall_DPMFLOW.mos" "Verification of dp_severalGeometryOverall_DP and dp_severalGeometryOverall_MFLOW (inverse)"),
     Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},{
             100,100}}), graphics={Text(
           extent={{-100,50},{100,75}},

@@ -3,13 +3,11 @@ package BaseHeatExchangerHT "Base package for all heat transfer functions of a h
   extends FluidDissipation.Utilities.Icons.BaseLibrary;
 
 
-  replaceable partial function coefficientOfHeatTransfer
-  "base function for heat Exchanger"
+  replaceable partial function coefficientOfHeatTransfer "base function for heat Exchanger"
     extends Modelica.Icons.Function;
 
     //convective heat transfer coefficient as output
-    output SI.CoefficientOfHeatTransfer kc
-    "convective heat transfer coefficient";
+    output SI.CoefficientOfHeatTransfer kc "convective heat transfer coefficient";
 
   end coefficientOfHeatTransfer;
 

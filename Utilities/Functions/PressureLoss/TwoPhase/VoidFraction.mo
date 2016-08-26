@@ -1,22 +1,20 @@
 within FluidDissipation.Utilities.Functions.PressureLoss.TwoPhase;
-function VoidFraction
-  "Calculation of (cross sectional) void fraction for two phase flow"
+function VoidFraction "Calculation of (cross sectional) void fraction for two phase flow"
   extends Modelica.Icons.Function;
   //SOURCE_1: VDI-Waermeatlas, 10th edition, Springer-Verlag, 2006.
   //SOURCE_2: Thome, J.R., Engineering Data Book 3, Swiss Federal Institute of Technology Lausanne (EPFL), 2009.
 
   input FluidDissipation.Utilities.Types.VoidFractionApproach voidFractionApproach=
-      FluidDissipation.Utilities.Types.VoidFractionApproach.Homogeneous
-    "Choice of void fraction approach" annotation (Dialog(group="Choices"));
+      FluidDissipation.Utilities.Types.VoidFractionApproach.Homogeneous "Choice of void fraction approach"
+                                       annotation (Dialog(group="Choices"));
 
-  input Boolean crossSectionalAveraged=true
-    "true == cross sectional averaged void fraction | false == volumetric"
+  input Boolean crossSectionalAveraged=true "true == cross sectional averaged void fraction | false == volumetric"
     annotation (Dialog);
 
-  input SI.Density rho_g(min=Modelica.Constants.eps) = 1.1220
-    "Density of gaseous phase" annotation (Dialog);
-  input SI.Density rho_l(min=Modelica.Constants.eps) = 943.11
-    "Density of liquid phase" annotation (Dialog);
+  input SI.Density rho_g(min=Modelica.Constants.eps) = 1.1220 "Density of gaseous phase"
+                               annotation (Dialog);
+  input SI.Density rho_l(min=Modelica.Constants.eps) = 943.11 "Density of liquid phase"
+                              annotation (Dialog);
   input Real x_flow(
     min=0,
     max=1) = 0 "Mass flow rate quality" annotation (Dialog);

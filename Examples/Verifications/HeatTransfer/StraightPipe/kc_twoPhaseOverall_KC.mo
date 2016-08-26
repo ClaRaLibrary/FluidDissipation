@@ -76,16 +76,13 @@ model kc_twoPhaseOverall_KC "Verification of function kc_twoPhaseOverall_KC"
   SI.MassFraction x_flow=input_x_0.y "Mass flow rate quality";
 
   //plotting
-  SI.NusseltNumber Nu_1[n]={kc_1[i]*d_hyd_1/lambda_1[i] for i in 1:n}
-    "Local Nusselt number";
+  SI.NusseltNumber Nu_1[n]={kc_1[i]*d_hyd_1/lambda_1[i] for i in 1:n} "Local Nusselt number";
   SI.NusseltNumber NU_2=kc_2*d_hyd_2/lambda_2 "Local Nusselt number";
-  SI.NusseltNumber Nu_3[m]={kc_3[i]*d_hyd_3/lambda_3[i] for i in 1:m}
-    "Local Nusselt number";
+  SI.NusseltNumber Nu_3[m]={kc_3[i]*d_hyd_3/lambda_3[i] for i in 1:m} "Local Nusselt number";
 
   //input records
   FluidDissipation.HeatTransfer.StraightPipe.kc_twoPhaseOverall_KC_IN_con
     IN_con_1[n](
-    each target=FluidDissipation.Utilities.Types.TwoPhaseHeatTransferTarget.BoilHor,
     each A_cross=A_cross_1,
     each perimeter=perimeter_1,
     p_crit=p_crit_1,
@@ -93,7 +90,6 @@ model kc_twoPhaseOverall_KC "Verification of function kc_twoPhaseOverall_KC"
 
   FluidDissipation.HeatTransfer.StraightPipe.kc_twoPhaseOverall_KC_IN_var
     IN_var_1[n](
-    each target=FluidDissipation.Utilities.Types.TwoPhaseHeatTransferTarget.BoilHor,
     cp_l=cp_1,
     eta_l=eta_l_1,
     eta_g=eta_g_1,
@@ -109,7 +105,6 @@ model kc_twoPhaseOverall_KC "Verification of function kc_twoPhaseOverall_KC"
 
   FluidDissipation.HeatTransfer.StraightPipe.kc_twoPhaseOverall_KC_IN_con
     IN_con_2(
-    each target=FluidDissipation.Utilities.Types.TwoPhaseHeatTransferTarget.BoilVer,
     each A_cross=A_cross_2,
     each perimeter=perimeter_2,
     p_crit=p_crit_2,
@@ -117,7 +112,6 @@ model kc_twoPhaseOverall_KC "Verification of function kc_twoPhaseOverall_KC"
 
   FluidDissipation.HeatTransfer.StraightPipe.kc_twoPhaseOverall_KC_IN_var
     IN_var_2(
-    each target=FluidDissipation.Utilities.Types.TwoPhaseHeatTransferTarget.BoilVer,
     cp_l=cp_2,
     eta_l=eta_l_2,
     eta_g=eta_g_2,
@@ -133,7 +127,6 @@ model kc_twoPhaseOverall_KC "Verification of function kc_twoPhaseOverall_KC"
 
   FluidDissipation.HeatTransfer.StraightPipe.kc_twoPhaseOverall_KC_IN_con
     IN_con_3[m](
-    each target=FluidDissipation.Utilities.Types.TwoPhaseHeatTransferTarget.CondHor,
     each A_cross=A_cross_3,
     each perimeter=perimeter_3,
     p_crit=p_crit_3)
@@ -141,7 +134,6 @@ model kc_twoPhaseOverall_KC "Verification of function kc_twoPhaseOverall_KC"
 
   FluidDissipation.HeatTransfer.StraightPipe.kc_twoPhaseOverall_KC_IN_var
     IN_var_3[m](
-    each target=FluidDissipation.Utilities.Types.TwoPhaseHeatTransferTarget.CondHor,
     cp_l=cp_3,
     eta_l=eta_l_3,
     lambda_l=lambda_3,
@@ -183,8 +175,7 @@ equation
   kc_3 = {FluidDissipation.HeatTransfer.StraightPipe.kc_twoPhaseOverall_KC(
     IN_con_3[i], IN_var_3[i]) for i in 1:m};
   annotation (__Dymola_Commands(file=
-          "modelica://FluidDissipation/Extras/Scripts/heatTransfer/straightPipe/kc_twoPhaseOverall_KC.mos"
-        "Verification of kc_twoPhaseOverall_KC"),
+          "modelica://FluidDissipation/Extras/Scripts/heatTransfer/straightPipe/kc_twoPhaseOverall_KC.mos" "Verification of kc_twoPhaseOverall_KC"),
       Diagram(graphics={Text(
           extent={{-100,52},{100,77}},
           lineColor={0,0,255},

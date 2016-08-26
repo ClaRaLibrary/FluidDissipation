@@ -1,6 +1,5 @@
 within FluidDissipation.Utilities.Icons.PressureLoss;
-partial model OrificeSuddenChangeSection_d
-  "icon for orifice with sudden change of cross sectional area"
+partial model OrificeSuddenChangeSection_d "icon for orifice with sudden change of cross sectional area"
 
   annotation ( Diagram(coordinateSystem(
           preserveAspectRatio=false, extent={{-100,-100},{100,100}}), graphics={

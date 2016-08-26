@@ -1,6 +1,5 @@
 within FluidDissipation.PressureLoss.HeatExchanger;
-record dp_roundTube_IN_var
-  "Input record for function dp_roundTube, dp_roundTube_DP"
+record dp_roundTube_IN_var "Input record for function dp_roundTube, dp_roundTube_DP"
   extends Modelica.Icons.Record;
 
   //fluid property variables

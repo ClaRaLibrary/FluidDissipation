@@ -7,24 +7,19 @@ model dp_Tjunction "verification of function dp_Tjunction"
     annotation (Dialog(group="T-junction"));
 
   parameter SI.Diameter d_hyd_conv[3]={((4/PI*1e-3)/2)^0.5,((4/PI*
-      1e-3)/2)^0.5,(4/PI*1e-3)^0.5}
-    "hydraulic diameter united_converging_crossection=true"
+      1e-3)/2)^0.5,(4/PI*1e-3)^0.5} "hydraulic diameter united_converging_crossection=true"
     annotation (Dialog(group="T-junction"));
   parameter Real d_hyd_noconv[3]={((4/PI*1e-3))^0.5,((4/PI*1e-3))^0.5,
       (4/PI*1e-3)^0.5} "hydraulic diameter united_converging_crossection=false";
-  parameter SI.MassFlowRate m_flow_min=1e-6
-    "restriction for smoothing at reverse fluid flow"
+  parameter SI.MassFlowRate m_flow_min=1e-6 "restriction for smoothing at reverse fluid flow"
     annotation (Dialog(group="restriction"));
   parameter SI.Velocity v_max=343 "restriction for maximum fluid flow velocity"
     annotation (Dialog(group="restriction"));
-  parameter TYP.PressureLossCoefficient zeta_TOT_max=1000
-    "restriction for maximum value of pressure loss coefficient"
+  parameter TYP.PressureLossCoefficient zeta_TOT_max=1000 "restriction for maximum value of pressure loss coefficient"
     annotation (Dialog(group="restriction"));
-  parameter SI.Pressure dp_min=1
-    "restriction for smoothing while changing of fluid flow situation"
+  parameter SI.Pressure dp_min=1 "restriction for smoothing while changing of fluid flow situation"
     annotation (Dialog(group="restriction"));
-  parameter SI.Pressure p_junction[4]=zeros(4)
-    "pressures at ports of junction [left,right,bottom,internal]"
+  parameter SI.Pressure p_junction[4]=zeros(4) "pressures at ports of junction [left,right,bottom,internal]"
     annotation (Dialog(group="restriction"));
 
   //fluid property variables
@@ -222,8 +217,7 @@ equation
     m_flow_joint_6);
 
   annotation (
-    __Dymola_Commands(file="modelica://FluidDissipation/Extras/Scripts/pressureLoss/junction/dp_Tjunction.mos"
-        "dp_Tjunction"),
+    __Dymola_Commands(file="modelica://FluidDissipation/Extras/Scripts/pressureLoss/junction/dp_Tjunction.mos" "dp_Tjunction"),
               Diagram(graphics={Text(
                   extent={{-34, 108}, {32, 58}},
                   lineColor={0,0,255},

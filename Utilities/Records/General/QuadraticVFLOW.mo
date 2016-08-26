@@ -1,6 +1,5 @@
 within FluidDissipation.Utilities.Records.General;
-record QuadraticVFLOW
-  "Base record for generic pressure loss function | quadratic function (dp=a*Vdot^2 + b*Vdot)"
+record QuadraticVFLOW "Base record for generic pressure loss function | quadratic function (dp=a*Vdot^2 + b*Vdot)"
 
   extends Modelica.Icons.Record;
 

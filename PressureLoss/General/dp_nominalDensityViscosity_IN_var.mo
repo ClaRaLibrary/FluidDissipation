@@ -1,6 +1,5 @@
 within FluidDissipation.PressureLoss.General;
-record dp_nominalDensityViscosity_IN_var
-  "Output record for function dp_nominalDensityViscosity, dp_nominalDensityViscosity_DP and dp_nominalDensityViscosity_MFLOW"
+record dp_nominalDensityViscosity_IN_var "Output record for function dp_nominalDensityViscosity, dp_nominalDensityViscosity_DP and dp_nominalDensityViscosity_MFLOW"
 
   //fluid property variables
   extends FluidDissipation.Utilities.Records.General.FluidProperties(final cp=0,

@@ -1,39 +1,31 @@
 within FluidDissipation.Examples.Verifications.PressureLoss.General;
-model dp_nominalDensityViscosity
-  "Verification of function dp_nominalDensityViscosity"
+model dp_nominalDensityViscosity "Verification of function dp_nominalDensityViscosity"
 
   parameter Integer n=size(rho, 1) "number of different fluid density values";
   parameter SI.KinematicViscosity nue=1e-6 "kinetic viscosity of fluid";
 
   //general variables
-  parameter SI.Pressure dp_nom=50
-    "Nominal pressure loss (at nominal values of mass flow rate and density)"
+  parameter SI.Pressure dp_nom=50 "Nominal pressure loss (at nominal values of mass flow rate and density)"
     annotation (Dialog(group="Generic variables"));
   parameter Real exp=2 "Exponent of pressure loss law"
     annotation (Dialog(group="Generic variables"));
-  parameter SI.MassFlowRate m_flow_nom=1
-    "Nominal mass flow rate (at nominal values of pressure loss and density)"
+  parameter SI.MassFlowRate m_flow_nom=1 "Nominal mass flow rate (at nominal values of pressure loss and density)"
     annotation (Dialog(group="Generic variables"));
-  parameter SI.Density rho_nom=1e3
-    "Nominal density (at nominal values of mass flow rate and pressure loss)"
+  parameter SI.Density rho_nom=1e3 "Nominal density (at nominal values of mass flow rate and pressure loss)"
     annotation (Dialog(group="Generic variables"));
   parameter Real exp_eta=1.5 "Exponent for dynamic viscosity dependence"
     annotation (Dialog(group="Generic variables"));
-  parameter SI.DynamicViscosity eta_nom=1e-3
-    "Dynamic viscosity at nominal pressure loss"
+  parameter SI.DynamicViscosity eta_nom=1e-3 "Dynamic viscosity at nominal pressure loss"
     annotation (Dialog(group="Generic variables"));
 
   //fluid property variables
-  SI.DynamicViscosity eta[:]={rho[i]*nue for i in 1:n}
-    "Dynamic viscosity of fluid";
+  SI.DynamicViscosity eta[:]={rho[i]*nue for i in 1:n} "Dynamic viscosity of fluid";
   SI.Density rho[:]={1e3,1.5e3,2e3} "Density of fluid";
 
   //target variables (here: mass flow rate as input for inverse calculation)
   //intended input variables for records
-  SI.MassFlowRate input_mdot[n](start=zeros(n)) = ones(n)*input_mflow_0.y
-    "(Input) mass flow rate (for intended incompressible case)";
-  SI.Pressure input_dp[n]={DP[i] for i in 1:n}
-    "(Input) pressure loss (for intended compressible case)";
+  SI.MassFlowRate input_mdot[n](start=zeros(n)) = ones(n)*input_mflow_0.y "(Input) mass flow rate (for intended incompressible case)";
+  SI.Pressure input_dp[n]={DP[i] for i in 1:n} "(Input) pressure loss (for intended compressible case)";
 
   //input record
   //compressible fluid flow
@@ -119,8 +111,8 @@ equation
   end for;
 
   annotation (__Dymola_Commands(file=
-          "modelica://FluidDissipation/Extras/Scripts/pressureLoss/general/dp_nominalDensityViscosity.mos"
-        "Verification of dp_nominalDensityViscosity"), Diagram(coordinateSystem(
+          "modelica://FluidDissipation/Extras/Scripts/pressureLoss/general/dp_nominalDensityViscosity.mos" "Verification of dp_nominalDensityViscosity"),
+                                                       Diagram(coordinateSystem(
           preserveAspectRatio=false, extent={{-100,-100},{100,100}}), graphics={
            Text(
           extent={{-100,50},{100,75}},

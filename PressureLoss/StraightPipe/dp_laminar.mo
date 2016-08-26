@@ -1,31 +1,27 @@
 within FluidDissipation.PressureLoss.StraightPipe;
-function dp_laminar
-  "Pressure loss of straight pipe | laminar flow regime (Hagen-Poiseuille)"
+function dp_laminar "Pressure loss of straight pipe | laminar flow regime (Hagen-Poiseuille)"
   extends Modelica.Icons.Function;
   //SOURCE_1: Idelchik, I.E.: HANDBOOK OF HYDRAULIC RESISTANCE, 3rd edition, 2006.
 
   //input records
-  input FluidDissipation.PressureLoss.StraightPipe.dp_laminar_IN_con IN_con
-    "Input record for function dp_laminar"
+  input FluidDissipation.PressureLoss.StraightPipe.dp_laminar_IN_con IN_con "Input record for function dp_laminar"
     annotation (Dialog(group="Constant inputs"));
-  input FluidDissipation.PressureLoss.StraightPipe.dp_laminar_IN_var IN_var
-    "Input record for function dp_laminar"
+  input FluidDissipation.PressureLoss.StraightPipe.dp_laminar_IN_var IN_var "Input record for function dp_laminar"
     annotation (Dialog(group="Variable inputs"));
-  input FluidDissipation.Utilities.Records.PressureLoss.PressureLossInput chosenTarget
-    "Target variable of calculation" annotation (Dialog(group="Input"));
+  input FluidDissipation.Utilities.Records.PressureLoss.PressureLossInput chosenTarget "Target variable of calculation"
+                                     annotation (Dialog(group="Input"));
 
   //output variables
   output SI.Pressure DP "pressure loss" annotation (Dialog(group="Output"));
   output SI.MassFlowRate M_FLOW "mass flow rate"
     annotation (Dialog(group="Output"));
-  output Utilities.Types.PressureLossCoefficient zeta_TOT
-    "Pressure loss coefficient" annotation (Dialog(group="Output"));
+  output Utilities.Types.PressureLossCoefficient zeta_TOT "Pressure loss coefficient"
+                                annotation (Dialog(group="Output"));
   output SI.ReynoldsNumber Re "Reynolds number"
     annotation (Dialog(group="Output"));
   final output SI.PrandtlNumber Pr=0 "Prandtl number"
     annotation (Dialog(group="Output"));
-  output Real failureStatus
-    "0== boundary conditions fulfilled | 1== failure >> check if still meaningful results"
+  output Real failureStatus "0== boundary conditions fulfilled | 1== failure >> check if still meaningful results"
     annotation (Dialog(group="Output"));
 
 protected
@@ -34,8 +30,7 @@ protected
   SI.Diameter d_hyd=max(MIN, IN_con.d_hyd) "Hydraulic diameter";
   SI.Area A_cross=max(MIN, PI*IN_con.d_hyd^2/4) "Circular cross sectional area";
 
-  SI.Velocity velocity=chosenTarget.m_flow/max(MIN, IN_var.rho*A_cross)
-    "Mean velocity";
+  SI.Velocity velocity=chosenTarget.m_flow/max(MIN, IN_var.rho*A_cross) "Mean velocity";
 
   //failure status
   Real fstatus[1] "Check of expected boundary conditions";

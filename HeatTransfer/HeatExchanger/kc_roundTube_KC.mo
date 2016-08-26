@@ -6,31 +6,31 @@ function kc_roundTube_KC
   import SMOOTH = FluidDissipation.Utilities.Functions.General.Stepsmoother;
 
   //input records
-  input FluidDissipation.HeatTransfer.HeatExchanger.kc_roundTube_IN_con IN_con
-    "Input record for function kc_roundTube_KC";
-  input FluidDissipation.HeatTransfer.HeatExchanger.kc_roundTube_IN_var IN_var
-    "Input record for function kc_roundTube_KC";
+  input FluidDissipation.HeatTransfer.HeatExchanger.kc_roundTube_IN_con IN_con "Input record for function kc_roundTube_KC";
+  input FluidDissipation.HeatTransfer.HeatExchanger.kc_roundTube_IN_var IN_var "Input record for function kc_roundTube_KC";
 
   //output variables
   output SI.CoefficientOfHeatTransfer kc "Output for function kc_roundTube_KC";
 
-  import TYP = FluidDissipation.Utilities.Types.HTXGeometry_roundTubes;
-
 protected
-  Real MIN=Modelica.Constants.eps;
+  type TYP =
+      Modelica.Fluid.Dissipation.Utilities.Types.HTXGeometry_roundTubes;
 
-  SI.ReynoldsNumber Re_Dc=max(1e-3, abs(IN_var.m_flow)*IN_con.D_c/(IN_var.eta*
-      A_c)) "Reynolds number based on fin collar diameter";
+  Real MIN=Modelica.Constants.eps "Limiter";
+
+  SI.ReynoldsNumber Re_Dc=max(MIN, (abs(IN_var.m_flow)*IN_con.D_c/(IN_var.eta*
+      A_c))) "Reynolds number based on fin collar diameter";
+
+  SI.ReynoldsNumber Re_i "Reynolds number at transition to linerized calculation for wavy fins";
+
   SI.PrandtlNumber Pr=IN_var.eta*IN_var.cp/IN_var.lambda "Prandtl number";
   Real j "Colburn j faktor";
 
   SI.Area A_c=IN_con.A_fr*((IN_con.F_p*IN_con.P_t - IN_con.F_p*IN_con.D_c - (
-      IN_con.P_t - IN_con.D_c)*IN_con.delta_f)/(IN_con.F_p*IN_con.P_t))
-    "Minimum flow cross-sectional area";
+      IN_con.P_t - IN_con.D_c)*IN_con.delta_f)/(IN_con.F_p*IN_con.P_t)) "Minimum flow cross-sectional area";
   SI.Area A_tot=if IN_con.geometry == TYP.LouverFin then IN_con.A_fr*((IN_con.N
       *PI*IN_con.D_c*(IN_con.F_p - IN_con.delta_f) + 2*(IN_con.P_t*IN_con.L -
-      IN_con.N*PI*IN_con.D_c^2/4))/(IN_con.P_t*IN_con.F_p)) else 0
-    "Total heat transfer area";
+      IN_con.N*PI*IN_con.D_c^2/4))/(IN_con.P_t*IN_con.F_p)) else 0 "Total heat transfer area";
   SI.Length D_h=if IN_con.geometry == TYP.LouverFin then 4*A_c*IN_con.L/A_tot else
             0 "Hydraulic diameter";
 
@@ -104,13 +104,15 @@ algorithm
     kc := j*(Re_Dc*Pr^(1/3)*IN_var.lambda/IN_con.D_c);
 
   elseif IN_con.geometry == TYP.WavyFin then
-    if Re_Dc < exp(2.921) then
-      j := 1.201/(Modelica.Math.log(exp(2.921)^(A_c/IN_con.A_fr)))^2.921;
-      kc := j*(exp(2.921)*Pr^(1/3)*IN_var.lambda/IN_con.D_c);
-    else
+    Re_i := 2*exp(2.921)^(1/(A_c/IN_con.A_fr)); // 2 * turning point of the not linearized kc calculation
+    if Re_Dc > Re_i then
+      // original calculation
       j := 1.201/((Modelica.Math.log(Re_Dc^(A_c/IN_con.A_fr)))^2.921);
-      kc := j*(Re_Dc*Pr^(1/3)*IN_var.lambda/IN_con.D_c);
+    else
+      // linearized calculation to avoid increasing of kc for low Reynolds numbers and division by zero for Re = 1
+      j := (Re_Dc-Re_i)*(-1.201*2.921*(A_c/IN_con.A_fr)/((Modelica.Math.log(Re_i^(A_c/IN_con.A_fr)))^3.921*Re_i)) + 1.201/((Modelica.Math.log(Re_i^(A_c/IN_con.A_fr)))^2.921);
     end if;
+    kc := j*(Re_Dc*Pr^(1/3)*IN_var.lambda/IN_con.D_c);
 
   else
 
@@ -263,5 +265,7 @@ Note that the verification for <a href=\"Modelica://FluidDissipation.HeatTransfe
 </dl>
 
 </html>
-"));
+", revisions="<html>
+<p>2016-04-12 Sven Rutkowski: Removed singularity for Re at zero mass flow rate thorugh linerized function in wavy fin correlation.</p>
+</html>"));
 end kc_roundTube_KC;

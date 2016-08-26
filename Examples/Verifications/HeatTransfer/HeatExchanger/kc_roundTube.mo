@@ -42,11 +42,9 @@ model kc_roundTube "Verification of function kc_roundTube"
   parameter SI.Length P_t_4=0.0254 "Transverse tube pitch";
 
   //fluid property variables
-  parameter SI.SpecificHeatCapacityAtConstantPressure cp=1007
-    "Specific heat capacity at constant pressure of fluid";
+  parameter SI.SpecificHeatCapacityAtConstantPressure cp=1007 "Specific heat capacity at constant pressure of fluid";
   parameter SI.DynamicViscosity eta=18.24e-6 "Dynamic viscosity of fluid";
-  parameter SI.ThermalConductivity lambda=25.69e-3
-    "Thermal conductivity of fluid";
+  parameter SI.ThermalConductivity lambda=25.69e-3 "Thermal conductivity of fluid";
   parameter SI.Density rho=1.188 "Density of fluid";
 
   //input VARIABLES
@@ -156,8 +154,8 @@ equation
     m_flow_IN_con_4, m_flow_IN_var_4);
 
   annotation (__Dymola_Commands(file=
-          "modelica://FluidDissipation/Extras/Scripts/heatTransfer/heatExchanger/kc_roundTube.mos"
-        "Verification of kc_roundTube"), Diagram(coordinateSystem(
+          "modelica://FluidDissipation/Extras/Scripts/heatTransfer/heatExchanger/kc_roundTube.mos" "Verification of kc_roundTube"),
+                                         Diagram(coordinateSystem(
           preserveAspectRatio=false, extent={{-100,-100},{100,100}}), graphics={
            Text(
           extent={{-100,50},{100,75}},

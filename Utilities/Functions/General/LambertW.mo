@@ -1,6 +1,5 @@
 within FluidDissipation.Utilities.Functions.General;
-function LambertW
-  "Closed approximation of Lambert's w function for solving f(x) = x exp(x) for x"
+function LambertW "Closed approximation of Lambert's w function for solving f(x) = x exp(x) for x"
   extends Modelica.Icons.Function;
   input Real y "f(x)";
   output Real x "W(y)";

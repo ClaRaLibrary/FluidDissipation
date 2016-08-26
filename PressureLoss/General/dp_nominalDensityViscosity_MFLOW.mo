@@ -1,6 +1,5 @@
 within FluidDissipation.PressureLoss.General;
-function dp_nominalDensityViscosity_MFLOW
-  "Generic pressure loss | calculate M_FLOW (compressible) | nominal operation point | pressure loss law (exponent) | density and dynamic viscosity dependence"
+function dp_nominalDensityViscosity_MFLOW "Generic pressure loss | calculate M_FLOW (compressible) | nominal operation point | pressure loss law (exponent) | density and dynamic viscosity dependence"
   extends Modelica.Icons.Function;
 
   import FD = FluidDissipation.PressureLoss.General;
@@ -17,8 +16,7 @@ function dp_nominalDensityViscosity_MFLOW
   input SI.Pressure dp "Pressure loss" annotation (Dialog(group="Input"));
 
   //output variables
-  output SI.MassFlowRate M_FLOW
-    "Output for function dp_nominalDensityViscosity_MFLOW";
+  output SI.MassFlowRate M_FLOW "Output for function dp_nominalDensityViscosity_MFLOW";
 
   //Documentation
 

@@ -9,12 +9,10 @@ model dp_flatTube_DP "Verification of function dp_flatTube_DP"
 
   //heat exchanger variables geometry no.1
 
-  parameter Modelica.SIunits.Length D_m_1=0.005
-    "Major tube diameter for flat tube";
+  parameter Modelica.SIunits.Length D_m_1=0.005 "Major tube diameter for flat tube";
   parameter Modelica.SIunits.Length F_l_1=0.019 "Fin length";
   parameter Modelica.SIunits.Length F_d_1=0.026 "Fin depth";
-  parameter Modelica.SIunits.Length F_p_1=0.0018
-    "Fin pitch, fin spacing + fin thickness";
+  parameter Modelica.SIunits.Length F_p_1=0.0018 "Fin pitch, fin spacing + fin thickness";
   parameter Modelica.SIunits.Length L_1=F_d_1 "Heat exchanger length";
   parameter Modelica.SIunits.Length L_l_1=0.01607 "Louver length";
   parameter Modelica.SIunits.Length L_p_1=0.001534 "Louver pitch";
@@ -22,13 +20,11 @@ model dp_flatTube_DP "Verification of function dp_flatTube_DP"
 
   parameter Modelica.SIunits.Length delta_f_1=0.0001 "Fin thickness";
 
-  parameter Modelica.SIunits.Angle Phi_1=28*Modelica.Constants.pi/180
-    "Louver angle";
+  parameter Modelica.SIunits.Angle Phi_1=28*Modelica.Constants.pi/180 "Louver angle";
 
   //heat exchanger variables geometry no.2
   parameter Modelica.SIunits.Length D_h_2=0.002383 "Hydraulic diameter";
-  parameter Modelica.SIunits.Length D_m_2=0.002
-    "Major tube diameter for flat tube";
+  parameter Modelica.SIunits.Length D_m_2=0.002 "Major tube diameter for flat tube";
   parameter Modelica.SIunits.Length L_2=0.025 "Heat exchanger length";
   parameter Real alpha_2=0.244 "Lateral fin spacing (s) / free flow height (h)";
   parameter Real gamma_2=0.067 "Fin thickness (t) / lateral fin spacing (s)";
@@ -49,10 +45,9 @@ model dp_flatTube_DP "Verification of function dp_flatTube_DP"
   //output variables
   Modelica.SIunits.Pressure DP[n] "Pressure loss in [bar]"
                                     annotation (Dialog(group="Output"));
-  Real zeta_TOT[n]={2*abs(DP[i])/(max(rho*(v_c[i])^2, MIN)) for i in 1:n}
-    "Pressure loss coefficients" annotation (Dialog(group="Output"));
-  Real lambda_FRI[n]={zeta_TOT[i]*D_h[i]/L[i] for i in 1:n}
-    "Frictional resistance coefficient";
+  Real zeta_TOT[n]={2*abs(DP[i])/(max(rho*(v_c[i])^2, MIN)) for i in 1:n} "Pressure loss coefficients"
+                                 annotation (Dialog(group="Output"));
+  Real lambda_FRI[n]={zeta_TOT[i]*D_h[i]/L[i] for i in 1:n} "Frictional resistance coefficient";
 
   //plotting
   Real DP_plot[n]={DP[i] for i in 1:n} "Pressure loss [Pa]";
@@ -64,19 +59,16 @@ protected
       D_h_2)} "Velocity at minimum flow cross-sectional area";
 
   Modelica.SIunits.Area A_c[n]={A_fr*((F_l_1 - delta_f_1)*(F_p_1 - delta_f_1)/(
-      (F_l_1 + D_m_1)*F_p_1)),A_fr*(h_2*s_2/((h_2 + t_2 + D_m_2)*(s_2 + t_2)))}
-    "Minimum flow cross-sectional area";
+      (F_l_1 + D_m_1)*F_p_1)),A_fr*(h_2*s_2/((h_2 + t_2 + D_m_2)*(s_2 + t_2)))} "Minimum flow cross-sectional area";
 
   Modelica.SIunits.Length D_h[n]={4*A_c[1]/(A_fr*(2*(F_p_1 - delta_f_1 + F_l_1
        - delta_f_1)/(F_p_1*(F_l_1 + D_m_1)))),D_h_2} "Hydraulic diameter";
 
   Modelica.SIunits.Length L[n]={L_1,L_2} "Heat exchanger length";
 
-  Modelica.SIunits.Length h_2=D_h_2*(1 + alpha_2)/(2*alpha_2)
-    "Free flow height";
+  Modelica.SIunits.Length h_2=D_h_2*(1 + alpha_2)/(2*alpha_2) "Free flow height";
   Modelica.SIunits.Length l_2=t_2/delta_2 "Fin length";
-  Modelica.SIunits.Length s_2=h_2*alpha_2
-    "Lateral fin spacing (free flow width)";
+  Modelica.SIunits.Length s_2=h_2*alpha_2 "Lateral fin spacing (free flow width)";
   Modelica.SIunits.Length t_2=s_2*gamma_2 "Fin thickness";
 
   FluidDissipation.PressureLoss.HeatExchanger.dp_flatTube_IN_con
@@ -131,8 +123,8 @@ equation
       m_flow_2);
 
   annotation (__Dymola_Commands(file=
-          "modelica://FluidDissipation/Extras/Scripts/pressureLoss/heatExchanger/dp_flatTube_DP.mos"
-        "Verification of dp_flatTube_DP"), Diagram(coordinateSystem(
+          "modelica://FluidDissipation/Extras/Scripts/pressureLoss/heatExchanger/dp_flatTube_DP.mos" "Verification of dp_flatTube_DP"),
+                                           Diagram(coordinateSystem(
           preserveAspectRatio=false, extent={{-100,-100},{100,100}}),
         graphics={Text(
             extent={{-58,-22},{-22,-30}},

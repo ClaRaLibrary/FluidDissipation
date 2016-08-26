@@ -1,6 +1,5 @@
 within FluidDissipation.PressureLoss.Junction;
-record dp_Tjunction_IN_var
-  "input record for pressure loss function | dp_Tjunction"
+record dp_Tjunction_IN_var "input record for pressure loss function | dp_Tjunction"
 
   //fluid property variables
   extends FluidDissipation.Utilities.Records.General.FluidProperties(

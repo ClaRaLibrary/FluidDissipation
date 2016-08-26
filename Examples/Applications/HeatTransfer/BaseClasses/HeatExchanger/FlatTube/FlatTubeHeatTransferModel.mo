@@ -1,12 +1,10 @@
 within FluidDissipation.Examples.Applications.HeatTransfer.BaseClasses.HeatExchanger.FlatTube;
-model FlatTubeHeatTransferModel
-  "Flat tube heat exchanger: Application heat transfer model for flat tube function in Modelica.Fluid"
-  extends
-    FluidDissipation.Examples.Applications.HeatTransfer.BaseClasses.HeatExchanger.BaseHeatExchangerHT.BaseHeatExchangerModel;
+model FlatTubeHeatTransferModel "Flat tube heat exchanger: Application heat transfer model for flat tube function in Modelica.Fluid"
+  extends FluidDissipation.Examples.Applications.HeatTransfer.BaseClasses.HeatExchanger.BaseHeatExchangerHT.BaseHeatExchangerModel;
 
   parameter FluidDissipation.Utilities.Types.HTXGeometry_flatTubes geometry=
-      FluidDissipation.Utilities.Types.HTXGeometry_flatTubes.LouverFin
-    "Choice of fin geometry" annotation (Dialog(group="HeatExchanger"));
+      FluidDissipation.Utilities.Types.HTXGeometry_flatTubes.LouverFin "Choice of fin geometry"
+                             annotation (Dialog(group="HeatExchanger"));
 
   parameter SI.Area A_fr=1 "Frontal Area"
     annotation (Dialog(group="HeatExchanger"));
@@ -83,8 +81,7 @@ model FlatTubeHeatTransferModel
                                                                                        then
             A_fr*((F_l - delta_f)*(F_p - delta_f)/((F_l + D_m)*F_p)) else if
       geometry ==FluidDissipation.Utilities.Types.HTXGeometry_flatTubes.RectangularFin then
-            A_fr*(h*s/((h + t + D_m)*(s + t))) else 0
-    "Minimum flow cross-sectional area";
+            A_fr*(h*s/((h + t + D_m)*(s + t))) else 0 "Minimum flow cross-sectional area";
   SI.Length h=if geometry ==FluidDissipation.Utilities.Types.HTXGeometry_flatTubes.RectangularFin
                                                                                        then
             D_h*(1 + alpha)/(2*alpha) else 0 "Free flow height";
@@ -102,17 +99,14 @@ model FlatTubeHeatTransferModel
                                                                                        then
             L*A_fr*(2*(F_l + F_p - delta_f)/(F_p*(F_l + D_m))) else if
       geometry ==FluidDissipation.Utilities.Types.HTXGeometry_flatTubes.RectangularFin then
-            L*A_fr*(2*(h + s)/((s + t)*(h + t + D_m))) else 0
-    "Heat transfer area for convective heat transfer coefficient (kc)";
+            L*A_fr*(2*(h + s)/((s + t)*(h + t + D_m))) else 0 "Heat transfer area for convective heat transfer coefficient (kc)";
 
-  SI.Velocity velocity=abs(m_flow)/max(Modelica.Constants.eps, (rho*A_cross))
-    "Mean velocity";
+  SI.Velocity velocity=abs(m_flow)/max(Modelica.Constants.eps, (rho*A_cross)) "Mean velocity";
 
   SI.ReynoldsNumber Re=if geometry ==FluidDissipation.Utilities.Types.HTXGeometry_flatTubes.LouverFin
                                                                                        then
             rho*velocity*L_p/eta else if geometry ==FluidDissipation.Utilities.Types.HTXGeometry_flatTubes.RectangularFin  then
-            rho*velocity*D_h/eta else 0
-    "Reynolds number based on characteristic length";
+            rho*velocity*D_h/eta else 0 "Reynolds number based on characteristic length";
   SI.NusseltNumber Nu=if geometry ==FluidDissipation.Utilities.Types.HTXGeometry_flatTubes.LouverFin
                                                                                        then
             kc*L_p/lambda else if geometry ==FluidDissipation.Utilities.Types.HTXGeometry_flatTubes.RectangularFin  then

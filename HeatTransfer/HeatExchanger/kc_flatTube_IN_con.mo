@@ -1,11 +1,10 @@
 within FluidDissipation.HeatTransfer.HeatExchanger;
-record kc_flatTube_IN_con
-  "Input record for function kc_heatExchanger and kc_heatExchanger_KC"
+record kc_flatTube_IN_con "Input record for function kc_heatExchanger and kc_heatExchanger_KC"
   extends Modelica.Icons.Record;
 
   FluidDissipation.Utilities.Types.HTXGeometry_flatTubes geometry=
-      FluidDissipation.Utilities.Types.HTXGeometry_flatTubes.LouverFin
-    "Choice of fin geometry" annotation (Dialog(group="HeatExchanger"));
+      FluidDissipation.Utilities.Types.HTXGeometry_flatTubes.LouverFin "Choice of fin geometry"
+                             annotation (Dialog(group="HeatExchanger"));
 
   SI.Area A_fr=0 "Frontal area" annotation (Dialog(group="HeatExchanger"));
   SI.Length D_h=0 "Hydraulic diameter" annotation (Dialog(group="HeatExchanger",

@@ -1,11 +1,10 @@
 within FluidDissipation.PressureLoss.HeatExchanger;
-record dp_flatTube_IN_con
-  "Input record for function dp_flatTube, dp_flatTube_DP"
+record dp_flatTube_IN_con "Input record for function dp_flatTube, dp_flatTube_DP"
   extends Modelica.Icons.Record;
 
   FluidDissipation.Utilities.Types.HTXGeometry_flatTubes geometry=
-      FluidDissipation.Utilities.Types.HTXGeometry_flatTubes.LouverFin
-    "Choice of fin geometry" annotation (Dialog(group="HeatExchanger"));
+      FluidDissipation.Utilities.Types.HTXGeometry_flatTubes.LouverFin "Choice of fin geometry"
+                             annotation (Dialog(group="HeatExchanger"));
 
   SI.Area A_fr=0 "Frontal area" annotation (Dialog(group="HeatExchanger"));
   SI.Length D_h=0 "Hydraulic diameter" annotation (Dialog(group="HeatExchanger",
@@ -51,8 +50,7 @@ record dp_flatTube_IN_con
                 true else false));
 
   //numerical aspects
-  SI.Velocity velocity_small=1e-8
-    "Regularisation for a velocity smaller then velocity_small"
+  SI.Velocity velocity_small=1e-8 "Regularisation for a velocity smaller then velocity_small"
     annotation (Dialog(group="Numerical aspects"));
 
   annotation (Documentation(info="<html>

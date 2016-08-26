@@ -1,26 +1,22 @@
 within FluidDissipation.Examples.Applications.HeatTransfer;
-model HeatExchangerHeatTransferModel_TwoPhase
-  "Application model for a heat exchanger in Modelica_Fluid"
+model HeatExchangerHeatTransferModel_TwoPhase "Application model for a heat exchanger in Modelica_Fluid"
 
   //icon
   extends FluidDissipation.Utilities.Icons.HeatTransfer.HeatExchanger_i;
 
   //interfaces
-  Modelica.Thermal.HeatTransfer.Interfaces.HeatPort_a thermalPort
-    "Thermal port" annotation (Placement(transformation(extent={{-20,60},{20,80}},
+  Modelica.Thermal.HeatTransfer.Interfaces.HeatPort_a thermalPort "Thermal port"
+                   annotation (Placement(transformation(extent={{-20,60},{20,80}},
           rotation=0), iconTransformation(extent={{-20,100},{20,120}})));
 
-  replaceable package Medium = Modelica.Media.Water.WaterIF97_pT constrainedby
-    Modelica.Media.Interfaces.PartialTwoPhaseMedium "Medium in the component"
+  replaceable package Medium = Modelica.Media.Water.WaterIF97_pT constrainedby Modelica.Media.Interfaces.PartialTwoPhaseMedium "Medium in the component"
                               annotation (Dialog(group="Fluid properties"),
       choicesAllMatching=true);
 
   //choice for heat exchanger heat transfer model
   replaceable model HeatTransfer =
       FluidDissipation.Examples.Applications.HeatTransfer.BaseClasses.HeatExchanger.FilmCondensationTubeBundle.FilmCondensationTubeBundleHeatTransferModel
-    constrainedby
-    FluidDissipation.Examples.Applications.HeatTransfer.BaseClasses.HeatExchanger.BaseHeatExchangerHT.BaseHeatExchangerModel_TwoPhase
-    "1st: choose heat transfer calculation | 2nd: edit corresponding record"
+    constrainedby FluidDissipation.Examples.Applications.HeatTransfer.BaseClasses.HeatExchanger.BaseHeatExchangerHT.BaseHeatExchangerModel_TwoPhase "1st: choose heat transfer calculation | 2nd: edit corresponding record"
     annotation (Dialog(group="Heat transfer"), choicesAllMatching=true);
 
   //input
@@ -45,8 +41,7 @@ model HeatExchangerHeatTransferModel_TwoPhase
 
   //thermodynamic state from (missing) volume
   //outer Medium.ThermodynamicState state;
-  outer
-    FluidDissipation.Examples.TestCases.HeatTransfer.StateForHeatTransfer_TwoPhase
+  outer FluidDissipation.Examples.TestCases.HeatTransfer.StateForHeatTransfer
     stateForHeatTransfer;
 
   Medium.ThermodynamicState vap = Medium.setState_px(stateForHeatTransfer.p_state,1);

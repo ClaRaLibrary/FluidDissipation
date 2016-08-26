@@ -1,6 +1,5 @@
 within FluidDissipation.Utilities.Icons.PressureLoss;
-partial model OrificeThickEdged_d
-  "icon for orifice with thick edged vena contraction"
+partial model OrificeThickEdged_d "icon for orifice with thick edged vena contraction"
 
   annotation ( Diagram(coordinateSystem(
           preserveAspectRatio=false, extent={{-100,-100},{100,100}}), graphics={

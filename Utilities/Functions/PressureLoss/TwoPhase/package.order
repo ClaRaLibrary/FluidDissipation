@@ -1,9 +1,15 @@
 dp_twoPhaseChisholm_DP
 dp_twoPhaseFriedel_DP
+dp_twoPhaseMSH_DP
 dp_twoPhaseGeodetic_DP
 dp_twoPhaseMomentum_DP
+dp_twoPhaseMSH_MFLOW
 TwoPhaseMultiplierFriedel
 TwoPhaseMultiplierChisholm
 TwoPhaseDensity
 VoidFraction
 SlipRatio
+dp_twoPhaseTurbulentMSH_MFLOW
+dp_twoPhaseLaminarMSH_MFLOW
+dp_twoPhaseTurbulentMSH_DP
+dp_twoPhaseLaminarMSH_DP

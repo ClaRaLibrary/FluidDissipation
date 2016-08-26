@@ -1,6 +1,5 @@
 within FluidDissipation.Examples.Applications.PressureLoss;
-model GeneralFlowModel
-  "Application flow model for generic functions in Modelica.Fluid"
+model GeneralFlowModel "Application flow model for generic functions in Modelica.Fluid"
 
   //icon
   extends FluidDissipation.Utilities.Icons.PressureLoss.General_i;
@@ -8,24 +7,20 @@ model GeneralFlowModel
   //choice for generic pressure loss model
   replaceable model FlowModel =
       FluidDissipation.Examples.Applications.PressureLoss.BaseClasses.General.NominalPressureLossLawDensity.NominalPressureLossLawDensityFlowModel
-    constrainedby
-    FluidDissipation.Examples.Applications.PressureLoss.BaseClasses.General.BaseGeneralPL.BaseGeneralModel
+    constrainedby FluidDissipation.Examples.Applications.PressureLoss.BaseClasses.General.BaseGeneralPL.BaseGeneralModel
     annotation (choicesAllMatching=true);
 
   replaceable package Medium =
-      Modelica.Media.CompressibleLiquids.LinearColdWater                                                   constrainedby
-    Modelica.Media.Interfaces.PartialMedium "Medium in the component"
+      Modelica.Media.CompressibleLiquids.LinearColdWater                                                   constrainedby Modelica.Media.Interfaces.PartialMedium "Medium in the component"
                               annotation (choicesAllMatching=true);
 
   //interfaces
   Modelica.Fluid.Interfaces.FluidPort_a port_a(redeclare package Medium =
-        Medium)
-    "Fluid connector a (positive design flow direction is from port_a to port_b)"
+        Medium) "Fluid connector a (positive design flow direction is from port_a to port_b)"
     annotation (Placement(transformation(extent={{-110,-10},{-90,10}}, rotation=
            0)));
   Modelica.Fluid.Interfaces.FluidPort_b port_b(redeclare package Medium =
-        Medium)
-    "Fluid connector b (positive design flow direction is from port_a to port_b)"
+        Medium) "Fluid connector b (positive design flow direction is from port_a to port_b)"
     annotation (Placement(transformation(extent={{110,-10},{90,10}}, rotation=0),
         iconTransformation(extent={{110,-10},{90,10}})));
 

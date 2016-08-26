@@ -1,33 +1,27 @@
 within FluidDissipation.HeatTransfer.General;
-function kc_approxForcedConvection_KC
-  "Mean convective heat transfer coefficient for forced convection | approximation | turbulent regime | hydrodynamically developed fluid flow"
+function kc_approxForcedConvection_KC "Mean convective heat transfer coefficient for forced convection | approximation | turbulent regime | hydrodynamically developed fluid flow"
   extends Modelica.Icons.Function;
   //SOURCE: A Bejan and A.D. Kraus. Heat Transfer handbook.John Wiley & Sons, 2nd edition, 2003. (p.424 ff)
   //Notation of equations according to SOURCE
 
   //input records
-  input FluidDissipation.HeatTransfer.General.kc_approxForcedConvection_IN_con IN_con
-    "Input record for function kc_approxForcedConvection_KC"
+  input FluidDissipation.HeatTransfer.General.kc_approxForcedConvection_IN_con IN_con "Input record for function kc_approxForcedConvection_KC"
     annotation (Dialog(group="Constant inputs"));
-  input FluidDissipation.HeatTransfer.General.kc_approxForcedConvection_IN_var IN_var
-    "Input record for function kc_approxForcedConvection_KC"
+  input FluidDissipation.HeatTransfer.General.kc_approxForcedConvection_IN_var IN_var "Input record for function kc_approxForcedConvection_KC"
     annotation (Dialog(group="Variable inputs"));
 
   //output variables
-  output SI.CoefficientOfHeatTransfer kc
-    "Output for function kc_approxForcedConvection_KC";
-
-  import TYP = FluidDissipation.Utilities.Types.kc_general;
+  output SI.CoefficientOfHeatTransfer kc "Output for function kc_approxForcedConvection_KC";
 
 protected
-  Real MIN=Modelica.Constants.eps;
+  type TYP = Modelica.Fluid.Dissipation.Utilities.Types.kc_general;
 
-  SI.Diameter d_hyd=max(MIN, 4*IN_con.A_cross/max(MIN, IN_con.perimeter))
-    "Hydraulic diameter";
+  Real MIN=Modelica.Constants.eps "Limiter";
 
-  SI.PrandtlNumber Pr=max(MIN, abs(IN_var.eta*IN_var.cp/max(MIN, IN_var.lambda)))
-    "Prandtl number";
-  SI.ReynoldsNumber Re=max(1, 4*abs(IN_var.m_flow)/max(MIN, IN_con.perimeter*
+  SI.Diameter d_hyd=max(MIN, 4*IN_con.A_cross/max(MIN, IN_con.perimeter)) "Hydraulic diameter";
+
+  SI.PrandtlNumber Pr=max(MIN, abs(IN_var.eta*IN_var.cp/max(MIN, IN_var.lambda))) "Prandtl number";
+  SI.ReynoldsNumber Re=(4*abs(IN_var.m_flow)/max(MIN, IN_con.perimeter*
       IN_var.eta)) "Reynolds number";
 
 algorithm
@@ -121,5 +115,7 @@ Note that all fluid properties shall be calculated with the mean temperature of 
     Wiley, 2003.</dd>
 </dl>
  
+</html>", revisions="<html>
+<pre>2016-04-12 Stefan Wischhusen: Removed singularity for Re at zero mass flow rate. </pre>
 </html>"));
 end kc_approxForcedConvection_KC;

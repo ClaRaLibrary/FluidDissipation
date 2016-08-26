@@ -1,17 +1,13 @@
 within FluidDissipation.Examples.Verifications.PressureLoss.Bend;
-model dp_edgedOverall_DPMFLOW
-  "Verification of function dp_edgedOverall_DP AND dp_edged_Overall_MFLOW"
+model dp_edgedOverall_DPMFLOW "Verification of function dp_edgedOverall_DP AND dp_edged_Overall_MFLOW"
 
   constant Real MIN=Modelica.Constants.eps;
 
-  parameter Integer n=size(delta, 1)
-    "Number of different angles of turning of bend";
+  parameter Integer n=size(delta, 1) "Number of different angles of turning of bend";
 
   //bend variables
-  parameter SI.Area A_cross=PI*d_hyd^2/4
-    "Circular cross sectional area of bend";
-  parameter SI.Conversions.NonSIunits.Angle_deg delta[4]={30,45,90,180}
-    "Angle of turning";
+  parameter SI.Area A_cross=PI*d_hyd^2/4 "Circular cross sectional area of bend";
+  parameter SI.Conversions.NonSIunits.Angle_deg delta[4]={30,45,90,180} "Angle of turning";
   parameter SI.Diameter d_hyd=0.1 "Hydraulic diameter";
   parameter SI.Length K=2e-5 "Roughness (average height of surface asperities)";
   parameter SI.Length L=d_hyd*10 "Length of bend along axis";
@@ -22,16 +18,12 @@ model dp_edgedOverall_DPMFLOW
 
   //target variables (here: mass flow rate as input for inverse calculation)
   //intended input variables for records
-  SI.MassFlowRate input_mdot[n](start=zeros(n))
-    "(Input) mass flow rate (for intended incompressible case)";
-  SI.Pressure input_dp[n](start=zeros(n)) = ones(n)*input_DP.y
-    "(Input) pressure loss (for intended compressible case)";
+  SI.MassFlowRate input_mdot[n](start=zeros(n)) "(Input) mass flow rate (for intended incompressible case)";
+  SI.Pressure input_dp[n](start=zeros(n)) = ones(n)*input_DP.y "(Input) pressure loss (for intended compressible case)";
 
   //intended output variables for records
-  SI.MassFlowRate M_FLOW[n](start=zeros(n))
-    "(Output) mass flow rate (for intended compressible case)";
-  SI.Pressure DP[n](start=zeros(n)) = {input_dp[i] for i in 1:n}
-    "(Output) pressure loss (for intended incompressible case)";
+  SI.MassFlowRate M_FLOW[n](start=zeros(n)) "(Output) mass flow rate (for intended compressible case)";
+  SI.Pressure DP[n](start=zeros(n)) = {input_dp[i] for i in 1:n} "(Output) pressure loss (for intended incompressible case)";
 
   //input record
   //target == DP (incompressible)
@@ -58,8 +50,7 @@ model dp_edgedOverall_DPMFLOW
 
   //plotting
   Real DP_plot[n]={DP[i] for i in 1:n} "Pressure loss [Pa]";
-  SI.Velocity velocity[n]={input_mdot[i]/(rho*A_cross) for i in 1:n}
-    "Mean velocity";
+  SI.Velocity velocity[n]={input_mdot[i]/(rho*A_cross) for i in 1:n} "Mean velocity";
   SI.ReynoldsNumber Re[n]={rho*velocity[i]*d_hyd/eta for i in 1:n};
   Real zeta_TOT[n]={2*abs(DP_plot[i])/(max(rho*(velocity[i])^2, 1e-5)) for i in
           1:n} "Pressure loss coefficients";
@@ -85,8 +76,8 @@ equation
     input_dp[i]) for i in 1:n};
 
   annotation (__Dymola_Commands(file=
-          "modelica://FluidDissipation/Extras/Scripts/pressureLoss/bend/dp_edgedOverall_DPMFLOW.mos"
-        "Verification of dp_edgedOverall_DPMFLOW"), Diagram(coordinateSystem(
+          "modelica://FluidDissipation/Extras/Scripts/pressureLoss/bend/dp_edgedOverall_DPMFLOW.mos" "Verification of dp_edgedOverall_DPMFLOW"),
+                                                    Diagram(coordinateSystem(
           preserveAspectRatio=false, extent={{-100,-100},{100,100}}), graphics={
            Text(
           extent={{-100,50},{100,75}},

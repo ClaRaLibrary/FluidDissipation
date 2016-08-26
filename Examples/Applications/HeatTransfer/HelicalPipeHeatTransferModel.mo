@@ -1,18 +1,16 @@
 within FluidDissipation.Examples.Applications.HeatTransfer;
-model HelicalPipeHeatTransferModel
-  "Application model for a helical pipe in Modelica_Fluid"
+model HelicalPipeHeatTransferModel "Application model for a helical pipe in Modelica_Fluid"
 
   //icon
   extends FluidDissipation.Utilities.Icons.HeatTransfer.HelicalPipe_i;
 
   //interfaces
-  Modelica.Thermal.HeatTransfer.Interfaces.HeatPort_a thermalPort
-    "Thermal port" annotation (Placement(transformation(extent={{-20,60},{20,80}},
+  Modelica.Thermal.HeatTransfer.Interfaces.HeatPort_a thermalPort "Thermal port"
+                   annotation (Placement(transformation(extent={{-20,60},{20,80}},
           rotation=0)));
 
   replaceable package Medium =
-      Modelica.Media.CompressibleLiquids.LinearColdWater                          constrainedby
-    Modelica.Media.Interfaces.PartialMedium "Medium in the component"
+      Modelica.Media.CompressibleLiquids.LinearColdWater                          constrainedby Modelica.Media.Interfaces.PartialMedium "Medium in the component"
                               annotation (Dialog(group="Fluid properties"),
       choicesAllMatching=true);
 
@@ -24,29 +22,26 @@ model HelicalPipeHeatTransferModel
           "Heat transfer"), choicesAllMatching=true);*/
   replaceable package HeatTransferLam =
       FluidDissipation.Examples.Applications.HeatTransfer.BaseClasses.HelicalPipe.Laminar
-    constrainedby
-    FluidDissipation.Examples.Applications.HeatTransfer.BaseClasses.HelicalPipe.Laminar
-    "Characteristic of convective heat transfer" annotation (Dialog(group=
+    constrainedby FluidDissipation.Examples.Applications.HeatTransfer.BaseClasses.HelicalPipe.Laminar "Characteristic of convective heat transfer"
+                                                 annotation (Dialog(group=
           "Heat transfer", enable=fluidFlowRegime == FluidDissipation.Utilities.Types.FluidFlowRegime.Laminar), choicesAllMatching=
         true);
   replaceable package HeatTransferOver =
       FluidDissipation.Examples.Applications.HeatTransfer.BaseClasses.HelicalPipe.Overall
-    constrainedby
-    FluidDissipation.Examples.Applications.HeatTransfer.BaseClasses.HelicalPipe.Overall
-    "Characteristic of convective heat transfer" annotation (Dialog(group=
+    constrainedby FluidDissipation.Examples.Applications.HeatTransfer.BaseClasses.HelicalPipe.Overall "Characteristic of convective heat transfer"
+                                                 annotation (Dialog(group=
           "Heat transfer", enable=fluidFlowRegime == FluidDissipation.Utilities.Types.FluidFlowRegime.Overall), choicesAllMatching=
         true);
   replaceable package HeatTransferTurb =
       FluidDissipation.Examples.Applications.HeatTransfer.BaseClasses.HelicalPipe.Turbulent
-    constrainedby
-    FluidDissipation.Examples.Applications.HeatTransfer.BaseClasses.HelicalPipe.Turbulent
-    "Characteristic of convective heat transfer" annotation (Dialog(group=
+    constrainedby FluidDissipation.Examples.Applications.HeatTransfer.BaseClasses.HelicalPipe.Turbulent "Characteristic of convective heat transfer"
+                                                 annotation (Dialog(group=
           "Heat transfer", enable=fluidFlowRegime == FluidDissipation.Utilities.Types.FluidFlowRegime.Turbulent), choicesAllMatching=
         true);
 
   parameter FluidDissipation.Utilities.Types.FluidFlowRegime fluidFlowRegime=
-      FluidDissipation.Utilities.Types.FluidFlowRegime.Overall
-    "Choice of fluid flow regime" annotation (Dialog(group="Heat transfer"));
+      FluidDissipation.Utilities.Types.FluidFlowRegime.Overall "Choice of fluid flow regime"
+                                  annotation (Dialog(group="Heat transfer"));
 
   //helicalPipe
   parameter Real n_nt=1 "Total number of turns"
@@ -100,8 +95,7 @@ protected
   SI.Density rho=Medium.density(stateForHeatTransfer.state);
   SI.Temp_K T=Medium.temperature(stateForHeatTransfer.state);
 
-  SI.Velocity velocity=abs(m_flow)/max(Modelica.Constants.eps, (rho*A_cross))
-    "Mean velocity";
+  SI.Velocity velocity=abs(m_flow)/max(Modelica.Constants.eps, (rho*A_cross)) "Mean velocity";
   SI.ReynoldsNumber Re=rho*velocity*d_hyd/eta;
   SI.NusseltNumber Nu=kc*d_hyd/lambda;
 

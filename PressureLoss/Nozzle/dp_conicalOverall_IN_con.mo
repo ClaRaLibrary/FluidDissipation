@@ -1,6 +1,5 @@
 within FluidDissipation.PressureLoss.Nozzle;
-record dp_conicalOverall_IN_con
-  "Input record for function dp_conicalOverall_DP"
+record dp_conicalOverall_IN_con "Input record for function dp_conicalOverall_DP"
 
   //diffuser variables
   extends FluidDissipation.Utilities.Records.PressureLoss.Transition;

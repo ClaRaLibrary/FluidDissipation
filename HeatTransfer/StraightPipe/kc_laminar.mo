@@ -1,13 +1,10 @@
 within FluidDissipation.HeatTransfer.StraightPipe;
-function kc_laminar
-  "Mean heat transfer coefficient of straight pipe | uniform wall temperature or uniform heat flux | hydrodynamically developed or undeveloped laminar flow regime"
+function kc_laminar "Mean heat transfer coefficient of straight pipe | uniform wall temperature or uniform heat flux | hydrodynamically developed or undeveloped laminar flow regime"
   extends Modelica.Icons.Function;
   //input records
-  input FluidDissipation.HeatTransfer.StraightPipe.kc_laminar_IN_con IN_con
-    "Input record for function kc_laminar"
+  input FluidDissipation.HeatTransfer.StraightPipe.kc_laminar_IN_con IN_con "Input record for function kc_laminar"
     annotation (Dialog(group="Constant inputs"));
-  input FluidDissipation.HeatTransfer.StraightPipe.kc_laminar_IN_var IN_var
-    "Input record for function kc_laminar"
+  input FluidDissipation.HeatTransfer.StraightPipe.kc_laminar_IN_var IN_var "Input record for function kc_laminar"
     annotation (Dialog(group="Variable inputs"));
 
   //output variables
@@ -18,12 +15,11 @@ function kc_laminar
     annotation (Dialog(group="Output"));
   output SI.NusseltNumber Nu "Nusselt number"
     annotation (Dialog(group="Output"));
-  output Real failureStatus
-    "0== boundary conditions fulfilled | 1== failure >> check if still meaningful results"
+  output Real failureStatus "0== boundary conditions fulfilled | 1== failure >> check if still meaningful results"
     annotation (Dialog(group="Output"));
 
 protected
-  Real MIN=Modelica.Constants.eps;
+  Real MIN=Modelica.Constants.eps "Limiter";
 
   Real laminar=2e3 "Maximum Reynolds number of laminar flow regime";
   Real prandtlMax=1000 "Maximum Prandtl number";
@@ -31,8 +27,7 @@ protected
 
   SI.Area A_cross=PI*IN_con.d_hyd^2/4 "Cross sectional area";
 
-  SI.Velocity velocity=abs(IN_var.m_flow)/max(MIN, IN_var.rho*A_cross)
-    "Mean velocity";
+  SI.Velocity velocity=abs(IN_var.m_flow)/max(MIN, IN_var.rho*A_cross) "Mean velocity";
 
   //failure status
   Real fstatus[2] "check of expected boundary conditions";
@@ -40,7 +35,7 @@ protected
   //Documentation
 algorithm
   Pr := abs(IN_var.eta*IN_var.cp/max(MIN, IN_var.lambda));
-  Re := max(1e-3, IN_var.rho*velocity*IN_con.d_hyd/max(MIN, IN_var.eta));
+  Re := (IN_var.rho*velocity*IN_con.d_hyd/max(MIN, IN_var.eta));
   kc := FluidDissipation.HeatTransfer.StraightPipe.kc_laminar_KC(IN_con, IN_var);
   Nu := kc*IN_con.d_hyd/max(MIN, IN_var.lambda);
 
@@ -159,5 +154,7 @@ This verification has been done with the fluid properties of Water (Prandtl numb
 </dl>
  
 </html>
-"));
+", revisions="<html>
+<pre>2016-04-12 Stefan Wischhusen: Removed singularity for Re at zero mass flow rate. </pre>
+</html>"));
 end kc_laminar;

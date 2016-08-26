@@ -1,22 +1,17 @@
 within FluidDissipation.Examples.Applications.PressureLoss.BaseClasses.Diffuser.ConicalOverall;
-model ConicalOverallFlowModel
-  "Diffuser (conical): Application flow model for diffuser function in Modelica.Fluid"
+model ConicalOverallFlowModel "Diffuser (conical): Application flow model for diffuser function in Modelica.Fluid"
 
   //base flow model
-  extends
-    FluidDissipation.Examples.Applications.PressureLoss.BaseClasses.Diffuser.BaseDiffuserPL.BaseDiffuserModel;
+  extends FluidDissipation.Examples.Applications.PressureLoss.BaseClasses.Diffuser.BaseDiffuserPL.BaseDiffuserModel;
 
   import SMOOTH = FluidDissipation.Utilities.Functions.General.Stepsmoother;
 
   //pressure loss parameter
-  parameter SI.Length L_d=L_1
-    "Length of diffuser section (parallel to bulk fluid flow)"
+  parameter SI.Length L_d=L_1 "Length of diffuser section (parallel to bulk fluid flow)"
     annotation (Dialog(group="Diffuser"));
-  parameter SI.Area A_1=PI*0.01^2/4
-    "Small constant cross sectional area at inlet of diffuser"
+  parameter SI.Area A_1=PI*0.01^2/4 "Small constant cross sectional area at inlet of diffuser"
     annotation (Dialog(group="Diffuser"));
-  parameter SI.Area A_2=2*A_1
-    "Large constant cross sectional area at outlet of diffuser"
+  parameter SI.Area A_2=2*A_1 "Large constant cross sectional area at outlet of diffuser"
     annotation (Dialog(group="Diffuser"));
   parameter SI.Length C_1=PI*0.01 "Small perimeter at inlet of diffuser"
     annotation (Dialog(group="Diffuser"));
@@ -26,17 +21,13 @@ model ConicalOverallFlowModel
     annotation (Dialog(group="Straight pipe"));
   parameter SI.Length L_2=L_1 "Length of straight pipe after diffuser section"
     annotation (Dialog(group="Straight pipe"));
-  parameter SI.Length K=2.5e-5
-    "Roughness (average height of surface asperities)"
+  parameter SI.Length K=2.5e-5 "Roughness (average height of surface asperities)"
     annotation (Dialog(group="Straight pipe"));
-  parameter SI.Velocity velocity_small=1e-3
-    "Regularisation for a velocity smaller then velocity_small"
+  parameter SI.Velocity velocity_small=1e-3 "Regularisation for a velocity smaller then velocity_small"
     annotation (Dialog(group="Numerical aspects"));
-  parameter Utilities.Types.PressureLossCoefficient zeta_tot_min=1e-3
-    "Minimal pressure loss coefficient"
+  parameter Utilities.Types.PressureLossCoefficient zeta_tot_min=1e-3 "Minimal pressure loss coefficient"
     annotation (Dialog(group="Numerical aspects"));
-  parameter Utilities.Types.PressureLossCoefficient zeta_tot_max=1e2
-    "Maximum pressure loss coefficient"
+  parameter Utilities.Types.PressureLossCoefficient zeta_tot_max=1e2 "Maximum pressure loss coefficient"
     annotation (Dialog(group="Numerical aspects"));
 
   FluidDissipation.Examples.Applications.PressureLoss.BaseClasses.Diffuser.ConicalOverall.PressureLossInput_con
@@ -71,18 +62,15 @@ model ConicalOverallFlowModel
     IN_var(eta=eta, rho=rho)
     annotation (Placement(transformation(extent={{-50,20},{-30,40}})));
 
-  SI.Velocity velocity_a=abs(m_flow)/(rho_a*A_1)
-    "Velocity at inlet of diffuser section w.r.t. design flow direction";
-  SI.Velocity velocity_b=abs(m_flow)/(rho_b*A_2)
-    "Velocity at outlet of diffuser section w.r.t. design flow direction";
+  SI.Velocity velocity_a=abs(m_flow)/(rho_a*A_1) "Velocity at inlet of diffuser section w.r.t. design flow direction";
+  SI.Velocity velocity_b=abs(m_flow)/(rho_b*A_2) "Velocity at outlet of diffuser section w.r.t. design flow direction";
   SI.Pressure dp_dyn=(rho_a/2)*SMOOTH(
       m_flow_small,
       0,
       abs(m_flow))*velocity_a^2 - (rho_b/2)*SMOOTH(
       m_flow_small,
       0,
-      abs(m_flow))*velocity_b^2
-    "Dynamic pressure difference between inlet and outlet of diffuser section";
+      abs(m_flow))*velocity_b^2 "Dynamic pressure difference between inlet and outlet of diffuser section";
 
   TYP.PressureLossCoefficient zeta_tot "Total pressure loss coefficient";
 

@@ -4,8 +4,7 @@ record Diffuser "Input for diffuser"
 
   SI.Length L_d=L_1 "Length of diffuser section (parallel to bulk fluid flow)"
     annotation (Dialog(group="Diffuser"));
-  SI.Area A_1=PI*0.01^2/4
-    "Small constant cross sectional area at inlet of diffuser"
+  SI.Area A_1=PI*0.01^2/4 "Small constant cross sectional area at inlet of diffuser"
     annotation (Dialog(group="Diffuser"));
   SI.Area A_2=2*A_1 "Large constant cross sectional area at outlet of diffuser"
     annotation (Dialog(group="Diffuser"));
@@ -22,13 +21,10 @@ record Diffuser "Input for diffuser"
     annotation (Dialog(group="Straight pipe"));
 
   //numerical aspects
-  SI.Velocity velocity_small=1e-8
-    "Regularisation for a velocity smaller then velocity_small"
+  SI.Velocity velocity_small=1e-8 "Regularisation for a velocity smaller then velocity_small"
     annotation (Dialog(group="Numerical aspects"));
-  TYP.PressureLossCoefficient zeta_tot_min=1e-3
-    "Minimal pressure loss coefficient"
+  TYP.PressureLossCoefficient zeta_tot_min=1e-3 "Minimal pressure loss coefficient"
     annotation (Dialog(group="Numerical aspects"));
-  TYP.PressureLossCoefficient zeta_tot_max=1e2
-    "Maximum pressure loss coefficient"
+  TYP.PressureLossCoefficient zeta_tot_max=1e2 "Maximum pressure loss coefficient"
     annotation (Dialog(group="Numerical aspects"));
 end Diffuser;

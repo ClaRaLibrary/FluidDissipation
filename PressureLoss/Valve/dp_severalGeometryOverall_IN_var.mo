@@ -1,6 +1,5 @@
 within FluidDissipation.PressureLoss.Valve;
-record dp_severalGeometryOverall_IN_var
-  "Input record for function dp_severalGeometryOverall, dp_severalGeometryOverall_DP and dp_severalGeometryOverall_MFLOW"
+record dp_severalGeometryOverall_IN_var "Input record for function dp_severalGeometryOverall, dp_severalGeometryOverall_DP and dp_severalGeometryOverall_MFLOW"
 
   extends Modelica.Icons.Record;
 

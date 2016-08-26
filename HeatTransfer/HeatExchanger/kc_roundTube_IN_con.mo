@@ -1,11 +1,10 @@
 within FluidDissipation.HeatTransfer.HeatExchanger;
-record kc_roundTube_IN_con
-  "Input record for function kc_roundTube and kc_roundTube_KC"
+record kc_roundTube_IN_con "Input record for function kc_roundTube and kc_roundTube_KC"
   extends Modelica.Icons.Record;
 
   FluidDissipation.Utilities.Types.HTXGeometry_roundTubes geometry=
-      FluidDissipation.Utilities.Types.HTXGeometry_roundTubes.LouverFin
-    "Choice of fin geometry" annotation (Dialog(group="HeatExchanger"));
+      FluidDissipation.Utilities.Types.HTXGeometry_roundTubes.LouverFin "Choice of fin geometry"
+                             annotation (Dialog(group="HeatExchanger"));
 
   SI.Area A_fr=0 "Frontal area" annotation (Dialog(group="HeatExchanger"));
   SI.Length D_c=0 "Fin collar diameter"

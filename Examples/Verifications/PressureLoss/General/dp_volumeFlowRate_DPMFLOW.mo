@@ -1,15 +1,12 @@
 within FluidDissipation.Examples.Verifications.PressureLoss.General;
-model dp_volumeFlowRate_DPMFLOW
-  "Verification of function dp_volumeFlowRate_DP and dp_volumeFlowRate_MFLOW"
+model dp_volumeFlowRate_DPMFLOW "Verification of function dp_volumeFlowRate_DP and dp_volumeFlowRate_MFLOW"
 
   parameter Integer n=size(a, 1) "number of different coefficients a";
 
-  SI.VolumeFlowRate V_flow[n]={input_mdot[i]/rho for i in 1:n}
-    "Input volume flow rate";
+  SI.VolumeFlowRate V_flow[n]={input_mdot[i]/rho for i in 1:n} "Input volume flow rate";
 
   //general variables
-  parameter Real a[:](unit="(Pa.s2)/m6") = {15,30,45}
-    "Coefficient for quadratic term";
+  parameter Real a[:](unit="(Pa.s2)/m6") = {15,30,45} "Coefficient for quadratic term";
   parameter Real b(unit="(Pa.s)/m3") = 0 "Coefficient for linear term";
 
   //fluid property variables
@@ -17,15 +14,11 @@ model dp_volumeFlowRate_DPMFLOW
 
   //target variables (here: mass flow rate as input for inverse calculation)
   //intended input variables for records
-  SI.MassFlowRate input_mdot[n](start=zeros(n))
-    "(Input) mass flow rate (for intended incompressible case)";
-  SI.Pressure input_dp[n](start=zeros(n)) = ones(n)*input_DP.y
-    "(Input) pressure loss (for intended compressible case)";
+  SI.MassFlowRate input_mdot[n](start=zeros(n)) "(Input) mass flow rate (for intended incompressible case)";
+  SI.Pressure input_dp[n](start=zeros(n)) = ones(n)*input_DP.y "(Input) pressure loss (for intended compressible case)";
   //intended output variables for records
-  SI.MassFlowRate M_FLOW[n](start=zeros(n))
-    "(Output) mass flow rate (for intended compressible case)";
-  SI.Pressure DP[n](start=zeros(n)) = {input_dp[i] for i in 1:n}
-    "(Output) pressure loss (for intended incompressible case)";
+  SI.MassFlowRate M_FLOW[n](start=zeros(n)) "(Output) mass flow rate (for intended compressible case)";
+  SI.Pressure DP[n](start=zeros(n)) = {input_dp[i] for i in 1:n} "(Output) pressure loss (for intended incompressible case)";
 
   //input record
   //target == DP (incompressible)
@@ -68,8 +61,8 @@ equation
     input_dp[i]) for i in 1:n};
 
   annotation (__Dymola_Commands(file=
-          "modelica://FluidDissipation/Extras/Scripts/pressureLoss/general/dp_volumeFlowRate_DPMFLOW.mos"
-        "Verification of dp_volumeFlowRate_DPMFLOW"), Diagram(coordinateSystem(
+          "modelica://FluidDissipation/Extras/Scripts/pressureLoss/general/dp_volumeFlowRate_DPMFLOW.mos" "Verification of dp_volumeFlowRate_DPMFLOW"),
+                                                      Diagram(coordinateSystem(
           preserveAspectRatio=false, extent={{-100,-100},{100,100}}), graphics={
            Text(
           extent={{-100,50},{100,75}},

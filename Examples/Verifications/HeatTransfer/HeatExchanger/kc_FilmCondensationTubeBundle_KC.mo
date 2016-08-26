@@ -1,17 +1,13 @@
 within FluidDissipation.Examples.Verifications.HeatTransfer.HeatExchanger;
-model kc_FilmCondensationTubeBundle_KC
-  "Verification of function kc_FilmCondensationTubeBundle_KC"
+model kc_FilmCondensationTubeBundle_KC "Verification of function kc_FilmCondensationTubeBundle_KC"
 
   //heat exchanger variables
   parameter Modelica.SIunits.Length d = 0.014 "Diameter of the bundle's tubes";
-  parameter Modelica.SIunits.Area A_front = Modelica.Constants.pi/4*0.092^2
-    "Frontal area";
-  parameter Real C = 1
-    "Correction factor for tube arrangement: offset pattern=1| aligned pattern=0.8";
+  parameter Modelica.SIunits.Area A_front = Modelica.Constants.pi/4*0.092^2 "Frontal area";
+  parameter Real C = 1 "Correction factor for tube arrangement: offset pattern=1| aligned pattern=0.8";
 
   //Medium
-  replaceable package Medium = Modelica.Media.Water.WaterIF97_pT constrainedby
-    Modelica.Media.Interfaces.PartialTwoPhaseMedium;
+  replaceable package Medium = Modelica.Media.Water.WaterIF97_pT constrainedby Modelica.Media.Interfaces.PartialTwoPhaseMedium;
 
   //States
   Medium.ThermodynamicState[3] vap = Medium.setState_px(p,1);
@@ -19,26 +15,19 @@ model kc_FilmCondensationTubeBundle_KC
 
   //fluid property variables
   SI.Pressure[3] p = Medium.saturationPressure(T_s) "Vapour pressure";
-  SI.SpecificHeatCapacityAtConstantPressure[3] cp_l = Medium.specificHeatCapacityCp(liq)
-    "Specific heat capacity of liquid";
-  SI.ThermalConductivity[3] lambda_l = Medium.thermalConductivity(liq)
-    "Thermal conductivity of liquid";
+  SI.SpecificHeatCapacityAtConstantPressure[3] cp_l = Medium.specificHeatCapacityCp(liq) "Specific heat capacity of liquid";
+  SI.ThermalConductivity[3] lambda_l = Medium.thermalConductivity(liq) "Thermal conductivity of liquid";
   SI.Density[3] rho_g = Medium.density(vap) "Density of gas";
   SI.Density[3] rho_l = Medium.density(liq) "Density of liquid";
-  SI.DynamicViscosity[3] eta_g = Medium.dynamicViscosity(vap)
-    "Dynamic viscosity of gas";
-  SI.DynamicViscosity[3] eta_l = Medium.dynamicViscosity(liq)
-    "Dynamic viscosity of liquid";
+  SI.DynamicViscosity[3] eta_g = Medium.dynamicViscosity(vap) "Dynamic viscosity of gas";
+  SI.DynamicViscosity[3] eta_l = Medium.dynamicViscosity(liq) "Dynamic viscosity of liquid";
 
-  SI.SpecificEnthalpy[3] dh_lg = Medium.specificEnthalpy(vap) - Medium.specificEnthalpy(liq)
-    "Evaporation enthalpy of fluid";
+  SI.SpecificEnthalpy[3] dh_lg = Medium.specificEnthalpy(vap) - Medium.specificEnthalpy(liq) "Evaporation enthalpy of fluid";
 
   //parameter Modelica.SIunits.Temperature T_s = 273.15 + 22.41
-  parameter Modelica.SIunits.Temperature[3] T_s = {273.15 + 22.36, 273.15 + 23.1, 273.15 + 21.58}
-    "Saturation temperature";
+  parameter Modelica.SIunits.Temperature[3] T_s = {273.15 + 22.36, 273.15 + 23.1, 273.15 + 21.58} "Saturation temperature";
   //parameter Modelica.SIunits.Temperature T_w = T_s - 1.31 "Wall temperature";
-  parameter Modelica.SIunits.Temperature[3] T_w = T_s - {1.05, 1.45, 1.96}
-    "Wall temperature";
+  parameter Modelica.SIunits.Temperature[3] T_w = T_s - {1.05, 1.45, 1.96} "Wall temperature";
 
   //here: Nusselt number as input for inverse calculation
   SI.NusseltNumber Nu = input_Nu.y;
@@ -126,6 +115,5 @@ equation
           lineColor={0,0,255},
           textString=
               "Heat transfer of heat exchanger tube bundles with film condensation (inlining)")}),
-      __Dymola_Commands(file="modelica://FluidDissipation/Extras/Scripts/heatTransfer/heatExchanger/kc_FilmCondensationTubeBundle_KC.mos"
-        "Verification of kc_FilmCondensationTubeBundle_KC"));
+      __Dymola_Commands(file="modelica://FluidDissipation/Extras/Scripts/heatTransfer/heatExchanger/kc_FilmCondensationTubeBundle_KC.mos" "Verification of kc_FilmCondensationTubeBundle_KC"));
 end kc_FilmCondensationTubeBundle_KC;

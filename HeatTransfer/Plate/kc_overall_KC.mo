@@ -1,16 +1,13 @@
 within FluidDissipation.HeatTransfer.Plate;
-function kc_overall_KC
-  "Mean heat transfer coefficient of even plate | overall regime | constant wall temperature"
+function kc_overall_KC "Mean heat transfer coefficient of even plate | overall regime | constant wall temperature"
   extends Modelica.Icons.Function;
   //SOURCE: VDI-Waermeatlas, Aufl. 9, Springer-Verlag, 2002, Section Gd 1
   //Notation of equations according to SOURCE
 
   //input records
-  input FluidDissipation.HeatTransfer.Plate.kc_overall_IN_con IN_con
-    "Input record for function kc_overall_KC"
+  input FluidDissipation.HeatTransfer.Plate.kc_overall_IN_con IN_con "Input record for function kc_overall_KC"
     annotation (Dialog(group="Constant inputs"));
-  input FluidDissipation.HeatTransfer.Plate.kc_overall_IN_var IN_var
-    "Input record for function kc_overall_KC"
+  input FluidDissipation.HeatTransfer.Plate.kc_overall_IN_var IN_var "Input record for function kc_overall_KC"
     annotation (Dialog(group="Variable inputs"));
 
   //output variables
@@ -18,9 +15,9 @@ function kc_overall_KC
 
 protected
   SI.CoefficientOfHeatTransfer kc_lam=
-      FluidDissipation.HeatTransfer.Plate.kc_laminar_KC(IN_con, IN_var);
+      FluidDissipation.HeatTransfer.Plate.kc_laminar_KC(IN_con, IN_var) "Heat transfer coefficient for laminar flow conditions";
   SI.CoefficientOfHeatTransfer kc_turb=
-      FluidDissipation.HeatTransfer.Plate.kc_turbulent_KC(IN_con, IN_var);
+      FluidDissipation.HeatTransfer.Plate.kc_turbulent_KC(IN_con, IN_var) "Heat transfer coefficient for turbulent flow conditions";
 
   //Documentation
 algorithm
@@ -115,5 +112,7 @@ Note that the verification for <a href=\"Modelica://FluidDissipation.HeatTransfe
 </dl>
  
 </html>
-"));
+", revisions="<html>
+<pre>2016-04-12 Stefan Wischhusen: Removed singularity for Re at zero mass flow rate. </pre>
+</html>"));
 end kc_overall_KC;

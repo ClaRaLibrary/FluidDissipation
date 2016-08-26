@@ -1,17 +1,15 @@
 within FluidDissipation.Examples.Applications.PressureLoss.BaseClasses.Valve.Overall;
-model OverallFlowModel
-  "Valve (overall): Application flow model for valve function in Modelica.Fluid"
+model OverallFlowModel "Valve (overall): Application flow model for valve function in Modelica.Fluid"
 
   //base flow model
-  extends
-    FluidDissipation.Examples.Applications.PressureLoss.BaseClasses.Valve.BaseValvePL.BaseValveModel;
+  extends FluidDissipation.Examples.Applications.PressureLoss.BaseClasses.Valve.BaseValvePL.BaseValveModel;
 
   //pressure loss calculation
-  FluidDissipation.Utilities.Types.ValveGeometry geometry=FluidDissipation.Utilities.Types.ValveGeometry.Ball
-    "Choice of geometry for valve" annotation (Dialog(group="Valve"));
+  FluidDissipation.Utilities.Types.ValveGeometry geometry=FluidDissipation.Utilities.Types.ValveGeometry.Ball "Choice of geometry for valve"
+                                   annotation (Dialog(group="Valve"));
   FluidDissipation.Utilities.Types.ValveCoefficient valveCoefficient=
-      FluidDissipation.Utilities.Types.ValveCoefficient.AV
-    "Choice of valve coefficient" annotation (Dialog(group="Valve"));
+      FluidDissipation.Utilities.Types.ValveCoefficient.AV "Choice of valve coefficient"
+                                  annotation (Dialog(group="Valve"));
 
   parameter Real opening=1 "Opening of valve | 0==closed and 1== fully opened"
     annotation (Dialog(group="Valve"));
@@ -28,11 +26,9 @@ model OverallFlowModel
     annotation (Dialog(group="Valve"));
   parameter Real opening_nominal=0.5 "Nominal opening"
     annotation (Dialog(group="Valve"));
-  parameter Real zeta_tot_min=1e-3
-    "Minimal pressure loss coefficient at full opening"
+  parameter Real zeta_tot_min=1e-3 "Minimal pressure loss coefficient at full opening"
     annotation (Dialog(group="Valve"));
-  parameter Real zeta_tot_max=1e2
-    "Maximum pressure loss coefficient at closed opening"
+  parameter Real zeta_tot_max=1e2 "Maximum pressure loss coefficient at closed opening"
     annotation (Dialog(group="Valve"));
 
   FluidDissipation.Examples.Applications.PressureLoss.BaseClasses.Valve.Overall.PressureLossInput_con

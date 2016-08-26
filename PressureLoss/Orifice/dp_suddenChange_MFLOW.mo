@@ -1,6 +1,5 @@
 within FluidDissipation.PressureLoss.Orifice;
-function dp_suddenChange_MFLOW
-  "Pressure loss of orifice with sudden change in cross sectional area | calculate mass flow rate | turbulent flow regime | smooth surface | arbitrary cross sectional area | without buffles | sharp edge"
+function dp_suddenChange_MFLOW "Pressure loss of orifice with sudden change in cross sectional area | calculate mass flow rate | turbulent flow regime | smooth surface | arbitrary cross sectional area | without buffles | sharp edge"
   extends Modelica.Icons.Function;
   //SOURCE_1: Idelchik, I.E.: HANDBOOK OF HYDRAULIC RESISTANCE, 3rd edition, 2006.
   //Notation of equations according to SOURCES
@@ -9,11 +8,9 @@ function dp_suddenChange_MFLOW
   import SMOOTH = FluidDissipation.Utilities.Functions.General.Stepsmoother;
 
   //input records
-  input FluidDissipation.PressureLoss.Orifice.dp_suddenChange_IN_con IN_con
-    "Input record for function dp_suddenChange_MFLOW"
+  input FluidDissipation.PressureLoss.Orifice.dp_suddenChange_IN_con IN_con "Input record for function dp_suddenChange_MFLOW"
     annotation (Dialog(group="Constant inputs"));
-  input FluidDissipation.PressureLoss.Orifice.dp_suddenChange_IN_var IN_var
-    "Input record for function dp_suddenChange_MFLOW"
+  input FluidDissipation.PressureLoss.Orifice.dp_suddenChange_IN_var IN_var "Input record for function dp_suddenChange_MFLOW"
     annotation (Dialog(group="Variable inputs"));
   input SI.Pressure dp "Pressure loss" annotation (Dialog(group="Input"));
 
@@ -24,13 +21,10 @@ protected
   Real MIN=Modelica.Constants.eps;
   SI.Pressure dp_min=100 "Pressure loss for linear smoothing";
   //restriction of local resistance coefficient zeta_LOC >> numerical improvement
-  TYP.LocalResistanceCoefficient zeta_LOC_min=1e-3
-    "Minimal local resistance coefficient";
+  TYP.LocalResistanceCoefficient zeta_LOC_min=1e-3 "Minimal local resistance coefficient";
 
-  SI.Area A_1=max(MIN, min(IN_con.A_1, IN_con.A_2))
-    "Small cross sectional area of orifice";
-  SI.Area A_2=max(MIN, max(IN_con.A_1, IN_con.A_2))
-    "Large cross sectional area of orifice";
+  SI.Area A_1=max(MIN, min(IN_con.A_1, IN_con.A_2)) "Small cross sectional area of orifice";
+  SI.Area A_2=max(MIN, max(IN_con.A_1, IN_con.A_2)) "Large cross sectional area of orifice";
 
   //sudden expansion  :  SOURCE_1, section 4, diagram 4-1, page 208
   //assumption of Re >= 3.3e3 for sudden expansion

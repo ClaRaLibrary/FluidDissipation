@@ -1,6 +1,5 @@
 within FluidDissipation.PressureLoss.General;
-record dp_pressureLossCoefficient_IN_var
-  "Input record for function dp_pressureLossCoefficient, dp_pressureLossCoefficient_DP and dp_pressureLossCoefficient_MFLOW"
+record dp_pressureLossCoefficient_IN_var "Input record for function dp_pressureLossCoefficient, dp_pressureLossCoefficient_DP and dp_pressureLossCoefficient_MFLOW"
   extends Modelica.Icons.Record;
 
   //generic variables

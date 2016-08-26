@@ -1,17 +1,14 @@
 within FluidDissipation.PressureLoss.StraightPipe;
-function dp_laminar_DP
-  "Pressure loss of straight pipe | calculate pressure loss| laminar flow regime (Hagen-Poiseuille)"
+function dp_laminar_DP "Pressure loss of straight pipe | calculate pressure loss| laminar flow regime (Hagen-Poiseuille)"
   extends Modelica.Icons.Function;
   //SOURCE_1: Idelchik, I.E.: HANDBOOK OF HYDRAULIC RESISTANCE, 3rd edition, 2006.
 
   import FD = FluidDissipation.PressureLoss.StraightPipe;
 
   //input records
-  input FluidDissipation.PressureLoss.StraightPipe.dp_laminar_IN_con IN_con
-    "Input record for function dp_laminar_DP"
+  input FluidDissipation.PressureLoss.StraightPipe.dp_laminar_IN_con IN_con "Input record for function dp_laminar_DP"
     annotation (Dialog(group="Constant inputs"));
-  input FluidDissipation.PressureLoss.StraightPipe.dp_laminar_IN_var IN_var
-    "Input record for function dp_laminar_DP"
+  input FluidDissipation.PressureLoss.StraightPipe.dp_laminar_IN_var IN_var "Input record for function dp_laminar_DP"
     annotation (Dialog(group="Variable inputs"));
   input SI.MassFlowRate m_flow "Mass flow rate"
     annotation (Dialog(group="Input"));

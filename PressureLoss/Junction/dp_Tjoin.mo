@@ -1,6 +1,5 @@
 within FluidDissipation.PressureLoss.Junction;
-function dp_Tjoin
-  "pressure loss of T-junction | design case: joining of entering fluid flow transported through side branch and straight passage into total passage"
+function dp_Tjoin "pressure loss of T-junction | design case: joining of entering fluid flow transported through side branch and straight passage into total passage"
   extends Modelica.Icons.Function;
   //SOURCE: Idelchik, I.E.: HANDBOOK OF HYDRAULIC RESISTANCE, 3rd edition, 2006
   //page 416, section 15
@@ -12,14 +11,11 @@ function dp_Tjoin
   import SMOOTH_2 = FluidDissipation.Utilities.Functions.General.Stepsmoother;
 
   //input records
-  input FluidDissipation.PressureLoss.Junction.dp_Tjoin_IN_con IN_con
-    "input record for function dp_Tjoin"
+  input FluidDissipation.PressureLoss.Junction.dp_Tjoin_IN_con IN_con "input record for function dp_Tjoin"
     annotation (Dialog(group="Constant inputs"));
-  input FluidDissipation.PressureLoss.Junction.dp_Tjoin_IN_var IN_var
-    "input record for function dp_Tjoin"
+  input FluidDissipation.PressureLoss.Junction.dp_Tjoin_IN_var IN_var "input record for function dp_Tjoin"
     annotation (Dialog(group="Variable inputs"));
-  input SI.MassFlowRate m_flow[3]
-    "mass flow rate in passages [side,straight,total]"
+  input SI.MassFlowRate m_flow[3] "mass flow rate in passages [side,straight,total]"
     annotation (Dialog(group="Input"));
 
   //output variables
@@ -27,47 +23,35 @@ function dp_Tjoin
     annotation (Dialog(group="Output"));
   output SI.MassFlowRate M_FLOW[3] "mass flow rate [side,straight,total]"
     annotation (Dialog(group="Output"));
-  output TYP.LocalResistanceCoefficient zeta_LOC[2]
-    "local resistance coefficient [side,straight]"
+  output TYP.LocalResistanceCoefficient zeta_LOC[2] "local resistance coefficient [side,straight]"
     annotation (Dialog(group="Output"));
   output SI.ReynoldsNumber Re[3] "Reynolds number"
     annotation (Dialog(group="Output"));
   final output SI.PrandtlNumber Pr=0 "Prandtl number"
     annotation (Dialog(group="Output"));
-  output Integer failureStatus
-    "0== boundary conditions fulfilled | 1== failure >> check if still meaningful results"
+  output Integer failureStatus "0== boundary conditions fulfilled | 1== failure >> check if still meaningful results"
     annotation (Dialog(group="Output"));
 
 protected
   constant Real minimum=Modelica.Constants.eps;
-  constant Real frac_v_min=1e-2
-    "minimal fraction of velocities for linear interpolation [v_branch/v_total]";
+  constant Real frac_v_min=1e-2 "minimal fraction of velocities for linear interpolation [v_branch/v_total]";
 
   Real alpha= max(min(IN_con.alpha, 90), 0) "angle of branching";
 
-  parameter SI.Diameter d_hyd[3]={IN_con.d_hyd[1],IN_con.d_hyd[2],IN_con.d_hyd[3]}
-    "hydraulic diameter [side,straight,total]";
-  parameter SI.Area A_cross[3]=PI/4*{d_hyd[i]^2 for i in 1:3}
-    "crossectional area of branches [side,straight,total]";
-  parameter SI.Area frac_Across[2]={A_cross[i]/A_cross[3] for i in 1:2}
-    "[side/total,straight/total]";
+  parameter SI.Diameter d_hyd[3]={IN_con.d_hyd[1],IN_con.d_hyd[2],IN_con.d_hyd[3]} "hydraulic diameter [side,straight,total]";
+  parameter SI.Area A_cross[3]=PI/4*{d_hyd[i]^2 for i in 1:3} "crossectional area of branches [side,straight,total]";
+  parameter SI.Area frac_Across[2]={A_cross[i]/A_cross[3] for i in 1:2} "[side/total,straight/total]";
 
   //limitations
-  parameter SI.MassFlowRate m_flow_min=abs(IN_con.m_flow_min)
-    "minimal mass flow rate for linear interpolation";
-  parameter SI.Velocity v_max=abs(IN_con.v_max)
-    "maximal velocity of fluid flow";
-  parameter Real zeta_LOC_max=abs(IN_con.zeta_TOT_max)
-    "maximum local resistance coefficient";
-  parameter Real zeta_LOC_min=-zeta_LOC_max
-    "minimum local resistance coefficient";
+  parameter SI.MassFlowRate m_flow_min=abs(IN_con.m_flow_min) "minimal mass flow rate for linear interpolation";
+  parameter SI.Velocity v_max=abs(IN_con.v_max) "maximal velocity of fluid flow";
+  parameter Real zeta_LOC_max=abs(IN_con.zeta_TOT_max) "maximum local resistance coefficient";
+  parameter Real zeta_LOC_min=-zeta_LOC_max "minimum local resistance coefficient";
 
   SI.Velocity velocity[3]={min(abs(m_flow[i])/(IN_var.rho*A_cross[i]),
-      v_max) for i in 1:3}
-    "average fluid flow velocity [side, straight, total]";
+      v_max) for i in 1:3} "average fluid flow velocity [side, straight, total]";
   Real frac_v[2]={min(velocity[1]/max(velocity[3], minimum), 100),min(
-      velocity[2]/max(velocity[3], minimum), 100)}
-    "[side/total, straight/total]";
+      velocity[2]/max(velocity[3], minimum), 100)} "[side/total, straight/total]";
   Real frac_v_inv[2]={abs(velocity[3])/max(abs(velocity[i]), minimum)
       for i in 1:2} "total/side, total/straight";
   SI.VolumeFlowRate V_flow[3]={abs(m_flow[1]),abs(m_flow[2]),abs(m_flow[
@@ -76,10 +60,8 @@ protected
       1:2} "[side/total, straight/total]";
 
   //local resistance coefficient
-  TYP.LocalResistanceCoefficient zeta_LOC_side
-    "local resistance coefficient [side-total]";
-  TYP.LocalResistanceCoefficient zeta_LOC_straight
-    "local resistance coefficient [straight-total]";
+  TYP.LocalResistanceCoefficient zeta_LOC_side "local resistance coefficient [side-total]";
+  TYP.LocalResistanceCoefficient zeta_LOC_straight "local resistance coefficient [straight-total]";
 
   //dynamic pressure difference for joining
   Real dp_dyn[2]={(IN_var.rho/2)*((velocity[i])^2 - (velocity[3])^2) for i in
@@ -131,7 +113,7 @@ algorithm
   // polynom out of data from SOURCE: SOURCE: p.418 table 7-3 (least square method)
   K_st1 := if frac_Across[1] <= 0.35 then 0.8*(frac_Vflow[1]) else if
     frac_Across[1] > 0.35 then max(min(0.6255*(frac_Vflow[1])^3 - 0.3182*
-    (frac_Vflow[1])^2 + 0.0032*(frac_Vflow[1]) + 0.5032, 0.45), 1) else 0;
+    (frac_Vflow[1])^2 + 0.0032*(frac_Vflow[1]) + 0.5032, 1), 0.45) else 0;
 
   //SOURCE: p.417 table 7-2
   K_st2 := if frac_Across[1] <= 0.1 and alpha == 45 then 0.05 else if
@@ -203,8 +185,7 @@ algorithm
           abs(frac_v[1])),(dp_loc_straight - dp_dyn[2])*SMOOTH_2(
           frac_v_min,
           0,
-          abs(frac_v[2]))}
-    "(thermodynamic) pressure loss [side-total,straight-total]";
+          abs(frac_v[2]))} "(thermodynamic) pressure loss [side-total,straight-total]";
   /*dp := {(dp_loc_side - dp_dyn[1])*abs(m_flow[1])/max(abs(m_flow[3]),
     minimum),(dp_loc_straight - dp_dyn[2])*abs(m_flow[2])/max(abs(m_flow[
     3]), minimum)} "(thermodynamic) pressure loss [side-total,straight-total]";*/

@@ -50,7 +50,7 @@ protected
   Real E_fc_hor=SMOOTH(
         0.049,
         0.051,
-        Fr_l)*Fr_l^max(0, 0.1 - 2*Fr_l) + SMOOTH(
+        Fr_l)*Fr_l^max(0, abs(0.1 - 2*Fr_l)) + SMOOTH(
         0.051,
         0.049,
         Fr_l) "Correction of enhancement factor for forced convection in horizontal pipes";

@@ -1,6 +1,5 @@
 within FluidDissipation.PressureLoss.General;
-record dp_idealGas_IN_var
-  "Input record for function dp_idealGas, dp_idealGas_DP and dp_idealGas_MFLOW"
+record dp_idealGas_IN_var "Input record for function dp_idealGas, dp_idealGas_DP and dp_idealGas_MFLOW"
 
   //generic variables
   extends FluidDissipation.Utilities.Records.General.IdealGas_var;

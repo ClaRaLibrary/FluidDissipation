@@ -1,6 +1,5 @@
 within FluidDissipation.PressureLoss.Bend;
-record dp_edgedOverall_IN_con
-  "Input record for function dp_edgedOverall, dp_edgedOverall_DP and  dp_edgedOverall_MFLOW"
+record dp_edgedOverall_IN_con "Input record for function dp_edgedOverall, dp_edgedOverall_DP and  dp_edgedOverall_MFLOW"
 
   //bend variables
   extends FluidDissipation.Utilities.Records.PressureLoss.Bend(final R_0=0);

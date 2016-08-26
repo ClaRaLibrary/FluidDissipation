@@ -1,6 +1,5 @@
 within FluidDissipation.HeatTransfer.StraightPipe;
-record kc_overall_IN_var
-  "Input record for function kc_overall and kc_overall_KC"
+record kc_overall_IN_var "Input record for function kc_overall and kc_overall_KC"
 
   //fluid property variables
   extends FluidDissipation.Utilities.Records.General.FluidProperties;

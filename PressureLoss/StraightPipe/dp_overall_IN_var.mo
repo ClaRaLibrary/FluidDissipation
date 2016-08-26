@@ -1,6 +1,5 @@
 within FluidDissipation.PressureLoss.StraightPipe;
-record dp_overall_IN_var
-  "Input record for function dp_overall, dp_overall_DP and dp_overall_MFLOW"
+record dp_overall_IN_var "Input record for function dp_overall, dp_overall_DP and dp_overall_MFLOW"
 
   //fluid property variables
   extends FluidDissipation.Utilities.Records.General.FluidProperties(final cp=0,

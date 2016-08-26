@@ -5,10 +5,8 @@ function kc_flatTube
   //SOURCE: A.M. Jacobi, Y. Park, D. Tafti, X. Zhang. AN ASSESSMENT OF THE STATE OF THE ART, AND POTENTIAL DESIGN IMPROVEMENTS, FOR FLAT-TUBE HEAT EXCHANGERS IN AIR CONDITIONING AND REFRIGERATION APPLICATIONS - PHASE I
 
   //input records
-  input FluidDissipation.HeatTransfer.HeatExchanger.kc_flatTube_IN_con IN_con
-    "Input record for function kc_flatTube_KC";
-  input FluidDissipation.HeatTransfer.HeatExchanger.kc_flatTube_IN_var IN_var
-    "Input record for function kc_flatTube_KC";
+  input FluidDissipation.HeatTransfer.HeatExchanger.kc_flatTube_IN_con IN_con "Input record for function kc_flatTube_KC";
+  input FluidDissipation.HeatTransfer.HeatExchanger.kc_flatTube_IN_var IN_var "Input record for function kc_flatTube_KC";
 
   //output variables
   output SI.CoefficientOfHeatTransfer kc "Convective heat transfer coefficient"
@@ -18,8 +16,7 @@ function kc_flatTube
     annotation (Dialog(group="Output"));
   output SI.NusseltNumber Nu "Nusselt number"
     annotation (Dialog(group="Output"));
-  output Real failureStatus
-    "0== boundary conditions fulfilled | 1== failure >> check if still meaningful results"
+  output Real failureStatus "0== boundary conditions fulfilled | 1== failure >> check if still meaningful results"
     annotation (Dialog(group="Output"));
 
   import TYP = FluidDissipation.Utilities.Types.HTXGeometry_flatTubes;
@@ -28,8 +25,7 @@ protected
   SI.Area A_c=if IN_con.geometry == TYP.LouverFin then IN_con.A_fr*((IN_con.F_l
        - IN_con.delta_f)*(IN_con.F_p - IN_con.delta_f)/((IN_con.F_l + IN_con.D_m)
       *IN_con.F_p)) else if IN_con.geometry == TYP.RectangularFin then IN_con.A_fr
-      *(h*s/((h + t + IN_con.D_m)*(s + t))) else 0
-    "Minimum flow cross-sectional area";
+      *(h*s/((h + t + IN_con.D_m)*(s + t))) else 0 "Minimum flow cross-sectional area";
   SI.Length h=if IN_con.geometry == TYP.RectangularFin then IN_con.D_h*(1 +
       IN_con.alpha)/(2*IN_con.alpha) else 0 "Free flow height";
   SI.Length l=if IN_con.geometry == TYP.RectangularFin then t/IN_con.delta else
@@ -44,10 +40,10 @@ algorithm
   Pr := abs(IN_var.eta*IN_var.cp/IN_var.lambda);
 
   if IN_con.geometry == TYP.LouverFin then
-    Re := max(1e-3, abs(IN_var.m_flow)*IN_con.L_p/(IN_var.eta*A_c));
+    Re := abs(IN_var.m_flow)*IN_con.L_p/(IN_var.eta*A_c);
     Nu := max(1e-3, kc*IN_con.L_p/IN_var.lambda);
   elseif IN_con.geometry == TYP.RectangularFin then
-    Re := max(1e-3, abs(IN_var.m_flow)*IN_con.D_h/(IN_var.eta*A_c));
+    Re := abs(IN_var.m_flow)*IN_con.D_h/(IN_var.eta*A_c);
     Nu := max(1e-3, kc*IN_con.D_h/IN_var.lambda);
   end if;
 
@@ -195,5 +191,7 @@ The mean Nusselt number <b> Nu </b> representing the mean convective heat transf
 </dl>
 
 </html>
-"));
+", revisions="<html>
+<pre>2016-04-12 Stefan Wischhusen: Removed singularity for Re at zero mass flow rate. </pre>
+</html>"));
 end kc_flatTube;

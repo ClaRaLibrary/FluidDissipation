@@ -1,15 +1,13 @@
 within FluidDissipation.Examples.Applications.PressureLoss.BaseClasses.HeatExchanger.FlatTube;
-model FlatTubeFlowModel
-  "Flat tube: Application flow model for heat exchanger function in Modelica.Fluid"
+model FlatTubeFlowModel "Flat tube: Application flow model for heat exchanger function in Modelica.Fluid"
 
   //base flow model
-  extends
-    FluidDissipation.Examples.Applications.PressureLoss.BaseClasses.HeatExchanger.BaseHeatExchangerPL.BaseHeatExchangerModel;
+  extends FluidDissipation.Examples.Applications.PressureLoss.BaseClasses.HeatExchanger.BaseHeatExchangerPL.BaseHeatExchangerModel;
 
   //pressure loss calculation
   parameter FluidDissipation.Utilities.Types.HTXGeometry_flatTubes geometry=
-      FluidDissipation.Utilities.Types.HTXGeometry_flatTubes.LouverFin
-    "Choice of fin geometry" annotation (Dialog(group="HeatExchanger"));
+      FluidDissipation.Utilities.Types.HTXGeometry_flatTubes.LouverFin "Choice of fin geometry"
+                             annotation (Dialog(group="HeatExchanger"));
 
   parameter SI.Area A_fr=0.1 "Frontal area"
     annotation (Dialog(group="HeatExchanger"));

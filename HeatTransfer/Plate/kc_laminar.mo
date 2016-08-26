@@ -5,11 +5,9 @@ function kc_laminar "Mean heat transfer coefficient of plate | laminar regime"
   //Notation of equations according to SOURCE
 
   //input records
-  input FluidDissipation.HeatTransfer.Plate.kc_laminar_IN_con IN_con
-    "Input record for function kc_laminar"
+  input FluidDissipation.HeatTransfer.Plate.kc_laminar_IN_con IN_con "Input record for function kc_laminar"
     annotation (Dialog(group="Constant inputs"));
-  input FluidDissipation.HeatTransfer.Plate.kc_laminar_IN_var IN_var
-    "Input record for function kc_laminar"
+  input FluidDissipation.HeatTransfer.Plate.kc_laminar_IN_var IN_var "Input record for function kc_laminar"
     annotation (Dialog(group="Variable inputs"));
 
   //output variables
@@ -20,12 +18,11 @@ function kc_laminar "Mean heat transfer coefficient of plate | laminar regime"
     annotation (Dialog(group="Output"));
   output SI.NusseltNumber Nu "Nusselt number"
     annotation (Dialog(group="Output"));
-  output Real failureStatus
-    "0== boundary conditions fulfilled | 1== failure >> check if still meaningful results"
+  output Real failureStatus "0== boundary conditions fulfilled | 1== failure >> check if still meaningful results"
     annotation (Dialog(group="Output"));
 
 protected
-  Real MIN=Modelica.Constants.eps;
+  Real MIN=Modelica.Constants.eps "Limiter";
 
   Real laminar=1e5 "Maximum Reynolds number of laminar flow regime";
   Real prandtlMax=2000 "Maximum Prandtl number";
@@ -37,7 +34,7 @@ protected
   //Documentation
 algorithm
   Pr := IN_var.eta*IN_var.cp/max(MIN, IN_var.lambda);
-  Re := max(1e-3, abs(IN_var.rho*IN_var.velocity*IN_con.L/max(MIN, IN_var.eta)));
+  Re := abs(IN_var.rho*IN_var.velocity*IN_con.L/max(MIN, IN_var.eta));
   kc := FluidDissipation.HeatTransfer.Plate.kc_laminar_KC(IN_con, IN_var);
   Nu := kc*IN_con.L/max(MIN, IN_var.lambda);
 
@@ -120,5 +117,7 @@ Note that this function is best used in the laminar regime up to a Reynolds numb
 </dl>
  
 </html>
-"));
+", revisions="<html>
+<pre>2016-04-12 Stefan Wischhusen: Removed singularity for Re at zero mass flow rate. </pre>
+</html>"));
 end kc_laminar;

@@ -1,6 +1,5 @@
 within FluidDissipation.PressureLoss.Bend;
-record dp_curvedOverall_IN_var
-  "Input record for function dp_curvedOverall, dp_curvedOverall_DP and dp_curvedOverall_MFLOW"
+record dp_curvedOverall_IN_var "Input record for function dp_curvedOverall, dp_curvedOverall_DP and dp_curvedOverall_MFLOW"
 
   //fluid property variables
   extends FluidDissipation.Utilities.Records.General.FluidProperties(final cp=0,

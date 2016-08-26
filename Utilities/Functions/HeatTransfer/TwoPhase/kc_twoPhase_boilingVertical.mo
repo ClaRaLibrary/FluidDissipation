@@ -48,7 +48,7 @@ protected
       /d_hyd) "Convective heat transfer coefficient assuming liquid mass flow rate only";
   //SOURCE_1: p.675, eq. 9.107: Considering effect of nucleate boiling w.r.t. equation of Cooper
   SI.CoefficientOfHeatTransfer kc_nb=55*p_red^0.12*(1/max(MIN,
-      Modelica.Math.log10(1/p_red))^0.55)*(1/max(MIN, IN_con.MM)^0.5)*abs(IN_var.qdot_A)
+      Modelica.Math.log10(1/p_red))^0.55)*(1/max(MIN, IN_con.MM)^0.5)*IN_var.qdot_A
       ^0.67 "Nucleate boiling heat transfer coefficient";
 
   //SOURCE_2: p.354, sec. final equations: Calculation of two phase heat transfer coefficient for vertical pipes w.r.t. equation of Gungor-Winterton

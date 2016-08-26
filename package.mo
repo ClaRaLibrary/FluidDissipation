@@ -6,7 +6,7 @@ import SI = Modelica.SIunits;
 import TYP = FluidDissipation.Utilities.Types;
 
 
-extends Utilities.Icons.Package;
+extends FluidDissipation.Utilities.Icons.Package;
 
 
 
@@ -15,14 +15,15 @@ extends Utilities.Icons.Package;
 
 annotation (
   preferredView="info",
-  version="1.1.7",
+  version="1.1.8",
   uses(Modelica(version="3.2.1")),
   conversion(
  from(version="1.0 Beta 8a", script="./Extras/Scripts/ConvertFluidDissipation_from_Beta8_to_Beta9.mos"),
   from(version="1.0 Beta 8b", script="./Extras/Scripts/ConvertFluidDissipation_from_Beta8_to_Beta9.mos"),
     from(version="1.0 Beta 8c", script="./Extras/Scripts/ConvertFluidDissipation_from_Beta8_to_Beta9.mos"),
     noneFromVersion="1.0",
-    from(version="1.1.4", script="./Extras/Scripts/ConvertFluidDissipation_from_1.1.4_to1.1.5.mos")),
+    from(version="1.1.4", script="./Extras/Scripts/ConvertFluidDissipation_from_1.1.4_to1.1.5.mos"),
+    from(version="1.1.7", script="./Extras/Scripts/ConvertFluidDissipation_from_1.1.7_to1.1.8.mos")),
   Documentation(info="<html>
 <div align=\"center\">
  
@@ -114,6 +115,6 @@ Germany<br>
  
 "),
   Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{100,100}}),
-      graphics={                             Bitmap(extent={{-92,-80},{94,80}},
+      graphics={                             Bitmap(extent={{-92,-80},{94,82}},
           fileName="Modelica://FluidDissipation/Extras/Images/XRG_logo_3Streifen.png")}));
 end FluidDissipation;

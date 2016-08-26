@@ -1,29 +1,25 @@
 within FluidDissipation.HeatTransfer.HeatExchanger;
-function kc_tubeBundleFilmCondensation_lam
-  "Laminar film condensation in a tube bundle"
+function kc_tubeBundleFilmCondensation_lam "Laminar film condensation in a tube bundle"
   extends Modelica.Icons.Function;
   // SOURCE: Mueller,J. and Numrich, R.: Film Condensation of Pure Vapour (in German) in VDI Waermeatlas, 9th edition, 2002.
   // And
   // T. Fujii, H.Uehara and C. Kurata: Laminar Filmwise Condensation of Flowing Vapour on a Horizontal Cylinder in Int. J. of Heat and Mass Transfer, Vol. 15, pp 235-246,  Pergamon Press, 1972.
 
   //input records
-  input
-    FluidDissipation.HeatTransfer.HeatExchanger.kc_tubeBundleFilmCondensation_lam_IN_con
+  input FluidDissipation.HeatTransfer.HeatExchanger.kc_tubeBundleFilmCondensation_lam_IN_con
     IN_con "Input record for function kc_tubeBundleFilmCondensation_lam"
     annotation (Dialog(group="Constant inputs"));
-  input
-    FluidDissipation.HeatTransfer.HeatExchanger.kc_tubeBundleFilmCondensation_lam_IN_var
+  input FluidDissipation.HeatTransfer.HeatExchanger.kc_tubeBundleFilmCondensation_lam_IN_var
     IN_var "Input record for function kc_tubeBundleFilmCondensation_lam"
     annotation (Dialog(group="Variable inputs"));
 
   //output variables
-  output Modelica.SIunits.CoefficientOfHeatTransfer kc
-    "Heat transfer coefficient" annotation (Dialog(group="Output"));
+  output Modelica.SIunits.CoefficientOfHeatTransfer kc "Heat transfer coefficient"
+                                annotation (Dialog(group="Output"));
   output SI.PrandtlNumber Pr "Prandtl number of the film" annotation (Dialog(group="Output"));
   output SI.ReynoldsNumber Re "Reynolds number of flowing steam" annotation (Dialog(group="Output"));
   output SI.NusseltNumber Nu "Nusselt number" annotation (Dialog(group="Output"));
-  output Real failureStatus
-    "0== boundary conditions fulfilled | 1== failure >> check if still meaningful results"
+  output Real failureStatus "0== boundary conditions fulfilled | 1== failure >> check if still meaningful results"
                                                                                              annotation (Dialog(group="Output"));
 
 algorithm
@@ -35,8 +31,7 @@ algorithm
   Re := abs(IN_var.m_flow)/IN_con.A_front/IN_var.rho_g*IN_con.d/(IN_var.eta_l/IN_var.rho_l);
   Nu := kc*IN_con.d/IN_var.lambda_l;
 
-  failureStatus := if Re<5e5 then 1 else 0
-    "The greater the steam velocity (Re), the better the accuracy | for Re>5e5 the deviation is below 5%";
+  failureStatus := if Re<5e5 then 1 else 0 "The greater the steam velocity (Re), the better the accuracy | for Re>5e5 the deviation is below 5%";
 
   annotation (Inline=false, smoothOrder(normallyConstant=IN_con) = 2, Documentation(info="<html>
 <p>

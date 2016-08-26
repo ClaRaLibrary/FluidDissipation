@@ -13,9 +13,9 @@ protected
 
 algorithm
   adeltax := abs(deltax);
-  if noEvent(x >= adeltax) then
+  if x >= adeltax then
     dy := dx*pow*x^(pow - 1);
-  elseif noEvent(x <= -adeltax) then
+  elseif x <= -adeltax then
     dy := dx*pow*(-x)^(pow - 1);
   else
     C3 := (pow - 1)/2*adeltax^(pow - 3);
@@ -23,6 +23,7 @@ algorithm
     dy := (C1 + 3*C3*x*x)*dx;
   end if;
   annotation (Documentation(revisions="<html>
-2014-03-30 Stefan Wischhusen: Removed dpow and ddeltax.
+  2014-03-30 Stefan Wischhusen: Removed dpow and ddeltax.
+  2015-10-13 Stefan Wischhusen: Removed noEvent in if-clause.
 </html>"));
 end SmoothPower_der;

@@ -1,6 +1,5 @@
 within FluidDissipation.HeatTransfer.Channel;
-function kc_evenGapTurbulent
-  "Mean heat transfer coefficient of even gap | turbulent flow regime | developed fluid flow | heat transfer at BOTH sides | identical and constant wall temperatures"
+function kc_evenGapTurbulent "Mean heat transfer coefficient of even gap | turbulent flow regime | developed fluid flow | heat transfer at BOTH sides | identical and constant wall temperatures"
   extends Modelica.Icons.Function;
   //SOURCE: VDI-Waermeatlas, 9th edition, Springer-Verlag, 2002, Section Gb 7
 
@@ -8,11 +7,9 @@ function kc_evenGapTurbulent
   import MIN = Modelica.Constants.eps;
 
   //input records
-  input FluidDissipation.HeatTransfer.Channel.kc_evenGapTurbulent_IN_con IN_con
-    "Input record for function kc_evenGapTurbulent"
+  input FluidDissipation.HeatTransfer.Channel.kc_evenGapTurbulent_IN_con IN_con "Input record for function kc_evenGapTurbulent"
     annotation (Dialog(group="Constant inputs"));
-  input FluidDissipation.HeatTransfer.Channel.kc_evenGapTurbulent_IN_var IN_var
-    "Input record for function kc_evenGapTurbulent"
+  input FluidDissipation.HeatTransfer.Channel.kc_evenGapTurbulent_IN_var IN_var "Input record for function kc_evenGapTurbulent"
     annotation (Dialog(group="Variable inputs"));
 
   //output variables
@@ -23,12 +20,11 @@ function kc_evenGapTurbulent
     annotation (Dialog(group="Output"));
   output SI.NusseltNumber Nu "Nusselt number"
     annotation (Dialog(group="Output"));
-  output Real failureStatus
-    "0== boundary conditions fulfilled | 1== failure >> check if still meaningful results"
+  output Real failureStatus "0== boundary conditions fulfilled | 1== failure >> check if still meaningful results"
     annotation (Dialog(group="Output"));
 
 protected
-  Real MIN=Modelica.Constants.eps;
+  Real MIN=Modelica.Constants.eps "Limiter";
 
   Real prandtlMax=100 "Maximum Prandtl number";
   Real prandtlMin=0.6 "Minimum Prandtl number";
@@ -38,8 +34,7 @@ protected
   SI.Area A_cross=max(MIN, IN_con.s*IN_con.h) "Cross sectional area of gap";
   SI.Diameter d_hyd=2*IN_con.s "Hydraulic diameter";
 
-  SI.Velocity velocity=abs(IN_var.m_flow)/max(MIN, IN_var.rho*A_cross)
-    "Mean velocity in gap";
+  SI.Velocity velocity=abs(IN_var.m_flow)/max(MIN, IN_var.rho*A_cross) "Mean velocity in gap";
 
   //failure status
   Real fstatus[3] "check of expected boundary conditions";
@@ -47,7 +42,7 @@ protected
   //Documentation
 algorithm
   Pr := abs(IN_var.eta*IN_var.cp/max(MIN, IN_var.lambda));
-  Re := max(1, abs(IN_var.rho*velocity*d_hyd/max(MIN, IN_var.eta)));
+  Re := abs(IN_var.rho*velocity*d_hyd/max(MIN, IN_var.eta));
   kc := FluidDissipation.HeatTransfer.Channel.kc_evenGapTurbulent_KC(IN_con,
     IN_var);
   Nu := kc*d_hyd/max(MIN, IN_var.lambda);
@@ -159,5 +154,6 @@ the chosen fluid flow and heat transfer situations (targets) is shown in the fig
 </dl>
  
 </html>
-"));
+", revisions="<html>
+</html>"));
 end kc_evenGapTurbulent;

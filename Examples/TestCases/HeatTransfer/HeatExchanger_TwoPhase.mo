@@ -1,6 +1,5 @@
 within FluidDissipation.Examples.TestCases.HeatTransfer;
-model HeatExchanger_TwoPhase
-  "Test case for heat transfer of heat exchanger with two phase media"
+model HeatExchanger_TwoPhase "Test case for heat transfer of heat exchanger with two phase media"
   import SI = Modelica.SIunits;
 
   Applications.HeatTransfer.HeatExchangerHeatTransferModel_TwoPhase
@@ -25,8 +24,7 @@ model HeatExchanger_TwoPhase
     amplitude=100) "[kg/s]"
     annotation (Placement(transformation(extent={{-100,-20},{-80,0}})));
 
-  inner StateForHeatTransfer_TwoPhase
-                             stateForHeatTransfer(
+  inner StateForHeatTransfer stateForHeatTransfer(
     p_state=pressure.y,
     h_state=specificEnthalpy.y,
     redeclare package Medium = Modelica.Media.Water.StandardWater)

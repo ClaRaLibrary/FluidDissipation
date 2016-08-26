@@ -1,35 +1,27 @@
 within FluidDissipation.Examples.Applications.PressureLoss.BaseClasses.General.NominalPressureLossLawDensity;
-model NominalPressureLossLawDensityFlowModel
-  "NominalPressureLossLawDensity: Application flow model for generic function in Modelica.Fluid"
+model NominalPressureLossLawDensityFlowModel "NominalPressureLossLawDensity: Application flow model for generic function in Modelica.Fluid"
 
   //base flow model
-  extends
-    FluidDissipation.Examples.Applications.PressureLoss.BaseClasses.General.BaseGeneralPL.BaseGeneralModel;
+  extends FluidDissipation.Examples.Applications.PressureLoss.BaseClasses.General.BaseGeneralPL.BaseGeneralModel;
 
   //pressure loss calculation
-  FluidDissipation.Utilities.Types.MassOrVolumeFlowRate target=FluidDissipation.Utilities.Types.MassOrVolumeFlowRate.MassFlowRate
-    "1 == use nominal mass flow rate | 2 == use nominal volume flow rate"
+  FluidDissipation.Utilities.Types.MassOrVolumeFlowRate target=FluidDissipation.Utilities.Types.MassOrVolumeFlowRate.MassFlowRate "1 == use nominal mass flow rate | 2 == use nominal volume flow rate"
     annotation (Dialog(group="Generic variables"));
 
   parameter SI.Area A_cross=A_cross_nom "Cross sectional area"
     annotation (Dialog(group="Generic variables"));
-  parameter SI.Area A_cross_nom=Modelica.Constants.pi*0.1^2/4
-    "Nominal cross sectional area"
+  parameter SI.Area A_cross_nom=Modelica.Constants.pi*0.1^2/4 "Nominal cross sectional area"
     annotation (Dialog(group="Generic variables"));
-  parameter SI.Pressure dp_nom=2
-    "Nominal pressure loss (at nominal values of mass flow rate and density)"
+  parameter SI.Pressure dp_nom=2 "Nominal pressure loss (at nominal values of mass flow rate and density)"
     annotation (Dialog(group="Generic variables"));
-  parameter SI.MassFlowRate m_flow_nom=1
-    "Nominal mass flow rate (at nominal values of pressure loss and density)"
+  parameter SI.MassFlowRate m_flow_nom=1 "Nominal mass flow rate (at nominal values of pressure loss and density)"
     annotation (Dialog(group="Generic variables"));
   parameter Real exp=2 "Exponent of pressure loss law"
     annotation (Dialog(group="Generic variables"));
-  parameter SI.VolumeFlowRate V_flow_nom=m_flow_nom/rho_nom
-    "Nominal volume flow rate (at nominal values of pressure loss and density)"
+  parameter SI.VolumeFlowRate V_flow_nom=m_flow_nom/rho_nom "Nominal volume flow rate (at nominal values of pressure loss and density)"
     annotation (Dialog(group="Generic variables",enable=not (
           NominalMassFlowRate)));
-  parameter SI.Density rho_nom=1e3
-    "Nominal density (at nominal values of mass flow rate and pressure loss)"
+  parameter SI.Density rho_nom=1e3 "Nominal density (at nominal values of mass flow rate and pressure loss)"
     annotation (Dialog(group="Generic variables"));
   parameter FluidDissipation.Utilities.Types.PressureLossCoefficient zeta_TOT=
       zeta_TOT_nom "Pressure loss coefficient"

@@ -1,13 +1,10 @@
 within FluidDissipation.HeatTransfer.StraightPipe;
-function kc_turbulent
-  "Mean heat transfer coefficient of straight pipe | hydrodynamically developed turbulent flow regime | pressure loss dependence"
+function kc_turbulent "Mean heat transfer coefficient of straight pipe | hydrodynamically developed turbulent flow regime | pressure loss dependence"
   extends Modelica.Icons.Function;
   //input records
-  input FluidDissipation.HeatTransfer.StraightPipe.kc_turbulent_IN_con IN_con
-    "Input record for function kc_turbulent"
+  input FluidDissipation.HeatTransfer.StraightPipe.kc_turbulent_IN_con IN_con "Input record for function kc_turbulent"
     annotation (Dialog(group="Constant inputs"));
-  input FluidDissipation.HeatTransfer.StraightPipe.kc_turbulent_IN_var IN_var
-    "Input record for function kc_turbulent"
+  input FluidDissipation.HeatTransfer.StraightPipe.kc_turbulent_IN_var IN_var "Input record for function kc_turbulent"
     annotation (Dialog(group="Variable inputs"));
 
   //output variables
@@ -18,14 +15,13 @@ function kc_turbulent
     annotation (Dialog(group="Output"));
   output SI.NusseltNumber Nu "Nusselt number"
     annotation (Dialog(group="Output"));
-  output Real failureStatus
-    "0== boundary conditions fulfilled | 1== failure >> check if still meaningful results"
+  output Real failureStatus "0== boundary conditions fulfilled | 1== failure >> check if still meaningful results"
     annotation (Dialog(group="Output"));
 
-  import TYP = FluidDissipation.Utilities.Types.Roughness;
-
 protected
-  Real MIN=Modelica.Constants.eps;
+  type TYP = Modelica.Fluid.Dissipation.Utilities.Types.Roughness;
+
+  Real MIN=Modelica.Constants.eps "Limiter";
 
   SI.Area A_cross=PI*IN_con.d_hyd^2/4 "Cross sectional area";
 
@@ -37,7 +33,7 @@ protected
   //Documentation
 algorithm
   Pr := abs(IN_var.eta*IN_var.cp/max(MIN, IN_var.lambda));
-  Re := max(1e-3, IN_var.rho*velocity*IN_con.d_hyd/max(MIN, IN_var.eta));
+  Re := (IN_var.rho*velocity*IN_con.d_hyd/max(MIN, IN_var.eta));
   kc := FluidDissipation.HeatTransfer.StraightPipe.kc_turbulent_KC(IN_con,
     IN_var);
   Nu := kc*IN_con.d_hyd/max(MIN, IN_var.lambda);
@@ -175,5 +171,7 @@ Note that the higher the Prandtl number <b> Pr </b> there is a higher difference
 </dl>
  
 </html>
-"));
+", revisions="<html>
+<pre>2016-04-12 Stefan Wischhusen: Removed singularity for Re at zero mass flow rate. </pre>
+</html>"));
 end kc_turbulent;

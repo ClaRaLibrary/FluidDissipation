@@ -1,16 +1,13 @@
 within FluidDissipation.PressureLoss.StraightPipe;
-function dp_overall_DP
-  "Pressure loss of straight pipe | calculate pressure loss | overall flow regime | surface roughness"
+function dp_overall_DP "Pressure loss of straight pipe | calculate pressure loss | overall flow regime | surface roughness"
   extends Modelica.Icons.Function;
   import FD = FluidDissipation.PressureLoss.StraightPipe;
   import SMOOTH = FluidDissipation.Utilities.Functions.General.Stepsmoother;
 
   //input records
-  input FluidDissipation.PressureLoss.StraightPipe.dp_overall_IN_con IN_con
-    "Input record for function dp_overall_DP"
+  input FluidDissipation.PressureLoss.StraightPipe.dp_overall_IN_con IN_con "Input record for function dp_overall_DP"
     annotation (Dialog(group="Constant inputs"));
-  input FluidDissipation.PressureLoss.StraightPipe.dp_overall_IN_var IN_var
-    "Input record for function dp_overall_DP"
+  input FluidDissipation.PressureLoss.StraightPipe.dp_overall_IN_var IN_var "Input record for function dp_overall_DP"
     annotation (Dialog(group="Variable inputs"));
   input SI.MassFlowRate m_flow "Mass flow rate"
     annotation (Dialog(group="Input"));
@@ -28,11 +25,9 @@ protected
 
   //SOURCE_1: p.81, fig. 2-3, sec 21-22: definition of flow regime boundaries
   SI.ReynoldsNumber Re_lam_min=1e3 "Minimum Reynolds number for laminar regime";
-  SI.ReynoldsNumber Re_lam_max=2090*(1/max(0.007, k))^0.0635
-    "Maximum Reynolds number for laminar regime";
+  SI.ReynoldsNumber Re_lam_max=2090*(1/max(0.007, k))^0.0635 "Maximum Reynolds number for laminar regime";
   SI.ReynoldsNumber Re_lam_leave=min(Re_lam_max, max(Re_lam_min, 754*
-      Modelica.Math.exp(if k <= 0.007 then 0.0065/0.007 else 0.0065/k)))
-    "Start of transition regime for increasing Reynolds number (leaving laminar regime)";
+      Modelica.Math.exp(if k <= 0.007 then 0.0065/0.007 else 0.0065/k))) "Start of transition regime for increasing Reynolds number (leaving laminar regime)";
 
   SI.ReynoldsNumber Re=
       FluidDissipation.Utilities.Functions.General.ReynoldsNumber(

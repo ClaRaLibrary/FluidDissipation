@@ -1,6 +1,5 @@
 within FluidDissipation.PressureLoss.Junction;
-function dp_Tjoin_symmetric
-  "pressure loss of T-junction | design case: joining of entering fluid flows through symmetric side branches into total fluid flow at the bottom"
+function dp_Tjoin_symmetric "pressure loss of T-junction | design case: joining of entering fluid flows through symmetric side branches into total fluid flow at the bottom"
   extends Modelica.Icons.Function;
   //SOURCE: Idelchik, I.E.: HANDBOOK OF HYDRAULIC RESISTANCE, 3rd edition, 2006
   //page 471, diagram 7-29
@@ -12,60 +11,45 @@ function dp_Tjoin_symmetric
   import SMOOTH_2 = FluidDissipation.Utilities.Functions.General.Stepsmoother;
 
   //input records
-  input FluidDissipation.PressureLoss.Junction.dp_Tjoin_symmetric_IN_con IN_con
-    "input record for function dp_Tjoin_symmetric"
+  input FluidDissipation.PressureLoss.Junction.dp_Tjoin_symmetric_IN_con IN_con "input record for function dp_Tjoin_symmetric"
     annotation (Dialog(group="Constant inputs"));
-  input FluidDissipation.PressureLoss.Junction.dp_Tjoin_symmetric_IN_var IN_var
-    "input record for function dp_Tjoin_symmetric"
+  input FluidDissipation.PressureLoss.Junction.dp_Tjoin_symmetric_IN_var IN_var "input record for function dp_Tjoin_symmetric"
     annotation (Dialog(group="Variable inputs"));
-  input SI.MassFlowRate m_flow[3]
-    "mass flow rate in passages [left-bottom,right-bottom,total]"
+  input SI.MassFlowRate m_flow[3] "mass flow rate in passages [left-bottom,right-bottom,total]"
     annotation (Dialog(group="Input"));
 
   //output variables
-  output SI.Pressure DP[2]
-    "(thermodynamic) pressure loss [left-bottom,right-bottom]"
+  output SI.Pressure DP[2] "(thermodynamic) pressure loss [left-bottom,right-bottom]"
     annotation (Dialog(group="Output"));
-  output SI.MassFlowRate M_FLOW[3]
-    "mass flow rate [left-bottom,right-bottom,total]"
+  output SI.MassFlowRate M_FLOW[3] "mass flow rate [left-bottom,right-bottom,total]"
     annotation (Dialog(group="Output"));
-  output TYP.LocalResistanceCoefficient zeta_LOC[2]
-    "local resistance coefficient [left-bottom,right-bottom]"
+  output TYP.LocalResistanceCoefficient zeta_LOC[2] "local resistance coefficient [left-bottom,right-bottom]"
     annotation (Dialog(group="Output"));
   output SI.ReynoldsNumber Re[3] "Reynolds number"
     annotation (Dialog(group="Output"));
   final output SI.PrandtlNumber Pr=0 "Prandtl number"
     annotation (Dialog(group="Output"));
-  output Integer failureStatus
-    "0== boundary conditions fulfilled | 1== failure >> check if still meaningful results"
+  output Integer failureStatus "0== boundary conditions fulfilled | 1== failure >> check if still meaningful results"
     annotation (Dialog(group="Output"));
 
 protected
   constant Real minimum=Modelica.Constants.eps;
-  constant Real frac_v_min=1e-2
-    "minimal fraction of velocities for linear interpolation [v_branch/v_total]";
+  constant Real frac_v_min=1e-2 "minimal fraction of velocities for linear interpolation [v_branch/v_total]";
 
   /*parameter Integer alpha(
     min=0,
     max=90) = max(min(IN_con.alpha, 90), 0) "angle of branching";*/
    Real alpha = max(min(IN_con.alpha, 90), 0) "angle of branching";
 
-  parameter SI.Diameter d_hyd[3]={IN_con.d_hyd[1],IN_con.d_hyd[2],IN_con.d_hyd[3]}
-    "hydraulic diameter [left,right,bottom]";
-  parameter SI.Area A_cross[3]=PI/4*{d_hyd[i]^2 for i in 1:3}
-    "crossectional area of branches [left,right,bottom]";
-  parameter SI.Area frac_Across[2]={A_cross[i]/A_cross[3] for i in 1:2}
-    "[left/bottom,right/bottom]";
+  parameter SI.Diameter d_hyd[3]={IN_con.d_hyd[1],IN_con.d_hyd[2],IN_con.d_hyd[3]} "hydraulic diameter [left,right,bottom]";
+  parameter SI.Area A_cross[3]=PI/4*{d_hyd[i]^2 for i in 1:3} "crossectional area of branches [left,right,bottom]";
+  parameter SI.Area frac_Across[2]={A_cross[i]/A_cross[3] for i in 1:2} "[left/bottom,right/bottom]";
 
   //limitations
-  parameter SI.MassFlowRate m_flow_min=abs(IN_con.m_flow_min)
-    "minimal mass flow rate for linear interpolation";
-  parameter SI.Velocity v_max=abs(IN_con.v_max)
-    "maximal velocity of fluid flow";
-  parameter Real zeta_LOC_max=abs(IN_con.zeta_TOT_max)
-    "maximum local resistance coefficient";
-  parameter Real zeta_LOC_min=-zeta_LOC_max
-    "minimum local resistance coefficient";
+  parameter SI.MassFlowRate m_flow_min=abs(IN_con.m_flow_min) "minimal mass flow rate for linear interpolation";
+  parameter SI.Velocity v_max=abs(IN_con.v_max) "maximal velocity of fluid flow";
+  parameter Real zeta_LOC_max=abs(IN_con.zeta_TOT_max) "maximum local resistance coefficient";
+  parameter Real zeta_LOC_min=-zeta_LOC_max "minimum local resistance coefficient";
 
   //parameter of T-join
   Real A[2] "parameter of T-join";
@@ -82,10 +66,8 @@ protected
       1:2} "[left/bottom,right/bottom]";
 
   //local resistance coefficient
-  TYP.LocalResistanceCoefficient zeta_LOC_left
-    "local resistance coefficient [left-bottom]";
-  TYP.LocalResistanceCoefficient zeta_LOC_right
-    "local resistance coefficient [right-bottom]";
+  TYP.LocalResistanceCoefficient zeta_LOC_left "local resistance coefficient [left-bottom]";
+  TYP.LocalResistanceCoefficient zeta_LOC_right "local resistance coefficient [right-bottom]";
 
   //dynamic pressure difference for joining
   Real dp_dyn[2]={(IN_var.rho/2)*((velocity[i])^2 - (velocity[3])^2) for i in
@@ -157,8 +139,7 @@ algorithm
           abs(frac_v[1])),(dp_LOC_right - dp_dyn[2])*SMOOTH_2(
           frac_v_min,
           0,
-          abs(frac_v[2]))}
-    "(thermodynamic) pressure loss [side-total,straight-total]";
+          abs(frac_v[2]))} "(thermodynamic) pressure loss [side-total,straight-total]";
   /*dp := {(dp_LOC_left - dp_dyn[1])*abs(m_flow[1])/max(abs(m_flow[3]),
     minimum),(dp_LOC_right - dp_dyn[2])*abs(m_flow[2])/max(abs(m_flow[
     3]), minimum)} "(thermodynamic) pressure loss [left-bottom,right-bottom]";*/

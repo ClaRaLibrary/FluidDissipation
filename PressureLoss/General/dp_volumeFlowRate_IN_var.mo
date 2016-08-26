@@ -1,6 +1,5 @@
 within FluidDissipation.PressureLoss.General;
-record dp_volumeFlowRate_IN_var
-  "Input record for function dp_volumeFlowRate, dp_volumeFlowRate_DP and dp_volumeFlowRate_MFLOW"
+record dp_volumeFlowRate_IN_var "Input record for function dp_volumeFlowRate, dp_volumeFlowRate_DP and dp_volumeFlowRate_MFLOW"
 
   //fluid property variables
   extends FluidDissipation.Utilities.Records.General.FluidProperties(

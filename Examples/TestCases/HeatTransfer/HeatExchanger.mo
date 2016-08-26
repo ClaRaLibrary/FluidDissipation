@@ -7,8 +7,8 @@ model HeatExchanger "Test case for heat transfer of heat exchanger"
     m_flow=massFlowRate.y,
     redeclare package Medium = Modelica.Media.Air.DryAirNasa,
     redeclare model HeatTransfer =
-        FluidDissipation.Examples.Applications.HeatTransfer.BaseClasses.HeatExchanger.RoundTube.RoundTubeHeatTransferModel
-        (geometry=FluidDissipation.Utilities.Types.HTXGeometry_roundTubes.LouverFin))
+        FluidDissipation.Examples.Applications.HeatTransfer.BaseClasses.HeatExchanger.RoundTube.RoundTubeHeatTransferModel (
+         geometry=FluidDissipation.Utilities.Types.HTXGeometry_roundTubes.LouverFin))
     annotation (Placement(transformation(extent={{-34,-34},{34,34}})));
 
   Modelica.Blocks.Sources.Constant pressure(k=1e5)

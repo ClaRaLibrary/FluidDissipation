@@ -1,6 +1,5 @@
 within FluidDissipation.Utilities.Icons;
-class VariantLibrary
-  "Icon for a library that contains several variants of one component"
+class VariantLibrary "Icon for a library that contains several variants of one component"
   extends Package;
 
   annotation (Icon(graphics={

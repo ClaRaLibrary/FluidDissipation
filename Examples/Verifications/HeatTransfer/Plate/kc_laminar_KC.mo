@@ -7,12 +7,9 @@ model kc_laminar_KC "Verification of function kc_laminar_KC"
   parameter SI.Length L=1 "Length of plate";
 
   //fluid property variables
-  parameter SI.SpecificHeatCapacityAtConstantPressure cp[:]={1007,4189,3384.550}
-    "Specific heat capacity at constant pressure of fluid";
-  parameter SI.DynamicViscosity eta[:]={18.24e-6,1001.6e-6,0.114}
-    "Dynamic viscosity of fluid";
-  parameter SI.ThermalConductivity lambda[:]={25.69e-3,598.5e-3,0.387}
-    "Thermal conductivity of fluid";
+  parameter SI.SpecificHeatCapacityAtConstantPressure cp[:]={1007,4189,3384.550} "Specific heat capacity at constant pressure of fluid";
+  parameter SI.DynamicViscosity eta[:]={18.24e-6,1001.6e-6,0.114} "Dynamic viscosity of fluid";
+  parameter SI.ThermalConductivity lambda[:]={25.69e-3,598.5e-3,0.387} "Thermal conductivity of fluid";
   parameter SI.Density rho[:]={1.188,998.21,1037.799} "Density of fluid";
 
   //here: Nusselt number as input for inverse calculation
@@ -33,8 +30,7 @@ model kc_laminar_KC "Verification of function kc_laminar_KC"
     annotation (Placement(transformation(extent={{0,20},{20,40}})));
 
   SI.PrandtlNumber Pr[n]={eta[i]*cp[i]/lambda[i] for i in 1:n} "Prandtl number";
-  SI.ReynoldsNumber Re[n]={rho[i]*abs(velocity[i])*L/eta[i] for i in 1:n}
-    "Reynolds number";
+  SI.ReynoldsNumber Re[n]={rho[i]*abs(velocity[i])*L/eta[i] for i in 1:n} "Reynolds number";
 
 public
   Modelica.Blocks.Sources.Ramp input_Nu(
@@ -49,8 +45,8 @@ equation
     for i in 1:n};
 
   annotation (__Dymola_Commands(file=
-          "modelica://FluidDissipation/Extras/Scripts/heatTransfer/plate/kc_laminar_KC.mos"
-        "Verification of kc_laminar_KC"), Diagram(coordinateSystem(
+          "modelica://FluidDissipation/Extras/Scripts/heatTransfer/plate/kc_laminar_KC.mos" "Verification of kc_laminar_KC"),
+                                          Diagram(coordinateSystem(
           preserveAspectRatio=false, extent={{-100,-100},{100,100}}), graphics={
            Text(
           extent={{-100,50},{100,75}},

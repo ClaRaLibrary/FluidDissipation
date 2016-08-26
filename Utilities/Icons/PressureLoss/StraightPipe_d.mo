@@ -66,12 +66,12 @@ partial model StraightPipe_d "icon for straight pipe"
           lineThickness=0.5),
         Line(
           points={{-80,46},{80,46}},
-          pattern=LinePattern.None,
+          pattern=LinePattern.Solid,
           thickness=0.5,
           smooth=Smooth.None),
         Line(
           points={{-80,-54},{80,-54}},
-          pattern=LinePattern.None,
+          pattern=LinePattern.Solid,
           thickness=0.5,
           smooth=Smooth.None),
         Line(

@@ -1,6 +1,5 @@
 within FluidDissipation.PressureLoss.HeatExchanger;
-function dp_roundTube_DP
-  "Air-side pressure loss of heat exchanger with round tubes and several fin geometries | calculate DP (incompressible)"
+function dp_roundTube_DP "Air-side pressure loss of heat exchanger with round tubes and several fin geometries | calculate DP (incompressible)"
   extends Modelica.Icons.Function;
   //SOURCE: A.M. Jacobi, Y. Park, D. Tafti, X. Zhang. AN ASSESSMENT OF THE STATE OF THE ART, AND POTENTIAL DESIGN IMPROVEMENTS, FOR FLAT-TUBE HEAT EXCHANGERS IN AIR CONDITIONING AND REFRIGERATION APPLICATIONS - PHASE I
   //Notation of equations according to SOURCE
@@ -8,11 +7,9 @@ function dp_roundTube_DP
   import FD = FluidDissipation.PressureLoss.HeatExchanger;
 
   //input records
-  input FluidDissipation.PressureLoss.HeatExchanger.dp_roundTube_IN_con IN_con
-    "Input record for function dp_roundTube_DP"
+  input FluidDissipation.PressureLoss.HeatExchanger.dp_roundTube_IN_con IN_con "Input record for function dp_roundTube_DP"
     annotation (Dialog(group="Constant inputs"));
-  input FluidDissipation.PressureLoss.HeatExchanger.dp_roundTube_IN_var IN_var
-    "Input record for function dp_roundTube_DP"
+  input FluidDissipation.PressureLoss.HeatExchanger.dp_roundTube_IN_var IN_var "Input record for function dp_roundTube_DP"
     annotation (Dialog(group="Variable inputs"));
   input SI.MassFlowRate m_flow "Mass flow rate"
     annotation (Dialog(group="Input"));
@@ -23,16 +20,13 @@ function dp_roundTube_DP
 protected
   Real MIN=Modelica.Constants.eps;
 
-  SI.ReynoldsNumber Re_Dc=max(1e-3, abs(m_flow)*IN_con.D_c/(IN_var.eta*A_c))
-    "Reynolds number based on fin collar diameter";
+  SI.ReynoldsNumber Re_Dc=max(1e-3, abs(m_flow)*IN_con.D_c/(IN_var.eta*A_c)) "Reynolds number based on fin collar diameter";
   Real f "Fanning friction faktor";
   /*SI.Velocity v_fr=m_flow/(IN_var.rho*IN_con.A_fr) "Frontal velocity";*/
-  SI.Velocity v_c=m_flow/(IN_var.rho*A_c)
-    "Velocity at minimum flow cross-sectional area";
+  SI.Velocity v_c=m_flow/(IN_var.rho*A_c) "Velocity at minimum flow cross-sectional area";
 
   SI.Area A_c=IN_con.A_fr*((IN_con.F_p*IN_con.P_t - IN_con.F_p*IN_con.D_c - (
-      IN_con.P_t - IN_con.D_c)*IN_con.delta_f)/(IN_con.F_p*IN_con.P_t))
-    "Minimum flow cross-sectional area";
+      IN_con.P_t - IN_con.D_c)*IN_con.delta_f)/(IN_con.F_p*IN_con.P_t)) "Minimum flow cross-sectional area";
   SI.Area A_tot=if IN_con.geometry ==FluidDissipation.Utilities.Types.HTXGeometry_roundTubes.PlainFin
        or IN_con.geometry ==FluidDissipation.Utilities.Types.HTXGeometry_roundTubes.LouverFin
        or IN_con.geometry ==FluidDissipation.Utilities.Types.HTXGeometry_roundTubes.SlitFin  then

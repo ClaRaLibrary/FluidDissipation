@@ -1,26 +1,22 @@
 within FluidDissipation.Examples.Applications.HeatTransfer;
-model HeatExchangerHeatTransferModel
-  "Application model for a heat exchanger in Modelica_Fluid"
+model HeatExchangerHeatTransferModel "Application model for a heat exchanger in Modelica_Fluid"
 
   //icon
   extends FluidDissipation.Utilities.Icons.HeatTransfer.HeatExchanger_i;
 
   //interfaces
-  Modelica.Thermal.HeatTransfer.Interfaces.HeatPort_a thermalPort
-    "Thermal port" annotation (Placement(transformation(extent={{-20,60},{20,80}},
+  Modelica.Thermal.HeatTransfer.Interfaces.HeatPort_a thermalPort "Thermal port"
+                   annotation (Placement(transformation(extent={{-20,60},{20,80}},
           rotation=0), iconTransformation(extent={{-20,100},{20,120}})));
 
-  replaceable package Medium = Modelica.Media.Air.DryAirNasa constrainedby
-    Modelica.Media.Interfaces.PartialMedium "Medium in the component"
+  replaceable package Medium = Modelica.Media.Air.DryAirNasa constrainedby Modelica.Media.Interfaces.PartialMedium "Medium in the component"
                               annotation (Dialog(group="Fluid properties"),
       choicesAllMatching=true);
 
   //choice for heat exchanger heat transfer model
   replaceable model HeatTransfer =
       FluidDissipation.Examples.Applications.HeatTransfer.BaseClasses.HeatExchanger.FlatTube.FlatTubeHeatTransferModel
-    constrainedby
-    FluidDissipation.Examples.Applications.HeatTransfer.BaseClasses.HeatExchanger.BaseHeatExchangerHT.BaseHeatExchangerModel
-    "1st: choose heat transfer calculation | 2nd: edit corresponding record"
+    constrainedby FluidDissipation.Examples.Applications.HeatTransfer.BaseClasses.HeatExchanger.BaseHeatExchangerHT.BaseHeatExchangerModel "1st: choose heat transfer calculation | 2nd: edit corresponding record"
     annotation (Dialog(group="Heat transfer"), choicesAllMatching=true);
 
   //input

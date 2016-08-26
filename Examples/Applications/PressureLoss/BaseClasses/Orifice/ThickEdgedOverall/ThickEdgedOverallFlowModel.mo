@@ -1,10 +1,8 @@
 within FluidDissipation.Examples.Applications.PressureLoss.BaseClasses.Orifice.ThickEdgedOverall;
-model ThickEdgedOverallFlowModel
-  "Orifice (thick edged): Application flow model for orifice function in Modelica.Fluid"
+model ThickEdgedOverallFlowModel "Orifice (thick edged): Application flow model for orifice function in Modelica.Fluid"
 
   //base flow model
-  extends
-    FluidDissipation.Examples.Applications.PressureLoss.BaseClasses.Orifice.BaseOrificePL.BaseOrificeModel;
+  extends FluidDissipation.Examples.Applications.PressureLoss.BaseClasses.Orifice.BaseOrificePL.BaseOrificeModel;
 
   //pressure loss parameter
   SI.Area A_0=0.1*A_1 "Cross sectional area of vena contraction"
@@ -31,8 +29,7 @@ model ThickEdgedOverallFlowModel
     IN_var(eta=eta, rho=rho)
     annotation (Placement(transformation(extent={{-60,20},{-40,40}})));
 
-  parameter SI.Pressure dp_smooth=1
-    "Start linearisation for decreasing pressure loss"
+  parameter SI.Pressure dp_smooth=1 "Start linearisation for decreasing pressure loss"
     annotation (Dialog(group="Numerical aspects"));
 equation
   m_flow =

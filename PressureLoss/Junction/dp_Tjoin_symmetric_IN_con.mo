@@ -1,6 +1,5 @@
 within FluidDissipation.PressureLoss.Junction;
-record dp_Tjoin_symmetric_IN_con
-  "input record for pressure loss function | dp_Tjoin_symmetric"
+record dp_Tjoin_symmetric_IN_con "input record for pressure loss function | dp_Tjoin_symmetric"
 
   //T-junction variables
   extends FluidDissipation.Utilities.Records.PressureLoss.Tjunction(final

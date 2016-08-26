@@ -1,7 +1,6 @@
 within FluidDissipation.Examples.Applications.HeatTransfer.BaseClasses.HelicalPipe;
 package Laminar "FluidDissipation: Heat transfer for helical pipe in laminar fluid flow regime"
-extends
-  FluidDissipation.Examples.Applications.HeatTransfer.BaseClasses.HelicalPipe.BaseHelicalPipeHT;
+extends FluidDissipation.Examples.Applications.HeatTransfer.BaseClasses.HelicalPipe.BaseHelicalPipeHT;
 constant String fluidFlowRegime="laminar regime";
 
 

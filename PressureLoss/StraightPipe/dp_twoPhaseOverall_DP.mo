@@ -31,26 +31,60 @@ protected
   Real xflowSta=min(1, max(0, abs(IN_var.x_flow_sta))) "Mass flow rate quality at start of length";
   Real x_flow=(xflowEnd + xflowSta)/2 "Mean mass flow rate quality over length";
 
-  //SOURCE_5: p.17-1 to 17-5, sec. 17.1 to 17.2: Considering cross sectional void fraction [epsilon=A_g/(A_g+A_l)]
-  Real epsilon=
-      FluidDissipation.Utilities.Functions.PressureLoss.TwoPhase.VoidFraction(
-      IN_con.voidFractionApproach,
-      true,
-      IN_var.rho_g,
-      IN_var.rho_l,
-      x_flow) "Void fraction";
+//   //SOURCE_5: p.17-1 to 17-5, sec. 17.1 to 17.2: Considering cross sectional void fraction [epsilon=A_g/(A_g+A_l)]
+//   Real epsilon=
+//       FluidDissipation.Utilities.Functions.PressureLoss.TwoPhase.VoidFraction(
+//       IN_con.voidFractionApproach,
+//       true,
+//       IN_var.rho_g,
+//       IN_var.rho_l,
+//       x_flow) "Void fraction";
 
   //SOURCE_1: Considering frictional pressure loss w.r.t. to correlation of Friedel
   //SOURCE_2: Considering frictional pressrue loss w.r.t. to correlation of Chisholm
   SI.Pressure DP_fric=if IN_con.frictionalPressureLoss == TYP.Friedel then
       FluidDissipation.Utilities.Functions.PressureLoss.TwoPhase.dp_twoPhaseFriedel_DP(
-      IN_con,
-      IN_var,
-      m_flow) else if IN_con.frictionalPressureLoss == TYP.Chisholm then
+      FluidDissipation.Utilities.Records.General.TwoPhaseFlow_con(
+      A_cross=IN_con.A_cross,
+      perimeter=IN_con.perimeter,
+      length=IN_con.length),
+      FluidDissipation.Utilities.Records.General.TwoPhaseFlow_var(
+      rho_g=IN_var.rho_g,
+      rho_l=IN_var.rho_l,
+      eta_g=IN_var.eta_g,
+      eta_l=IN_var.eta_l,
+      sigma=IN_var.sigma,
+      x_flow=IN_var.x_flow),
+      m_flow)
+      else if IN_con.frictionalPressureLoss == TYP.Chisholm then
       FluidDissipation.Utilities.Functions.PressureLoss.TwoPhase.dp_twoPhaseChisholm_DP(
-      IN_con,
-      IN_var,
-      m_flow) else 0 "Frictional pressure loss";
+      FluidDissipation.Utilities.Records.General.TwoPhaseFlow_con(
+      A_cross=IN_con.A_cross,
+      perimeter=IN_con.perimeter,
+      length=IN_con.length),
+      FluidDissipation.Utilities.Records.General.TwoPhaseFlow_var(
+      rho_g=IN_var.rho_g,
+      rho_l=IN_var.rho_l,
+      eta_g=IN_var.eta_g,
+      eta_l=IN_var.eta_l,
+      sigma=IN_var.sigma,
+      x_flow=IN_var.x_flow),
+      m_flow)
+      else if IN_con.frictionalPressureLoss == TYP.MuellerSteinhagenHeck then
+      FluidDissipation.Utilities.Functions.PressureLoss.TwoPhase.dp_twoPhaseMSH_DP(
+      FluidDissipation.Utilities.Records.General.TwoPhaseFlow_con(
+      A_cross=IN_con.A_cross,
+      perimeter=IN_con.perimeter,
+      length=IN_con.length),
+      FluidDissipation.Utilities.Records.General.TwoPhaseFlow_var(
+      rho_g=IN_var.rho_g,
+      rho_l=IN_var.rho_l,
+      eta_g=IN_var.eta_g,
+      eta_l=IN_var.eta_l,
+      sigma=IN_var.sigma,
+      x_flow=IN_var.x_flow),
+      m_flow)
+      else 0 "Frictional pressure loss";
 
   //SOURCE_3: p.Lba 4, eq. 22: Considering momentum pressure loss assuming heterogeneous approach for two phase flow
   //Evaporation >> positive momentum pressure loss (assumed vice versa at condensation)
@@ -64,8 +98,7 @@ protected
       IN_var.rho_l,
       IN_var.x_flow_end,
       IN_var.x_flow_sta,
-      abs(m_flow),
-      IN_con.x_flow_smooth) else 0 "Momentum pressure loss";
+      abs(m_flow)) else 0 "Momentum pressure loss";
 
   //SOURCE_3: p.Lbb 1, eq. 4: Considering geodetic pressure loss assuming constant void fraction for flow length
   SI.Pressure DP_geo=if IN_con.geodeticPressureLoss then
@@ -85,7 +118,7 @@ algorithm
   annotation (Inline=false, smoothOrder(normallyConstant=IN_con) = 2, Documentation(
         info="<html>
 <p>
-Calculation of pressure loss for <b>two phase flow</b> in a horizontal <b>or</b> vertical straight pipe for an overall flow regime considering frictional, momentum and geodetic pressure loss.
+Calculation of pressure loss for <b>two phase flow</b> in a horizontal <b>or</b> vertical straight pipe for an overall flow regime considering frictional, momentum and geodetic pressure loss. For an inverted frictional pressue loss model see FluidDissipation.Utilities.Functions.PressureLoss.TwoPhase.dp_twoPhaseMSH_MFLOW.
 </p>
 
 <p> 
@@ -238,6 +271,23 @@ with
 <p>
 Note that the (mean constant) mass flow rate quality <b>(x_flow)</b> used for frictional pressure loss is calculated as arithmetic mean value out of the mass flow rate quality at the end and at the start of the straight pipe length.
 </p>
+<p>
+The frictional pressure loss with the Mueller-Steinhagen and Heck correlation is calculated as follows:
+<br>Laminar flow regime</br>
+<p>
+i.e. <img src=\"modelica://FluidDissipation/Extras/Images/pressureLoss/StraightPipe/Equations/equation007.png\" alt=\"\"><br>
+<img src=\"modelica://FluidDissipation/Extras/Images/pressureLoss/StraightPipe/Equations/equation008.png\" alt=\"\"><br>
+<img src=\"modelica://FluidDissipation/Extras/Images/pressureLoss/StraightPipe/Equations/equation013.png\" alt=\"\"><br>
+</p>
+
+
+<br>Turbulent flow regime</br>
+<p>
+i.e. <img src=\"modelica://FluidDissipation/Extras/Images/pressureLoss/StraightPipe/Equations/equation006.png\" alt=\"\"><br>
+<img src=\"modelica://FluidDissipation/Extras/Images/pressureLoss/StraightPipe/Equations/equation001.png\" alt=\"\"><br>
+<img src=\"modelica://FluidDissipation/Extras/Images/pressureLoss/StraightPipe/Equations/equation012.png\" alt=\"\"></p>
+
+</p>
 
 <p>
 <b>Momentum pressure loss</b>:
@@ -324,6 +374,14 @@ The two phase pressure loss for a horizontal pipe calculated by the correlation 
 <p> 
 <img src=\"modelica://FluidDissipation/Extras/Images/pressureLoss/StraightPipe/fig_dp_twoPhaseOverall_4.png\">
 </p>  
+<p> 
+The two phase pressure loss for a horizontal pipe calculated by the correlation of <i> Mueller-Steinhagen and Heck </i> neglecting momentum and geodetic pressure loss is shown in the figure below. 
+</p>
+<p>
+<img src=\"modelica://FluidDissipation/Extras/Images/pressureLoss/StraightPipe/fig_validPL_straigthPipeTwoPhaseMSH.png\" alt=\"\" width=\"600\">
+</p>
+<p>
+Fluid is Nitrogen, pipe diameter is 0.014 m.
 <h4><font color=\"#EF9B13\">References</font></h4> 
 <dl>
 <dt>Chisholm,D.:</dt>
@@ -339,7 +397,14 @@ The two phase pressure loss for a horizontal pipe calculated by the correlation 
     In Proceedings of the 2nd International Modelica Conference, pages 235?244, Oberpfaffenhofen, Germany, 2002. The Modelica Association.</dd>
 <dt>Thome, J.R.:</dt> 
     <dd><b>Engineering Data Book 3</b>.Swiss Federal Institute of Technology Lausanne (EPFL), 2009.</dd>
+<dt> H. Mueller-Steinhagen and K. Heck:</dt>  
+<dd><b>A Simple Friction Pressure Drop Correlation for Two-Phase Flow in Pipes. </b>Chem. Eng. Process, 1986, 20, 297-308
+<dt> H. Mueller-Steinhagen:</dt>  
+<dd><b>Waermeuebergang und Fouling beim Stroemungssieden von Argon und Stickstoff im horizontalen Rohr. </b>Fortschrittsberichte der VDI Zeitschriften, Reihe 6 Nr. 143, 1984  
 </dl>
 </html>
-"));
+", revisions="<html>
+<pre>2016-04-13 Stefan Wischhusen: Epsilon is not used in the function.
+2016-04-18 Timm Hoppe: Added Mueller-Steinhagen and Heck correlation for frictional pressure loss.</pre>
+</html>"));
 end dp_twoPhaseOverall_DP;

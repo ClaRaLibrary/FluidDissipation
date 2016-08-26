@@ -1,17 +1,14 @@
 within FluidDissipation.PressureLoss.General;
-function dp_volumeFlowRate_MFLOW
-  "Generic pressure loss | calculate mass flow rate | quadratic function (dp=a*V_flow^2 + b*V_flow)"
+function dp_volumeFlowRate_MFLOW "Generic pressure loss | calculate mass flow rate | quadratic function (dp=a*V_flow^2 + b*V_flow)"
   extends Modelica.Icons.Function;
 
   import FD = FluidDissipation.PressureLoss.General;
 
   //input records
-  input FluidDissipation.PressureLoss.General.dp_volumeFlowRate_IN_con IN_con
-    "Input record for function dp_volumeFlowRate_MFLOW"
+  input FluidDissipation.PressureLoss.General.dp_volumeFlowRate_IN_con IN_con "Input record for function dp_volumeFlowRate_MFLOW"
     annotation (Dialog(group="Constant inputs"));
 
-  input FluidDissipation.PressureLoss.General.dp_volumeFlowRate_IN_var IN_var
-    "Input record for function dp_volumeFlowRate_MFLOW"
+  input FluidDissipation.PressureLoss.General.dp_volumeFlowRate_IN_var IN_var "Input record for function dp_volumeFlowRate_MFLOW"
     annotation (Dialog(group="Variable inputs"));
   input SI.Pressure dp "Pressure loss" annotation (Dialog(group="Input"));
 
@@ -22,8 +19,7 @@ protected
   Real a=max(Modelica.Constants.eps, abs(IN_con.a));
   Real b=max(Modelica.Constants.eps, abs(IN_con.b));
 
-  SI.Pressure dp_min=IN_con.dp_min
-    "Start of approximation for decreasing pressure loss";
+  SI.Pressure dp_min=IN_con.dp_min "Start of approximation for decreasing pressure loss";
 
   //Documentation
 

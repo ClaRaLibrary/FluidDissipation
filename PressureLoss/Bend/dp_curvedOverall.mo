@@ -1,6 +1,5 @@
 within FluidDissipation.PressureLoss.Bend;
-function dp_curvedOverall
-  "Pressure loss of curved bend | overall flow regime | surface roughness"
+function dp_curvedOverall "Pressure loss of curved bend | overall flow regime | surface roughness"
   extends Modelica.Icons.Function;
   //SOURCE_1: Idelchik, I.E.: HANDBOOK OF HYDRAULIC RESISTANCE, 3rd edition, 2006.
   //SOURCE_2: Miller, D.S.: INTERNAL FLOW SYSTEMS, 2nd edition, 1984.
@@ -8,27 +7,24 @@ function dp_curvedOverall
   //Notation of equations according to SOURCES
 
   //input records
-  input FluidDissipation.PressureLoss.Bend.dp_curvedOverall_IN_con IN_con
-    "Input record for function dp_curvedOverall"
+  input FluidDissipation.PressureLoss.Bend.dp_curvedOverall_IN_con IN_con "Input record for function dp_curvedOverall"
     annotation (Dialog(group="Constant inputs"));
-  input FluidDissipation.PressureLoss.Bend.dp_curvedOverall_IN_var IN_var
-    "Input record for function dp_curvedOverall"
+  input FluidDissipation.PressureLoss.Bend.dp_curvedOverall_IN_var IN_var "Input record for function dp_curvedOverall"
     annotation (Dialog(group="Variable inputs"));
-  input FluidDissipation.Utilities.Records.PressureLoss.PressureLossInput chosenTarget
-    "Target variable of calculation" annotation (Dialog(group="Input"));
+  input FluidDissipation.Utilities.Records.PressureLoss.PressureLossInput chosenTarget "Target variable of calculation"
+                                     annotation (Dialog(group="Input"));
 
   //output variables
   output SI.Pressure DP "pressure loss" annotation (Dialog(group="Output"));
   output SI.MassFlowRate M_FLOW "mass flow rate"
     annotation (Dialog(group="Output"));
-  output Utilities.Types.PressureLossCoefficient zeta_TOT
-    "Pressure loss coefficient" annotation (Dialog(group="Output"));
+  output Utilities.Types.PressureLossCoefficient zeta_TOT "Pressure loss coefficient"
+                                annotation (Dialog(group="Output"));
   output SI.ReynoldsNumber Re "Reynolds number"
     annotation (Dialog(group="Output"));
   final output SI.PrandtlNumber Pr=0 "Prandtl number"
     annotation (Dialog(group="Output"));
-  output Real failureStatus
-    "0== boundary conditions fulfilled | 1== failure >> check if still meaningful results"
+  output Real failureStatus "0== boundary conditions fulfilled | 1== failure >> check if still meaningful results"
     annotation (Dialog(group="Output"));
 
 protected

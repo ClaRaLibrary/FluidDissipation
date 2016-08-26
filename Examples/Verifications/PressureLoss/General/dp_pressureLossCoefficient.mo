@@ -1,24 +1,19 @@
 within FluidDissipation.Examples.Verifications.PressureLoss.General;
-model dp_pressureLossCoefficient
-  "Verification of function dp_pressureLossCoefficient"
+model dp_pressureLossCoefficient "Verification of function dp_pressureLossCoefficient"
 
   //general variables
   parameter Integer n=3 "number of grid points";
 
-  parameter SI.Area A_cross=Modelica.Constants.pi*0.1^2/4
-    "Circular cross sectional area";
-  parameter TYP.PressureLossCoefficient zeta_TOT[n]={0.01,0.1,1}
-    "Pressure loss coefficient";
+  parameter SI.Area A_cross=Modelica.Constants.pi*0.1^2/4 "Circular cross sectional area";
+  parameter TYP.PressureLossCoefficient zeta_TOT[n]={0.01,0.1,1} "Pressure loss coefficient";
 
   //fluid property variables
   SI.Density rho=1.2 "Density of fluid";
 
   //target variables (here: mass flow rate as input for inverse calculation)
   //intended input variables for records
-  SI.MassFlowRate input_mdot[n](start=zeros(n)) = ones(n)*input_mflow_0.y
-    "(Input) mass flow rate (for intended incompressible case)";
-  SI.Pressure input_dp[n]={DP[i] for i in 1:n}
-    "(Input) pressure loss (for intended compressible case)";
+  SI.MassFlowRate input_mdot[n](start=zeros(n)) = ones(n)*input_mflow_0.y "(Input) mass flow rate (for intended incompressible case)";
+  SI.Pressure input_dp[n]={DP[i] for i in 1:n} "(Input) pressure loss (for intended compressible case)";
 
   //input record
   //incompressible fluid flow
@@ -94,8 +89,8 @@ equation
   end for;
 
   annotation (__Dymola_Commands(file=
-          "modelica://FluidDissipation/Extras/Scripts/pressureLoss/general/dp_pressureLossCoefficient.mos"
-        "Verification of dp_pressureLossCoefficient"), Diagram(coordinateSystem(
+          "modelica://FluidDissipation/Extras/Scripts/pressureLoss/general/dp_pressureLossCoefficient.mos" "Verification of dp_pressureLossCoefficient"),
+                                                       Diagram(coordinateSystem(
           preserveAspectRatio=false, extent={{-100,-100},{100,100}}), graphics={
            Text(
           extent={{-100,50},{100,75}},

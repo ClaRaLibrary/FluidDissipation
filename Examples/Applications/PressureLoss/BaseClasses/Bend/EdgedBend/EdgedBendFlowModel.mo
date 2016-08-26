@@ -1,22 +1,18 @@
 within FluidDissipation.Examples.Applications.PressureLoss.BaseClasses.Bend.EdgedBend;
-model EdgedBendFlowModel
-  "Edged bend: Application flow model for bend function in Modelica.Fluid"
+model EdgedBendFlowModel "Edged bend: Application flow model for bend function in Modelica.Fluid"
 
   //base flow model
-  extends
-    FluidDissipation.Examples.Applications.PressureLoss.BaseClasses.Bend.BaseBendPL.BaseBendModel;
+  extends FluidDissipation.Examples.Applications.PressureLoss.BaseClasses.Bend.BaseBendPL.BaseBendModel;
 
   //pressure loss calculation
-  FluidDissipation.Utilities.Types.Roughness roughness=FluidDissipation.Utilities.Types.Roughness.Considered
-    "Choice of considering surface roughness" annotation (Dialog(group="Bend"));
-  parameter Modelica.SIunits.Conversions.NonSIunits.Angle_deg delta=90
-    "Angle of turning"                                                                    annotation (Dialog(group="Bend"));
+  FluidDissipation.Utilities.Types.Roughness roughness=FluidDissipation.Utilities.Types.Roughness.Considered "Choice of considering surface roughness"
+                                              annotation (Dialog(group="Bend"));
+  parameter Modelica.SIunits.Conversions.NonSIunits.Angle_deg delta=90 "Angle of turning" annotation (Dialog(group="Bend"));
   parameter SI.Diameter d_hyd=0.1 "Hydraulic diameter"
     annotation (Dialog(group="Bend"));
   parameter SI.Length K=0 "Roughness (average height of surface asperities)"
     annotation (Dialog(group="Bend"));
-  parameter SI.Length L=1
-    "Length of the straight starting section before the bend"
+  parameter SI.Length L=1 "Length of the straight starting section before the bend"
     annotation (Dialog(group="Bend"));
 
   FluidDissipation.Examples.Applications.PressureLoss.BaseClasses.Bend.EdgedBend.PressureLossInput_con

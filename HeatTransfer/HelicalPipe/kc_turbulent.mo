@@ -1,16 +1,13 @@
 within FluidDissipation.HeatTransfer.HelicalPipe;
-function kc_turbulent
-  "Mean heat transfer coefficient of helical pipe | hydrodynamically developed turbulent flow regime"
+function kc_turbulent "Mean heat transfer coefficient of helical pipe | hydrodynamically developed turbulent flow regime"
   extends Modelica.Icons.Function;
   //SOURCE: VDI-Waermeatlas, 9th edition, Springer-Verlag, 2002, section Gc1 - Gc2
   //Notation of equations according to SOURCE
 
   //input records
-  input FluidDissipation.HeatTransfer.HelicalPipe.kc_turbulent_IN_con IN_con
-    "Input record for function  kc_turbulent"
+  input FluidDissipation.HeatTransfer.HelicalPipe.kc_turbulent_IN_con IN_con "Input record for function  kc_turbulent"
     annotation (Dialog(group="Constant inputs"));
-  input FluidDissipation.HeatTransfer.HelicalPipe.kc_turbulent_IN_var IN_var
-    "Input record for function  kc_turbulent"
+  input FluidDissipation.HeatTransfer.HelicalPipe.kc_turbulent_IN_var IN_var "Input record for function  kc_turbulent"
     annotation (Dialog(group="Variable inputs"));
 
   //output variables
@@ -21,19 +18,17 @@ function kc_turbulent
     annotation (Dialog(group="Output"));
   output SI.NusseltNumber Nu "Nusselt number"
     annotation (Dialog(group="Output"));
-  output Real failureStatus
-    "0== boundary conditions fulfilled | 1== failure >> check if still meaningful results"
+  output Real failureStatus "0== boundary conditions fulfilled | 1== failure >> check if still meaningful results"
     annotation (Dialog(group="Output"));
 
 protected
-  Real MIN=Modelica.Constants.eps;
+  Real MIN=Modelica.Constants.eps "Limiter";
 
   Real turbulent=2.2e4 "Minimum Reynolds number for turbulent regime";
 
   SI.Area A_cross=PI*IN_con.d_hyd^2/4 "Cross sectional area";
 
-  SI.Velocity velocity=abs(IN_var.m_flow)/max(MIN, IN_var.rho*A_cross)
-    "Mean velocity";
+  SI.Velocity velocity=abs(IN_var.m_flow)/max(MIN, IN_var.rho*A_cross) "Mean velocity";
 
   //failure status
   Real fstatus[1] "Check of expected boundary conditions";
@@ -41,7 +36,7 @@ protected
   //Documentation
 algorithm
   Pr := abs(IN_var.eta*IN_var.cp/IN_var.lambda);
-  Re := max(1e-3, abs(IN_var.rho*velocity*IN_con.d_hyd/IN_var.eta));
+  Re := abs(IN_var.rho*velocity*IN_con.d_hyd/IN_var.eta);
   kc := FluidDissipation.HeatTransfer.HelicalPipe.kc_turbulent_KC(IN_con,
     IN_var);
   Nu := kc*IN_con.d_hyd/max(MIN, IN_var.lambda);
@@ -148,5 +143,7 @@ Note that the ratio of hydraulic diameter to total length of helical pipe <b> d_
 </html>
  
  
-"));
+", revisions="<html>
+<pre>2016-04-12 Stefan Wischhusen: Removed singularity for Re at zero mass flow rate. </pre>
+</html>"));
 end kc_turbulent;

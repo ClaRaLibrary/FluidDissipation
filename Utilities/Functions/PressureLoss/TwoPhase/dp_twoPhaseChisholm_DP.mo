@@ -1,6 +1,5 @@
 within FluidDissipation.Utilities.Functions.PressureLoss.TwoPhase;
-function dp_twoPhaseChisholm_DP
-  "Frictional pressure loss of straight pipe for two phase flow according to Chisholm correlation | calculate pressure loss | overall flow regime"
+function dp_twoPhaseChisholm_DP "Frictional pressure loss of straight pipe for two phase flow according to Chisholm correlation | calculate pressure loss | overall flow regime"
   extends Modelica.Icons.Function;
   //SOURCE_1: Chisholm,D.:PRESSURE GRADIENTS DUE TO FRICTION DURING THE FLOW OF EVAPORATING TWO-PHASE MIXTURES IN SMOOTH TUBES AND CHANNELS, Int. J. Heat Mass Transfer, Vol. 16, pp. 347-358, Pergamon Press 1973
 

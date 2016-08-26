@@ -1,8 +1,8 @@
 within FluidDissipation.Examples.TestCases.PressureLoss;
 model Split_Right
 
-  Applications.PressureLoss.Tjunction tjunction(                    redeclare
-      package Medium = Modelica.Media.Air.SimpleAir, zeta_TOT_max=100)
+  Applications.PressureLoss.Tjunction tjunction(                    redeclare package Medium =
+                       Modelica.Media.Air.SimpleAir, zeta_TOT_max=100)
     annotation (Placement(transformation(extent={{-20,-20},{20,20}})));
   Modelica.Fluid.Sources.Boundary_pT boundary(
   redeclare package Medium = Modelica.Media.Air.SimpleAir,

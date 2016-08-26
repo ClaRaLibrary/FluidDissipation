@@ -1,14 +1,11 @@
 within FluidDissipation.Examples.Applications.PressureLoss.BaseClasses.StraightPipe.Overall;
-model OverallFlowModel
-  "Straight pipe (overall): Application flow model for straight pipe function in Modelica.Fluid"
+model OverallFlowModel "Straight pipe (overall): Application flow model for straight pipe function in Modelica.Fluid"
 
   //base flow model
-  extends
-    FluidDissipation.Examples.Applications.PressureLoss.BaseClasses.StraightPipe.BaseStraightPipePL.BaseStraightPipeModel;
+  extends FluidDissipation.Examples.Applications.PressureLoss.BaseClasses.StraightPipe.BaseStraightPipePL.BaseStraightPipeModel;
 
   //pressure loss calculation
-  FluidDissipation.Utilities.Types.Roughness roughness=FluidDissipation.Utilities.Types.Roughness.Considered
-    "Choice of considering surface roughness"
+  FluidDissipation.Utilities.Types.Roughness roughness=FluidDissipation.Utilities.Types.Roughness.Considered "Choice of considering surface roughness"
     annotation (Dialog(group="Straight pipe"));
   parameter SI.Diameter d_hyd=0.1 "Hydraulic diameter"
     annotation (Dialog(group="Straight pipe"));

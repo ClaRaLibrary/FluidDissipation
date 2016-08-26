@@ -1,6 +1,5 @@
 within FluidDissipation.PressureLoss.StraightPipe;
-function dp_turbulent_DP
-  "Pressure loss of straight pipe | calculate pressure loss | turbulent flow regime | surface roughness"
+function dp_turbulent_DP "Pressure loss of straight pipe | calculate pressure loss | turbulent flow regime | surface roughness"
   extends Modelica.Icons.Function;
   //SOURCE_1: Idelchik, I.E.: HANDBOOK OF HYDRAULIC RESISTANCE, 3rd edition, 2006.
   //SOURCE_2: Miller, D.S.: INTERNAL FLOW SYSTEMS, 2nd edition, 1984.
@@ -9,11 +8,9 @@ function dp_turbulent_DP
   import FD = FluidDissipation.PressureLoss.StraightPipe;
 
   //input records
-  input FluidDissipation.PressureLoss.StraightPipe.dp_turbulent_IN_con IN_con
-    "Input record for function dp_turbulent_DP"
+  input FluidDissipation.PressureLoss.StraightPipe.dp_turbulent_IN_con IN_con "Input record for function dp_turbulent_DP"
     annotation (Dialog(group="Constant inputs"));
-  input FluidDissipation.PressureLoss.StraightPipe.dp_turbulent_IN_var IN_var
-    "Input record for function dp_turbulent_DP"
+  input FluidDissipation.PressureLoss.StraightPipe.dp_turbulent_IN_var IN_var "Input record for function dp_turbulent_DP"
     annotation (Dialog(group="Variable inputs"));
   input SI.MassFlowRate m_flow "Mass flow rate"
     annotation (Dialog(group="Input"));
@@ -35,26 +32,21 @@ protected
 
   //SOURCE_1: p.81, fig. 2-3, sec 21-22: definition of flow regime boundaries
   SI.ReynoldsNumber Re_lam_min=1e3 "Minimum Reynolds number for laminar regime";
-  SI.ReynoldsNumber Re_lam_max=2090*(1/max(0.007, k))^0.0635
-    "Maximum Reynolds number for laminar regime";
-  SI.ReynoldsNumber Re_turb_min=4e3
-    "Minimum Reynolds number for turbulent regime";
+  SI.ReynoldsNumber Re_lam_max=2090*(1/max(0.007, k))^0.0635 "Maximum Reynolds number for laminar regime";
+  SI.ReynoldsNumber Re_turb_min=4e3 "Minimum Reynolds number for turbulent regime";
 
   SI.ReynoldsNumber Re_lam_leave=min(Re_lam_max, max(Re_lam_min, 754*
-      Modelica.Math.exp(if k <= 0.007 then 0.0065/0.007 else 0.0065/k)))
-    "Start of transition regime for increasing Reynolds number (leaving laminar regime)";
+      Modelica.Math.exp(if k <= 0.007 then 0.0065/0.007 else 0.0065/k))) "Start of transition regime for increasing Reynolds number (leaving laminar regime)";
 
   SI.Velocity velocity=m_flow/(IN_var.rho*A_cross) "Mean velocity";
   SI.ReynoldsNumber Re=max(Re_min, IN_var.rho*abs(velocity)*d_hyd/IN_var.eta);
 
   //SOURCE_2: p.191, eq. 8.4: determining Darcy friction factor
   //assuming lambda_FRI == lambda_FRI_calc/Re^2
-  TYP.DarcyFrictionFactor lambda_FRI_smooth=0.3164*Re^(1.75)
-    "Darcy friction factor neglecting surface roughness (Blasius)";
+  TYP.DarcyFrictionFactor lambda_FRI_smooth=0.3164*Re^(1.75) "Darcy friction factor neglecting surface roughness (Blasius)";
   //here with lambda_FRI_rough == lambda_FRI*Re^2
   TYP.DarcyFrictionFactor lambda_FRI_rough=0.25*(max(Re, Re_lam_leave)/
-      Modelica.Math.log10(k/3.7 + 5.74/max(Re, Re_lam_leave)^0.9))^2
-    "Darcy friction factor considering surface roughness";
+      Modelica.Math.log10(k/3.7 + 5.74/max(Re, Re_lam_leave)^0.9))^2 "Darcy friction factor considering surface roughness";
   TYP.DarcyFrictionFactor lambda_FRI=if IN_con.roughness == TYP1.Neglected then
             lambda_FRI_smooth else lambda_FRI_rough "Darcy friction factor";
   TYP.DarcyFrictionFactor lambda_FRI_calc=if Re < Re_lam_leave then 64/Re else
@@ -65,8 +57,7 @@ protected
       Re_turb_min,
       k)/Re^2 "Darcy friction factor";
 
-  TYP.PressureLossCoefficient zeta_TOT=lambda_FRI_calc*IN_con.L/d_hyd
-    "Pressure loss coefficient";
+  TYP.PressureLossCoefficient zeta_TOT=lambda_FRI_calc*IN_con.L/d_hyd "Pressure loss coefficient";
 
   //Documentation
 

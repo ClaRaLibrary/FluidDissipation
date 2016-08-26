@@ -1,21 +1,16 @@
 within FluidDissipation.Examples.Verifications.PressureLoss.Orifice;
-model dp_thickEdgedOverall_DPMFLOW
-  "Verification of function dp_thickEdgedOverall_DP AND dp_thickEdgedOverall_MFLOW"
+model dp_thickEdgedOverall_DPMFLOW "Verification of function dp_thickEdgedOverall_DP AND dp_thickEdgedOverall_MFLOW"
 
   constant Real MIN=Modelica.Constants.eps;
 
-  parameter Integer n=size(A0_2_A1, 1)
-    "Number of different ratios of cross sectional areas";
+  parameter Integer n=size(A0_2_A1, 1) "Number of different ratios of cross sectional areas";
 
   //orifice variables
   parameter SI.Area A_0=1e-3 "Cross sectional area of vena contraction";
-  parameter SI.Area A_1[n]={A_0/A0_2_A1[i] for i in 1:n}
-    "Large cross sectional area of orifice";
+  parameter SI.Area A_1[n]={A_0/A0_2_A1[i] for i in 1:n} "Large cross sectional area of orifice";
   parameter SI.Length C_0=sqrt(4*A_0/PI)*PI "Perimeter of vena contraction";
-  parameter SI.Length C_1[n]=sqrt(4*A_1/PI)*PI
-    "Perimeter of large cross sectional area of orifice";
-  parameter Real A0_2_A1[6]={0.02,0.08,0.20,0.40,0.70,0.90}
-    "Ratio of cross sectional areas";
+  parameter SI.Length C_1[n]=sqrt(4*A_1/PI)*PI "Perimeter of large cross sectional area of orifice";
+  parameter Real A0_2_A1[6]={0.02,0.08,0.20,0.40,0.70,0.90} "Ratio of cross sectional areas";
 
   SI.Length L(start=0) "Length of thick edged orifice";
   Real l_bar=L/sqrt(4*A_0/PI) "Relative length of orifice";
@@ -28,16 +23,12 @@ model dp_thickEdgedOverall_DPMFLOW
 
   //target variables (here: mass flow rate as input for inverse calculation)
   //intended input variables for records
-  SI.MassFlowRate input_mdot[n](start=zeros(n))
-    "(Input) mass flow rate (for intended incompressible case)";
-  SI.Pressure input_dp[n](start=zeros(n)) = ones(n)*input_DP.y
-    "(Input) pressure loss (for intended compressible case)";
+  SI.MassFlowRate input_mdot[n](start=zeros(n)) "(Input) mass flow rate (for intended incompressible case)";
+  SI.Pressure input_dp[n](start=zeros(n)) = ones(n)*input_DP.y "(Input) pressure loss (for intended compressible case)";
 
   //intended output variables for records
-  SI.MassFlowRate M_FLOW[n](start=zeros(n))
-    "(Output) mass flow rate (for intended compressible case)";
-  SI.Pressure DP[n](start=zeros(n)) = {input_dp[i] for i in 1:n}
-    "(Output) pressure loss (for intended incompressible case)";
+  SI.MassFlowRate M_FLOW[n](start=zeros(n)) "(Output) mass flow rate (for intended compressible case)";
+  SI.Pressure DP[n](start=zeros(n)) = {input_dp[i] for i in 1:n} "(Output) pressure loss (for intended incompressible case)";
 
   //input record
   //target == DP (incompressible)
@@ -94,8 +85,7 @@ equation
     input_dp[i]) for i in 1:n};
 
   annotation (__Dymola_Commands(file=
-          "modelica://FluidDissipation/Extras/Scripts/pressureLoss/orifice/dp_thickEdgedOverall_DPMFLOW.mos"
-        "Verification of dp_thickEdgedOverall_DP and dp_thickEdgedOverall_MFLOW"),
+          "modelica://FluidDissipation/Extras/Scripts/pressureLoss/orifice/dp_thickEdgedOverall_DPMFLOW.mos" "Verification of dp_thickEdgedOverall_DP and dp_thickEdgedOverall_MFLOW"),
       Diagram(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{
             100,100}}), graphics={Text(
           extent={{-100,50},{100,75}},

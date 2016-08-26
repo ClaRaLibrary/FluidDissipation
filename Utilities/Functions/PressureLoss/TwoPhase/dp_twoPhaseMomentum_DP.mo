@@ -41,7 +41,6 @@ function dp_twoPhaseMomentum_DP "Momentum pressure loss of straight pipe for two
   input SI.MassFlowRate m_flow "Mass flow rate"
     annotation (Dialog(group="Input"));
 
-    input Real delta_xflow_smooth "Mass flow rate quality at which smoothing for flow reversal or switch of phase change mechanism (boiling to condensation or vice versa) begins";
   output SI.Pressure DP_mom "Momentum pressure loss";
 
 protected
@@ -110,7 +109,7 @@ protected
   //SOURCE 3: p.53, eq. 4.13: Calculation of heterogeneous approach with correction of mass flow rate for considering velocity difference between fluid phases
   SI.Pressure dp_mom_cor=SMOOTH(
       delta_xflow,
-      delta_xflow_smooth,
+      0.05,
       0)*(abs(mdot_A*meanVelEnd + mdotCorEnd*deltaVelEnd/Across) - abs(mdot_A*
       meanVelSta + mdotCorSta*deltaVelSta/Across)) "Momentum pressure loss using mass flow rate correction";
 
@@ -121,7 +120,7 @@ algorithm
   //The difference in static pressure at the outlet and the inlet causes a positiv momentum pressure loss at evaporation (assumed vice versa for condensation)
   DP_mom := if massFlowRateCorrection then dp_mom_cor else mdot_A^2*SMOOTH(
     delta_xflow,
-    delta_xflow_smooth,
+    0.05,
     0)*abs(1/max(MIN, rho_end) - 1/max(MIN, rho_sta));
   annotation (Inline=false, Documentation(revisions="<html>
 2012-11-28 Corrected an error in momentum pressure loss calculation. Stefan Wischhusen.

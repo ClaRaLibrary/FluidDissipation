@@ -1,7 +1,6 @@
 within FluidDissipation.Examples.Applications.HeatTransfer.BaseClasses.General;
 package Turbulent "FluidDissipation: Turbulent fluid flow in generic geometries"
-extends
-  FluidDissipation.Examples.Applications.HeatTransfer.BaseClasses.General.BaseGeneralHT;
+extends FluidDissipation.Examples.Applications.HeatTransfer.BaseClasses.General.BaseGeneralHT;
 constant String fluidFlowRegime="turbulent regime";
 
 

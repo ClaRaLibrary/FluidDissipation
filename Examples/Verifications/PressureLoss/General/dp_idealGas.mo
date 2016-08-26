@@ -9,16 +9,13 @@ model dp_idealGas "Verification of function dp_idealGas"
 
   parameter Real p_1=1.1e5 "MEASURED pressure at input [Pa]";
   parameter Real dp_nom[3]={0.5e3,2e3,3e3} "Nominal pressure loss [Pa]";
-  parameter Real p_2[n]={p_1 - dp_nom[i] for i in 1:n}
-    "MEASURED pressure at output [Pa]";
+  parameter Real p_2[n]={p_1 - dp_nom[i] for i in 1:n} "MEASURED pressure at output [Pa]";
 
   parameter Real m_flow_nom[n]=ones(n)*10 "Nominal mass flow rate [kg/s]";
-  Real Km[n]={R_s*(p_1 - (p_2[i]))/((m_flow_nom[i])^exp/rho_m) for i in 1:n}
-    "Coefficient for pressure loss law [(Pa)^2/{(kg/s)^exp*K}]";
+  Real Km[n]={R_s*(p_1 - (p_2[i]))/((m_flow_nom[i])^exp/rho_m) for i in 1:n} "Coefficient for pressure loss law [(Pa)^2/{(kg/s)^exp*K}]";
 
   //fluid property variables
-  parameter SI.SpecificHeatCapacity R_s=287
-    "Specific gas constant of ideal gas"
+  parameter SI.SpecificHeatCapacity R_s=287 "Specific gas constant of ideal gas"
     annotation (Dialog(group="Fluid properties"));
   parameter SI.Density rho_m=p_m/(R_s*T_m) "Mean density of ideal gas"
     annotation (Dialog(group="Fluid properties"));
@@ -28,16 +25,13 @@ model dp_idealGas "Verification of function dp_idealGas"
     annotation (Dialog(group="Fluid properties"));
 
   //linearisation
-  parameter SI.Pressure dp_smooth=1e-6
-    "Start linearisation for smaller pressure loss"
+  parameter SI.Pressure dp_smooth=1e-6 "Start linearisation for smaller pressure loss"
     annotation (Dialog(group="Linearisation"));
 
   //target variables (here: mass flow rate as input for inverse calculation)
   //intended input variables for records
-  SI.MassFlowRate input_mdot[n](start=zeros(n)) = ones(n)*input_mflow_0.y
-    "(Input) mass flow rate (for intended incompressible case)";
-  SI.Pressure input_dp[n]={DP[i] for i in 1:n}
-    "(Input) pressure loss (for intended compressible case)";
+  SI.MassFlowRate input_mdot[n](start=zeros(n)) = ones(n)*input_mflow_0.y "(Input) mass flow rate (for intended incompressible case)";
+  SI.Pressure input_dp[n]={DP[i] for i in 1:n} "(Input) pressure loss (for intended compressible case)";
 
   //input record
   //target == DP (incompressible)
@@ -117,8 +111,8 @@ equation
   end for;
 
   annotation (__Dymola_Commands(file=
-          "modelica://FluidDissipation/Extras/Scripts/pressureLoss/general/dp_idealGas.mos"
-        "Verification of dp_idealGas"), Diagram(coordinateSystem(
+          "modelica://FluidDissipation/Extras/Scripts/pressureLoss/general/dp_idealGas.mos" "Verification of dp_idealGas"),
+                                        Diagram(coordinateSystem(
           preserveAspectRatio=false, extent={{-100,-100},{100,100}}), graphics={
            Text(
           extent={{-100,50},{100,75}},

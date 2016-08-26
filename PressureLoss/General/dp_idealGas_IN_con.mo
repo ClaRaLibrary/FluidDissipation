@@ -1,13 +1,11 @@
 within FluidDissipation.PressureLoss.General;
-record dp_idealGas_IN_con
-  "Input record for function dp_idealGas, dp_idealGas_DP and dp_idealGas_MFLOW"
+record dp_idealGas_IN_con "Input record for function dp_idealGas, dp_idealGas_DP and dp_idealGas_MFLOW"
 
   //generic variables
   extends FluidDissipation.Utilities.Records.General.IdealGas_con;
 
   //linearisation
-  SI.Pressure dp_smooth(min=Modelica.Constants.eps) = 1
-    "Start linearisation for smaller pressure loss"
+  SI.Pressure dp_smooth(min=Modelica.Constants.eps) = 1 "Start linearisation for smaller pressure loss"
     annotation (Dialog(group="Linearisation"));
 
   annotation (Documentation(info="<html>

@@ -4,20 +4,16 @@ model kc_tubeBundle_1ph_KC "Verification of function kc_tubeBundle_1ph_KC"
   parameter Integer n=2 "number of variants";
 
   //Heat exchanger variables
-  parameter Modelica.SIunits.Area A_front(min=1e-6)=1
-    "Cross sectional area in front of the tube row or bundle";
-  parameter Modelica.SIunits.Length d(min=1e-6) = 0.0164
-    "Outer diameter of tubes";
+  parameter Modelica.SIunits.Area A_front(min=1e-6)=1 "Cross sectional area in front of the tube row or bundle";
+  parameter Modelica.SIunits.Length d(min=1e-6) = 0.0164 "Outer diameter of tubes";
 
 protected
   parameter SI.Length s[n]={d*1.25, d*2.0};
 
 public
-  parameter Boolean staggeredAlignment[n] = {true, false}
-    "True, if the tubes are aligned staggeredly, false otherwise | don't care for single row"
+  parameter Boolean staggeredAlignment[n] = {true, false} "True, if the tubes are aligned staggeredly, false otherwise | don't care for single row"
     annotation (Dialog(group="Geometry"));
-  parameter Integer n_rows[n](min=1) = {10, 10}
-    "Number of pipe rows in flow direction";
+  parameter Integer n_rows[n](min=1) = {10, 10} "Number of pipe rows in flow direction";
 
 protected
   parameter Modelica.SIunits.Length L = Modelica.Constants.pi/2*d;
@@ -27,11 +23,9 @@ public
 
   //fluid property variables
 
-  parameter SI.SpecificHeatCapacityAtConstantPressure cp=1007
-    "Specific heat capacity at constant pressure of fluid";
+  parameter SI.SpecificHeatCapacityAtConstantPressure cp=1007 "Specific heat capacity at constant pressure of fluid";
   parameter SI.DynamicViscosity eta=18.04e-6 "Dynamic viscosity of fluid";
-  parameter SI.ThermalConductivity lambda=25.3e-3
-    "Thermal conductivity of fluid";
+  parameter SI.ThermalConductivity lambda=25.3e-3 "Thermal conductivity of fluid";
   parameter SI.Density rho=1.217 "Density of fluid";
 
   //here: Nusselt number as input for inverse calculation
@@ -90,8 +84,7 @@ public
   Real b[n] = {m_flow_IN_con_1.s_2/m_flow_IN_con_1.d, m_flow_IN_con_2.s_2/m_flow_IN_con_2.d};
 
   //output variables
-  SI.CoefficientOfHeatTransfer[n] kc = {Nu*lambda/L for i in 1:n}
-    "Heat transfer coefficient";
+  SI.CoefficientOfHeatTransfer[n] kc = {Nu*lambda/L for i in 1:n} "Heat transfer coefficient";
 
 public
   Modelica.Blocks.Sources.Ramp input_Nu(
@@ -122,6 +115,5 @@ equation
           extent={{-50,21},{150,16}},
           lineColor={0,0,255},
           textString="in-line tubes")}),
-          __Dymola_Commands(file="modelica://FluidDissipation/Extras/Scripts/heatTransfer/heatExchanger/kc_tubeBundle_1ph_KC.mos"
-        "Verification of kc_tubeBundle_1ph_KC"));
+          __Dymola_Commands(file="modelica://FluidDissipation/Extras/Scripts/heatTransfer/heatExchanger/kc_tubeBundle_1ph_KC.mos" "Verification of kc_tubeBundle_1ph_KC"));
 end kc_tubeBundle_1ph_KC;

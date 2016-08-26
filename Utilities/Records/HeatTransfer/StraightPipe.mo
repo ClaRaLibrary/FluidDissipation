@@ -3,11 +3,9 @@ record StraightPipe "Input for straight pipe"
   extends Modelica.Icons.Record;
 
   //choices
-  FluidDissipation.Utilities.Types.HeatTransferBoundary target=FluidDissipation.Utilities.Types.HeatTransferBoundary.UWTuDFF
-    "Choice of heat transfer boundary condition"
+  FluidDissipation.Utilities.Types.HeatTransferBoundary target=FluidDissipation.Utilities.Types.HeatTransferBoundary.UWTuDFF "Choice of heat transfer boundary condition"
     annotation (Dialog(group="Choices"));
-  FluidDissipation.Utilities.Types.Roughness roughness=FluidDissipation.Utilities.Types.Roughness.Considered
-    "Choice of considering surface roughness"
+  FluidDissipation.Utilities.Types.Roughness roughness=FluidDissipation.Utilities.Types.Roughness.Considered "Choice of considering surface roughness"
     annotation (Dialog(group="Choices"));
 
   SI.Diameter d_hyd=0.1 "Hydraulic diameter"

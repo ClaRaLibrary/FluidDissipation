@@ -25,7 +25,7 @@ protected
   //SOURCE_1: p.674, sec. 9.8.3: Considering nucleate and convective boiling w.r.t. equation of Gungor-Winterton
   SI.MassFlowRate mdot_l=abs(IN_var.m_flow)*(1 - x_flow) "Mass flow rate of liquid only";
   SI.Velocity velocity_l=mdot_l/max(MIN, IN_var.rho_l*A_cross) "Mean velocity assuming liquid mass flow rate flows alone";
-  SI.ReynoldsNumber Re_l=max(1, IN_var.rho_l*velocity_l*d_hyd/max(MIN, IN_var.eta_l)) "Reynolds number assuming liquid mass flow rate flows alone";
+  SI.ReynoldsNumber Re_l=(IN_var.rho_l*velocity_l*d_hyd/max(MIN, IN_var.eta_l)) "Reynolds number assuming liquid mass flow rate flows alone";
   SI.PrandtlNumber Pr_l=abs(IN_var.eta_l*IN_var.cp_l/max(MIN, IN_var.lambda_l)) "Prandtl number assuming liquid mass flow rate flows alone";
 
   //SOURCE_1: p.674, eq. 9.98: Considering effect of heat flux on nucleate boiling with Boiling number
@@ -51,5 +51,8 @@ protected
   //SOURCE_2: p.354, sec. final equations: Calculation of two phase heat transfer coefficient for vertical pipes w.r.t. equation of Gungor-Winterton
 algorithm
   kc := E_fc*kc_fc + S_nb*kc_nb;
-  annotation (Inline=false, smoothOrder=5);
+  annotation (Inline=false, smoothOrder=5,
+    Documentation(revisions="<html>
+<pre>2016-04-13 Stefan Wischhusen: In principle it is clear that negative qdot_A cannot occur under boiling conditions. However, from a numerical point of view it might be advantageous to feature cooling as well. Thus we use the absolute value of the heat flux.</pre>
+</html>"));
 end kc_twoPhase_boilingVertical_KC;

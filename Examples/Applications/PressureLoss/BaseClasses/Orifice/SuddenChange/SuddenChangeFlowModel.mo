@@ -1,10 +1,8 @@
 within FluidDissipation.Examples.Applications.PressureLoss.BaseClasses.Orifice.SuddenChange;
-model SuddenChangeFlowModel
-  "Orifice (sudden section change): Application flow model for orifice function in Modelica.Fluid"
+model SuddenChangeFlowModel "Orifice (sudden section change): Application flow model for orifice function in Modelica.Fluid"
 
   //base flow model
-  extends
-    FluidDissipation.Examples.Applications.PressureLoss.BaseClasses.Orifice.BaseOrificePL.BaseOrificeModel;
+  extends FluidDissipation.Examples.Applications.PressureLoss.BaseClasses.Orifice.BaseOrificePL.BaseOrificeModel;
 
   import SMOOTH = FluidDissipation.Utilities.Functions.General.Stepsmoother;
 
@@ -14,18 +12,15 @@ model SuddenChangeFlowModel
   parameter SI.Length C_1=PI*0.01 "Small perimeter of orifice";
   parameter SI.Length C_2=C_1 "Large perimeter of orifice";
 
-  SI.Velocity velocity_a=abs(m_flow)/(rho_a*A_1)
-    "Velocity at inlet of diffuser section w.r.t. design flow direction";
-  SI.Velocity velocity_b=abs(m_flow)/(rho_b*A_2)
-    "Velocity at outlet of diffuser section w.r.t. design flow direction";
+  SI.Velocity velocity_a=abs(m_flow)/(rho_a*A_1) "Velocity at inlet of diffuser section w.r.t. design flow direction";
+  SI.Velocity velocity_b=abs(m_flow)/(rho_b*A_2) "Velocity at outlet of diffuser section w.r.t. design flow direction";
   SI.Pressure dp_dyn=(rho_a/2)*SMOOTH(
       m_flow_small,
       0,
       abs(m_flow))*velocity_a^2 - (rho_b/2)*SMOOTH(
       m_flow_small,
       0,
-      abs(m_flow))*velocity_b^2
-    "Dynamic pressure difference between inlet and outlet of diffuser section";
+      abs(m_flow))*velocity_b^2 "Dynamic pressure difference between inlet and outlet of diffuser section";
 
   TYP.PressureLossCoefficient zeta_tot "Total pressure loss coefficient";
 

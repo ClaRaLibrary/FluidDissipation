@@ -1,32 +1,27 @@
 within FluidDissipation.HeatTransfer.Channel;
-function kc_evenGapLaminar_KC
-  "Mean heat transfer coefficient of even gap | laminar flow regime | considering boundary layer development | heat transfer at ONE or BOTH sides | identical and constant wall temperatures"
+function kc_evenGapLaminar_KC "Mean heat transfer coefficient of even gap | laminar flow regime | considering boundary layer development | heat transfer at ONE or BOTH sides | identical and constant wall temperatures"
   extends Modelica.Icons.Function;
   //SOURCE: VDI-Waermeatlas, 9th edition, Springer-Verlag, 2002, Section Gb 6-10
 
   //input records
-  input FluidDissipation.HeatTransfer.Channel.kc_evenGapLaminar_IN_con IN_con
-    "Input record for function kc_evenGapLaminar_KC"
+  input FluidDissipation.HeatTransfer.Channel.kc_evenGapLaminar_IN_con IN_con "Input record for function kc_evenGapLaminar_KC"
     annotation (Dialog(group="Constant inputs"));
-  input FluidDissipation.HeatTransfer.Channel.kc_evenGapLaminar_IN_var IN_var
-    "Input record for function kc_evenGapLaminar_KC"
+  input FluidDissipation.HeatTransfer.Channel.kc_evenGapLaminar_IN_var IN_var "Input record for function kc_evenGapLaminar_KC"
     annotation (Dialog(group="Variable inputs"));
   //output variables
-  output SI.CoefficientOfHeatTransfer kc
-    "Output for function kc_evenGapLaminar_KC";
-
-  import TYP = FluidDissipation.Utilities.Types.kc_evenGap;
+  output SI.CoefficientOfHeatTransfer kc "Output for function kc_evenGapLaminar_KC";
 
 protected
-  Real MIN=Modelica.Constants.eps;
+  type TYP = Modelica.Fluid.Dissipation.Utilities.Types.kc_evenGap;
+
+  Real MIN=Modelica.Constants.eps "Limiter";
 
   SI.Area A_cross=max(MIN, IN_con.s*IN_con.h) "Cross sectional area of gap";
   SI.Diameter d_hyd=2*IN_con.s "Hydraulic diameter";
 
-  SI.Velocity velocity=abs(IN_var.m_flow)/max(MIN, IN_var.rho*A_cross)
-    "Mean velocity in gap";
-  SI.ReynoldsNumber Re=max(1, IN_var.rho*velocity*d_hyd/max(MIN, IN_var.eta));
-  SI.PrandtlNumber Pr=abs(IN_var.eta*IN_var.cp/max(MIN, IN_var.lambda));
+  SI.Velocity velocity=abs(IN_var.m_flow)/max(MIN, IN_var.rho*A_cross) "Mean velocity in gap";
+  SI.ReynoldsNumber Re=(IN_var.rho*velocity*d_hyd/max(MIN, IN_var.eta)) "Reynolds number";
+  SI.PrandtlNumber Pr=abs(IN_var.eta*IN_var.cp/max(MIN, IN_var.lambda)) "Prandtl number";
 
   //variables for mean Nusselt number
   //SOURCE: p.Gb 7, eq. 36/37
@@ -34,8 +29,7 @@ protected
             4.861 else if IN_con.target == TYP.DevBoth or IN_con.target == TYP.UndevBoth then
             7.541 else 0 "First Nusselt number";
   //SOURCE: p.Gb 7, eq. 38
-  SI.NusseltNumber Nu_2=1.841*(Re*Pr*d_hyd/(max(IN_con.L, MIN)))^(1/3)
-    "Second Nusselt number";
+  SI.NusseltNumber Nu_2=1.841*(Re*Pr*d_hyd/(max(IN_con.L, MIN)))^(1/3) "Second Nusselt number";
   //SOURCE: p.Gb 7, eq. 42
   SI.NusseltNumber Nu_3=if IN_con.target == TYP.UndevOne or IN_con.target ==
       TYP.UndevBoth then (2/(1 + 22*Pr))^(1/6)*(Re*Pr*d_hyd/(max(IN_con.L, MIN)))
@@ -207,5 +201,7 @@ Note that the verification for <a href=\"Modelica://FluidDissipation.HeatTransfe
 </dl>
  
 </html>
-"));
+", revisions="<html>
+<pre>2016-04-12 Stefan Wischhusen: Removed singularity for Re at zero mass flow rate. </pre>
+</html>"));
 end kc_evenGapLaminar_KC;

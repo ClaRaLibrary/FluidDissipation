@@ -1,32 +1,28 @@
 within FluidDissipation.PressureLoss.General;
-function dp_nominalPressureLossLawDensity
-  "Generic pressure loss | nominal operation point | pressure loss law (coefficient and exponent) | density dependence"
+function dp_nominalPressureLossLawDensity "Generic pressure loss | nominal operation point | pressure loss law (coefficient and exponent) | density dependence"
   extends Modelica.Icons.Function;
 
   //input records
-  input
-    FluidDissipation.PressureLoss.General.dp_nominalPressureLossLawDensity_IN_con
+  input FluidDissipation.PressureLoss.General.dp_nominalPressureLossLawDensity_IN_con
     IN_con "Input record for function dp_nominalPressureLossLawDensity"
     annotation (Dialog(group="Constant inputs"));
-  input
-    FluidDissipation.PressureLoss.General.dp_nominalPressureLossLawDensity_IN_var
+  input FluidDissipation.PressureLoss.General.dp_nominalPressureLossLawDensity_IN_var
     IN_var "Input record for function dp_nominalPressureLossLawDensity"
     annotation (Dialog(group="Variable inputs"));
-  input FluidDissipation.Utilities.Records.PressureLoss.PressureLossInput chosenTarget
-    "Target variable of calculation" annotation (Dialog(group="Input"));
+  input FluidDissipation.Utilities.Records.PressureLoss.PressureLossInput chosenTarget "Target variable of calculation"
+                                     annotation (Dialog(group="Input"));
 
   //output variables
   output SI.Pressure DP "pressure loss" annotation (Dialog(group="Output"));
   output SI.MassFlowRate M_FLOW "mass flow rate"
     annotation (Dialog(group="Output"));
-  output Utilities.Types.PressureLossCoefficient zeta_TOT
-    "Pressure loss coefficient" annotation (Dialog(group="Output"));
+  output Utilities.Types.PressureLossCoefficient zeta_TOT "Pressure loss coefficient"
+                                annotation (Dialog(group="Output"));
   output SI.ReynoldsNumber Re "Reynolds number"
     annotation (Dialog(group="Output"));
   final output SI.PrandtlNumber Pr=0 "Prandtl number"
     annotation (Dialog(group="Output"));
-  output Real failureStatus
-    "0== boundary conditions fulfilled | 1== failure >> check if still meaningful results"
+  output Real failureStatus "0== boundary conditions fulfilled | 1== failure >> check if still meaningful results"
     annotation (Dialog(group="Output"));
 
   //Documentation

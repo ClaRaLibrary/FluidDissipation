@@ -1,17 +1,14 @@
 within FluidDissipation.Examples.Applications.PressureLoss.BaseClasses.Nozzle;
 package ConicalOverall "FluidDissipation: Overall flow regime in a nozzle diffuser"
-extends
-  FluidDissipation.Examples.Applications.PressureLoss.BaseClasses.Nozzle.BaseNozzlePL;
+extends FluidDissipation.Examples.Applications.PressureLoss.BaseClasses.Nozzle.BaseNozzlePL;
 
 
 redeclare function extends pressureLoss_mflow
 
   //input records for nozzle function
-  input
-    FluidDissipation.Examples.Applications.PressureLoss.BaseClasses.Nozzle.ConicalOverall.PressureLossInput_con
+  input FluidDissipation.Examples.Applications.PressureLoss.BaseClasses.Nozzle.ConicalOverall.PressureLossInput_con
     IN_con annotation (Placement(transformation(extent={{-80,20},{-60,40}})));
-  input
-    FluidDissipation.Examples.Applications.PressureLoss.BaseClasses.Nozzle.ConicalOverall.PressureLossInput_var
+  input FluidDissipation.Examples.Applications.PressureLoss.BaseClasses.Nozzle.ConicalOverall.PressureLossInput_var
     IN_var annotation (Placement(transformation(extent={{-60,20},{-40,40}})));
   input SI.MassFlowRate m_flow "Mass flow rate" annotation (Dialog(tab="Input"));
 

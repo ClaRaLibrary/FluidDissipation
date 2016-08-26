@@ -1,16 +1,13 @@
 within FluidDissipation.HeatTransfer.HelicalPipe;
-function kc_overall
-  "Mean heat transfer coefficient of helical pipe | overall flow regime"
+function kc_overall "Mean heat transfer coefficient of helical pipe | overall flow regime"
   extends Modelica.Icons.Function;
   //SOURCE: VDI-Waermeatlas, 9th edition, Springer-Verlag, 2002, section Gc1 - Gc2
   //Notation of equations according to SOURCE
 
   //input records
-  input FluidDissipation.HeatTransfer.HelicalPipe.kc_overall_IN_con IN_con
-    "Input record for function kc_overall"
+  input FluidDissipation.HeatTransfer.HelicalPipe.kc_overall_IN_con IN_con "Input record for function kc_overall"
     annotation (Dialog(group="Constant inputs"));
-  input FluidDissipation.HeatTransfer.HelicalPipe.kc_overall_IN_var IN_var
-    "Input record for function kc_overall"
+  input FluidDissipation.HeatTransfer.HelicalPipe.kc_overall_IN_var IN_var "Input record for function kc_overall"
     annotation (Dialog(group="Variable inputs"));
 
   //output variables
@@ -21,22 +18,20 @@ function kc_overall
     annotation (Dialog(group="Output"));
   output SI.NusseltNumber Nu "Nusselt number"
     annotation (Dialog(group="Output"));
-  output Real failureStatus
-    "0== boundary conditions fulfilled | 1== failure >> check if still meaningful results"
+  output Real failureStatus "0== boundary conditions fulfilled | 1== failure >> check if still meaningful results"
     annotation (Dialog(group="Output"));
 
 protected
-  Real MIN=Modelica.Constants.eps;
+  Real MIN=Modelica.Constants.eps "Limiter";
 
   SI.Area A_cross=PI*IN_con.d_hyd^2/4 "Cross sectional area";
 
-  SI.Velocity velocity=abs(IN_var.m_flow)/max(MIN, IN_var.rho*A_cross)
-    "Mean velocity";
+  SI.Velocity velocity=abs(IN_var.m_flow)/max(MIN, IN_var.rho*A_cross) "Mean velocity";
 
   //Documentation
 algorithm
   Pr := abs(IN_var.eta*IN_var.cp/max(MIN, IN_var.lambda));
-  Re := max(MIN, IN_var.rho*velocity*IN_con.d_hyd/max(MIN, IN_var.eta));
+  Re := (IN_var.rho*velocity*IN_con.d_hyd/max(MIN, IN_var.eta));
   kc := FluidDissipation.HeatTransfer.HelicalPipe.kc_overall_KC(IN_con, IN_var);
   Nu := kc*IN_con.d_hyd/max(MIN, IN_var.lambda);
 
@@ -157,5 +152,7 @@ Note that the ratio of hydraulic diameter to total length of helical pipe <b> d_
  
  
  
-"));
+", revisions="<html>
+<pre>2016-04-12 Stefan Wischhusen: Removed singularity for Re at zero mass flow rate. </pre>
+</html>"));
 end kc_overall;

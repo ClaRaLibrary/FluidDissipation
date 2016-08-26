@@ -1,58 +1,52 @@
 within FluidDissipation.Examples.Applications.HeatTransfer;
-model ChannelHeatTransferModel
-  "Application model for a channel in Modelica_Fluid"
+model ChannelHeatTransferModel "Application model for a channel in Modelica_Fluid"
 
   //icon
   extends FluidDissipation.Utilities.Icons.HeatTransfer.Channel_i;
 
   //interfaces
-  Modelica.Thermal.HeatTransfer.Interfaces.HeatPort_a thermalPort
-    "Thermal port" annotation (Placement(transformation(extent={{-20,60},{20,80}},
+  Modelica.Thermal.HeatTransfer.Interfaces.HeatPort_a thermalPort "Thermal port"
+                   annotation (Placement(transformation(extent={{-20,60},{20,80}},
           rotation=0)));
 
-  replaceable package Medium = Modelica.Media.Air.DryAirNasa constrainedby
-    Modelica.Media.Interfaces.PartialMedium "Medium in the component"
+  replaceable package Medium = Modelica.Media.Air.DryAirNasa constrainedby Modelica.Media.Interfaces.PartialMedium "Medium in the component"
                               annotation (Dialog(group="Fluid properties"),
       choicesAllMatching=true);
 
   //heat transfer calculation
   replaceable package HeatTransferLam =
       FluidDissipation.Examples.Applications.HeatTransfer.BaseClasses.Channel.Laminar
-    constrainedby
-    FluidDissipation.Examples.Applications.HeatTransfer.BaseClasses.Channel.Laminar
-    "Characteristic of convective heat transfer" annotation (Dialog(group=
+    constrainedby FluidDissipation.Examples.Applications.HeatTransfer.BaseClasses.Channel.Laminar "Characteristic of convective heat transfer"
+                                                 annotation (Dialog(group=
           "Heat transfer", enable=fluidFlowRegime == FluidDissipation.Utilities.Types.FluidFlowRegime.Laminar), choicesAllMatching=
         true);
 
   replaceable package HeatTransferOver =
       FluidDissipation.Examples.Applications.HeatTransfer.BaseClasses.Channel.Overall
-    constrainedby
-    FluidDissipation.Examples.Applications.HeatTransfer.BaseClasses.Channel.Overall
-    "Characteristic of convective heat transfer" annotation (Dialog(group=
+    constrainedby FluidDissipation.Examples.Applications.HeatTransfer.BaseClasses.Channel.Overall "Characteristic of convective heat transfer"
+                                                 annotation (Dialog(group=
           "Heat transfer", enable=fluidFlowRegime == FluidDissipation.Utilities.Types.FluidFlowRegime.Overall), choicesAllMatching=
         true);
 
   replaceable package HeatTransferTurb =
       FluidDissipation.Examples.Applications.HeatTransfer.BaseClasses.Channel.Turbulent
-    constrainedby
-    FluidDissipation.Examples.Applications.HeatTransfer.BaseClasses.Channel.Turbulent
-    "Characteristic of convective heat transfer" annotation (Dialog(group=
+    constrainedby FluidDissipation.Examples.Applications.HeatTransfer.BaseClasses.Channel.Turbulent "Characteristic of convective heat transfer"
+                                                 annotation (Dialog(group=
           "Heat transfer", enable=fluidFlowRegime == FluidDissipation.Utilities.Types.FluidFlowRegime.Turbulent), choicesAllMatching=
         true);
 
   //channel
-  parameter FluidDissipation.Utilities.Types.kc_evenGap target=FluidDissipation.Utilities.Types.kc_evenGap.DevOne
-    "Target variable of calculation (only for laminar regime)" annotation (
+  parameter FluidDissipation.Utilities.Types.kc_evenGap target=FluidDissipation.Utilities.Types.kc_evenGap.DevOne "Target variable of calculation (only for laminar regime)"
+                                                               annotation (
       Dialog(group="Even gap", enable=if fluidFlowRegime == FluidDissipation.Utilities.Types.FluidFlowRegime.Laminar
            or fluidFlowRegime == FluidDissipation.Utilities.Types.FluidFlowRegime.Overall
            then true else false));
   parameter FluidDissipation.Utilities.Types.FluidFlowRegime fluidFlowRegime=
-      FluidDissipation.Utilities.Types.FluidFlowRegime.Overall
-    "Choice of fluid flow regime" annotation (Dialog(group="Heat transfer"));
+      FluidDissipation.Utilities.Types.FluidFlowRegime.Overall "Choice of fluid flow regime"
+                                  annotation (Dialog(group="Heat transfer"));
   parameter SI.Length h=0.1 "Height of cross sectional area"
     annotation (Dialog(group="Even gap"));
-  parameter SI.Length s=0.01
-    "Distance between parallel plates in cross sectional area"
+  parameter SI.Length s=0.01 "Distance between parallel plates in cross sectional area"
     annotation (Dialog(group="Even gap"));
   parameter SI.Length L=1 "Overflowed length of gap"
     annotation (Dialog(group="Even gap"));
@@ -88,8 +82,7 @@ model ChannelHeatTransferModel
 
   //For information
   SI.Diameter d_hyd=2*s "Hydraulic diameter of (finite) gap";
-  SI.Area A_kc=2*(s+h)*L
-    "Heat transfer area for convective heat transfer coefficient (kc)";
+  SI.Area A_kc=2*(s+h)*L "Heat transfer area for convective heat transfer coefficient (kc)";
   SI.Area A_cross=s*h "cross sectional area";
 
   //fluid properties
@@ -101,8 +94,7 @@ protected
   SI.Density rho=Medium.density(stateForHeatTransfer.state);
   SI.Temp_K T=Medium.temperature(stateForHeatTransfer.state);
 
-  SI.Velocity velocity=abs(m_flow)/max(Modelica.Constants.eps, (rho*A_cross))
-    "Mean velocity";
+  SI.Velocity velocity=abs(m_flow)/max(Modelica.Constants.eps, (rho*A_cross)) "Mean velocity";
   SI.ReynoldsNumber Re=rho*velocity*d_hyd/eta;
   SI.NusseltNumber Nu=kc*d_hyd/lambda;
 

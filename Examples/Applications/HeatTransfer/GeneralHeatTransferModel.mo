@@ -1,44 +1,40 @@
 within FluidDissipation.Examples.Applications.HeatTransfer;
-model GeneralHeatTransferModel
-  "Application model for a generic geometry in Modelica_Fluid"
+model GeneralHeatTransferModel "Application model for a generic geometry in Modelica_Fluid"
 
   //icon
   extends FluidDissipation.Utilities.Icons.HeatTransfer.General_i;
 
   //interfaces
-  Modelica.Thermal.HeatTransfer.Interfaces.HeatPort_a thermalPort
-    "Thermal port" annotation (Placement(transformation(extent={{-20,60},{20,80}},
+  Modelica.Thermal.HeatTransfer.Interfaces.HeatPort_a thermalPort "Thermal port"
+                   annotation (Placement(transformation(extent={{-20,60},{20,80}},
           rotation=0)));
 
-  replaceable package Medium = Modelica.Media.Air.DryAirNasa constrainedby
-    Modelica.Media.Interfaces.PartialMedium "Medium in the component"
+  replaceable package Medium = Modelica.Media.Air.DryAirNasa constrainedby Modelica.Media.Interfaces.PartialMedium "Medium in the component"
                               annotation (Dialog(group="Fluid properties"),
       choicesAllMatching=true);
 
   //heat transfer calculation
   replaceable package HeatTransferTurb =
       FluidDissipation.Examples.Applications.HeatTransfer.BaseClasses.General.Turbulent
-    constrainedby
-    FluidDissipation.Examples.Applications.HeatTransfer.BaseClasses.General.Turbulent
-    "Characteristic of convective heat transfer" annotation (Dialog(group=
+    constrainedby FluidDissipation.Examples.Applications.HeatTransfer.BaseClasses.General.Turbulent "Characteristic of convective heat transfer"
+                                                 annotation (Dialog(group=
           "Heat transfer", enable=fluidFlowRegime == FluidDissipation.Utilities.Types.FluidFlowRegime.Turbulent), choicesAllMatching=
         true);
 
   //generic geometry
-  FluidDissipation.Utilities.Types.kc_general target=FluidDissipation.Utilities.Types.kc_general.Finest
-    "Target correlation" annotation (Dialog(group="Generic geometry"));
-  parameter SI.Area A_cross=Modelica.Constants.pi*0.1^2/4
-    "Cross sectional area" annotation (Dialog(group="Generic geometry"));
+  FluidDissipation.Utilities.Types.kc_general target=FluidDissipation.Utilities.Types.kc_general.Finest "Target correlation"
+                         annotation (Dialog(group="Generic geometry"));
+  parameter SI.Area A_cross=Modelica.Constants.pi*0.1^2/4 "Cross sectional area"
+                           annotation (Dialog(group="Generic geometry"));
   parameter SI.Length perimeter=Modelica.Constants.pi*0.1 "Wetted perimeter"
     annotation (Dialog(group="Generic geometry"));
-  parameter Real exp_Pr=0.4
-    "Exponent for Prandtl number w.r.t. Dittus/Boelter | 0.4 for heating | 0.3 for cooling"
+  parameter Real exp_Pr=0.4 "Exponent for Prandtl number w.r.t. Dittus/Boelter | 0.4 for heating | 0.3 for cooling"
     annotation (Dialog(group="Generic geometry",enable=if target == FluidDissipation.Utilities.Types.kc_general.Rough then true else
                 false));
   parameter SI.Length length=1 "Length"
     annotation (Dialog(group="Generic geometry"));
-  SI.DynamicViscosity eta_wall=1e-3
-    "Dynamic viscosity of fluid at wall temperature" annotation (Dialog(group=
+  SI.DynamicViscosity eta_wall=1e-3 "Dynamic viscosity of fluid at wall temperature"
+                                                     annotation (Dialog(group=
           "Fluid properties", enable=if target == FluidDissipation.Utilities.Types.kc_general.Middle then true else false));
 
   //input
@@ -78,8 +74,8 @@ model GeneralHeatTransferModel
 
 protected
   FluidDissipation.Utilities.Types.FluidFlowRegime fluidFlowRegime=
-      FluidDissipation.Utilities.Types.FluidFlowRegime.Turbulent
-    "Choice of fluid flow regime" annotation (Dialog(group="Heat transfer"));
+      FluidDissipation.Utilities.Types.FluidFlowRegime.Turbulent "Choice of fluid flow regime"
+                                  annotation (Dialog(group="Heat transfer"));
 
   SI.SpecificHeatCapacityAtConstantPressure cp=Medium.heatCapacity_cp(
       stateForHeatTransfer.state);
@@ -88,8 +84,7 @@ protected
   SI.Density rho=Medium.density(stateForHeatTransfer.state);
   SI.Temp_K T=Medium.temperature(stateForHeatTransfer.state);
 
-  SI.Velocity velocity=abs(m_flow)/max(Modelica.Constants.eps, (rho*A_cross))
-    "Mean velocity";
+  SI.Velocity velocity=abs(m_flow)/max(Modelica.Constants.eps, (rho*A_cross)) "Mean velocity";
   SI.ReynoldsNumber Re=rho*velocity*d_hyd/eta;
   SI.NusseltNumber Nu=kc*d_hyd/lambda;
 

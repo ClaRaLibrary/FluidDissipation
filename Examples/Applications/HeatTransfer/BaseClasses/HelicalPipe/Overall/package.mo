@@ -1,7 +1,6 @@
 within FluidDissipation.Examples.Applications.HeatTransfer.BaseClasses.HelicalPipe;
 package Overall "FluidDissipation: Heat transfer for helical pipe in overall fluid flow regime"
-extends
-  FluidDissipation.Examples.Applications.HeatTransfer.BaseClasses.HelicalPipe.BaseHelicalPipeHT;
+extends FluidDissipation.Examples.Applications.HeatTransfer.BaseClasses.HelicalPipe.BaseHelicalPipeHT;
 constant String fluidFlowRegime="overall regime";
 
 

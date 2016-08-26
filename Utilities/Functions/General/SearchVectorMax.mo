@@ -1,6 +1,5 @@
 within FluidDissipation.Utilities.Functions.General;
-function SearchVectorMax
-  "Returns maximum value and corresponding index of vector"
+function SearchVectorMax "Returns maximum value and corresponding index of vector"
   extends Modelica.Icons.Function;
   input Real vector[:];
 

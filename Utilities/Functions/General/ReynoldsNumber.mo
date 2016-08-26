@@ -17,11 +17,14 @@ function ReynoldsNumber "calculation of Reynolds number"
   output SI.ReynoldsNumber Re "Reynolds number";
   output SI.Velocity velocity "Mean velocity";
 
-protected
-  SI.Diameter d_hyd=4*A_cross/max(MIN, perimeter) "Hydraulic diameter";
+// protected
+//   SI.Diameter d_hyd=4*A_cross/max(MIN, perimeter) "Hydraulic diameter";
 
 algorithm
   Re := 4*abs(m_flow)/max(MIN, (perimeter*eta));
   velocity := m_flow/max(MIN, (rho*A_cross));
-  annotation (Inline=true, smoothOrder=1);
+  annotation (Inline=true, smoothOrder=1,
+    Documentation(revisions="<html>
+<pre>2016-04-12 Stefan Wischhusen: Removed obsolete d_hyd from function ReynoldsNumber.</pre>
+</html>"));
 end ReynoldsNumber;

@@ -1,6 +1,5 @@
 within FluidDissipation.PressureLoss.General;
-function dp_pressureLossCoefficient_DP
-  "Generic pressure loss | calculate pressure loss | pressure loss coefficient (zeta_TOT)"
+function dp_pressureLossCoefficient_DP "Generic pressure loss | calculate pressure loss | pressure loss coefficient (zeta_TOT)"
   extends Modelica.Icons.Function;
 
   import FD = FluidDissipation.PressureLoss.General;

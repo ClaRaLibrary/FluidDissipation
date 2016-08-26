@@ -61,14 +61,12 @@ public
 
   FluidDissipation.Examples.Applications.PressureLoss.GeneralFlowModel from_dp(
       redeclare package Medium =
-        Modelica.Media.Water.ConstantPropertyLiquidWater)
-    "Calculate mass flow rate from pressure loss"
+        Modelica.Media.Water.ConstantPropertyLiquidWater) "Calculate mass flow rate from pressure loss"
     annotation (Placement(transformation(extent={{-24,-4},{24,44}})));
 
   FluidDissipation.Examples.Applications.PressureLoss.GeneralFlowModel from_mflow(
       redeclare package Medium =
-        Modelica.Media.Water.ConstantPropertyLiquidWater)
-    "Calculate pressure loss from mass flow rate"
+        Modelica.Media.Water.ConstantPropertyLiquidWater) "Calculate pressure loss from mass flow rate"
     annotation (Placement(transformation(extent={{-24,-64},{24,-16}})));
 
 equation

@@ -65,8 +65,7 @@ model dp_twoPhaseOverall_DP "Verification of function dp_twoPhaseOverall_DP"
     annotation (Placement(transformation(extent={{30,14},{50,34}})));
 
   SI.MassFlowRate input_mdot[n]={0.0001459354,0.0001459354,0.0001459354,
-      0.00019458051,0.000097290255}
-    "(Input) mass flow rate (for incompressible case)";
+      0.00019458051,0.000097290255} "(Input) mass flow rate (for incompressible case)";
   SI.MassFlowRate m_flow[n]=input_mdot;
 
   //output variables
@@ -128,8 +127,8 @@ equation
     m_flow[i]) for i in 1:n};
 
   annotation (__Dymola_Commands(file=
-          "modelica://FluidDissipation/Extras/Scripts/pressureLoss/straightPipe/dp_twoPhaseOverall_DP.mos"
-        "Verification of dp_twoPhaseOverall_DP"), Diagram(coordinateSystem(
+          "modelica://FluidDissipation/Extras/Scripts/pressureLoss/straightPipe/dp_twoPhaseOverall_DP.mos" "Verification of dp_twoPhaseOverall_DP"),
+                                                  Diagram(coordinateSystem(
           preserveAspectRatio=false, extent={{-100,-100},{100,100}}), graphics={
            Text(
           extent={{-100,50},{100,75}},

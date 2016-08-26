@@ -1,38 +1,32 @@
 within FluidDissipation.HeatTransfer.HelicalPipe;
-function kc_turbulent_KC
-  "Mean heat transfer coefficient of helical pipe | hydrodynamically developed turbulent flow regime"
+function kc_turbulent_KC "Mean heat transfer coefficient of helical pipe | hydrodynamically developed turbulent flow regime"
   extends Modelica.Icons.Function;
   //SOURCE: VDI-Waermeatlas, 9th edition, Springer-Verlag, 2002, section Gc1 - Gc2
   //Notation of equations according to SOURCE
 
   //input records
-  input FluidDissipation.HeatTransfer.HelicalPipe.kc_turbulent_IN_con IN_con
-    "Input record for function kc_turbulent_KC"
+  input FluidDissipation.HeatTransfer.HelicalPipe.kc_turbulent_IN_con IN_con "Input record for function kc_turbulent_KC"
     annotation (Dialog(group="Constant inputs"));
-  input FluidDissipation.HeatTransfer.HelicalPipe.kc_turbulent_IN_var IN_var
-    "Input record for function kc_turbulent_KC"
+  input FluidDissipation.HeatTransfer.HelicalPipe.kc_turbulent_IN_var IN_var "Input record for function kc_turbulent_KC"
     annotation (Dialog(group="Variable inputs"));
 
   //output variables
   output SI.CoefficientOfHeatTransfer kc "Output for function kc_turbulent_KC";
 
 protected
-  Real MIN=Modelica.Constants.eps;
+  Real MIN=Modelica.Constants.eps "Limiter";
   Real turbulent=2.2e4 "Minimum Reynolds number for turbulent regime";
 
   SI.Diameter d_hyd=IN_con.d_hyd "Hydraulic diameter";
   SI.Area A_cross=PI*IN_con.d_hyd^2/4 "Circular cross sectional area";
   SI.Diameter d_s=IN_con.L/(IN_con.n_nt*PI) "Mean coil diameter";
-  SI.Diameter d_w=sqrt(max(MIN, (d_s^2 - (IN_con.h/PI)^2)))
-    "Mean helical pipe diameter";
-  SI.Diameter d_coil=max(d_w, d_w*(1 + (IN_con.h/(PI*d_w))^2))
-    "Mean curvature diameter of helical pipe";
+  SI.Diameter d_w=sqrt(max(MIN, (d_s^2 - (IN_con.h/PI)^2))) "Mean helical pipe diameter";
+  SI.Diameter d_coil=max(d_w, d_w*(1 + (IN_con.h/(PI*d_w))^2)) "Mean curvature diameter of helical pipe";
 
-  SI.Velocity velocity=abs(IN_var.m_flow)/max(MIN, IN_var.rho*A_cross)
-    "Mean velocity";
-  SI.ReynoldsNumber Re=max(1e-3, IN_var.rho*velocity*IN_con.d_hyd/max(MIN,
-      IN_var.eta));
-  SI.PrandtlNumber Pr=abs(IN_var.eta*IN_var.cp/max(MIN, IN_var.lambda));
+  SI.Velocity velocity=abs(IN_var.m_flow)/max(MIN, IN_var.rho*A_cross) "Mean velocity";
+  SI.ReynoldsNumber Re=(IN_var.rho*velocity*IN_con.d_hyd/max(MIN,
+      IN_var.eta)) "Reynolds number";
+  SI.PrandtlNumber Pr=abs(IN_var.eta*IN_var.cp/max(MIN, IN_var.lambda)) "Prandtl number";
 
   Real zeta_TOT=0.3164*max(turbulent, Re)^(-0.25) + 0.03*sqrt(IN_con.d_hyd/
       d_coil) "Pressure loss coefficient";
@@ -158,5 +152,7 @@ Note that the ratio of hydraulic diameter to total length of helical pipe <b> d_
 </html>
  
  
-"));
+", revisions="<html>
+<pre>2016-04-12 Stefan Wischhusen: Removed singularity for Re at zero mass flow rate. </pre>
+</html>"));
 end kc_turbulent_KC;

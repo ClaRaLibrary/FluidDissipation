@@ -1,6 +1,5 @@
 within FluidDissipation.PressureLoss.Orifice;
-record dp_thickEdgedOverall_IN_var
-  "Input record for function dp_thickEdgedOverall, dp_thickEdgedOverall_DP and dp_thickEdgedOverall_MFLOW"
+record dp_thickEdgedOverall_IN_var "Input record for function dp_thickEdgedOverall, dp_thickEdgedOverall_DP and dp_thickEdgedOverall_MFLOW"
 
   //fluid property variables
   extends FluidDissipation.Utilities.Records.General.FluidProperties(final cp=0,

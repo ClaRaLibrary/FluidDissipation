@@ -5,18 +5,15 @@ model dp_Tsplit "verification of function dp_Tsplit"
     annotation (Dialog(group="T-junction"));
 
   parameter SI.Diameter d_hyd_conv[3]={((4/PI*1e-3)/2)^0.5,((4/PI*
-      1e-3)/2)^0.5,(4/PI*1e-3)^0.5}
-    "hydraulic diameter united_converging_crossection=true"
+      1e-3)/2)^0.5,(4/PI*1e-3)^0.5} "hydraulic diameter united_converging_crossection=true"
     annotation (Dialog(group="T-junction"));
   parameter Real d_hyd_noconv[3]={((4/PI*1e-3))^0.5,((4/PI*1e-3))^0.5,
       (4/PI*1e-3)^0.5} "hydraulic diameter united_converging_crossection=false";
-  parameter SI.MassFlowRate m_flow_min=1e-6
-    "restriction for smoothing at reverse fluid flow"
+  parameter SI.MassFlowRate m_flow_min=1e-6 "restriction for smoothing at reverse fluid flow"
     annotation (Dialog(group="restriction"));
   parameter SI.Velocity v_max=343 "restriction for maximum fluid flow velocity"
     annotation (Dialog(group="restriction"));
-  parameter TYP.PressureLossCoefficient zeta_TOT_max=1000
-    "restriction for maximum value of pressure loss coefficient"
+  parameter TYP.PressureLossCoefficient zeta_TOT_max=1000 "restriction for maximum value of pressure loss coefficient"
     annotation (Dialog(group="restriction"));
 
   //fluid property variables
@@ -99,8 +96,8 @@ equation
     m_flow);
 
   annotation (__Dymola_Commands(file=
-          "modelica://FluidDissipation/Extras/Scripts/pressureLoss/junction/dp_Tsplit.mos"
-        "verification dp_Tsplit"), Diagram(coordinateSystem(
+          "modelica://FluidDissipation/Extras/Scripts/pressureLoss/junction/dp_Tsplit.mos" "verification dp_Tsplit"),
+                                   Diagram(coordinateSystem(
           preserveAspectRatio=true, extent={{-100,-100},{100,100}}),
         graphics={Text(
                     extent={{-98,64},{102,89}},

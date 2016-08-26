@@ -1,16 +1,13 @@
 within FluidDissipation.PressureLoss.General;
-function dp_idealGas_MFLOW
-  "Generic pressure loss | calculate mass flow rate | ideal gas | mean density"
+function dp_idealGas_MFLOW "Generic pressure loss | calculate mass flow rate | ideal gas | mean density"
   extends Modelica.Icons.Function;
 
   import FD = FluidDissipation.PressureLoss.General;
 
   //input records
-  input FluidDissipation.PressureLoss.General.dp_idealGas_IN_con IN_con
-    "Input record for function dp_idealGas_MFLOW"
+  input FluidDissipation.PressureLoss.General.dp_idealGas_IN_con IN_con "Input record for function dp_idealGas_MFLOW"
     annotation (Dialog(group="Constant inputs"));
-  input FluidDissipation.PressureLoss.General.dp_idealGas_IN_var IN_var
-    "Input record for function dp_idealGas_MFLOW"
+  input FluidDissipation.PressureLoss.General.dp_idealGas_IN_var IN_var "Input record for function dp_idealGas_MFLOW"
     annotation (Dialog(group="Variable inputs"));
   input SI.Pressure dp "Pressure loss" annotation (Dialog(group="Input"));
 

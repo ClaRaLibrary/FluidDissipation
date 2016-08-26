@@ -1,6 +1,5 @@
 within FluidDissipation.PressureLoss.Valve;
-function dp_severalGeometryOverall
-  "Pressure loss of internal flow | overall flow regime | surface roughness | several geometries"
+function dp_severalGeometryOverall "Pressure loss of internal flow | overall flow regime | surface roughness | several geometries"
   extends Modelica.Icons.Function;
   //SOURCE_1: Idelchik, I.E.: HANDBOOK OF HYDRAULIC RESISTANCE, 3rd edition, 2006.
   //SOURCE_2: Miller, D.S.: INTERNAL FLOW SYSTEMS, 1978.
@@ -8,27 +7,24 @@ function dp_severalGeometryOverall
   //Notation of equations according to SOURCES
 
   //input records
-  input FluidDissipation.PressureLoss.Valve.dp_severalGeometryOverall_IN_con IN_con
-    "Input record for function dp_severalGeometryOverall"
+  input FluidDissipation.PressureLoss.Valve.dp_severalGeometryOverall_IN_con IN_con "Input record for function dp_severalGeometryOverall"
     annotation (Dialog(group="Constant inputs"));
-  input FluidDissipation.PressureLoss.Valve.dp_severalGeometryOverall_IN_var IN_var
-    "Input record for function dp_severalGeometryOverall"
+  input FluidDissipation.PressureLoss.Valve.dp_severalGeometryOverall_IN_var IN_var "Input record for function dp_severalGeometryOverall"
     annotation (Dialog(group="Variable inputs"));
-  input FluidDissipation.Utilities.Records.PressureLoss.PressureLossInput chosenTarget
-    "Target variable of calculation" annotation (Dialog(group="Input"));
+  input FluidDissipation.Utilities.Records.PressureLoss.PressureLossInput chosenTarget "Target variable of calculation"
+                                     annotation (Dialog(group="Input"));
 
   //output variables
   output SI.Pressure DP "Pressure loss" annotation (Dialog(group="Output"));
   output SI.MassFlowRate M_FLOW "Mass flow rate"
     annotation (Dialog(group="Output"));
-  output Utilities.Types.PressureLossCoefficient zeta_TOT
-    "Pressure loss coefficient" annotation (Dialog(group="Output"));
+  output Utilities.Types.PressureLossCoefficient zeta_TOT "Pressure loss coefficient"
+                                annotation (Dialog(group="Output"));
   output SI.ReynoldsNumber Re "Reynolds number"
     annotation (Dialog(group="Output"));
   final output SI.PrandtlNumber Pr=0 "Prandtl number"
     annotation (Dialog(group="Output"));
-  output Real failureStatus
-    "0== boundary conditions fulfilled | 1== failure >> check if still meaningful results"
+  output Real failureStatus "0== boundary conditions fulfilled | 1== failure >> check if still meaningful results"
     annotation (Dialog(group="Output"));
 
   import TYP = FluidDissipation.Utilities.Types.ValveCoefficient;
@@ -41,8 +37,7 @@ protected
        == TYP.CV then IN_con.Cv*24e-6 else if IN_con.valveCoefficient == TYP.OP then
             IN_con.m_flow_nominal/max(MIN, IN_con.opening_nominal*(IN_con.rho_nominal
       *IN_con.dp_nominal)^0.5) else MIN "Av (metric) flow coefficient [Av]=m^2";
-  SI.Length perimeter=PI*(4*A_cross/PI)^0.5
-    "Assuming circular cross sectional area at entrance";
+  SI.Length perimeter=PI*(4*A_cross/PI)^0.5 "Assuming circular cross sectional area at entrance";
 
   SI.Velocity velocity "Mean velocity";
 

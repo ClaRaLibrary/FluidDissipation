@@ -1,6 +1,5 @@
 within FluidDissipation.Utilities.Records.General;
-record IdealGas_con
-  "Base record for generic pressure loss function | ideal gas | mean density"
+record IdealGas_con "Base record for generic pressure loss function | ideal gas | mean density"
   extends Modelica.Icons.Record;
 
   Real exp=2 "Exponent of pressure loss law"
