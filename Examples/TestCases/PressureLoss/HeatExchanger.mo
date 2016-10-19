@@ -53,12 +53,14 @@ public
         rotation=0,
         origin={-50,-40})));
 
-  Applications.PressureLoss.HeatExchangerFlowModel from_dp(redeclare package Medium =
-               Modelica.Media.Air.DryAirNasa) "Calculate mass flow rate from pressure loss"
+  Applications.PressureLoss.HeatExchangerFlowModel from_dp(redeclare package
+      Medium = Modelica.Media.Air.DryAirNasa)
+    "Calculate mass flow rate from pressure loss"
     annotation (Placement(transformation(extent={{-24,-4},{24,44}})));
 
-  Applications.PressureLoss.HeatExchangerFlowModel from_mflow(redeclare package Medium =
-               Modelica.Media.Air.DryAirNasa) "Calculate pressure loss from mass flow rate"
+  Applications.PressureLoss.HeatExchangerFlowModel from_mflow(redeclare package
+      Medium = Modelica.Media.Air.DryAirNasa)
+    "Calculate pressure loss from mass flow rate"
     annotation (Placement(transformation(extent={{-24,-64},{24,-16}})));
 equation
   connect(IN_p.ports[1], from_dp.port_a) annotation (Line(

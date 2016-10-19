@@ -1,6 +1,7 @@
 within FluidDissipation.Examples.Applications.HeatTransfer.BaseClasses.Plate;
 package Laminar "FluidDissipation: fluid flow around plate for laminar fluid flow regime"
-extends FluidDissipation.Examples.Applications.HeatTransfer.BaseClasses.Plate.BasePlateHT;
+extends
+  FluidDissipation.Examples.Applications.HeatTransfer.BaseClasses.Plate.BasePlateHT;
 constant String fluidFlowRegime="laminar regime";
 
 

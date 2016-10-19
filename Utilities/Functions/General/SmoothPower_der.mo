@@ -23,7 +23,7 @@ algorithm
     dy := (C1 + 3*C3*x*x)*dx;
   end if;
   annotation (Documentation(revisions="<html>
-  2014-03-30 Stefan Wischhusen: Removed dpow and ddeltax.
+  2014-03-30 Stefan Wischhusen: Removed dpow and ddeltax.<br>
   2015-10-13 Stefan Wischhusen: Removed noEvent in if-clause.
 </html>"));
 end SmoothPower_der;

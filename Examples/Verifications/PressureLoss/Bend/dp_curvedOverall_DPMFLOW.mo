@@ -1,12 +1,17 @@
 within FluidDissipation.Examples.Verifications.PressureLoss.Bend;
-model dp_curvedOverall_DPMFLOW "Verification of function dp_curvedOverall_DP AND dp_curvedOverall_MFLOW"
+model dp_curvedOverall_DPMFLOW
+  "Verification of function dp_curvedOverall_DP AND dp_curvedOverall_MFLOW"
 
-  parameter Integer n=size(R_0, 1) "Number of different relative curvature radii of bend";
-  parameter Integer m=size(delta, 1) "Number of different angles of turning of bend";
+  parameter Integer n=size(R_0, 1)
+    "Number of different relative curvature radii of bend";
+  parameter Integer m=size(delta, 1)
+    "Number of different angles of turning of bend";
 
   //bend variables
-  parameter SI.Area A_cross=PI*d_hyd^2/4 "Circular cross sectional area of bend";
-  parameter SI.Conversions.NonSIunits.Angle_deg delta[3]={30,45,90} "Angle of turning";
+  parameter SI.Area A_cross=PI*d_hyd^2/4
+    "Circular cross sectional area of bend";
+  parameter SI.Conversions.NonSIunits.Angle_deg delta[3]={30,45,90}
+    "Angle of turning";
   parameter SI.Diameter d_hyd=0.1 "Hydraulic diameter";
   parameter SI.Length K=0 "Roughness (average height of surface asperities)";
   parameter SI.Radius R_0[2]={2.26,11.71}*d_hyd "Curvature radius";
@@ -17,21 +22,29 @@ model dp_curvedOverall_DPMFLOW "Verification of function dp_curvedOverall_DP AND
 
   //target variables (here: mass flow rate as input for inverse calculation)
   //intended input variables for records
-  SI.MassFlowRate input_mdot_1[n](start=zeros(n)) "(Input) mass flow rate (for intended incompressible case)";
-  SI.Pressure input_dp_1[n](start=zeros(n)) = ones(n)*input_DP.y "(Input) pressure loss (for intended compressible case)";
+  SI.MassFlowRate input_mdot_1[n](start=zeros(n))
+    "(Input) mass flow rate (for intended incompressible case)";
+  SI.Pressure input_dp_1[n](start=zeros(n)) = ones(n)*input_DP.y
+    "(Input) pressure loss (for intended compressible case)";
 
   //intended output variables for records
-  SI.MassFlowRate M_FLOW_1[n](start=zeros(n)) "(Output) mass flow rate (for intended compressible case)";
-  SI.Pressure DP_1[n](start=zeros(n)) = {input_dp_1[i] for i in 1:n} "(Output) pressure loss (for intended incompressible case)";
+  SI.MassFlowRate M_FLOW_1[n](start=zeros(n))
+    "(Output) mass flow rate (for intended compressible case)";
+  SI.Pressure DP_1[n](start=zeros(n)) = {input_dp_1[i] for i in 1:n}
+    "(Output) pressure loss (for intended incompressible case)";
 
   //target variables (here: mass flow rate as input for inverse calculation)
   //intended input variables for records
-  SI.MassFlowRate input_mdot_2[m](start=zeros(m)) "(Input) mass flow rate (for intended incompressible case)";
-  SI.Pressure input_dp_2[m](start=zeros(m)) = ones(m)*input_DP.y "(Input) pressure loss (for intended compressible case)";
+  SI.MassFlowRate input_mdot_2[m](start=zeros(m))
+    "(Input) mass flow rate (for intended incompressible case)";
+  SI.Pressure input_dp_2[m](start=zeros(m)) = ones(m)*input_DP.y
+    "(Input) pressure loss (for intended compressible case)";
 
   //intended output variables for records
-  SI.MassFlowRate M_FLOW_2[m](start=zeros(m)) "(Output) mass flow rate (for intended compressible case)";
-  SI.Pressure DP_2[m](start=zeros(m)) = {input_dp_2[i] for i in 1:m} "(Output) pressure loss (for intended incompressible case)";
+  SI.MassFlowRate M_FLOW_2[m](start=zeros(m))
+    "(Output) mass flow rate (for intended compressible case)";
+  SI.Pressure DP_2[m](start=zeros(m)) = {input_dp_2[i] for i in 1:m}
+    "(Output) pressure loss (for intended incompressible case)";
 
   //input record
   //target == DP (incompressible)
@@ -84,12 +97,15 @@ model dp_curvedOverall_DPMFLOW "Verification of function dp_curvedOverall_DP AND
     annotation (Placement(transformation(extent={{80,20},{100,40}})));
 
 protected
-  parameter Real frac_RD[n]={R_0[i]/d_hyd for i in 1:n} "Relative curvature radius";
+  parameter Real frac_RD[n]={R_0[i]/d_hyd for i in 1:n}
+    "Relative curvature radius";
 
   //plotting
-  SI.Velocity velocity_1[n]={input_mdot_1[i]/(rho*A_cross) for i in 1:n} "Mean velocity";
+  SI.Velocity velocity_1[n]={input_mdot_1[i]/(rho*A_cross) for i in 1:n}
+    "Mean velocity";
   SI.ReynoldsNumber Re_1[n]={rho*velocity_1[i]*d_hyd/eta for i in 1:n};
-  SI.Velocity velocity_2[m]={input_mdot_2[i]/(rho*A_cross) for i in 1:m} "Mean velocity";
+  SI.Velocity velocity_2[m]={input_mdot_2[i]/(rho*A_cross) for i in 1:m}
+    "Mean velocity";
   SI.ReynoldsNumber Re_2[m]={rho*velocity_2[i]*d_hyd/eta for i in 1:m};
 
   Real DP_plot_1[n]={DP_1[i] for i in 1:n} "Pressure loss [Pa]";
@@ -133,8 +149,8 @@ equation
     input_dp_2[i]) for i in 1:m};
 
   annotation (__Dymola_Commands(file=
-          "modelica://FluidDissipation/Extras/Scripts/pressureLoss/bend/dp_curvedOverall_DPMFLOW.mos" "Verification of dp_overall_DPMFLOW"),
-                                               Diagram(coordinateSystem(
+          "modelica://FluidDissipation/Extras/Scripts/pressureLoss/bend/dp_curvedOverall_DPMFLOW.mos"
+        "Verification of dp_overall_DPMFLOW"), Diagram(coordinateSystem(
           preserveAspectRatio=false, extent={{-100,-100},{100,100}}), graphics={
            Text(
           extent={{-100,50},{100,75}},

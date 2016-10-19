@@ -7,9 +7,12 @@ model kc_laminar "Verification of function kc_laminar"
   parameter SI.Length L=1 "Length of plate";
 
   //fluid property variables
-  parameter SI.SpecificHeatCapacityAtConstantPressure cp[:]={1007,4189,3384.550} "Specific heat capacity at constant pressure of fluid";
-  parameter SI.DynamicViscosity eta[:]={18.24e-6,1001.6e-6,0.114} "Dynamic viscosity of fluid";
-  parameter SI.ThermalConductivity lambda[:]={25.69e-3,598.5e-3,0.387} "Thermal conductivity of fluid";
+  parameter SI.SpecificHeatCapacityAtConstantPressure cp[:]={1007,4189,3384.550}
+    "Specific heat capacity at constant pressure of fluid";
+  parameter SI.DynamicViscosity eta[:]={18.24e-6,1001.6e-6,0.114}
+    "Dynamic viscosity of fluid";
+  parameter SI.ThermalConductivity lambda[:]={25.69e-3,598.5e-3,0.387}
+    "Thermal conductivity of fluid";
   parameter SI.Density rho[:]={1.188,998.21,1037.799} "Density of fluid";
 
   //target variables
@@ -32,7 +35,8 @@ model kc_laminar "Verification of function kc_laminar"
   SI.NusseltNumber Nu[n] "Nussel number" annotation (Dialog(group="Output"));
 
   SI.PrandtlNumber Pr[n]={eta[i]*cp[i]/lambda[i] for i in 1:n} "Prandtl number";
-  SI.ReynoldsNumber Re[n]={rho[i]*abs(velocity[i])*L/eta[i] for i in 1:n} "Reynolds number";
+  SI.ReynoldsNumber Re[n]={rho[i]*abs(velocity[i])*L/eta[i] for i in 1:n}
+    "Reynolds number";
 
 public
   Modelica.Blocks.Sources.Ramp input_v_0(
@@ -63,8 +67,8 @@ equation
   end for;
 
   annotation (__Dymola_Commands(file=
-          "modelica://FluidDissipation/Extras/Scripts/heatTransfer/plate/kc_laminar.mos" "Verification of kc_laminar"),
-                                       Diagram(coordinateSystem(
+          "modelica://FluidDissipation/Extras/Scripts/heatTransfer/plate/kc_laminar.mos"
+        "Verification of kc_laminar"), Diagram(coordinateSystem(
           preserveAspectRatio=true, extent={{-100,-100},{100,100}}), graphics={
           Text(
           extent={{-100,50},{100,75}},

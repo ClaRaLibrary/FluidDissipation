@@ -1,10 +1,11 @@
 within FluidDissipation.PressureLoss.HeatExchanger;
-record dp_roundTube_IN_con "Input record for function dp_roundTube, dp_roundTube_DP"
+record dp_roundTube_IN_con
+  "Input record for function dp_roundTube, dp_roundTube_DP"
   extends Modelica.Icons.Record;
 
   FluidDissipation.Utilities.Types.HTXGeometry_roundTubes geometry=
-      FluidDissipation.Utilities.Types.HTXGeometry_roundTubes.PlainFin "Choice of fin geometry"
-                             annotation (Dialog(group="HeatExchanger"));
+      FluidDissipation.Utilities.Types.HTXGeometry_roundTubes.PlainFin
+    "Choice of fin geometry" annotation (Dialog(group="HeatExchanger"));
 
   SI.Area A_fr=0 "Frontal area" annotation (Dialog(group="HeatExchanger"));
   SI.Length D_c=0 "Fin collar diameter"
@@ -37,7 +38,8 @@ record dp_roundTube_IN_con "Input record for function dp_roundTube, dp_roundTube
   SI.Length delta_f=0 "Fin thickness" annotation (Dialog(group="HeatExchanger"));
 
   //numerical aspects
-  SI.Velocity velocity_small=1e-8 "Regularisation for a velocity smaller then velocity_small"
+  SI.Velocity velocity_small=1e-8
+    "Regularisation for a velocity smaller then velocity_small"
     annotation (Dialog(group="Numerical aspects"));
 
   annotation (Documentation(info="<html>

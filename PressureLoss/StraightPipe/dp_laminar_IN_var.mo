@@ -1,5 +1,6 @@
 within FluidDissipation.PressureLoss.StraightPipe;
-record dp_laminar_IN_var "Input record for function dp_laminar, dp_laminar_DP and dp_laminar_MFLOW"
+record dp_laminar_IN_var
+  "Input record for function dp_laminar, dp_laminar_DP and dp_laminar_MFLOW"
 
   extends FluidDissipation.PressureLoss.StraightPipe.dp_overall_IN_var;
 

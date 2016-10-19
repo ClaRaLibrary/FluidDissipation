@@ -1,5 +1,6 @@
 within FluidDissipation.PressureLoss.Orifice;
-record dp_suddenChange_IN_con "Input record for function dp_suddenChange, dp_suddenChange_DP and dp_suddenChange_MFLOW"
+record dp_suddenChange_IN_con
+  "Input record for function dp_suddenChange, dp_suddenChange_DP and dp_suddenChange_MFLOW"
 
   //orifice variables
   extends FluidDissipation.Utilities.Records.PressureLoss.Orifice(

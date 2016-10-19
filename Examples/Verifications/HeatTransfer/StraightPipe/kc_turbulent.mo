@@ -8,9 +8,12 @@ model kc_turbulent "Verification of function kc_turbulent"
   parameter SI.Length L=1 "Length of straight pipe";
 
   //fluid property variables
-  parameter SI.SpecificHeatCapacityAtConstantPressure cp[:]={1007,4189,3384.550} "Specific heat capacity at constant pressure of fluid";
-  parameter SI.DynamicViscosity eta[:]={18.24e-6,1001.6e-6,0.114} "Dynamic viscosity of fluid";
-  parameter SI.ThermalConductivity lambda[:]={25.69e-3,598.5e-3,0.387} "Thermal conductivity of fluid";
+  parameter SI.SpecificHeatCapacityAtConstantPressure cp[:]={1007,4189,3384.550}
+    "Specific heat capacity at constant pressure of fluid";
+  parameter SI.DynamicViscosity eta[:]={18.24e-6,1001.6e-6,0.114}
+    "Dynamic viscosity of fluid";
+  parameter SI.ThermalConductivity lambda[:]={25.69e-3,598.5e-3,0.387}
+    "Thermal conductivity of fluid";
   parameter SI.Density rho[:]={1.188,998.21,1037.799} "Density of fluid";
 
   //input VARIABLES
@@ -96,8 +99,8 @@ equation
   end for;
 
   annotation (__Dymola_Commands(file=
-          "modelica://FluidDissipation/Extras/Scripts/heatTransfer/straightPipe/kc_turbulent.mos" "Verification of kc_turbulent"),
-                                         Diagram(coordinateSystem(
+          "modelica://FluidDissipation/Extras/Scripts/heatTransfer/straightPipe/kc_turbulent.mos"
+        "Verification of kc_turbulent"), Diagram(coordinateSystem(
           preserveAspectRatio=false, extent={{-100,-100},{100,100}}), graphics={
            Text(
           extent={{-100,50},{100,75}},

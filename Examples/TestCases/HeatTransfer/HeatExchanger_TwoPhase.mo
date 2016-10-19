@@ -1,5 +1,6 @@
 within FluidDissipation.Examples.TestCases.HeatTransfer;
-model HeatExchanger_TwoPhase "Test case for heat transfer of heat exchanger with two phase media"
+model HeatExchanger_TwoPhase
+  "Test case for heat transfer of heat exchanger with two phase media"
   import SI = Modelica.SIunits;
 
   Applications.HeatTransfer.HeatExchangerHeatTransferModel_TwoPhase

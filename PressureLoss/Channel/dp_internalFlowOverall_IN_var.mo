@@ -1,5 +1,6 @@
 within FluidDissipation.PressureLoss.Channel;
-record dp_internalFlowOverall_IN_var "Input record for function dp_internalFlowOverall"
+record dp_internalFlowOverall_IN_var
+  "Input record for function dp_internalFlowOverall"
 
   //fluid property variables
   extends FluidDissipation.Utilities.Records.General.FluidProperties(final cp=0,

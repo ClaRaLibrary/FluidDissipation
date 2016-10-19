@@ -1,5 +1,6 @@
 within FluidDissipation.PressureLoss.StraightPipe;
-function dp_twoPhaseOverall_DP "Pressure loss of straight pipe for two phase flow | calculate (frictional, momentum, geodetic) pressure loss"
+function dp_twoPhaseOverall_DP
+  "Pressure loss of straight pipe for two phase flow | calculate (frictional, momentum, geodetic) pressure loss"
   extends Modelica.Icons.Function;
   //SOURCE_1: Friedel,L.:IMPROVED FRICTION PRESSURE DROP CORRELATIONS FOR HORIZONTAL AND VERTICAL TWO PHASE PIPE FLOW, 3R International, Vol. 18, Issue 7, pp. 485-491, 1979
   //SOURCE_2: Chisholm,D.:PRESSURE GRADIENTS DUE TO FRICTION DURING THE FLOW OF EVAPORATING TWO-PHASE MIXTURES IN SMOOTH TUBES AND CHANNELS, Int. J. Heat Mass Transfer, Vol. 16, pp. 347-358, Pergamon Press 1973
@@ -8,9 +9,11 @@ function dp_twoPhaseOverall_DP "Pressure loss of straight pipe for two phase flo
   //SOURCE_5: Thome, J.R., Engineering Data Book 3, Swiss Federal Institute of Technology Lausanne (EPFL), 2009.
 
   //input records
-  input FluidDissipation.PressureLoss.StraightPipe.dp_twoPhaseOverall_IN_con IN_con "Input record for function dp_twoPhaseOverall_DP"
+  input FluidDissipation.PressureLoss.StraightPipe.dp_twoPhaseOverall_IN_con IN_con
+    "Input record for function dp_twoPhaseOverall_DP"
     annotation (Dialog(group="Constant inputs"));
-  input FluidDissipation.PressureLoss.StraightPipe.dp_twoPhaseOverall_IN_var IN_var "Input record for function dp_twoPhaseOverall_DP"
+  input FluidDissipation.PressureLoss.StraightPipe.dp_twoPhaseOverall_IN_var IN_var
+    "Input record for function dp_twoPhaseOverall_DP"
     annotation (Dialog(group="Variable inputs"));
   input SI.MassFlowRate m_flow "Mass flow rate"
     annotation (Dialog(group="Input"));
@@ -24,11 +27,14 @@ protected
   Real MIN=Modelica.Constants.eps;
 
   SI.Area A_cross=max(MIN, IN_con.A_cross) "Cross sectional area";
-  SI.Diameter d_hyd=max(MIN, 4*A_cross/max(MIN, IN_con.perimeter)) "Hydraulic diameter";
+  SI.Diameter d_hyd=max(MIN, 4*A_cross/max(MIN, IN_con.perimeter))
+    "Hydraulic diameter";
 
   Real mdot_A=abs(m_flow)/A_cross "Mass flux";
-  Real xflowEnd=min(1, max(0, abs(IN_var.x_flow_end))) "Mass flow rate quality at end of length";
-  Real xflowSta=min(1, max(0, abs(IN_var.x_flow_sta))) "Mass flow rate quality at start of length";
+  Real xflowEnd=min(1, max(0, abs(IN_var.x_flow_end)))
+    "Mass flow rate quality at end of length";
+  Real xflowSta=min(1, max(0, abs(IN_var.x_flow_sta)))
+    "Mass flow rate quality at start of length";
   Real x_flow=(xflowEnd + xflowSta)/2 "Mean mass flow rate quality over length";
 
 //   //SOURCE_5: p.17-1 to 17-5, sec. 17.1 to 17.2: Considering cross sectional void fraction [epsilon=A_g/(A_g+A_l)]
@@ -41,7 +47,7 @@ protected
 //       x_flow) "Void fraction";
 
   //SOURCE_1: Considering frictional pressure loss w.r.t. to correlation of Friedel
-  //SOURCE_2: Considering frictional pressrue loss w.r.t. to correlation of Chisholm
+  //SOURCE_2: Considering frictional pressure loss w.r.t. to correlation of Chisholm
   SI.Pressure DP_fric=if IN_con.frictionalPressureLoss == TYP.Friedel then
       FluidDissipation.Utilities.Functions.PressureLoss.TwoPhase.dp_twoPhaseFriedel_DP(
       FluidDissipation.Utilities.Records.General.TwoPhaseFlow_con(
@@ -286,7 +292,7 @@ i.e. <img src=\"modelica://FluidDissipation/Extras/Images/pressureLoss/StraightP
 i.e. <img src=\"modelica://FluidDissipation/Extras/Images/pressureLoss/StraightPipe/Equations/equation006.png\" alt=\"\"><br>
 <img src=\"modelica://FluidDissipation/Extras/Images/pressureLoss/StraightPipe/Equations/equation001.png\" alt=\"\"><br>
 <img src=\"modelica://FluidDissipation/Extras/Images/pressureLoss/StraightPipe/Equations/equation012.png\" alt=\"\"></p>
-
+For numerical reasons the transition from laminar to turbulent flow is determined with the Reynolds number calculated with liquid fluid properties.
 </p>
 
 <p>
@@ -381,7 +387,7 @@ The two phase pressure loss for a horizontal pipe calculated by the correlation 
 <img src=\"modelica://FluidDissipation/Extras/Images/pressureLoss/StraightPipe/fig_validPL_straigthPipeTwoPhaseMSH.png\" alt=\"\" width=\"600\">
 </p>
 <p>
-Fluid is Nitrogen, pipe diameter is 0.014 m.
+Fluid is Nitrogen, pipe diameter is 0.014 m. The measurement data is taken from Mueller-Steinhagen[1984].
 <h4><font color=\"#EF9B13\">References</font></h4> 
 <dl>
 <dt>Chisholm,D.:</dt>
@@ -397,14 +403,14 @@ Fluid is Nitrogen, pipe diameter is 0.014 m.
     In Proceedings of the 2nd International Modelica Conference, pages 235?244, Oberpfaffenhofen, Germany, 2002. The Modelica Association.</dd>
 <dt>Thome, J.R.:</dt> 
     <dd><b>Engineering Data Book 3</b>.Swiss Federal Institute of Technology Lausanne (EPFL), 2009.</dd>
-<dt> H. Mueller-Steinhagen and K. Heck:</dt>  
+<dt> H. M&uuml;ller-Steinhagen and K. Heck:</dt>  
 <dd><b>A Simple Friction Pressure Drop Correlation for Two-Phase Flow in Pipes. </b>Chem. Eng. Process, 1986, 20, 297-308
-<dt> H. Mueller-Steinhagen:</dt>  
-<dd><b>Waermeuebergang und Fouling beim Stroemungssieden von Argon und Stickstoff im horizontalen Rohr. </b>Fortschrittsberichte der VDI Zeitschriften, Reihe 6 Nr. 143, 1984  
+<dt> H. M&uuml;ller-Steinhagen:</dt>  
+<dd><b>W&auml;rme&uuml;bergang und Fouling beim Str&ouml;mungssieden von Argon und Stickstoff im horizontalen Rohr. </b>Fortschrittsberichte der VDI Zeitschriften, Reihe 6 Nr. 143, 1984  
 </dl>
 </html>
 ", revisions="<html>
 <pre>2016-04-13 Stefan Wischhusen: Epsilon is not used in the function.
-2016-04-18 Timm Hoppe: Added Mueller-Steinhagen and Heck correlation for frictional pressure loss.</pre>
+2016-04-18 Timm Hoppe: Added M&uuml;ller-Steinhagen and Heck correlation for frictional pressure loss.</pre>
 </html>"));
 end dp_twoPhaseOverall_DP;

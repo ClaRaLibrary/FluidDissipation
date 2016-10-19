@@ -1,13 +1,16 @@
 within FluidDissipation.HeatTransfer.HelicalPipe;
-function kc_laminar "Mean heat transfer coefficient of helical pipe | laminar flow regime"
+function kc_laminar
+  "Mean heat transfer coefficient of helical pipe | laminar flow regime"
   extends Modelica.Icons.Function;
   //SOURCE: VDI-Waermeatlas, 9th edition, Springer-Verlag, 2002, section Gc1 - Gc2
   //Notation of equations according to SOURCE
 
   //input records
-  input FluidDissipation.HeatTransfer.HelicalPipe.kc_laminar_IN_con IN_con "Input record for function kc_laminar"
+  input FluidDissipation.HeatTransfer.HelicalPipe.kc_laminar_IN_con IN_con
+    "Input record for function kc_laminar"
     annotation (Dialog(group="Constant inputs"));
-  input FluidDissipation.HeatTransfer.HelicalPipe.kc_laminar_IN_var IN_var "Input record for function kc_laminar"
+  input FluidDissipation.HeatTransfer.HelicalPipe.kc_laminar_IN_var IN_var
+    "Input record for function kc_laminar"
     annotation (Dialog(group="Variable inputs"));
 
   //output variables
@@ -18,7 +21,8 @@ function kc_laminar "Mean heat transfer coefficient of helical pipe | laminar fl
     annotation (Dialog(group="Output"));
   output SI.NusseltNumber Nu "Nusselt number"
     annotation (Dialog(group="Output"));
-  output Real failureStatus "0== boundary conditions fulfilled | 1== failure >> check if still meaningful results"
+  output Real failureStatus
+    "0== boundary conditions fulfilled | 1== failure >> check if still meaningful results"
     annotation (Dialog(group="Output"));
 
 protected
@@ -27,11 +31,15 @@ protected
   SI.Diameter d_hyd=IN_con.d_hyd "Hydraulic diameter";
   SI.Area A_cross=PI*IN_con.d_hyd^2/4 "Circular cross sectional area";
   SI.Diameter d_s=IN_con.L/(IN_con.n_nt*PI) "Mean coil diameter";
-  SI.Diameter d_w=sqrt(max(MIN, (d_s^2 - (IN_con.h/PI)^2))) "Mean helical pipe diameter";
-  SI.Diameter d_coil=max(d_w, d_w*(1 + (IN_con.h/(PI*d_w))^2)) "Mean curvature diameter of helical pipe";
-  SI.ReynoldsNumber Re_crit=2300*(1 + 8.6*(IN_con.d_hyd/d_coil)^0.45) "Critical Reynolds number";
+  SI.Diameter d_w=sqrt(max(MIN, (d_s^2 - (IN_con.h/PI)^2)))
+    "Mean helical pipe diameter";
+  SI.Diameter d_coil=max(d_w, d_w*(1 + (IN_con.h/(PI*d_w))^2))
+    "Mean curvature diameter of helical pipe";
+  SI.ReynoldsNumber Re_crit=2300*(1 + 8.6*(IN_con.d_hyd/d_coil)^0.45)
+    "Critical Reynolds number";
 
-  SI.Velocity velocity=abs(IN_var.m_flow)/max(MIN, IN_var.rho*A_cross) "Mean velocity";
+  SI.Velocity velocity=abs(IN_var.m_flow)/max(MIN, IN_var.rho*A_cross)
+    "Mean velocity";
 
   //failure status
   Real fstatus[1] "Check of expected boundary conditions";

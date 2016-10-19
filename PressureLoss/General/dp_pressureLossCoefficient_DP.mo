@@ -1,5 +1,6 @@
 within FluidDissipation.PressureLoss.General;
-function dp_pressureLossCoefficient_DP "Generic pressure loss | calculate pressure loss | pressure loss coefficient (zeta_TOT)"
+function dp_pressureLossCoefficient_DP
+  "Generic pressure loss | calculate pressure loss | pressure loss coefficient (zeta_TOT)"
   extends Modelica.Icons.Function;
 
   import FD = FluidDissipation.PressureLoss.General;
@@ -78,7 +79,7 @@ The pressure loss <b> DP </b> in dependence of the mass flow rate <b> m_flow </b
  
 <h4><font color=\"#EF9B13\">References</font></h4> 
 <dl>
- <dt>Elmquist, H., M.Otter and S.E. Cellier:</dt>
+ <dt>Elmqvist, H., M.Otter and S.E. Cellier:</dt>
     <dd><b>Inline integration: A new mixed
     symbolic / numeric approach for solving differential-algebraic equation systems.</b>.
     In Proceedings of European Simulation MultiConference, Praque, 1995.</dd>

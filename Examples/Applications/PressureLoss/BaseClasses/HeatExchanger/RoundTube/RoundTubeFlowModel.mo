@@ -1,13 +1,15 @@
 within FluidDissipation.Examples.Applications.PressureLoss.BaseClasses.HeatExchanger.RoundTube;
-model RoundTubeFlowModel "Round tube: Application flow model for heat exchanger function in Modelica.Fluid"
+model RoundTubeFlowModel
+  "Round tube: Application flow model for heat exchanger function in Modelica.Fluid"
 
   //base flow model
-  extends FluidDissipation.Examples.Applications.PressureLoss.BaseClasses.HeatExchanger.BaseHeatExchangerPL.BaseHeatExchangerModel;
+  extends
+    FluidDissipation.Examples.Applications.PressureLoss.BaseClasses.HeatExchanger.BaseHeatExchangerPL.BaseHeatExchangerModel;
 
   //pressure loss calculation
   parameter FluidDissipation.Utilities.Types.HTXGeometry_roundTubes geometry=
-      FluidDissipation.Utilities.Types.HTXGeometry_roundTubes.LouverFin "Choice of fin geometry"
-                             annotation (Dialog(group="HeatExchanger"));
+      FluidDissipation.Utilities.Types.HTXGeometry_roundTubes.LouverFin
+    "Choice of fin geometry" annotation (Dialog(group="HeatExchanger"));
 
   parameter SI.Area A_fr=0.1 "Frontal area"
     annotation (Dialog(group="HeatExchanger"));

@@ -1,10 +1,13 @@
 within FluidDissipation.HeatTransfer.StraightPipe;
-function kc_laminar_KC "Mean heat transfer coefficient of straight pipe | uniform wall temperature or uniform heat flux | hydrodynamically developed or undeveloped laminar flow regime"
+function kc_laminar_KC
+  "Mean heat transfer coefficient of straight pipe | uniform wall temperature or uniform heat flux | hydrodynamically developed or undeveloped laminar flow regime"
   extends Modelica.Icons.Function;
   //input records
-  input FluidDissipation.HeatTransfer.StraightPipe.kc_laminar_IN_con IN_con "Input record for function kc_laminar_KC"
+  input FluidDissipation.HeatTransfer.StraightPipe.kc_laminar_IN_con IN_con
+    "Input record for function kc_laminar_KC"
     annotation (Dialog(group="Constant inputs"));
-  input FluidDissipation.HeatTransfer.StraightPipe.kc_laminar_IN_var IN_var "Input record for function kc_laminar_KC"
+  input FluidDissipation.HeatTransfer.StraightPipe.kc_laminar_IN_var IN_var
+    "Input record for function kc_laminar_KC"
     annotation (Dialog(group="Variable inputs"));
 
   //output variables
@@ -25,10 +28,12 @@ protected
             3.66 else if IN_con.target == TYP.UHFuDFF or IN_con.target == TYP.UHFuUFF then
             4.364 else 0 "Help variable for mean Nusselt number";
 
-  SI.Velocity velocity=abs(IN_var.m_flow)/max(MIN, IN_var.rho*A_cross) "Mean velocity";
+  SI.Velocity velocity=abs(IN_var.m_flow)/max(MIN, IN_var.rho*A_cross)
+    "Mean velocity";
   SI.ReynoldsNumber Re=(IN_var.rho*velocity*IN_con.d_hyd/max(MIN,
       IN_var.eta)) "Reynolds number";
-  SI.PrandtlNumber Pr=abs(IN_var.eta*IN_var.cp/max(MIN, IN_var.lambda)) "Prandtl number";
+  SI.PrandtlNumber Pr=abs(IN_var.eta*IN_var.cp/max(MIN, IN_var.lambda))
+    "Prandtl number";
 
   SI.NusseltNumber Nu2=if IN_con.target == TYP.UWTuDFF or IN_con.target == TYP.UWTuUFF then
             1.615*(Re*Pr*IN_con.d_hyd/IN_con.L)^(1/3) else if IN_con.target ==
@@ -36,9 +41,11 @@ protected
       /IN_con.L)^(1/3) else 0 "Help variable for mean Nusselt number";
   SI.NusseltNumber Nu3=if IN_con.target == TYP.UWTuUFF then (2/(1 + 22*Pr))^(1/
       6)*(Re*Pr*IN_con.d_hyd/IN_con.L)^0.5 else if IN_con.target == TYP.UHFuUFF then
-            0.924*(Pr^(1/3))*(Re*IN_con.d_hyd/IN_con.L)^(1/2) else 0 "Help variable for mean Nusselt number";
+            0.924*(Pr^(1/3))*(Re*IN_con.d_hyd/IN_con.L)^(1/2) else 0
+    "Help variable for mean Nusselt number";
 
-  SI.NusseltNumber Nu=(Nu1^3 + Nu0^3 + (Nu2 - Nu0)^3 + Nu3^3)^(1/3) "Mean Nusselt number";
+  SI.NusseltNumber Nu=(Nu1^3 + Nu0^3 + (Nu2 - Nu0)^3 + Nu3^3)^(1/3)
+    "Mean Nusselt number";
 
   //Documentation
 algorithm

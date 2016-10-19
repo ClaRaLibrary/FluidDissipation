@@ -34,7 +34,8 @@ public
   Applications.PressureLoss.DiffuserFlowModel from_mflow(
                                       redeclare package Medium =
         Modelica.Media.Air.SimpleAir, redeclare model FlowModel =
-        FluidDissipation.Examples.Applications.PressureLoss.BaseClasses.Diffuser.ConicalOverall.ConicalOverallFlowModel (
+        FluidDissipation.Examples.Applications.PressureLoss.BaseClasses.Diffuser.ConicalOverall.ConicalOverallFlowModel
+        (
         A_1=PI*0.1^2/4,
         C_1=PI*0.1,
         A_2=4*PI*0.1^2/4)) "Calculate pressure loss from mass flow rate"

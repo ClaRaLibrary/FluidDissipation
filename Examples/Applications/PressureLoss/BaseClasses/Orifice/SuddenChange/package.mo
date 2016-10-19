@@ -1,14 +1,17 @@
 within FluidDissipation.Examples.Applications.PressureLoss.BaseClasses.Orifice;
 package SuddenChange "FluidDissipation: Turbulent flow regime in a sharp edged orifice with sudden change in cross sectional area"
-extends FluidDissipation.Examples.Applications.PressureLoss.BaseClasses.Orifice.BaseOrificePL;
+extends
+  FluidDissipation.Examples.Applications.PressureLoss.BaseClasses.Orifice.BaseOrificePL;
 
 
 redeclare function extends massFlowRate_dp
 
   //input record for orifice function
-  input FluidDissipation.Examples.Applications.PressureLoss.BaseClasses.Orifice.SuddenChange.PressureLossInput_con
+  input
+    FluidDissipation.Examples.Applications.PressureLoss.BaseClasses.Orifice.SuddenChange.PressureLossInput_con
     IN_con annotation (Placement(transformation(extent={{-80,20},{-60,40}})));
-  input FluidDissipation.Examples.Applications.PressureLoss.BaseClasses.Orifice.SuddenChange.PressureLossInput_var
+  input
+    FluidDissipation.Examples.Applications.PressureLoss.BaseClasses.Orifice.SuddenChange.PressureLossInput_var
     IN_var annotation (Placement(transformation(extent={{-60,20},{-40,40}})));
   input SI.Pressure dp "Pressure loss" annotation (Dialog(tab="Input"));
 

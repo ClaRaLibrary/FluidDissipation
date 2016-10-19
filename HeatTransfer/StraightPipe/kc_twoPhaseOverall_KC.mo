@@ -1,5 +1,6 @@
 within FluidDissipation.HeatTransfer.StraightPipe;
-function kc_twoPhaseOverall_KC "Local two phase heat transfer coefficient of straight pipe | horizontal or vertical boiling | horizontal condensation"
+function kc_twoPhaseOverall_KC
+  "Local two phase heat transfer coefficient of straight pipe | horizontal or vertical boiling | horizontal condensation"
   extends Modelica.Icons.Function;
   //SOURCE_1: Bejan,A.: HEAT TRANSFER HANDBOOK, Wiley, 2003.
   //SOURCE_2: Gungor, K.E. and R.H.S. Winterton: A general correlation for flow boiling in tubes and annuli, Int.J. Heat Mass Transfer, Vol.29, p.351-358, 1986.
@@ -11,7 +12,8 @@ function kc_twoPhaseOverall_KC "Local two phase heat transfer coefficient of str
     IN_var annotation (Dialog(group="Variable inputs"));
 
   //output variables
-  output SI.CoefficientOfHeatTransfer kc "Local two phase heat transfer coefficient";
+  output SI.CoefficientOfHeatTransfer kc
+    "Local two phase heat transfer coefficient";
 
 protected
   Real MIN=Modelica.Constants.eps "Limiter";

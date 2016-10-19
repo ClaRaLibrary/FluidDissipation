@@ -1,6 +1,7 @@
 within FluidDissipation.Examples.Applications.HeatTransfer.BaseClasses.HelicalPipe;
 package Turbulent "FluidDissipation: Heat transfer for helical pipe in turbulent fluid flow regime"
-extends FluidDissipation.Examples.Applications.HeatTransfer.BaseClasses.HelicalPipe.BaseHelicalPipeHT;
+extends
+  FluidDissipation.Examples.Applications.HeatTransfer.BaseClasses.HelicalPipe.BaseHelicalPipeHT;
 constant String fluidFlowRegime="turbulent regime";
 
 

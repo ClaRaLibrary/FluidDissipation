@@ -1,6 +1,7 @@
 within FluidDissipation.Examples.Applications.HeatTransfer.BaseClasses.StraightPipe;
 package Laminar "FluidDissipation: Heat transfer for straight pipe in laminar fluid flow regime"
-extends FluidDissipation.Examples.Applications.HeatTransfer.BaseClasses.StraightPipe.BaseStraightPipeHT;
+extends
+  FluidDissipation.Examples.Applications.HeatTransfer.BaseClasses.StraightPipe.BaseStraightPipeHT;
 constant String fluidFlowRegime="laminar regime";
 
 

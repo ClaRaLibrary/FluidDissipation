@@ -1,14 +1,17 @@
 within FluidDissipation.Examples.Applications.PressureLoss.BaseClasses.Valve;
 package Overall "FluidDissipation: Overall regime of valve"
-  extends FluidDissipation.Examples.Applications.PressureLoss.BaseClasses.Valve.BaseValvePL;
+  extends
+  FluidDissipation.Examples.Applications.PressureLoss.BaseClasses.Valve.BaseValvePL;
 
 
   redeclare function extends massFlowRate_dp
 
     //input records for valve function
-    input FluidDissipation.Examples.Applications.PressureLoss.BaseClasses.Valve.Overall.PressureLossInput_con
+    input
+    FluidDissipation.Examples.Applications.PressureLoss.BaseClasses.Valve.Overall.PressureLossInput_con
     IN_con annotation (Placement(transformation(extent={{-80,20},{-60,40}})));
-    input FluidDissipation.Examples.Applications.PressureLoss.BaseClasses.Valve.Overall.PressureLossInput_var
+    input
+    FluidDissipation.Examples.Applications.PressureLoss.BaseClasses.Valve.Overall.PressureLossInput_var
     IN_var annotation (Placement(transformation(extent={{-60,20},{-40,40}})));
     input SI.Pressure dp "Pressure loss" annotation (Dialog(tab="Input"));
 

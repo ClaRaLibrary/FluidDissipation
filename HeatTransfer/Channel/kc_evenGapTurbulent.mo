@@ -1,5 +1,6 @@
 within FluidDissipation.HeatTransfer.Channel;
-function kc_evenGapTurbulent "Mean heat transfer coefficient of even gap | turbulent flow regime | developed fluid flow | heat transfer at BOTH sides | identical and constant wall temperatures"
+function kc_evenGapTurbulent
+  "Mean heat transfer coefficient of even gap | turbulent flow regime | developed fluid flow | heat transfer at BOTH sides | identical and constant wall temperatures"
   extends Modelica.Icons.Function;
   //SOURCE: VDI-Waermeatlas, 9th edition, Springer-Verlag, 2002, Section Gb 7
 
@@ -7,9 +8,11 @@ function kc_evenGapTurbulent "Mean heat transfer coefficient of even gap | turbu
   import MIN = Modelica.Constants.eps;
 
   //input records
-  input FluidDissipation.HeatTransfer.Channel.kc_evenGapTurbulent_IN_con IN_con "Input record for function kc_evenGapTurbulent"
+  input FluidDissipation.HeatTransfer.Channel.kc_evenGapTurbulent_IN_con IN_con
+    "Input record for function kc_evenGapTurbulent"
     annotation (Dialog(group="Constant inputs"));
-  input FluidDissipation.HeatTransfer.Channel.kc_evenGapTurbulent_IN_var IN_var "Input record for function kc_evenGapTurbulent"
+  input FluidDissipation.HeatTransfer.Channel.kc_evenGapTurbulent_IN_var IN_var
+    "Input record for function kc_evenGapTurbulent"
     annotation (Dialog(group="Variable inputs"));
 
   //output variables
@@ -20,7 +23,8 @@ function kc_evenGapTurbulent "Mean heat transfer coefficient of even gap | turbu
     annotation (Dialog(group="Output"));
   output SI.NusseltNumber Nu "Nusselt number"
     annotation (Dialog(group="Output"));
-  output Real failureStatus "0== boundary conditions fulfilled | 1== failure >> check if still meaningful results"
+  output Real failureStatus
+    "0== boundary conditions fulfilled | 1== failure >> check if still meaningful results"
     annotation (Dialog(group="Output"));
 
 protected
@@ -34,7 +38,8 @@ protected
   SI.Area A_cross=max(MIN, IN_con.s*IN_con.h) "Cross sectional area of gap";
   SI.Diameter d_hyd=2*IN_con.s "Hydraulic diameter";
 
-  SI.Velocity velocity=abs(IN_var.m_flow)/max(MIN, IN_var.rho*A_cross) "Mean velocity in gap";
+  SI.Velocity velocity=abs(IN_var.m_flow)/max(MIN, IN_var.rho*A_cross)
+    "Mean velocity in gap";
 
   //failure status
   Real fstatus[3] "check of expected boundary conditions";

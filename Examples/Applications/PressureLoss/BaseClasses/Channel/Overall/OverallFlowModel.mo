@@ -1,15 +1,18 @@
 within FluidDissipation.Examples.Applications.PressureLoss.BaseClasses.Channel.Overall;
-model OverallFlowModel "Channel (overall): Application flow model for channel function in Modelica.Fluid"
+model OverallFlowModel
+  "Channel (overall): Application flow model for channel function in Modelica.Fluid"
 
   //base flow model
-  extends FluidDissipation.Examples.Applications.PressureLoss.BaseClasses.Channel.BaseChannelPL.BaseChannelModel;
+  extends
+    FluidDissipation.Examples.Applications.PressureLoss.BaseClasses.Channel.BaseChannelPL.BaseChannelModel;
 
   //pressure loss calculation
-  FluidDissipation.Utilities.Types.Roughness roughness=FluidDissipation.Utilities.Types.Roughness.Considered "Choice of considering surface roughness"
+  FluidDissipation.Utilities.Types.Roughness roughness=FluidDissipation.Utilities.Types.Roughness.Considered
+    "Choice of considering surface roughness"
     annotation (Dialog(group="Channel"));
   FluidDissipation.Utilities.Types.GeometryOfInternalFlow geometry=
-      FluidDissipation.Utilities.Types.GeometryOfInternalFlow.Circular "Choice of geometry for internal flow"
-                                           annotation (Dialog(group="Channel"));
+      FluidDissipation.Utilities.Types.GeometryOfInternalFlow.Circular
+    "Choice of geometry for internal flow" annotation (Dialog(group="Channel"));
   parameter SI.Length K=0 "Roughness (average height of surface asperities)"
     annotation (Dialog(group="Channel"));
   parameter SI.Length L=1 "Length" annotation (Dialog(group="Channel"));
@@ -29,7 +32,8 @@ model OverallFlowModel "Channel (overall): Application flow model for channel fu
     annotation (Dialog(group="Channel"));
   parameter SI.Length a_tri=d_cir*(1 + 2^0.5) "Length of base line"
     annotation (Dialog(group="Channel"));
-  parameter SI.Length h_tri=0.5*a_tri "Height to top angle perpendicular to base line"
+  parameter SI.Length h_tri=0.5*a_tri
+    "Height to top angle perpendicular to base line"
     annotation (Dialog(group="Channel"));
   parameter Real beta=90 "Top angle" annotation (Dialog(group="Channel"));
 

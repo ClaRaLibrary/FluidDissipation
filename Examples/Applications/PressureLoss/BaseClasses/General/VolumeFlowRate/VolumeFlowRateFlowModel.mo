@@ -1,8 +1,10 @@
 within FluidDissipation.Examples.Applications.PressureLoss.BaseClasses.General.VolumeFlowRate;
-model VolumeFlowRateFlowModel "VolumeFlowRate: Application flow model for generic function in Modelica.Fluid"
+model VolumeFlowRateFlowModel
+  "VolumeFlowRate: Application flow model for generic function in Modelica.Fluid"
 
   //base flow model
-  extends FluidDissipation.Examples.Applications.PressureLoss.BaseClasses.General.BaseGeneralPL.BaseGeneralModel;
+  extends
+    FluidDissipation.Examples.Applications.PressureLoss.BaseClasses.General.BaseGeneralPL.BaseGeneralModel;
 
   //pressure loss calculation
   parameter Real a=15 "Coefficient for quadratic term"

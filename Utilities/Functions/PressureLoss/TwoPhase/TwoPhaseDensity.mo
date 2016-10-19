@@ -4,11 +4,12 @@ function TwoPhaseDensity "Calculation of mean density for two phase flow"
 
   //SOURCE_1: VDI-Waermeatlas, 10th edition, Springer-Verlag, 2006.
   input FluidDissipation.Utilities.Types.VoidFractionApproach voidFractionApproach=
-      FluidDissipation.Utilities.Types.VoidFractionApproach.Homogeneous "Choice of void fraction approach"
-                                       annotation (Dialog(group="Choices"));
+      FluidDissipation.Utilities.Types.VoidFractionApproach.Homogeneous
+    "Choice of void fraction approach" annotation (Dialog(group="Choices"));
 
   //SOURCE_3: p.52, eq. 4.6: heterogenous effects on momentum pressure loss considered through corrected mass flow rate
-  input Boolean massFlowRateCorrection=false "Consider heterogeneous mass flow rate correction"
+  input Boolean massFlowRateCorrection=false
+    "Consider heterogeneous mass flow rate correction"
     annotation (Dialog(group="Choices"));
 
   input SI.Density rho_g(min=Modelica.Constants.eps) "Density of gaseous phase"
@@ -23,7 +24,8 @@ function TwoPhaseDensity "Calculation of mean density for two phase flow"
 protected
   Real MIN=Modelica.Constants.eps;
 
-  Real epsilonA=min(1, max(0, abs(epsilon_A))) "Void fraction (cross sectional averaged)";
+  Real epsilonA=min(1, max(0, abs(epsilon_A)))
+    "Void fraction (cross sectional averaged)";
   Real xflow=min(1, max(0, abs(x_flow))) "Mass flow rate quality";
 
   //SOURCE_1: p.Lba 3, eq. 17: Mean two phase density assuming homogeneous approach

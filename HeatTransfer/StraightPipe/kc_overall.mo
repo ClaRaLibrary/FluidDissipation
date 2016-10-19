@@ -1,10 +1,13 @@
 within FluidDissipation.HeatTransfer.StraightPipe;
-function kc_overall "Mean heat transfer coefficient of straight pipe | uniform wall temperature or uniform heat flux | hydrodynamically developed or undeveloped overall flow regime| pressure loss dependence"
+function kc_overall
+  "Mean heat transfer coefficient of straight pipe | uniform wall temperature or uniform heat flux | hydrodynamically developed or undeveloped overall flow regime| pressure loss dependence"
   extends Modelica.Icons.Function;
   //input records
-  input FluidDissipation.HeatTransfer.StraightPipe.kc_overall_IN_con IN_con "Input record for function kc_overall"
+  input FluidDissipation.HeatTransfer.StraightPipe.kc_overall_IN_con IN_con
+    "Input record for function kc_overall"
     annotation (Dialog(group="Constant inputs"));
-  input FluidDissipation.HeatTransfer.StraightPipe.kc_overall_IN_var IN_var "Input record for function kc_overall"
+  input FluidDissipation.HeatTransfer.StraightPipe.kc_overall_IN_var IN_var
+    "Input record for function kc_overall"
     annotation (Dialog(group="Variable inputs"));
 
   //output variables
@@ -15,7 +18,8 @@ function kc_overall "Mean heat transfer coefficient of straight pipe | uniform w
     annotation (Dialog(group="Output"));
   output SI.NusseltNumber Nu "Nusselt number"
     annotation (Dialog(group="Output"));
-  output Real failureStatus "0== boundary conditions fulfilled | 1== failure >> check if still meaningful results"
+  output Real failureStatus
+    "0== boundary conditions fulfilled | 1== failure >> check if still meaningful results"
     annotation (Dialog(group="Output"));
 
 protected
@@ -25,7 +29,8 @@ protected
 
   SI.Area A_cross=PI*IN_con.d_hyd^2/4 "Cross sectional area";
 
-  SI.Velocity velocity=abs(IN_var.m_flow)/max(MIN, IN_var.rho*A_cross) "Mean velocity";
+  SI.Velocity velocity=abs(IN_var.m_flow)/max(MIN, IN_var.rho*A_cross)
+    "Mean velocity";
 
   //failure status
   Real fstatus[3] "Check of expected boundary conditions";
@@ -39,13 +44,13 @@ algorithm
 
   //failure status
   if IN_con.roughness == TYP.Neglected then
-    if Re < 2e4 or Re > 1e6 then
+    if Re > 1e6 then
       fstatus[1] := 1;
     else
       fstatus[1] := 0;
     end if;
   elseif IN_con.roughness == TYP.Considered then
-    if Re < 1e4 or Re > 1e6 then
+    if Re > 1e6 then
       fstatus[1] := 1;
     else
       fstatus[1] := 0;
@@ -213,6 +218,7 @@ The following verification considers pressure loss influence (roughness == Consi
  
 </html>
 ", revisions="<html>
-<pre>2016-04-12 Stefan Wischhusen: Removed singularity for Re at zero mass flow rate. </pre>
+<pre>2016-04-12 Stefan Wischhusen: Removed singularity for Re at zero mass flow rate.<br> 
+2016-06-03 Stefan Wischhusen: Failure status corrected. Function is also valid for laminar and transitional flow. </pre>
 </html>"));
 end kc_overall;

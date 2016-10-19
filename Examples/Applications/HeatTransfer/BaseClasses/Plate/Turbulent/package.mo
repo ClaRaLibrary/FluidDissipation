@@ -1,6 +1,7 @@
 within FluidDissipation.Examples.Applications.HeatTransfer.BaseClasses.Plate;
 package Turbulent "FluidDissipation: fluid flow around plate for turbulent fluid flow regime"
-extends FluidDissipation.Examples.Applications.HeatTransfer.BaseClasses.Plate.BasePlateHT;
+extends
+  FluidDissipation.Examples.Applications.HeatTransfer.BaseClasses.Plate.BasePlateHT;
 constant String fluidFlowRegime="turbulent regime";
 
 

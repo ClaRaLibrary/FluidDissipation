@@ -1,13 +1,17 @@
 within FluidDissipation.Examples.TestCases.HeatTransfer;
-model StateForHeatTransfer "Substitute volume model as fluid property interface to heat transfer models"
+model StateForHeatTransfer
+  "Substitute volume model as fluid property interface to heat transfer models"
 
-  parameter Boolean use_MediaState=false "true: Use state record input, false: fluid property inputs (p_state, t_state, h_state, d_state or X_state)"
-                                                                                                    annotation(Dialog(group="State"), choices(__Dymola_checkBox=true));
+  parameter Boolean use_MediaState=false
+    "true: Use state record input, false: fluid property inputs (p_state, t_state, h_state, d_state or X_state)"
+                                                                                                        annotation(Dialog(group="State"), choices(__Dymola_checkBox=true));
 
-  replaceable package Medium = Modelica.Media.Air.DryAirNasa constrainedby Modelica.Media.Interfaces.PartialMedium "Medium in the component"
+  replaceable package Medium = Modelica.Media.Air.DryAirNasa constrainedby
+    Modelica.Media.Interfaces.PartialMedium "Medium in the component"
     annotation (Dialog(group="Fluid properties"), choicesAllMatching=true);
   Medium.BaseProperties medium;
-  input Medium.ThermodynamicState state_user=medium.state "input for state record according to Modelica.Media" annotation (Dialog(group="State",
+  input Medium.ThermodynamicState state_user=medium.state
+    "input for state record according to Modelica.Media"                                                       annotation (Dialog(group="State",
         enable=if use_MediaState then true else false));
 
   //definition of (missing) thermodynamic state for heat transfer calculation
@@ -24,7 +28,8 @@ model StateForHeatTransfer "Substitute volume model as fluid property interface 
         Medium.ThermoStates==Modelica.Media.Interfaces.Choices.IndependentVariables.phX) then true else false));
   Medium.Density d_state=1.18 "Density of state"  annotation (Dialog(group="State",
         enable=if not use_MediaState and Medium.ThermoStates==Modelica.Media.Interfaces.Choices.IndependentVariables.dTX then true else false));
-  Medium.MassFraction[Medium.nX] X_state=Medium.X_default "Mass fractions of state"  annotation (Dialog(group="State",
+  Medium.MassFraction[Medium.nX] X_state=Medium.X_default
+    "Mass fractions of state"                                                        annotation (Dialog(group="State",
         enable=if not use_MediaState and (Medium.ThermoStates==Modelica.Media.Interfaces.Choices.IndependentVariables.dTX or
         Medium.ThermoStates==Modelica.Media.Interfaces.Choices.IndependentVariables.pTX or
         Medium.ThermoStates==Modelica.Media.Interfaces.Choices.IndependentVariables.phX) then true else false));
@@ -102,7 +107,7 @@ is used for the current simulation.
           fillPattern=FillPattern.Solid,
           textString="state")}),
     Documentation(revisions="<html>
-2012-03-30 Revised parameter naming and description. Stefan Wischhusen, XRG.
+2012-03-30 Revised parameter naming and description. Stefan Wischhusen, XRG.<br>
 2016-01-19 The model is now suitable for multiple medium models with different states. Stefan Wischhusen, XRG.
 
 

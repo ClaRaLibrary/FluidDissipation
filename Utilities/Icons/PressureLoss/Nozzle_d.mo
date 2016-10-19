@@ -6,7 +6,6 @@ partial model Nozzle_d "Icon for a nozzle"
         Line(
           points={{-100,90},{-40,90}},
           color={0,0,0},
-          smooth=Smooth.None,
           thickness=0.5,
           arrow={Arrow.Filled,Arrow.Filled}),
         Rectangle(
@@ -38,55 +37,46 @@ partial model Nozzle_d "Icon for a nozzle"
         Polygon(
           points={{40,40},{-40,80},{-40,60},{40,20},{40,20},{40,40}},
           lineColor={0,0,0},
-          smooth=Smooth.None,
           fillColor={255,255,170},
           fillPattern=FillPattern.Backward),
         Polygon(
           points={{40,-20},{-40,-60},{-40,-80},{40,-40},{40,-40},{40,-20}},
           lineColor={0,0,0},
-          smooth=Smooth.None,
           fillColor={255,255,170},
           fillPattern=FillPattern.Backward),
         Line(
           points={{-106,0},{108,0}},
           pattern=LinePattern.Dash,
           thickness=0.5,
-          smooth=Smooth.None,
           color={0,0,0}),
         Line(
           points={{-40,90},{40,90}},
           color={0,0,0},
-          smooth=Smooth.None,
           thickness=0.5,
           arrow={Arrow.Filled,Arrow.Filled}),
         Line(
           points={{40,90},{100,90}},
           color={0,0,0},
-          smooth=Smooth.None,
           thickness=0.5,
           arrow={Arrow.Filled,Arrow.Filled}),
         Line(
           points={{70,20},{70,-20}},
           color={0,0,0},
           thickness=0.5,
-          smooth=Smooth.None,
           arrow={Arrow.Filled,Arrow.Filled}),
         Line(
           points={{-70,60},{-70,-60}},
           color={0,0,0},
           thickness=0.5,
-          smooth=Smooth.None,
           arrow={Arrow.Filled,Arrow.Filled}),
         Line(
           points={{40,90},{40,-20}},
           color={0,0,0},
-          thickness=0.5,
-          smooth=Smooth.None),
+          thickness=0.5),
         Line(
           points={{-40,90},{-40,-60}},
           color={0,0,0},
-          thickness=0.5,
-          smooth=Smooth.None),
+          thickness=0.5),
         Rectangle(
           extent={{-20,98},{18,84}},
           lineThickness=0.5,
@@ -155,17 +145,14 @@ partial model Nozzle_d "Icon for a nozzle"
         Line(
           points={{52,14},{8,36}},
           color={0,0,0},
-          smooth=Smooth.None,
           thickness=0.5),
         Line(
           points={{50,20},{8,20}},
           color={0,0,0},
-          smooth=Smooth.None,
           thickness=0.5),
         Line(
           points={{13,34},{9,30},{9,24},{13,20}},
           color={0,0,0},
-          smooth=Smooth.None,
           thickness=0.5),
         Text(
           extent={{-69,38},{30,22}},
@@ -183,7 +170,6 @@ partial model Nozzle_d "Icon for a nozzle"
         Line(
           points={{16,26},{0,28}},
           color={0,0,0},
-          smooth=Smooth.None,
           thickness=0.5)}));
 
 end Nozzle_d;

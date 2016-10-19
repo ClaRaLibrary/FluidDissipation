@@ -1,10 +1,13 @@
 within FluidDissipation.HeatTransfer.StraightPipe;
-function kc_turbulent_KC "Mean heat transfer coefficient of straight pipe | hydrodynamically developed turbulent flow regime | pressure loss dependence"
+function kc_turbulent_KC
+  "Mean heat transfer coefficient of straight pipe | hydrodynamically developed turbulent flow regime | pressure loss dependence"
   extends Modelica.Icons.Function;
   //input records
-  input FluidDissipation.HeatTransfer.StraightPipe.kc_turbulent_IN_con IN_con "Input record for function kc_turbulent_KC"
+  input FluidDissipation.HeatTransfer.StraightPipe.kc_turbulent_IN_con IN_con
+    "Input record for function kc_turbulent_KC"
     annotation (Dialog(group="Constant inputs"));
-  input FluidDissipation.HeatTransfer.StraightPipe.kc_turbulent_IN_var IN_var "Input record for function kc_turbulent_KC"
+  input FluidDissipation.HeatTransfer.StraightPipe.kc_turbulent_IN_var IN_var
+    "Input record for function kc_turbulent_KC"
     annotation (Dialog(group="Variable inputs"));
 
   //output variables
@@ -18,10 +21,12 @@ protected
   SI.Area A_cross=PI*IN_con.d_hyd^2/4 "Circular cross sectional area";
 
   SI.Velocity velocity=abs(IN_var.m_flow)/(IN_var.rho*A_cross) "Mean velocity";
-  SI.ReynoldsNumber Re=max(MIN, (IN_var.rho*velocity*IN_con.d_hyd/IN_var.eta)) "Reynolds number";
+  SI.ReynoldsNumber Re=max(MIN, (IN_var.rho*velocity*IN_con.d_hyd/IN_var.eta))
+    "Reynolds number";
   SI.PrandtlNumber Pr=abs(IN_var.eta*IN_var.cp/IN_var.lambda) "Prandtl number";
 
-  Real zeta=abs(1/max(MIN, 1.8*Modelica.Math.log10(abs(Re)) - 1.5)^2) "Pressure loss coefficient";
+  Real zeta=abs(1/max(MIN, 1.8*Modelica.Math.log10(abs(Re)) - 1.5)^2)
+    "Pressure loss coefficient";
 
   //Documentation
 algorithm

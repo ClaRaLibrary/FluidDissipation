@@ -1,28 +1,36 @@
 within FluidDissipation.Examples.Verifications.PressureLoss.General;
-model dp_nominalPressureLossLawDensity "Verification of function dp_nominalPressureLossLawDensity"
+model dp_nominalPressureLossLawDensity
+  "Verification of function dp_nominalPressureLossLawDensity"
 
   parameter Integer n=size(rho, 1) "number of different fluid density values";
 
   //general variables
-  FluidDissipation.Utilities.Types.MassOrVolumeFlowRate target=FluidDissipation.Utilities.Types.MassOrVolumeFlowRate.MassFlowRate "1 == use nominal mass flow rate | 2 == use nominal volume flow rate"
+  FluidDissipation.Utilities.Types.MassOrVolumeFlowRate target=FluidDissipation.Utilities.Types.MassOrVolumeFlowRate.MassFlowRate
+    "1 == use nominal mass flow rate | 2 == use nominal volume flow rate"
     annotation (Dialog(group="Generic variables"));
   SI.Area A_cross=A_cross_nom "Cross sectional area"
     annotation (Dialog(group="Generic variables"));
-  SI.Area A_cross_nom=Modelica.Constants.pi*0.1^2/4 "Nominal cross sectional area"
+  SI.Area A_cross_nom=Modelica.Constants.pi*0.1^2/4
+    "Nominal cross sectional area"
     annotation (Dialog(group="Generic variables"));
-  SI.Pressure dp_nom=50 "Nominal pressure loss (at nominal values of mass flow rate and density)"
+  SI.Pressure dp_nom=50
+    "Nominal pressure loss (at nominal values of mass flow rate and density)"
     annotation (Dialog(group="Generic variables"));
-  SI.MassFlowRate m_flow_nom=1 "Nominal mass flow rate (at nominal values of pressure loss and density)"
+  SI.MassFlowRate m_flow_nom=1
+    "Nominal mass flow rate (at nominal values of pressure loss and density)"
     annotation (Dialog(group="Generic variables"));
   Real exp=2 "Exponent of pressure loss law"
     annotation (Dialog(group="Generic variables"));
-  SI.VolumeFlowRate V_flow_nom=m_flow_nom/rho_nom "Nominal volume flow rate (at nominal values of pressure loss and density)"
+  SI.VolumeFlowRate V_flow_nom=m_flow_nom/rho_nom
+    "Nominal volume flow rate (at nominal values of pressure loss and density)"
     annotation (Dialog(group="Generic variables"));
-  FluidDissipation.Utilities.Types.PressureLossCoefficient zeta_TOT=0.05*1/0.1 "Pressure loss coefficient"
-                                annotation (Dialog(group="Generic variables"));
-  FluidDissipation.Utilities.Types.PressureLossCoefficient zeta_TOT_nom=1 "Nominal pressure loss coefficient (for nominal values)"
+  FluidDissipation.Utilities.Types.PressureLossCoefficient zeta_TOT=0.05*1/0.1
+    "Pressure loss coefficient" annotation (Dialog(group="Generic variables"));
+  FluidDissipation.Utilities.Types.PressureLossCoefficient zeta_TOT_nom=1
+    "Nominal pressure loss coefficient (for nominal values)"
     annotation (Dialog(group="Generic variables"));
-  SI.Density rho_nom=1e3 "Nominal density (at nominal values of mass flow rate and pressure loss)"
+  SI.Density rho_nom=1e3
+    "Nominal density (at nominal values of mass flow rate and pressure loss)"
     annotation (Dialog(group="Generic variables"));
 
   //fluid property variables
@@ -30,8 +38,10 @@ model dp_nominalPressureLossLawDensity "Verification of function dp_nominalPress
 
   //target variables (here: mass flow rate as input for inverse calculation)
   //intended input variables for records
-  SI.MassFlowRate input_mdot[n](start=zeros(n)) = ones(n)*input_mflow_0.y "(Input) mass flow rate (for intended incompressible case)";
-  SI.Pressure input_dp[n]={DP[i] for i in 1:n} "(Input) pressure loss (for intended compressible case)";
+  SI.MassFlowRate input_mdot[n](start=zeros(n)) = ones(n)*input_mflow_0.y
+    "(Input) mass flow rate (for intended incompressible case)";
+  SI.Pressure input_dp[n]={DP[i] for i in 1:n}
+    "(Input) pressure loss (for intended compressible case)";
 
   //input record
   //target == DP (incompressible)
@@ -126,7 +136,8 @@ equation
 
   annotation (
     __Dymola_Commands(file=
-          "modelica://FluidDissipation/Extras/Scripts/pressureLoss/general/dp_nominalPressureLossLawDensity.mos" "Verification of dp_nominalPressureLossLawDensity"),
+          "modelica://FluidDissipation/Extras/Scripts/pressureLoss/general/dp_nominalPressureLossLawDensity.mos"
+        "Verification of dp_nominalPressureLossLawDensity"),
     Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},{
             100,100}}), graphics={Text(
           extent={{-100,50},{100,75}},

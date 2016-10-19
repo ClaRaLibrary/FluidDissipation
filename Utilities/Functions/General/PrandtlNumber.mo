@@ -5,7 +5,8 @@ function PrandtlNumber "calculation of Prandtl number"
   import MIN = Modelica.Constants.eps;
 
   //fluid properties
-  input SI.SpecificHeatCapacityAtConstantPressure cp "specific heat capacity of fluid at constant pressure";
+  input SI.SpecificHeatCapacityAtConstantPressure cp
+    "specific heat capacity of fluid at constant pressure";
   input SI.DynamicViscosity eta "dynamic viscosity of fluid";
   input SI.ThermalConductivity lambda "thermal conductivity of fluid";
 

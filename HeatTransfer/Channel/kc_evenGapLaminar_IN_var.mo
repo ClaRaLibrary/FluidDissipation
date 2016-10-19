@@ -1,5 +1,6 @@
 within FluidDissipation.HeatTransfer.Channel;
-record kc_evenGapLaminar_IN_var "Input record for function kc_evenGapLaminar and kc_evenGapLaminar_KC"
+record kc_evenGapLaminar_IN_var
+  "Input record for function kc_evenGapLaminar and kc_evenGapLaminar_KC"
 
   extends FluidDissipation.HeatTransfer.Channel.kc_evenGapOverall_IN_var;
 

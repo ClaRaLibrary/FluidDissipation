@@ -1,5 +1,6 @@
 within FluidDissipation.HeatTransfer.StraightPipe;
-function kc_boilingOverall "Local two phase heat transfer coefficient of straight pipe | horizontal or vertical boiling"
+function kc_boilingOverall
+  "Local two phase heat transfer coefficient of straight pipe | horizontal or vertical boiling"
   extends Modelica.Icons.Function;
   //SOURCE_1: Bejan,A.: HEAT TRANSFER HANDBOOK, Wiley, 2003.
   //SOURCE_2: Gungor, K.E. and R.H.S. Winterton: A general correlation for flow boiling in tubes and annuli, Int.J. Heat Mass Transfer, Vol.29, p.351-358, 1986.
@@ -11,9 +12,12 @@ function kc_boilingOverall "Local two phase heat transfer coefficient of straigh
     IN_var annotation (Dialog(group="Variable inputs"));
 
   //output variables
-  output SI.CoefficientOfHeatTransfer kc "Local two phase heat transfer coefficient";
-  output SI.CoefficientOfHeatTransfer kc_FC "Local heat transfer coefficient due to forced convection";
-  output SI.CoefficientOfHeatTransfer kc_PB "Local heat transfer coefficient due to nucleate pool boiling";
+  output SI.CoefficientOfHeatTransfer kc
+    "Local two phase heat transfer coefficient";
+  output SI.CoefficientOfHeatTransfer kc_FC
+    "Local heat transfer coefficient due to forced convection";
+  output SI.CoefficientOfHeatTransfer kc_PB
+    "Local heat transfer coefficient due to nucleate pool boiling";
   output Real E;
   output Real recXtt "1/X_tt";
 protected

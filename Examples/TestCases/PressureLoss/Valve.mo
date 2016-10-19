@@ -58,8 +58,10 @@ public
         origin={-50,-40})));
 
   Applications.PressureLoss.ValveFlowModel from_dp(redeclare package Medium =
-        Modelica.Media.Water.ConstantPropertyLiquidWater, redeclare model FlowModel =
-        FluidDissipation.Examples.Applications.PressureLoss.BaseClasses.Valve.Overall.OverallFlowModel (
+        Modelica.Media.Water.ConstantPropertyLiquidWater, redeclare model
+      FlowModel =
+        FluidDissipation.Examples.Applications.PressureLoss.BaseClasses.Valve.Overall.OverallFlowModel
+        (
         valveCoefficient=FluidDissipation.Utilities.Types.ValveCoefficient.OP,
         dp_nominal=200000,
         m_flow_nominal=1,
@@ -67,8 +69,10 @@ public
     annotation (Placement(transformation(extent={{-24,-4},{24,44}})));
 
   Applications.PressureLoss.ValveFlowModel from_mflow(redeclare package Medium =
-        Modelica.Media.Water.ConstantPropertyLiquidWater, redeclare model FlowModel =
-        FluidDissipation.Examples.Applications.PressureLoss.BaseClasses.Valve.Overall.OverallFlowModel (
+        Modelica.Media.Water.ConstantPropertyLiquidWater, redeclare model
+      FlowModel =
+        FluidDissipation.Examples.Applications.PressureLoss.BaseClasses.Valve.Overall.OverallFlowModel
+        (
         valveCoefficient=FluidDissipation.Utilities.Types.ValveCoefficient.OP,
         dp_nominal=200000,
         m_flow_nominal=1,

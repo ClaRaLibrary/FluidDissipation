@@ -1,5 +1,6 @@
 within FluidDissipation.HeatTransfer.StraightPipe;
-record kc_turbulent_IN_con "Input record for function kc_turbulent and kc_turbulent_KC"
+record kc_turbulent_IN_con
+  "Input record for function kc_turbulent and kc_turbulent_KC"
 
   extends FluidDissipation.HeatTransfer.StraightPipe.kc_overall_IN_con(final
       target=FluidDissipation.Utilities.Types.HeatTransferBoundary.UWTuDFF);

@@ -3,8 +3,8 @@ record EvenGap "Input for even gap"
   extends Modelica.Icons.Record;
 
   //choices
-  FluidDissipation.Utilities.Types.kc_evenGap target=FluidDissipation.Utilities.Types.kc_evenGap.DevBoth "Target variable of calculation"
-                                     annotation (Dialog(group="Even gap"));
+  FluidDissipation.Utilities.Types.kc_evenGap target=FluidDissipation.Utilities.Types.kc_evenGap.DevBoth
+    "Target variable of calculation" annotation (Dialog(group="Even gap"));
 
   SI.Length h=0.1 "Height of cross sectional area"
     annotation (Dialog(group="Even gap"));

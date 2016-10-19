@@ -1,5 +1,6 @@
 within FluidDissipation.Utilities.Records.HeatTransfer;
-record TwoPhaseFlowHT_IN_var "Base record for two phase heat transfer coefficient"
+record TwoPhaseFlowHT_IN_var
+  "Base record for two phase heat transfer coefficient"
   extends Modelica.Icons.Record;
 
 //   //choices
@@ -8,7 +9,8 @@ record TwoPhaseFlowHT_IN_var "Base record for two phase heat transfer coefficien
 //     annotation (Dialog(group="Choices"));
 
   //fluid properties
-  SI.SpecificHeatCapacityAtConstantPressure cp_l=4.19e3 "Specific heat capacity of liquid"
+  SI.SpecificHeatCapacityAtConstantPressure cp_l=4.19e3
+    "Specific heat capacity of liquid"
     annotation (Dialog(group="Fluid properties"));
   SI.ThermalConductivity lambda_l=0.58 "Thermal conductivity of liquid"
     annotation (Dialog(group="Fluid properties"));

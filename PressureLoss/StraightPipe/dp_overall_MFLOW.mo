@@ -1,14 +1,17 @@
 within FluidDissipation.PressureLoss.StraightPipe;
-function dp_overall_MFLOW "Pressure loss of straight pipe | calculate mass flow rate | overall flow regime | surface roughness"
+function dp_overall_MFLOW
+  "Pressure loss of straight pipe | calculate mass flow rate | overall flow regime | surface roughness"
   extends Modelica.Icons.Function;
   import FD = FluidDissipation.PressureLoss.StraightPipe;
   import SMOOTH = FluidDissipation.Utilities.Functions.General.Stepsmoother;
   import FluidDissipation.Utilities.Types.Roughness;
 
   //input records
-  input FluidDissipation.PressureLoss.StraightPipe.dp_overall_IN_con IN_con "Input record for function dp_overall_MFLOW"
+  input FluidDissipation.PressureLoss.StraightPipe.dp_overall_IN_con IN_con
+    "Input record for function dp_overall_MFLOW"
     annotation (Dialog(group="Constant inputs"));
-  input FluidDissipation.PressureLoss.StraightPipe.dp_overall_IN_var IN_var "Input record for function dp_overall_MFLOW"
+  input FluidDissipation.PressureLoss.StraightPipe.dp_overall_IN_var IN_var
+    "Input record for function dp_overall_MFLOW"
     annotation (Dialog(group="Variable inputs"));
   input SI.Pressure dp "Pressure loss" annotation (Dialog(group="Input"));
 
@@ -24,11 +27,14 @@ protected
 
   //SOURCE_1: p.81, fig. 2-3, sec 21-22: definition of flow regime boundaries
   SI.ReynoldsNumber Re_lam_min=1e3 "Minimum Reynolds number for laminar regime";
-  SI.ReynoldsNumber Re_lam_max=2090*(1/max(0.007, k))^0.0635 "Maximum Reynolds number for laminar regime";
-  SI.ReynoldsNumber Re_turb_min=4e3 "Minimum Reynolds number for turbulent regime";
+  SI.ReynoldsNumber Re_lam_max=2090*(1/max(0.007, k))^0.0635
+    "Maximum Reynolds number for laminar regime";
+  SI.ReynoldsNumber Re_turb_min=4e3
+    "Minimum Reynolds number for turbulent regime";
 
   SI.ReynoldsNumber Re_lam_leave=min(Re_lam_max, max(Re_lam_min, 754*
-      Modelica.Math.exp(if k <= 0.007 then 0.0065/0.007 else 0.0065/k))) "Start of transition regime for increasing Reynolds number (leaving laminar regime)";
+      Modelica.Math.exp(if k <= 0.007 then 0.0065/0.007 else 0.0065/k)))
+    "Start of transition regime for increasing Reynolds number (leaving laminar regime)";
 
   //determining Darcy friction factor out of pressure loss calculation for straight pipe:
   //dp = lambda_FRI*L/d_hyd*(rho/2)*velocity^2 and assuming lambda_FRI == lambda_FRI_calc/Re^2
@@ -36,18 +42,20 @@ protected
       *IN_var.eta^2) "Adapted Darcy friction factor";
 
   //SOURCE_3: p.Lab 1, eq. 5: determine Re assuming laminar regime (Blasius)
-  SI.ReynoldsNumber Re_lam=lambda_FRI_calc/64 "Reynolds number assuming laminar regime";
+  SI.ReynoldsNumber Re_lam=lambda_FRI_calc/64
+    "Reynolds number assuming laminar regime";
 
   //SOURCE_3: p.Lab 2, eq. 10: determine Re assuming turbulent regime (Colebrook-White)
   SI.ReynoldsNumber Re_turb=if IN_con.roughness == Roughness.Neglected then (max(MIN,
       lambda_FRI_calc)/0.3164)^(1/1.75) else -2*sqrt(max(lambda_FRI_calc, MIN))
-      *Modelica.Math.log10(2.51/sqrt(max(lambda_FRI_calc, MIN)) + k/3.7) "Reynolds number assuming turbulent regime";
+      *Modelica.Math.log10(2.51/sqrt(max(lambda_FRI_calc, MIN)) + k/3.7)
+    "Reynolds number assuming turbulent regime";
 
   //determine actual flow regime
   SI.ReynoldsNumber Re_check=if Re_lam < Re_lam_leave then Re_lam else Re_turb;
   //determine Re for transition regime
   SI.ReynoldsNumber Re_trans=if Re_lam >= Re_lam_leave then
-      FluidDissipation.Utilities.Functions.General.CubicInterpolation_DP(
+      FluidDissipation.Utilities.Functions.General.CubicInterpolation_RE(
       Re_check,
       Re_lam_leave,
       Re_turb_min,

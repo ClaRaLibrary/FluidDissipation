@@ -1,5 +1,6 @@
 within FluidDissipation.HeatTransfer.StraightPipe;
-record kc_twoPhaseOverall_KC_IN_var "Input record for function kc_twoPhaseOverall_KC"
+record kc_twoPhaseOverall_KC_IN_var
+  "Input record for function kc_twoPhaseOverall_KC"
 
   extends FluidDissipation.Utilities.Records.HeatTransfer.TwoPhaseFlowHT_IN_var;
 

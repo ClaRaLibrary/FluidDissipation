@@ -1,14 +1,17 @@
 within FluidDissipation.Examples.Applications.PressureLoss.BaseClasses.Bend;
 package CurvedBend "FluidDissipation: Curved bend considering surface roughness"
-extends FluidDissipation.Examples.Applications.PressureLoss.BaseClasses.Bend.BaseBendPL;
+extends
+  FluidDissipation.Examples.Applications.PressureLoss.BaseClasses.Bend.BaseBendPL;
 
 
 redeclare function extends massFlowRate_dp
 
   //input records for bend function
-  input FluidDissipation.Examples.Applications.PressureLoss.BaseClasses.Bend.CurvedBend.PressureLossInput_con
+  input
+    FluidDissipation.Examples.Applications.PressureLoss.BaseClasses.Bend.CurvedBend.PressureLossInput_con
     IN_con annotation (Placement(transformation(extent={{-80,20},{-60,40}})));
-  input FluidDissipation.Examples.Applications.PressureLoss.BaseClasses.Bend.CurvedBend.PressureLossInput_var
+  input
+    FluidDissipation.Examples.Applications.PressureLoss.BaseClasses.Bend.CurvedBend.PressureLossInput_var
     IN_var annotation (Placement(transformation(extent={{-60,20},{-40,40}})));
   input SI.Pressure dp "Pressure loss" annotation (Dialog(tab="Input"));
 

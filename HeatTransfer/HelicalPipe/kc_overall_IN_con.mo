@@ -1,5 +1,6 @@
 within FluidDissipation.HeatTransfer.HelicalPipe;
-record kc_overall_IN_con "Input record for function kc_overall and kc_overall_KC"
+record kc_overall_IN_con
+  "Input record for function kc_overall and kc_overall_KC"
 
   //helical pipe variables
   extends FluidDissipation.Utilities.Records.HeatTransfer.HelicalPipe;

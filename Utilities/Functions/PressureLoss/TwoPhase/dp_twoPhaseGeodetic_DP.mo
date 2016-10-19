@@ -1,14 +1,17 @@
 within FluidDissipation.Utilities.Functions.PressureLoss.TwoPhase;
-function dp_twoPhaseGeodetic_DP "Geodetic pressure loss of straight pipe for two phase flow | calculate pressure loss"
+function dp_twoPhaseGeodetic_DP
+  "Geodetic pressure loss of straight pipe for two phase flow | calculate pressure loss"
   extends Modelica.Icons.Function;
   //SOURCE_1: VDI-Waermeatlas, 10th edition, Springer-Verlag, 2006.
 
   import PI = Modelica.Constants.pi;
 
   input FluidDissipation.Utilities.Types.VoidFractionApproach voidFractionApproach=
-      FluidDissipation.Utilities.Types.VoidFractionApproach.Homogeneous "Choice of void fraction approach";
+      FluidDissipation.Utilities.Types.VoidFractionApproach.Homogeneous
+    "Choice of void fraction approach";
 
-  input Boolean crossSectionalAveraged=true "true == cross sectional averaged void fraction | false == volumetric"
+  input Boolean crossSectionalAveraged=true
+    "true == cross sectional averaged void fraction | false == volumetric"
     annotation (Dialog);
 
   //geometry
@@ -18,10 +21,10 @@ function dp_twoPhaseGeodetic_DP "Geodetic pressure loss of straight pipe for two
     annotation (Dialog(group="Geometry"));
 
   //fluid properties
-  input SI.Density rho_g(min=Modelica.Constants.eps) = 1.1220 "Density of gaseous phase"
-                               annotation (Dialog(group="Fluid properties"));
-  input SI.Density rho_l(min=Modelica.Constants.eps) = 943.11 "Density of liquid phase"
-                              annotation (Dialog(group="Fluid properties"));
+  input SI.Density rho_g(min=Modelica.Constants.eps) = 1.1220
+    "Density of gaseous phase" annotation (Dialog(group="Fluid properties"));
+  input SI.Density rho_l(min=Modelica.Constants.eps) = 943.11
+    "Density of liquid phase" annotation (Dialog(group="Fluid properties"));
   input Real x_flow(
     min=0,
     max=1) = 0 "Mass flow rate quality"

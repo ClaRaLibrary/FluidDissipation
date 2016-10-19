@@ -1,5 +1,6 @@
 within FluidDissipation.PressureLoss.Orifice;
-record dp_suddenChange_IN_var "Input record for function dp_suddenChange, dp_suddenChange_DP and dp_suddenChange_MFLOW"
+record dp_suddenChange_IN_var
+  "Input record for function dp_suddenChange, dp_suddenChange_DP and dp_suddenChange_MFLOW"
 
   //fluid property variables
   extends FluidDissipation.Utilities.Records.General.FluidProperties(final cp=0,

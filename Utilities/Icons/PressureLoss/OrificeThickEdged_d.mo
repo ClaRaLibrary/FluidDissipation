@@ -1,5 +1,6 @@
 within FluidDissipation.Utilities.Icons.PressureLoss;
-partial model OrificeThickEdged_d "icon for orifice with thick edged vena contraction"
+partial model OrificeThickEdged_d
+  "icon for orifice with thick edged vena contraction"
 
   annotation ( Diagram(coordinateSystem(
           preserveAspectRatio=false, extent={{-100,-100},{100,100}}), graphics={
@@ -22,7 +23,6 @@ partial model OrificeThickEdged_d "icon for orifice with thick edged vena contra
           points={{-20,0},{20,0}},
           color={0,0,0},
           thickness=0.5,
-          smooth=Smooth.None,
           arrow={Arrow.Filled,Arrow.Filled},
           origin={-48,0},
           rotation=90),
@@ -30,7 +30,6 @@ partial model OrificeThickEdged_d "icon for orifice with thick edged vena contra
           points={{-62,0},{20,0}},
           color={0,0,0},
           thickness=0.5,
-          smooth=Smooth.None,
           arrow={Arrow.Filled,Arrow.Filled},
           origin={70,20},
           rotation=90),
@@ -57,7 +56,6 @@ partial model OrificeThickEdged_d "icon for orifice with thick edged vena contra
           points={{-40,-32},{40,-32}},
           color={0,0,0},
           thickness=0.5,
-          smooth=Smooth.None,
           arrow={Arrow.Filled,Arrow.Filled}),
         Rectangle(
           extent={{-100,40},{-40,-42}},
@@ -68,7 +66,6 @@ partial model OrificeThickEdged_d "icon for orifice with thick edged vena contra
           points={{-62,0},{20,0}},
           color={0,0,0},
           thickness=0.5,
-          smooth=Smooth.None,
           arrow={Arrow.Filled,Arrow.Filled},
           origin={-70,20},
           rotation=90),
@@ -89,7 +86,6 @@ partial model OrificeThickEdged_d "icon for orifice with thick edged vena contra
           points={{-42,0},{-2,0}},
           color={0,0,0},
           thickness=0.5,
-          smooth=Smooth.None,
           arrow={Arrow.Filled,Arrow.Filled},
           origin={0,22},
           rotation=90),
@@ -131,4 +127,5 @@ partial model OrificeThickEdged_d "icon for orifice with thick edged vena contra
           fillColor={255,255,255},
           fillPattern=FillPattern.Solid,
           textString="L")}));
+
 end OrificeThickEdged_d;

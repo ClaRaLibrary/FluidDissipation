@@ -1,13 +1,16 @@
 within FluidDissipation.PressureLoss.General;
-function dp_idealGas_MFLOW "Generic pressure loss | calculate mass flow rate | ideal gas | mean density"
+function dp_idealGas_MFLOW
+  "Generic pressure loss | calculate mass flow rate | ideal gas | mean density"
   extends Modelica.Icons.Function;
 
   import FD = FluidDissipation.PressureLoss.General;
 
   //input records
-  input FluidDissipation.PressureLoss.General.dp_idealGas_IN_con IN_con "Input record for function dp_idealGas_MFLOW"
+  input FluidDissipation.PressureLoss.General.dp_idealGas_IN_con IN_con
+    "Input record for function dp_idealGas_MFLOW"
     annotation (Dialog(group="Constant inputs"));
-  input FluidDissipation.PressureLoss.General.dp_idealGas_IN_var IN_var "Input record for function dp_idealGas_MFLOW"
+  input FluidDissipation.PressureLoss.General.dp_idealGas_IN_var IN_var
+    "Input record for function dp_idealGas_MFLOW"
     annotation (Dialog(group="Variable inputs"));
   input SI.Pressure dp "Pressure loss" annotation (Dialog(group="Input"));
 
@@ -163,7 +166,7 @@ Note that the verification for <a href=\"Modelica://FluidDissipation.PressureLos
  
 <h4><font color=\"#EF9B13\">References</font></h4> 
 <dl>
-<dt>Elmquist, H., M.Otter and S.E. Cellier:</dt>
+<dt>Elmqvist, H., M.Otter and S.E. Cellier:</dt>
     <dd><b>Inline integration: A new mixed
     symbolic / numeric approach for solving differential-algebraic equation systems.</b>.
     In Proceedings of European Simulation MultiConference, Praque, 1995.</dd>

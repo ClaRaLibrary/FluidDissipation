@@ -3,8 +3,8 @@ record Geometry "Input for several geometries of internal flow"
   extends Modelica.Icons.Record;
 
   FluidDissipation.Utilities.Types.GeometryOfInternalFlow geometry=
-      FluidDissipation.Utilities.Types.GeometryOfInternalFlow.Circular "Choice of geometry for internal flow"
-                                           annotation (Dialog(group="Channel"));
+      FluidDissipation.Utilities.Types.GeometryOfInternalFlow.Circular
+    "Choice of geometry for internal flow" annotation (Dialog(group="Channel"));
 
   SI.Length K=0 "Roughness (average height of surface asperities)"
     annotation (Dialog(group="Channel"));

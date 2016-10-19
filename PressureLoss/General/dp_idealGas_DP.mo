@@ -1,12 +1,15 @@
 within FluidDissipation.PressureLoss.General;
-function dp_idealGas_DP "Generic pressure loss | calculate pressure loss | ideal gas | mean density"
+function dp_idealGas_DP
+  "Generic pressure loss | calculate pressure loss | ideal gas | mean density"
   extends Modelica.Icons.Function;
   import FD = FluidDissipation.PressureLoss.General;
 
   //input records
-  input FluidDissipation.PressureLoss.General.dp_idealGas_IN_con IN_con "Input record for function dp_idealGas_DP"
+  input FluidDissipation.PressureLoss.General.dp_idealGas_IN_con IN_con
+    "Input record for function dp_idealGas_DP"
     annotation (Dialog(group="Constant inputs"));
-  input FluidDissipation.PressureLoss.General.dp_idealGas_IN_var IN_var "Input record for function dp_idealGas_DP"
+  input FluidDissipation.PressureLoss.General.dp_idealGas_IN_var IN_var
+    "Input record for function dp_idealGas_DP"
     annotation (Dialog(group="Variable inputs"));
   input SI.MassFlowRate m_flow "Mass flow rate"
     annotation (Dialog(group="Input"));
@@ -20,7 +23,8 @@ protected
   SI.Density rho_internal=IN_var.p_m/(IN_con.R_s*IN_var.T_m) "Mean density";
   SI.VolumeFlowRate V_flow=m_flow/rho_internal "Volume flow rate [m3/s]";
   SI.VolumeFlowRate V_flow_min=(IN_con.R_s/Km_internal)^(1/IN_con.exp)*
-      rho_internal^(1/IN_con.exp - 1)*IN_con.dp_smooth^(1/IN_con.exp) "Start of approximation for decreasing volume flow rate";
+      rho_internal^(1/IN_con.exp - 1)*IN_con.dp_smooth^(1/IN_con.exp)
+    "Start of approximation for decreasing volume flow rate";
 
   //Documentation
 
@@ -162,7 +166,7 @@ The generic pressure loss <b> dp </b> for different coefficients <b> Km </b> as 
  
 <h4><font color=\"#EF9B13\">References</font></h4> 
 <dl>
-<dt>Elmquist, H., M.Otter and S.E. Cellier:</dt>
+<dt>Elmqvist, H., M.Otter and S.E. Cellier:</dt>
     <dd><b>Inline integration: A new mixed
     symbolic / numeric approach for solving differential-algebraic equation systems.</b>.
     In Proceedings of European Simulation MultiConference, Praque, 1995.</dd>

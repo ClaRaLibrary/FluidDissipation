@@ -9,33 +9,44 @@ model Tjunction "Tjunction model for different constant flow situations"
   //icon
   extends FluidDissipation.Utilities.Icons.PressureLoss.Tjunction_i;
 
-  replaceable package Medium = Modelica.Media.Air.DryAirNasa constrainedby Modelica.Media.Interfaces.PartialMedium "Fluid medium model"
+  replaceable package Medium = Modelica.Media.Air.DryAirNasa constrainedby
+    Modelica.Media.Interfaces.PartialMedium "Fluid medium model"
                          annotation (choicesAllMatching=true);
 
   //fluid flow situation
   FluidDissipation.Utilities.Types.JunctionFlowSituation flowSituation=
-      FluidDissipation.Utilities.Types.JunctionFlowSituation.Split_Left "Fluid flow situation"
+      FluidDissipation.Utilities.Types.JunctionFlowSituation.Split_Left
+    "Fluid flow situation"
     annotation (Dialog(tab="General", group="FlowSituation"));
 
-  parameter Modelica.SIunits.Conversions.NonSIunits.Angle_deg alpha(min=0, max=90)=90 "branching angle"
+  parameter Modelica.SIunits.Conversions.NonSIunits.Angle_deg alpha(min=0, max=90)=90
+    "branching angle"
     annotation (Dialog(tab="General", group="Geometry"));
-  parameter Boolean united_converging_crossection=false "true == A_cross_conv = A_cross_straight + A_cross_side | false == A_cross_conv > A_cross_straight + A_cross_side"
+  parameter Boolean united_converging_crossection=false
+    "true == A_cross_conv = A_cross_straight + A_cross_side | false == A_cross_conv > A_cross_straight + A_cross_side"
     annotation (Dialog(tab="General", group="Geometry"));
-  parameter SI.Length d_hyd_1(min=Modelica.Constants.eps)=1e-1 "diameter of left passage (port_1)"
+  parameter SI.Length d_hyd_1(min=Modelica.Constants.eps)=1e-1
+    "diameter of left passage (port_1)"
     annotation (Dialog(tab="General", group="Geometry"));
-  parameter SI.Diameter d_hyd_2(min=Modelica.Constants.eps)=1e-1 "diameter of right passage (port_2)"
+  parameter SI.Diameter d_hyd_2(min=Modelica.Constants.eps)=1e-1
+    "diameter of right passage (port_2)"
     annotation (Dialog(tab="General", group="Geometry"));
-  parameter SI.Diameter d_hyd_3(min=Modelica.Constants.eps)=1e-1 "diameter of side branch (port_3)"
+  parameter SI.Diameter d_hyd_3(min=Modelica.Constants.eps)=1e-1
+    "diameter of side branch (port_3)"
     annotation (Dialog(tab="General", group="Geometry"));
 
   //restriction
-  parameter SI.Pressure dp_min(min=Modelica.Constants.eps)=1 "restriction for smoothing while changing of fluid flow situation"
+  parameter SI.Pressure dp_min(min=Modelica.Constants.eps)=1
+    "restriction for smoothing while changing of fluid flow situation"
     annotation (Dialog(group="Restriction"));
-  parameter SI.MassFlowRate m_flow_min(min=Modelica.Constants.eps)=1e-3 "restriction for smoothing at reverse fluid flow"
+  parameter SI.MassFlowRate m_flow_min(min=Modelica.Constants.eps)=1e-3
+    "restriction for smoothing at reverse fluid flow"
     annotation (Dialog(group="Restriction"));
-  parameter SI.Velocity v_max(min=Modelica.Constants.eps)= 343 "restriction of maximum fluid flow velocity for pressure loss calculation"
+  parameter SI.Velocity v_max(min=Modelica.Constants.eps)= 343
+    "restriction of maximum fluid flow velocity for pressure loss calculation"
     annotation (Dialog(group="Restriction"));
-  parameter Real zeta_TOT_max(min=Modelica.Constants.eps)=100 "restriction for maximum value of total resistance coefficient"
+  parameter Real zeta_TOT_max(min=Modelica.Constants.eps)=100
+    "restriction for maximum value of total resistance coefficient"
     annotation (Dialog(group="Restriction",enable=velocity_reference_branches));
 
   //interfaces

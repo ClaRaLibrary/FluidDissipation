@@ -4,8 +4,10 @@ function kc_roundTube
   //SOURCE: A.M. Jacobi, Y. Park, D. Tafti, X. Zhang. AN ASSESSMENT OF THE STATE OF THE ART, AND POTENTIAL DESIGN IMPROVEMENTS, FOR FLAT-TUBE HEAT EXCHANGERS IN AIR CONDITIONING AND REFRIGERATION APPLICATIONS - PHASE I
 
   //input records
-  input FluidDissipation.HeatTransfer.HeatExchanger.kc_roundTube_IN_con IN_con "Input record for function kc_roundTube_KC";
-  input FluidDissipation.HeatTransfer.HeatExchanger.kc_roundTube_IN_var IN_var "Input record for function kc_roundTube_KC";
+  input FluidDissipation.HeatTransfer.HeatExchanger.kc_roundTube_IN_con IN_con
+    "Input record for function kc_roundTube_KC";
+  input FluidDissipation.HeatTransfer.HeatExchanger.kc_roundTube_IN_var IN_var
+    "Input record for function kc_roundTube_KC";
 
   //output variables
   output SI.CoefficientOfHeatTransfer kc "Convective heat transfer coefficient"
@@ -15,17 +17,20 @@ function kc_roundTube
     annotation (Dialog(group="Output"));
   output SI.NusseltNumber Nu "Nusselt number"
     annotation (Dialog(group="Output"));
-  output Real failureStatus "0== boundary conditions fulfilled | 1== failure >> check if still meaningful results"
+  output Real failureStatus
+    "0== boundary conditions fulfilled | 1== failure >> check if still meaningful results"
     annotation (Dialog(group="Output"));
 
   import TYP = FluidDissipation.Utilities.Types.HTXGeometry_roundTubes;
 
 protected
   SI.Area A_c=IN_con.A_fr*((IN_con.F_p*IN_con.P_t - IN_con.F_p*IN_con.D_c - (
-      IN_con.P_t - IN_con.D_c)*IN_con.delta_f)/(IN_con.F_p*IN_con.P_t)) "Minimum flow cross-sectional area";
+      IN_con.P_t - IN_con.D_c)*IN_con.delta_f)/(IN_con.F_p*IN_con.P_t))
+    "Minimum flow cross-sectional area";
   SI.Area A_tot=if IN_con.geometry == TYP.LouverFin then IN_con.A_fr*((IN_con.N
       *PI*IN_con.D_c*(IN_con.F_p - IN_con.delta_f) + 2*(IN_con.P_t*IN_con.L -
-      IN_con.N*PI*IN_con.D_c^2/4))/(IN_con.P_t*IN_con.F_p)) else 0 "Total heat transfer area";
+      IN_con.N*PI*IN_con.D_c^2/4))/(IN_con.P_t*IN_con.F_p)) else 0
+    "Total heat transfer area";
   SI.Length D_h=if IN_con.geometry == TYP.LouverFin then 4*A_c*IN_con.L/A_tot else
             0 "Hydraulic diameter";
 

@@ -1,14 +1,17 @@
 within FluidDissipation.PressureLoss.StraightPipe;
-function dp_laminar_DP "Pressure loss of straight pipe | calculate pressure loss| laminar flow regime (Hagen-Poiseuille)"
+function dp_laminar_DP
+  "Pressure loss of straight pipe | calculate pressure loss| laminar flow regime (Hagen-Poiseuille)"
   extends Modelica.Icons.Function;
   //SOURCE_1: Idelchik, I.E.: HANDBOOK OF HYDRAULIC RESISTANCE, 3rd edition, 2006.
 
   import FD = FluidDissipation.PressureLoss.StraightPipe;
 
   //input records
-  input FluidDissipation.PressureLoss.StraightPipe.dp_laminar_IN_con IN_con "Input record for function dp_laminar_DP"
+  input FluidDissipation.PressureLoss.StraightPipe.dp_laminar_IN_con IN_con
+    "Input record for function dp_laminar_DP"
     annotation (Dialog(group="Constant inputs"));
-  input FluidDissipation.PressureLoss.StraightPipe.dp_laminar_IN_var IN_var "Input record for function dp_laminar_DP"
+  input FluidDissipation.PressureLoss.StraightPipe.dp_laminar_IN_var IN_var
+    "Input record for function dp_laminar_DP"
     annotation (Dialog(group="Variable inputs"));
   input SI.MassFlowRate m_flow "Mass flow rate"
     annotation (Dialog(group="Input"));
@@ -139,7 +142,7 @@ regime shall be modelled, the pressure loss function <a href=\"Modelica://FluidD
  
 <h4><font color=\"#EF9B13\">References</font></h4> 
 <dl>
- <dt>Elmquist,H., M.Otter and S.E. Cellier:</dt>
+ <dt>Elmqvist,H., M.Otter and S.E. Cellier:</dt>
     <dd><b>Inline integration: A new mixed
     symbolic / numeric approach for solving differential-algebraic equation systems.</b>.
     In Proceedings of European Simulation MultiConference, Praque, 1995.</dd> 

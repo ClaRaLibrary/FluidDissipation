@@ -50,8 +50,8 @@ model EngineFeedingSystem "Test cases of an aircraft engine feeding system"
         rotation=90,
         origin={20,-82})));
 
-  Applications.PressureLoss.StraightPipeFlowModel pipe_1(redeclare package Medium =
-               Modelica.Media.Water.ConstantPropertyLiquidWater) annotation (
+  Applications.PressureLoss.StraightPipeFlowModel pipe_1(redeclare package
+      Medium = Modelica.Media.Water.ConstantPropertyLiquidWater) annotation (
       Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=270,
@@ -77,20 +77,20 @@ model EngineFeedingSystem "Test cases of an aircraft engine feeding system"
         rotation=180,
         origin={78,-20})));
 
-  Applications.PressureLoss.StraightPipeFlowModel pipe_3(redeclare package Medium =
-               Modelica.Media.Water.ConstantPropertyLiquidWater) annotation (
+  Applications.PressureLoss.StraightPipeFlowModel pipe_3(redeclare package
+      Medium = Modelica.Media.Water.ConstantPropertyLiquidWater) annotation (
       Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=270,
         origin={-40,-56})));
-  Applications.PressureLoss.StraightPipeFlowModel pipe_6(redeclare package Medium =
-               Modelica.Media.Water.ConstantPropertyLiquidWater) annotation (
+  Applications.PressureLoss.StraightPipeFlowModel pipe_6(redeclare package
+      Medium = Modelica.Media.Water.ConstantPropertyLiquidWater) annotation (
       Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=270,
         origin={20,-56})));
-  Applications.PressureLoss.StraightPipeFlowModel pipe_2(redeclare package Medium =
-               Modelica.Media.Water.ConstantPropertyLiquidWater) annotation (
+  Applications.PressureLoss.StraightPipeFlowModel pipe_2(redeclare package
+      Medium = Modelica.Media.Water.ConstantPropertyLiquidWater) annotation (
       Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=270,

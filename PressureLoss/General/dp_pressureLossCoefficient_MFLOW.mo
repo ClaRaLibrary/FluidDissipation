@@ -1,5 +1,6 @@
 within FluidDissipation.PressureLoss.General;
-function dp_pressureLossCoefficient_MFLOW "Generic pressure loss | calculate mass flow rate | pressure loss coefficient (zeta_TOT)"
+function dp_pressureLossCoefficient_MFLOW
+  "Generic pressure loss | calculate mass flow rate | pressure loss coefficient (zeta_TOT)"
   extends Modelica.Icons.Function;
 
   import FD = FluidDissipation.PressureLoss.General;
@@ -15,7 +16,8 @@ function dp_pressureLossCoefficient_MFLOW "Generic pressure loss | calculate mas
   input SI.Pressure dp "Pressure loss" annotation (Dialog(group="Input"));
 
   //output variables
-  output SI.MassFlowRate M_FLOW "Output for function dp_pressureLossCoefficientt_MFLOW";
+  output SI.MassFlowRate M_FLOW
+    "Output for function dp_pressureLossCoefficientt_MFLOW";
 
   //Documentation
 
@@ -83,7 +85,7 @@ Note that the verification for <a href=\"Modelica://FluidDissipation.PressureLos
  
 <h4><font color=\"#EF9B13\">References</font></h4> 
 <dl>
- <dt>Elmquist, H., M.Otter and S.E. Cellier:</dt>
+ <dt>Elmqvist, H., M.Otter and S.E. Cellier:</dt>
     <dd><b>Inline integration: A new mixed
     symbolic / numeric approach for solving differential-algebraic equation systems.</b>.
     In Proceedings of European Simulation MultiConference, Praque, 1995.</dd>

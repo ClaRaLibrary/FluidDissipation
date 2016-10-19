@@ -1,5 +1,6 @@
 within FluidDissipation.Utilities.Records.General;
-record IdealGas_var "Base record for generic pressure loss function | ideal gas | mean density"
+record IdealGas_var
+  "Base record for generic pressure loss function | ideal gas | mean density"
   extends Modelica.Icons.Record;
 
   SI.Density rho_m=1.189 "Mean density of ideal gas"

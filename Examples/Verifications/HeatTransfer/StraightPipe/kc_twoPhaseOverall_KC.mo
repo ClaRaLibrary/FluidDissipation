@@ -76,9 +76,11 @@ model kc_twoPhaseOverall_KC "Verification of function kc_twoPhaseOverall_KC"
   SI.MassFraction x_flow=input_x_0.y "Mass flow rate quality";
 
   //plotting
-  SI.NusseltNumber Nu_1[n]={kc_1[i]*d_hyd_1/lambda_1[i] for i in 1:n} "Local Nusselt number";
+  SI.NusseltNumber Nu_1[n]={kc_1[i]*d_hyd_1/lambda_1[i] for i in 1:n}
+    "Local Nusselt number";
   SI.NusseltNumber NU_2=kc_2*d_hyd_2/lambda_2 "Local Nusselt number";
-  SI.NusseltNumber Nu_3[m]={kc_3[i]*d_hyd_3/lambda_3[i] for i in 1:m} "Local Nusselt number";
+  SI.NusseltNumber Nu_3[m]={kc_3[i]*d_hyd_3/lambda_3[i] for i in 1:m}
+    "Local Nusselt number";
 
   //input records
   FluidDissipation.HeatTransfer.StraightPipe.kc_twoPhaseOverall_KC_IN_con
@@ -175,7 +177,8 @@ equation
   kc_3 = {FluidDissipation.HeatTransfer.StraightPipe.kc_twoPhaseOverall_KC(
     IN_con_3[i], IN_var_3[i]) for i in 1:m};
   annotation (__Dymola_Commands(file=
-          "modelica://FluidDissipation/Extras/Scripts/heatTransfer/straightPipe/kc_twoPhaseOverall_KC.mos" "Verification of kc_twoPhaseOverall_KC"),
+          "modelica://FluidDissipation/Extras/Scripts/heatTransfer/straightPipe/kc_twoPhaseOverall_KC.mos"
+        "Verification of kc_twoPhaseOverall_KC"),
       Diagram(graphics={Text(
           extent={{-100,52},{100,77}},
           lineColor={0,0,255},

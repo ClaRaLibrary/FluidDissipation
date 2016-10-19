@@ -3,6 +3,33 @@ class ReleaseNotes "Release notes"
 extends Modelica.Icons.Information;
   annotation (Documentation(info="<html>
 
+<p><b><span style=\"color: #008000;\">Version 1.1.8, 2016-09-05</span></b> </p>
+<p>List of revisions: </p>
+<ul>
+<li>Added a new two-phase pressure loss model (Mueller-Steinhagen Heck) to <a href=modelica://FluidDissipation.PressureLoss.StraightPipe.dp_twoPhaseOverall_DP>dp_twoPhaseOverall_DP</a>function. The new model is invertible and by formulation regularized around zero. The inverted model can be found in the  <a href=\"modelica://FluidDissipation.Utilities.Functions.PressureLoss.TwoPhase.dp_twoPhaseMSH_MFLOW\">dp_twoPhaseMSH_MFLOW</a> function.</li>
+<li>Added an application model for dp_twoPhaseOverall_DP: <a href=modelica://FluidDissipation.Examples.TestCases.PressureLoss.StraightTwoPhasePipe>StraightTwoPhasePipe</a>.</li>
+<li>Corrected <a href=modelica://FluidDissipation.HeatTransfer.StraightPipe.kc_twoPhaseOverall_KC>kc_twoPhaseOverall_KC</a> function. Changes can be found in subfunction <a href=modelica://FluidDissipation.Utilities.Functions.HeatTransfer.TwoPhase.kc_twoPhase_boilingHorizontal>kc_twoPhase_boilingHorizontal</a>.</li>
+<li>Corrected failure status for <a href=modelica://FluidDissipation.HeatTransfer.StraightPipe.kc_overall>kc_overall</a> function.</li>
+<li>Removed superfluous calculations in <a href=modelica://FluidDissipation.PressureLoss.StraightPipe.dp_twoPhaseOverall_DP>dp_twoPhaseOverall_DP</a> function.</li>
+<li>Removed obsolete annotations and corrected many typos.</li>
+<li>Corrected functions <a href=modelica://FluidDissipation.Utilities.Functions.HeatTransfer.TwoPhase.kc_twoPhase_boilingVertical>kc_twoPhase_boilingVertical</a> and <a href=modelica://FluidDissipation.Utilities.Functions.HeatTransfer.TwoPhase.kc_twoPhase_boilingHorizontal>kc_twoPhase_boilingHorizontal</a></li>
+<li>Removed many singularities in heat transfer functions for Reynolds Number at zero velocity.</li>
+<li>Corrected failure in <a href=modelica://FluidDissipation.Utilities.Functions.General.SmoothPower_der>SmoothPower_der</a>.</li>
+<li>Corrected factor K_st1 in <a href=modelica://FluidDissipation.PressureLoss.Junction.dp_Tjoin>dp_TJoin</a>.</li>
+</ul>
+<p>Changes with conversion: </p>
+<ul>
+<li>Deleted model StateForHeatTransfer_TwoPhase which is now replaced by <a href=modelica://FluidDissipation.Examples.TestCases.HeatTransfer.StateForHeatTransfer>StateForHeatTransfer</a>.</li>
+</ul>
+<p>Not backwards compatible changes: </p>
+<ul>
+<li>Removed superfluous parameter \"target\" in <a href=modelica://FluidDissipation.Utilities.Records.HeatTransfer.TwoPhaseFlowHT_IN_var>TwoPhaseFlowHT_IN_var</a> record. The following error will be raised by Dymola:
+\"Modelica
+Unknown named argument 'target' for function FluidDissipation.HeatTransfer.StraightPipe.kc_twoPhaseOverall_KC_IN_var in MODELNAME.<br>
+<b>Please remove potential inputs for argument \"target\" in function calls manually.</b></li>
+<li>Removed superfluous input \"d_hyd\" from function <a href=modelica://FluidDissipation.Utilities.Functions.General.ReynoldsNumber>ReynoldsNumber</a>.</li> 
+</ul>
+
 <h4><font color=\"#008000\">Version 1.1.7, 2014-07-12</font></h4>
  
 <p>

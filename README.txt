@@ -1,14 +1,14 @@
 **************************************************************************************
 *                                                                                    *
-* README for installation of FluidDissipation library 1.1.7                          *
+*          README for installation of FluidDissipation library 1.1.8                 *
 *                                                                                    *
 **************************************************************************************
 
-Installation
-____________
+*****Installation******
+_______________________
 
 
- 	1. Unzip the file FluidDissipation 1.1.7.zip. If you have a Dymola licence you
+ 	1. Unzip the file FluidDissipation 1.1.8.zip. If you have a Dymola licence you
 	   should install the library in the subfolder $Dymola\Modelica\Library. It will
 	   be listed in the libraries menue of Dymola.
 	    
@@ -17,8 +17,8 @@ ____________
 	3. Go to Users guide for more information.
 
 
-Library description 
-___________________
+******Library description******
+_______________________________
  
 This library contains convective heat transfer and pressure loss functions written in 
 Modelica. It was developed with Dymola and should be used with this software for
@@ -53,11 +53,11 @@ The library is a non-commercial product of XRG Simulation GmbH. It makes use of 
 non-commercial models supplied by Modelica Standard Library. In order to work correctly, 
 ensure that this library is always loaded with Modelica Standard Library version 3.2.1.
  
-Acknowledgements
-________________
+******Acknowledgements******
+____________________________
 
 The following people contributed to the FluidDissipation library (alphabetical list):
-Joerg Eiden, Ole Engel, Friedrich Gottelt, Nina Peci, Sven Rutkowski, Thorben Vahlenkamp, Stefan 
+Joerg Eiden, Ole Engel, Friedrich Gottelt, Timm Hoppe, Nina Peci, Sven Rutkowski, Thorben Vahlenkamp, Stefan 
 Wischhusen. 
  
 The development of the FluidDissipation library was founded within the ITEA research 
@@ -65,30 +65,65 @@ project EuroSysLib-D by German Federal Ministry of Education and Research (promo
 reference 01IS07022B). The project ended in June 2010. 
 
  
-Licence condition
-_________________
+******Licence condition******
+_____________________________
 
 Licensed by XRG Simulation GmbH under the Modelica License 2
 
-Copyright 2007-2015, XRG Simulation GmbH.
+Copyright 2007-2016, XRG Simulation GmbH.
 
 This Modelica package is free software and the use is completely at your own risk
 it can be redistributed and/or modified under the terms of the Modelica license 2, 
 see the license conditions (including the disclaimer of warranty)
 
-Hamburg, Jan. 13th, 2015
+Hamburg, Sept. 5th, 2016
 
 XRG Simulation GmbH
 Stefan Wischhusen
 info@xrg-simulation.de
 
 
-Revision history
-________________
+******Revision history******
+____________________________
+Version 1.1.8, 2016-09-05
+
+New features:
+- Added new function for  dp_twoPhaseOverall_DP 
+
+- Added application for dp_twoPhaseOverall_DP: FluidDissipation.Examples.TestCases.PressureLoss.StraightTwoPhasePipe
+
+Corrected bugs:
+- Removed failure in kc_twoPhaseOverall_KC
+
+- Corrected failure status for StraightPipe.kc_overall
+
+- Removed superfluous calculations in StraightPipe.dp_twoPhaseOverall_DP
+
+- Removed obsolete annotations and corrected many typos
+
+- Removed many singularities in heat transfer functions for Reynolds Number at zero velocity.
+
+- Corrected failure in SmoothPower_der
+
+- Corrected factor K_st1 in dp_TJoin
+
+- Corrected functions kc_twoPhase_boilingHorizontal and kc_twoPhase_boilingVertical
+
+Changes with conversion:
+
+- Deleted model StateForHeatTransfer_TwoPhase which is now replaced by StateForHeatTransfer.
+
+Not backwards compatible changes: 
+- Removed superfluous parameter "target" in TwoPhaseFlowHT_IN_var record. The following error will be raised by Dymola: "Modelica Unknown named argument 'target' for function FluidDissipation.HeatTransfer.StraightPipe.kc_twoPhaseOverall_KC_IN_var in MODELNAME. Please remove potential inputs for argument "target" in function calls manually.
+
+- Removed superfluous input "d_hyd" from function ReynoldsNumber.
+
+
 Version 1.1.7, 2015-01-13
 - Corrected kc_laminar_KC function.
 
 - Corrected dp_curvedOverall_MFLOW.
+
 
 Version 1.1.6, 2014-07-12
 - Added new function kc_tubeBundle_1ph for round tube bundle heat exchanger (one phase media).
@@ -103,6 +138,7 @@ Version 1.1.6, 2014-07-12
 
 - Removed a failure in diffuser flow model.
 
+
 Version 1.1.5, 2014-01-31
 
 - Added a test bench model for an edged bend (elbow)
@@ -115,9 +151,11 @@ Version 1.1.5, 2014-01-31
 
 - Removed a unit failure in verification models for flat and round tube heat exchangers.
 
+
 Version 1.1.4, 2013-07-18
 
 - Enhanced transition for functions dp_edgedOverall_MFLOW and dp_suddenChange_MFLOW.
+
 
 Version 1.1.3, 2013-06-11
 

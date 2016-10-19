@@ -6,7 +6,6 @@ partial model Diffuser_d "Icon for a diffuser"
         Line(
           points={{-100,90},{-40,90}},
           color={0,0,0},
-          smooth=Smooth.None,
           thickness=0.5,
           arrow={Arrow.Filled,Arrow.Filled}),
         Rectangle(
@@ -38,55 +37,46 @@ partial model Diffuser_d "Icon for a diffuser"
         Polygon(
           points={{-40,40},{40,80},{40,60},{-40,20},{-40,20},{-40,40}},
           lineColor={0,0,0},
-          smooth=Smooth.None,
           fillColor={255,255,170},
           fillPattern=FillPattern.Backward),
         Polygon(
           points={{-40,-20},{40,-60},{40,-80},{-40,-40},{-40,-40},{-40,-20}},
           lineColor={0,0,0},
-          smooth=Smooth.None,
           fillColor={255,255,170},
           fillPattern=FillPattern.Backward),
         Line(
           points={{-106,0},{108,0}},
           pattern=LinePattern.Dash,
           thickness=0.5,
-          smooth=Smooth.None,
           color={0,0,0}),
         Line(
           points={{-40,90},{40,90}},
           color={0,0,0},
-          smooth=Smooth.None,
           thickness=0.5,
           arrow={Arrow.Filled,Arrow.Filled}),
         Line(
           points={{40,90},{100,90}},
           color={0,0,0},
-          smooth=Smooth.None,
           thickness=0.5,
           arrow={Arrow.Filled,Arrow.Filled}),
         Line(
           points={{-70,20},{-70,-20}},
           color={0,0,0},
           thickness=0.5,
-          smooth=Smooth.None,
           arrow={Arrow.Filled,Arrow.Filled}),
         Line(
           points={{70,60},{70,-60}},
           color={0,0,0},
           thickness=0.5,
-          smooth=Smooth.None,
           arrow={Arrow.Filled,Arrow.Filled}),
         Line(
           points={{-40,90},{-40,-20}},
           color={0,0,0},
-          thickness=0.5,
-          smooth=Smooth.None),
+          thickness=0.5),
         Line(
           points={{40,90},{40,-60}},
           color={0,0,0},
-          thickness=0.5,
-          smooth=Smooth.None),
+          thickness=0.5),
         Rectangle(
           extent={{-8,98},{8,86}},
           lineThickness=0.5,
@@ -155,17 +145,14 @@ partial model Diffuser_d "Icon for a diffuser"
         Line(
           points={{-52,14},{-8,36}},
           color={0,0,0},
-          smooth=Smooth.None,
           thickness=0.5),
         Line(
           points={{-52,20},{-10,20}},
           color={0,0,0},
-          smooth=Smooth.None,
           thickness=0.5),
         Line(
           points={{-11,34},{-7,30},{-7,24},{-11,20}},
           color={0,0,0},
-          smooth=Smooth.None,
           thickness=0.5),
         Text(
           extent={{-3,36},{24,20}},
@@ -183,7 +170,6 @@ partial model Diffuser_d "Icon for a diffuser"
         Line(
           points={{-20,26},{-4,28}},
           color={0,0,0},
-          smooth=Smooth.None,
           thickness=0.5)}));
 
 end Diffuser_d;

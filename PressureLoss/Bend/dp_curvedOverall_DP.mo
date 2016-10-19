@@ -1,5 +1,6 @@
 within FluidDissipation.PressureLoss.Bend;
-function dp_curvedOverall_DP "Pressure loss of curved bend | calculate pressure loss | overall flow regime | surface roughness"
+function dp_curvedOverall_DP
+  "Pressure loss of curved bend | calculate pressure loss | overall flow regime | surface roughness"
   extends Modelica.Icons.Function;
   //SOURCE_1: Idelchik, I.E.: HANDBOOK OF HYDRAULIC RESISTANCE, 3rd edition, 2006.
   //SOURCE_2: Miller, D.S.: INTERNAL FLOW SYSTEMS, 2nd edition, 1984.
@@ -10,9 +11,11 @@ function dp_curvedOverall_DP "Pressure loss of curved bend | calculate pressure 
   import SMOOTH = FluidDissipation.Utilities.Functions.General.Stepsmoother;
 
   //input records
-  input FluidDissipation.PressureLoss.Bend.dp_curvedOverall_IN_con IN_con "Input record for function dp_curvedOverall_DP"
+  input FluidDissipation.PressureLoss.Bend.dp_curvedOverall_IN_con IN_con
+    "Input record for function dp_curvedOverall_DP"
     annotation (Dialog(group="Constant inputs"));
-  input FluidDissipation.PressureLoss.Bend.dp_curvedOverall_IN_var IN_var "Input record for function dp_curvedOverall_DP"
+  input FluidDissipation.PressureLoss.Bend.dp_curvedOverall_IN_var IN_var
+    "Input record for function dp_curvedOverall_DP"
     annotation (Dialog(group="Variable inputs"));
   input SI.MassFlowRate m_flow "Mass flow rate"
     annotation (Dialog(group="Input"));
@@ -32,24 +35,35 @@ protected
 
   //SOURCE_1: p.336, sec.15: definition of flow regime boundaries
   SI.ReynoldsNumber Re_min=1 "Minimum Reynolds number";
-  SI.ReynoldsNumber Re_lam_max=6.5e3 "Maximum Reynolds number for laminar regime (6.5e3)";
-  SI.ReynoldsNumber Re_turb_min=4e4 "Minimum Reynolds number for turbulent regime (4e4)";
-  SI.ReynoldsNumber Re_turb_max=3e5 "Maximum Reynolds number for turbulent regime (3e5)";
-  SI.ReynoldsNumber Re_turb_const=1e6 "Reynolds number for independence on pressure loss coefficient (1e6)";
+  SI.ReynoldsNumber Re_lam_max=6.5e3
+    "Maximum Reynolds number for laminar regime (6.5e3)";
+  SI.ReynoldsNumber Re_turb_min=4e4
+    "Minimum Reynolds number for turbulent regime (4e4)";
+  SI.ReynoldsNumber Re_turb_max=3e5
+    "Maximum Reynolds number for turbulent regime (3e5)";
+  SI.ReynoldsNumber Re_turb_const=1e6
+    "Reynolds number for independence on pressure loss coefficient (1e6)";
 
   SI.ReynoldsNumber Re_lam_leave=min(Re_lam_max, max(1e2, 754*Modelica.Math.exp(
-      if k <= 0.007 then 0.0065/0.007 else 0.0065/k))) "Start of transition regime for increasing Reynolds number (leaving laminar regime)";
+      if k <= 0.007 then 0.0065/0.007 else 0.0065/k)))
+    "Start of transition regime for increasing Reynolds number (leaving laminar regime)";
 
   //SOURCE_1: p.357, diag. 6-1: coefficients for local resistance coefficient [zeta_LOC]:
   //IN_con.R_0/IN_con.d_hyd <= 3
   Real A1=if delta <= 70 then 0.9*sin(delta*PI/180) else if delta >= 100 then
-      0.7 + 0.35*delta/90 else 1.0 "Coefficient considering effect for angle of turning on zeta_LOC";
-  Real A2=if frac_RD > 2.0 then 6e2 else if frac_RD <= 2.0 and frac_RD > 0.55 then (if frac_RD > 1.0 then 1e3 else if frac_RD <= 1.0 and frac_RD > 0.7 then 3e3 else 6e3) else 4e3 "Coefficient considering laminar regime on zeta_LOC";
-  Real B1=if frac_RD >= 1.0 then 0.21*(frac_RD)^(-0.5) else 0.21*(frac_RD)^(-2.5) "Coefficient considering relative curvature radius (R_0/d_hyd) on zeta_LOC";
-  Real C1=1.0 "Considering relative elongation of cross sectional area on zeta_LOC (here: circular cross sectional area)";
-  TYP.LocalResistanceCoefficient zeta_LOC_sharp_turb=max(MIN, A1*B1*C1) "Local resistance coefficient for turbulent regime (Re > Re_turb_max)";
+      0.7 + 0.35*delta/90 else 1.0
+    "Coefficient considering effect for angle of turning on zeta_LOC";
+  Real A2=if frac_RD > 2.0 then 6e2 else if frac_RD <= 2.0 and frac_RD > 0.55 then (if frac_RD > 1.0 then 1e3 else if frac_RD <= 1.0 and frac_RD > 0.7 then 3e3 else 6e3) else 4e3
+    "Coefficient considering laminar regime on zeta_LOC";
+  Real B1=if frac_RD >= 1.0 then 0.21*(frac_RD)^(-0.5) else 0.21*(frac_RD)^(-2.5)
+    "Coefficient considering relative curvature radius (R_0/d_hyd) on zeta_LOC";
+  Real C1=1.0
+    "Considering relative elongation of cross sectional area on zeta_LOC (here: circular cross sectional area)";
+  TYP.LocalResistanceCoefficient zeta_LOC_sharp_turb=max(MIN, A1*B1*C1)
+    "Local resistance coefficient for turbulent regime (Re > Re_turb_max)";
 
-  SI.ReynoldsNumber Re=max(Re_min, 4*abs(m_flow)/(PI*IN_con.d_hyd*IN_var.eta)) "Reynolds number";
+  SI.ReynoldsNumber Re=max(Re_min, 4*abs(m_flow)/(PI*IN_con.d_hyd*IN_var.eta))
+    "Reynolds number";
 
   //mass flow rate boundaries for w.r.t flow regimes
   SI.MassFlowRate m_flow_smooth=Re_min*PI*IN_con.d_hyd*IN_var.eta/4;
@@ -57,7 +71,8 @@ protected
   //SOURCE_1: p.357, diag. 6-1, sec. 2 / p.336, sec. 15 (turbulent regime + hydraulically rough):
   //IN_con.R_0/IN_con.d_hyd < 3
   Real C_Re=if frac_RD > 0.7 then 11.5/Re^0.19 else if frac_RD <= 0.7 and
-      frac_RD >= 0.55 then 5.45/Re^0.131 else 1 + 4400/Re "Correction factor for hydraulically rough turbulent regime (Re_turb_min < Re < Re_turb_max)";
+      frac_RD >= 0.55 then 5.45/Re^0.131 else 1 + 4400/Re
+    "Correction factor for hydraulically rough turbulent regime (Re_turb_min < Re < Re_turb_max)";
 
   //SOURCE_1: p.357, diag. 6-1
   //IN_con.R_0/IN_con.d_hyd < 3
@@ -74,14 +89,17 @@ protected
       Re)*(C_Re*zeta_LOC_sharp_turb) + SMOOTH(
       Re_turb_max,
       Re_turb_min,
-      Re)*zeta_LOC_sharp_turb else zeta_LOC_sharp_turb "Local resistance coefficient for R_0/d_hyd < 3";
+      Re)*zeta_LOC_sharp_turb else zeta_LOC_sharp_turb
+    "Local resistance coefficient for R_0/d_hyd < 3";
 
-  TYP.LocalResistanceCoefficient zeta_LOC=zeta_LOC_sharp "Local resistance coefficient";
+  TYP.LocalResistanceCoefficient zeta_LOC=zeta_LOC_sharp
+    "Local resistance coefficient";
 
   //SOURCE_2: p.191, eq. 8.4: considering surface roughness
   //restriction of lambda_FRI at maximum Reynolds number Re=1e6 (SOURCE_2: p.207, sec. 9.2.4)
   TYP.DarcyFrictionFactor lambda_FRI_rough=0.25/(Modelica.Math.log10(k/(3.7*
-      IN_con.d_hyd) + 5.74/min(1e6, max(Re_lam_leave, Re))^0.9))^2 "Darcy friction factor considering surface roughness";
+      IN_con.d_hyd) + 5.74/min(1e6, max(Re_lam_leave, Re))^0.9))^2
+    "Darcy friction factor considering surface roughness";
 
   //SOURCE_2: p.207, sec. 9.2.4: correction factors CF w.r.t.surface roughness
   Real CF_fri=1+SMOOTH(
@@ -92,7 +110,8 @@ protected
       Re_lam_max,
       Re) "Correction factor for surface roughness";
 
-  TYP.PressureLossCoefficient zeta_TOT=max(1, CF_fri)*zeta_LOC "Pressure loss coefficient";
+  TYP.PressureLossCoefficient zeta_TOT=max(1, CF_fri)*zeta_LOC
+    "Pressure loss coefficient";
 
   //Documentation
 
@@ -242,7 +261,7 @@ algorithm
 <p><img src=\"modelica://FluidDissipation/Extras/Images/pressureLoss/bend/fig_bend_dp_curvedOverall_DPvsMFLOWwrtDelta.png\"/> </p>
 <p>Note that there is a small deviation between the compressible and incompressible calculation due to the lack of a direct analytical invertibility. </p>
 <p><b><font style=\"color: #ef9b13; \">References</font></b> </p>
-<dl><dt>Elmquist,H., M.Otter and S.E. Cellier: </dt>
+<dl><dt>Elmqvist,H., M.Otter and S.E. Cellier: </dt>
 <dd><b>Inline integration: A new mixed symbolic / numeric approach for solving differential-algebraic equation systems.</b>. In Proceedings of European Simulation MultiConference, Praque, 1995.</dd>
 <dt>Idelchik,I.E.: </dt>
 <dd><b>Handbook of hydraulic resistance</b>. Jaico Publishing House,Mumbai,3rd edition, 2006.</dd>

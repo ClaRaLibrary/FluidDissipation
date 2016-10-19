@@ -1,5 +1,6 @@
 within FluidDissipation.Utilities.Icons.PressureLoss;
-partial model OrificeSuddenChangeSection_d "icon for orifice with sudden change of cross sectional area"
+partial model OrificeSuddenChangeSection_d
+  "icon for orifice with sudden change of cross sectional area"
 
   annotation ( Diagram(coordinateSystem(
           preserveAspectRatio=false, extent={{-100,-100},{100,100}}), graphics={
@@ -34,7 +35,6 @@ partial model OrificeSuddenChangeSection_d "icon for orifice with sudden change 
           points={{-20,0},{20,0}},
           color={0,0,0},
           thickness=0.5,
-          smooth=Smooth.None,
           arrow={Arrow.None,Arrow.Filled},
           origin={0,-72},
           rotation=180),
@@ -42,7 +42,6 @@ partial model OrificeSuddenChangeSection_d "icon for orifice with sudden change 
           points={{-20,0},{20,0}},
           color={0,0,0},
           thickness=0.5,
-          smooth=Smooth.None,
           arrow={Arrow.Filled,Arrow.Filled},
           origin={-48,0},
           rotation=90),
@@ -50,7 +49,6 @@ partial model OrificeSuddenChangeSection_d "icon for orifice with sudden change 
           points={{-62,0},{20,0}},
           color={0,0,0},
           thickness=0.5,
-          smooth=Smooth.None,
           arrow={Arrow.Filled,Arrow.Filled},
           origin={52,20},
           rotation=90),
@@ -96,13 +94,11 @@ partial model OrificeSuddenChangeSection_d "icon for orifice with sudden change 
           points={{-24,-4},{16,-4}},
           color={0,0,0},
           thickness=0.5,
-          smooth=Smooth.None,
           arrow={Arrow.None,Arrow.Filled}),
         Line(
           points={{-20,70},{20,70}},
           color={0,0,0},
           thickness=0.5,
-          smooth=Smooth.None,
           arrow={Arrow.None,Arrow.Filled})}));
 
 end OrificeSuddenChangeSection_d;

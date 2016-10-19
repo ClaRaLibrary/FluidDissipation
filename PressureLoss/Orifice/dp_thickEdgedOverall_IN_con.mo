@@ -1,5 +1,6 @@
 within FluidDissipation.PressureLoss.Orifice;
-record dp_thickEdgedOverall_IN_con "Input record for function dp_thickEdgedOverall, dp_thickEdgedOverall_DP and dp_thickEdgedOverall_MFLOW"
+record dp_thickEdgedOverall_IN_con
+  "Input record for function dp_thickEdgedOverall, dp_thickEdgedOverall_DP and dp_thickEdgedOverall_MFLOW"
 
   //orifice variables
   extends FluidDissipation.Utilities.Records.PressureLoss.Orifice(
@@ -8,7 +9,8 @@ record dp_thickEdgedOverall_IN_con "Input record for function dp_thickEdgedOvera
     final C_2=C_1);
 
   //linearisation
-  SI.Pressure dp_smooth(min=Modelica.Constants.eps) = 1 "Start linearisation for decreasing pressure loss"
+  SI.Pressure dp_smooth(min=Modelica.Constants.eps) = 1
+    "Start linearisation for decreasing pressure loss"
     annotation (Dialog(group="Linearisation"));
 
   annotation (Documentation(info="<html>

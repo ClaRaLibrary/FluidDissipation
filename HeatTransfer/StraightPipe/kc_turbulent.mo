@@ -1,10 +1,13 @@
 within FluidDissipation.HeatTransfer.StraightPipe;
-function kc_turbulent "Mean heat transfer coefficient of straight pipe | hydrodynamically developed turbulent flow regime | pressure loss dependence"
+function kc_turbulent
+  "Mean heat transfer coefficient of straight pipe | hydrodynamically developed turbulent flow regime | pressure loss dependence"
   extends Modelica.Icons.Function;
   //input records
-  input FluidDissipation.HeatTransfer.StraightPipe.kc_turbulent_IN_con IN_con "Input record for function kc_turbulent"
+  input FluidDissipation.HeatTransfer.StraightPipe.kc_turbulent_IN_con IN_con
+    "Input record for function kc_turbulent"
     annotation (Dialog(group="Constant inputs"));
-  input FluidDissipation.HeatTransfer.StraightPipe.kc_turbulent_IN_var IN_var "Input record for function kc_turbulent"
+  input FluidDissipation.HeatTransfer.StraightPipe.kc_turbulent_IN_var IN_var
+    "Input record for function kc_turbulent"
     annotation (Dialog(group="Variable inputs"));
 
   //output variables
@@ -15,7 +18,8 @@ function kc_turbulent "Mean heat transfer coefficient of straight pipe | hydrody
     annotation (Dialog(group="Output"));
   output SI.NusseltNumber Nu "Nusselt number"
     annotation (Dialog(group="Output"));
-  output Real failureStatus "0== boundary conditions fulfilled | 1== failure >> check if still meaningful results"
+  output Real failureStatus
+    "0== boundary conditions fulfilled | 1== failure >> check if still meaningful results"
     annotation (Dialog(group="Output"));
 
 protected

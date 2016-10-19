@@ -1,18 +1,22 @@
 within FluidDissipation.HeatTransfer.Channel;
-function kc_evenGapOverall_KC "Mean heat transfer coefficient of even gap | overall flow regime | considering boundary layer development | heat transfer at ONE or BOTH sides | identical and constant wall temperatures | surface roughness"
+function kc_evenGapOverall_KC
+  "Mean heat transfer coefficient of even gap | overall flow regime | considering boundary layer development | heat transfer at ONE or BOTH sides | identical and constant wall temperatures | surface roughness"
   extends Modelica.Icons.Function;
   //SOURCE: VDI-Waermeatlas, 9th edition, Springer-Verlag, 2002, Section Gb 6-10
 
   import SMOOTH = FluidDissipation.Utilities.Functions.General.Stepsmoother;
 
   //input records
-  input FluidDissipation.HeatTransfer.Channel.kc_evenGapOverall_IN_con IN_con "Input record for function kc_evenGapOverall_KC"
+  input FluidDissipation.HeatTransfer.Channel.kc_evenGapOverall_IN_con IN_con
+    "Input record for function kc_evenGapOverall_KC"
     annotation (Dialog(group="Constant inputs"));
-  input FluidDissipation.HeatTransfer.Channel.kc_evenGapOverall_IN_var IN_var "Input record for function kc_evenGapOverall_KC"
+  input FluidDissipation.HeatTransfer.Channel.kc_evenGapOverall_IN_var IN_var
+    "Input record for function kc_evenGapOverall_KC"
     annotation (Dialog(group="Variable inputs"));
 
   //output variables
-  output SI.CoefficientOfHeatTransfer kc "Output for function kc_evenGapOverall_KC";
+  output SI.CoefficientOfHeatTransfer kc
+    "Output for function kc_evenGapOverall_KC";
 
 protected
   Real MIN=Modelica.Constants.eps "Limiter";
@@ -23,11 +27,15 @@ protected
   SI.Area A_cross=max(MIN, IN_con.s*IN_con.h) "Cross sectional area of gap";
   SI.Diameter d_hyd=2*IN_con.s "Hydraulic diameter";
 
-  SI.Velocity velocity=abs(IN_var.m_flow)/max(MIN, IN_var.rho*A_cross) "Mean velocity in gap";
-  SI.ReynoldsNumber Re=(IN_var.rho*velocity*d_hyd/max(MIN, IN_var.eta)) "Reynolds number";
-  SI.PrandtlNumber Pr=abs(IN_var.eta*IN_var.cp/max(MIN, IN_var.lambda)) "Prandtl number";
+  SI.Velocity velocity=abs(IN_var.m_flow)/max(MIN, IN_var.rho*A_cross)
+    "Mean velocity in gap";
+  SI.ReynoldsNumber Re=(IN_var.rho*velocity*d_hyd/max(MIN, IN_var.eta))
+    "Reynolds number";
+  SI.PrandtlNumber Pr=abs(IN_var.eta*IN_var.cp/max(MIN, IN_var.lambda))
+    "Prandtl number";
 
-  kc_evenGapTurbulent_IN_con IN_con_turb(h=IN_con.h,s=IN_con.s,L=IN_con.L) "Input record for constant parameters";
+  kc_evenGapTurbulent_IN_con IN_con_turb(h=IN_con.h,s=IN_con.s,L=IN_con.L)
+    "Input record for constant parameters";
 
 algorithm
   kc := SMOOTH(

@@ -5,18 +5,20 @@ model PlateHeatTransferModel "Application model for a plate in Modelica_Fluid"
   extends FluidDissipation.Utilities.Icons.HeatTransfer.Plate_i;
 
   //interfaces
-  Modelica.Thermal.HeatTransfer.Interfaces.HeatPort_a thermalPort "Thermal port"
-                   annotation (Placement(transformation(extent={{-20,60},{20,80}},
+  Modelica.Thermal.HeatTransfer.Interfaces.HeatPort_a thermalPort
+    "Thermal port" annotation (Placement(transformation(extent={{-20,60},{20,80}},
           rotation=0)));
 
-  replaceable package Medium = Modelica.Media.Air.DryAirNasa constrainedby Modelica.Media.Interfaces.PartialMedium "Medium in the component"
+  replaceable package Medium = Modelica.Media.Air.DryAirNasa constrainedby
+    Modelica.Media.Interfaces.PartialMedium "Medium in the component"
     annotation (Dialog(group="Fluid properties"), choicesAllMatching=true);
 
   //heat transfer calculation
   replaceable package HeatTransfer =
       FluidDissipation.Examples.Applications.HeatTransfer.BaseClasses.Plate.Overall
-    constrainedby FluidDissipation.Examples.Applications.HeatTransfer.BaseClasses.Plate.BasePlateHT "Characteristic of convective heat transfer"
-                                                 annotation (Dialog(group=
+    constrainedby
+    FluidDissipation.Examples.Applications.HeatTransfer.BaseClasses.Plate.BasePlateHT
+    "Characteristic of convective heat transfer" annotation (Dialog(group=
           "Heat transfer"), choicesAllMatching=true);
 
   //plate

@@ -1,4 +1,4 @@
-// Script to generate plot for documentation of 
+ï»¿// Script to generate plot for documentation of 
 // function PressureLoss.StraightPipe.dp_twoPhaseOverall_DP
 // of FluidDissipation Library
 // 
@@ -39,9 +39,9 @@ y = {"DP_1[1]",
  online = false,
  filename = "dp_twoPhaseOverall_DP.mat",
  legends = {
-	"t=0 °C",
-	"t=10 °C",
-	"t=20 °C"
+	"t=0 Â°C",
+	"t=10 Â°C",
+	"t=20 Â°C"
 	},
  leftTitle = "Pressure loss [bar]",
  bottomTitle ="Mass flow rate quality [-]");
@@ -89,9 +89,9 @@ y = {"DP_2[1]",
  online = false,
 filename = "dp_twoPhaseOverall_DP.mat",
  legends = {
-	"t=0 °C",
-	"t=10 °C",
-	"t=20 °C"
+	"t=0 Â°C",
+	"t=10 Â°C",
+	"t=20 Â°C"
 	},
  leftTitle = "Pressure loss [bar]",
  bottomTitle ="Mass flow rate quality [-]");
@@ -121,6 +121,27 @@ legends = {
 	},
  leftTitle = "Pressure loss [bar]",
 bottomTitle = "Mass flow rate quality [-]");
+
+createPlot(id = 5,
+   position = {1120, (-20), 550, 320},
+ x = "x_flow",
+y = {"DP_3[2]",
+	  "DP_3[1]"},
+ heading = "Straight pipe: Pressure loss (Mueller-Steinhagen) for two phase flow (N2)",
+ range = {0, 1, 0, 0.2},
+ autoscale = true,
+ autoerase = false,
+ autoreplot = true,
+ description = false,
+ grid = true,
+ color = true,
+ online = false,
+filename = "dp_twoPhaseOverall_DP.mat",
+ legends = {
+  "p_r=0.19, m_A=125 kg/m2s",
+   "p_r=0.6, m_A=230 kg/m2s"},
+ leftTitle = "Pressure loss [bar]",
+ bottomTitle ="Mass flow rate quality [-]");
 
 else
 

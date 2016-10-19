@@ -54,11 +54,16 @@ public
         origin={-50,-40})));
 
   FluidDissipation.Examples.Applications.PressureLoss.StraightPipeFlowModel from_dp(
-      redeclare package Medium = Modelica.Media.Air.DryAirNasa)
+      redeclare package Medium = Modelica.Media.Air.DryAirNasa, redeclare model
+      FlowModel =
+        FluidDissipation.Examples.Applications.PressureLoss.BaseClasses.StraightPipe.Overall.OverallFlowModel)
     annotation (Placement(transformation(extent={{-24,-4},{24,44}})));
 
   FluidDissipation.Examples.Applications.PressureLoss.StraightPipeFlowModel from_mflow(
-      redeclare package Medium = Modelica.Media.Air.DryAirNasa) "Calculate pressure loss from mass flow rate"
+      redeclare package Medium = Modelica.Media.Air.DryAirNasa, redeclare model
+      FlowModel =
+        FluidDissipation.Examples.Applications.PressureLoss.BaseClasses.StraightPipe.Overall.OverallFlowModel)
+    "Calculate pressure loss from mass flow rate"
     annotation (Placement(transformation(extent={{-24,-64},{24,-16}})));
 equation
   connect(IN_p.ports[1], from_dp.port_a) annotation (Line(

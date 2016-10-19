@@ -1,10 +1,11 @@
 within FluidDissipation.HeatTransfer.General;
-record kc_approxForcedConvection_IN_var "Input record for function approxForcedConvection and approxForcedConvection_KC"
+record kc_approxForcedConvection_IN_var
+  "Input record for function approxForcedConvection and approxForcedConvection_KC"
 
   //fluid property variables
   extends FluidDissipation.Utilities.Records.General.FluidProperties;
-  SI.DynamicViscosity eta_wall=1e-3 "Dynamic viscosity of fluid at wall temperature"
-                                                     annotation (Dialog(group=
+  SI.DynamicViscosity eta_wall=1e-3
+    "Dynamic viscosity of fluid at wall temperature" annotation (Dialog(group=
           "Fluid properties"));
 
   //input variable (mass flow rate)

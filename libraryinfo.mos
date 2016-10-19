@@ -8,7 +8,7 @@ LibraryInfoMenuCommand(
   version="1.1.8",
   isModel=true,
   description="FluidDissipation Library (version 1.1.8)",
-  ModelicaVersion=">=3.2.1",
+  ModelicaVersion=">=3.2.2",
   pos=4030)
  LibraryInfoMenuSeparator(
   category="libraries",

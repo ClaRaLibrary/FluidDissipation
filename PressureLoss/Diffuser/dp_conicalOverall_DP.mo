@@ -1,5 +1,6 @@
 within FluidDissipation.PressureLoss.Diffuser;
-function dp_conicalOverall_DP "Pressure loss of conical diffuser | calculate total pressure loss | overall flow regime | frictional pressure loss of (inlet/outlet) pipe sections"
+function dp_conicalOverall_DP
+  "Pressure loss of conical diffuser | calculate total pressure loss | overall flow regime | frictional pressure loss of (inlet/outlet) pipe sections"
   extends Modelica.Icons.Function;
   //SOURCE_1: Idelchik, I.E.: HANDBOOK OF HYDRAULIC RESISTANCE, 3rd edition, 2006.
   //SOURCE_2: Miller, D.S.: INTERNAL FLOW SYSTEMS, 2nd edition, 1984.
@@ -11,30 +12,38 @@ function dp_conicalOverall_DP "Pressure loss of conical diffuser | calculate tot
   import SMOOTH = FluidDissipation.Utilities.Functions.General.Stepsmoother;
 
   //input records
-  input FluidDissipation.PressureLoss.Diffuser.dp_conicalOverall_IN_con IN_con "Input record for function dp_conicalOverall_DP"
+  input FluidDissipation.PressureLoss.Diffuser.dp_conicalOverall_IN_con IN_con
+    "Input record for function dp_conicalOverall_DP"
     annotation (Dialog(group="Constant inputs"));
-  input FluidDissipation.PressureLoss.Diffuser.dp_conicalOverall_IN_var IN_var "Input record for function dp_conicalOverall_DP"
+  input FluidDissipation.PressureLoss.Diffuser.dp_conicalOverall_IN_var IN_var
+    "Input record for function dp_conicalOverall_DP"
     annotation (Dialog(group="Variable inputs"));
   input SI.MassFlowRate m_flow "Mass flow rate"
     annotation (Dialog(group="Input"));
 
   //output variables
-  output SI.Pressure DP_tot "Total pressure loss considering change in cross sectional area and frictional pressure loss of (inlet/outlet) pipe sections";
+  output SI.Pressure DP_tot
+    "Total pressure loss considering change in cross sectional area and frictional pressure loss of (inlet/outlet) pipe sections";
 
 protected
   Real MIN=Modelica.Constants.eps;
 
-  SI.Diameter d_hyd_1=4*abs(IN_con.A_1)/max(MIN, abs(IN_con.C_1)) "Hydraulic diameter in small cross sectional area";
-  SI.Diameter d_hyd_2=max(d_hyd_1, 4*abs(IN_con.A_2)/max(MIN, abs(IN_con.C_2))) "Hydraulic diameter in large cross sectional area";
+  SI.Diameter d_hyd_1=4*abs(IN_con.A_1)/max(MIN, abs(IN_con.C_1))
+    "Hydraulic diameter in small cross sectional area";
+  SI.Diameter d_hyd_2=max(d_hyd_1, 4*abs(IN_con.A_2)/max(MIN, abs(IN_con.C_2)))
+    "Hydraulic diameter in large cross sectional area";
   //SI.Angle alpha = PI*0.01;
   SI.Angle alpha=Modelica.Math.atan(min(PI/2, 0.5*(d_hyd_2 - d_hyd_1)/max(MIN,
       abs(IN_con.L_d)))) "Half diffuser diverging angle (0 < alpha < Pi/2)";
   /*SI.Angle alpha= Modelica.Math.atan(min(PI/2,0.5*(IN_con.A_2 - IN_con.A_1)/max(MIN,abs(IN_con.L_d)))) 
     "Half diffuser diverging angle (0 < alpha < Pi/2)";*/
   SI.Angle angle=sin(alpha);
-  SI.Area AR=max(MIN, abs(IN_con.A_2)/max(MIN, abs(IN_con.A_1))) "Diffuser area ratio (Large to small cross sectional area)";
-  SI.Velocity velocity_1=abs(m_flow)/max(MIN, abs(IN_var.rho)*abs(IN_con.A_1)) "Mean velocity in inlet pipe";
-  SI.Velocity velocity_2=abs(m_flow)/max(MIN, abs(IN_var.rho)*abs(IN_con.A_2)) "Mean velocity in outlet pipe";
+  SI.Area AR=max(MIN, abs(IN_con.A_2)/max(MIN, abs(IN_con.A_1)))
+    "Diffuser area ratio (Large to small cross sectional area)";
+  SI.Velocity velocity_1=abs(m_flow)/max(MIN, abs(IN_var.rho)*abs(IN_con.A_1))
+    "Mean velocity in inlet pipe";
+  SI.Velocity velocity_2=abs(m_flow)/max(MIN, abs(IN_var.rho)*abs(IN_con.A_2))
+    "Mean velocity in outlet pipe";
   SI.ReynoldsNumber Re_1=max(MIN, IN_var.rho*velocity_1*d_hyd_1/max(MIN, abs(
       IN_var.eta))) "Reynolds number in small cross sectional area";
   SI.ReynoldsNumber Re_2=max(MIN, IN_var.rho*velocity_2*d_hyd_2/max(MIN, abs(
@@ -44,10 +53,14 @@ protected
   Real k1=max(MIN, abs(IN_con.K)/d_hyd_1) "Relative roughness of inlet pipe";
   Real k2=max(MIN, abs(IN_con.K)/d_hyd_2) "Relative roughness of outlet pipe";
   //SOURCE_1: p.81, fig. 2-3, sec 21-22: definition of flow regime boundaries
-  SI.ReynoldsNumber Re_lam_min=1e3 "Minimum Reynolds number for laminar regime in pipes";
-  SI.ReynoldsNumber Re_lam_max1=2090*(1/max(0.007, k1))^0.0635 "Maximum Reynolds number for laminar regime of inlet pipe";
-  SI.ReynoldsNumber Re_lam_max2=2090*(1/max(0.007, k2))^0.0635 "Maximum Reynolds number for laminar regime of outlet pipe";
-  SI.ReynoldsNumber Re_turb_min=4e3 "Minimum Reynolds number for turbulent regime in pipes";
+  SI.ReynoldsNumber Re_lam_min=1e3
+    "Minimum Reynolds number for laminar regime in pipes";
+  SI.ReynoldsNumber Re_lam_max1=2090*(1/max(0.007, k1))^0.0635
+    "Maximum Reynolds number for laminar regime of inlet pipe";
+  SI.ReynoldsNumber Re_lam_max2=2090*(1/max(0.007, k2))^0.0635
+    "Maximum Reynolds number for laminar regime of outlet pipe";
+  SI.ReynoldsNumber Re_turb_min=4e3
+    "Minimum Reynolds number for turbulent regime in pipes";
   SI.ReynoldsNumber Re_lam_leave1=min(Re_lam_max1, max(Re_lam_min, 754*
       Modelica.Math.exp(if k1 <= 0.007 then 0.0065/0.007 else 0.0065/k1)));
   SI.ReynoldsNumber Re_lam_leave2=min(Re_lam_max2, max(Re_lam_min, 754*
@@ -106,26 +119,33 @@ protected
   //SOURCE_1: p.251, eq. 5-7: Considering local pressure loss of diffuser section for turbulent regime
   //SOURCE_1: p.293, diag. 5-4: Considering shock coefficient
   Real phi=0.9455*(1 - exp(-0.0541*2*alpha*180/PI)) "Shock coefficient";
-  Real exp_phi=1.92 "Geometry exponent for shock losses (here: conical diffuser)";
+  Real exp_phi=1.92
+    "Geometry exponent for shock losses (here: conical diffuser)";
 
-  TYP.LocalResistanceCoefficient zeta_loc_tur=phi*(1 - 1/AR)^exp_phi "Local resistance coefficient for turbulent regime of diffuser section";
+  TYP.LocalResistanceCoefficient zeta_loc_tur=phi*(1 - 1/AR)^exp_phi
+    "Local resistance coefficient for turbulent regime of diffuser section";
 
   //SOURCE_3: p.319: Considering restriction for laminar regime
 
-  SI.ReynoldsNumber Re_min_d=180 "Minimum Reynolds number for laminar regime in diffuser section";
-  SI.ReynoldsNumber Re_max_d=220 "Maximum Reynolds number for laminar regime in diffuser section";
+  SI.ReynoldsNumber Re_min_d=180
+    "Minimum Reynolds number for laminar regime in diffuser section";
+  SI.ReynoldsNumber Re_max_d=220
+    "Maximum Reynolds number for laminar regime in diffuser section";
   TYP.LocalResistanceCoefficient zeta_loc_d=SMOOTH(
       Re_min_d,
       Re_max_d,
       Re_1)*zeta_loc_lam + SMOOTH(
       Re_max_d,
       Re_min_d,
-      Re_1)*zeta_loc_tur "Local resistance coefficient for overall regime of diffuser section";
+      Re_1)*zeta_loc_tur
+    "Local resistance coefficient for overall regime of diffuser section";
 
   //SOURCE_1: p.250, sec. 38: Considering frictional pressure loss of conical diffuser section for turbulent regime
   Real x_bar=IN_con.L_d/d_hyd_1 "Characteristic length of diffuser";
-  Real x_tilde=Modelica.Math.log(1 + 2*x_bar*tan(alpha))/(2*tan(alpha)) "Mean characteristic length of conical diffuser";
-  TYP.DarcyFrictionFactor lambda_fri_d=(lambda_fri_1 + lambda_fri_2)/2 "Mean Darcy friction factor for conical diffuser section";
+  Real x_tilde=Modelica.Math.log(1 + 2*x_bar*tan(alpha))/(2*tan(alpha))
+    "Mean characteristic length of conical diffuser";
+  TYP.DarcyFrictionFactor lambda_fri_d=(lambda_fri_1 + lambda_fri_2)/2
+    "Mean Darcy friction factor for conical diffuser section";
 
   TYP.FrictionalResistanceCoefficient zeta_fri_d=(1 + 0.5/1.5^x_tilde)*
       lambda_fri_d*(1 - 1/AR^2)/(8*angle);
@@ -143,7 +163,8 @@ algorithm
     FluidDissipation.Utilities.Functions.General.SmoothPower(
     velocity_1,
     IN_con.velocity_small,
-    2) "Total pressure loss considering change in cross sectional area and frictional pressure loss of (inlet/outlet) pipe sections";
+    2)
+    "Total pressure loss considering change in cross sectional area and frictional pressure loss of (inlet/outlet) pipe sections";
   annotation (Inline=false, smoothOrder(normallyConstant=IN_con) = 2, Documentation(
         info="<html>
 <p>

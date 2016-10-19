@@ -1,50 +1,55 @@
 within FluidDissipation.Examples.Applications.HeatTransfer;
-model StraightPipeHeatTransferModel "Application model for a straight pipe in Modelica_Fluid"
+model StraightPipeHeatTransferModel
+  "Application model for a straight pipe in Modelica_Fluid"
 
   //icon
   extends FluidDissipation.Utilities.Icons.HeatTransfer.StraightPipe_i;
 
   //interfaces
-  Modelica.Thermal.HeatTransfer.Interfaces.HeatPort_a thermalPort "Thermal port"
-                   annotation (Placement(transformation(extent={{-20,60},{20,80}},
+  Modelica.Thermal.HeatTransfer.Interfaces.HeatPort_a thermalPort
+    "Thermal port" annotation (Placement(transformation(extent={{-20,60},{20,80}},
           rotation=0)));
 
-  replaceable package Medium = Modelica.Media.Air.DryAirNasa constrainedby Modelica.Media.Interfaces.PartialMedium "Medium in the component"
+  replaceable package Medium = Modelica.Media.Air.DryAirNasa constrainedby
+    Modelica.Media.Interfaces.PartialMedium "Medium in the component"
     annotation (Dialog(group="Fluid properties"), choicesAllMatching=true);
 
   //heat transfer calculation
   replaceable package HeatTransferLam =
       FluidDissipation.Examples.Applications.HeatTransfer.BaseClasses.StraightPipe.Laminar
-    constrainedby FluidDissipation.Examples.Applications.HeatTransfer.BaseClasses.StraightPipe.Laminar "Characteristic of convective heat transfer"
-                                                 annotation (Dialog(group=
+    constrainedby
+    FluidDissipation.Examples.Applications.HeatTransfer.BaseClasses.StraightPipe.Laminar
+    "Characteristic of convective heat transfer" annotation (Dialog(group=
           "Heat transfer", enable=fluidFlowRegime == FluidDissipation.Utilities.Types.FluidFlowRegime.Laminar), choicesAllMatching=
         true);
   replaceable package HeatTransferOver =
       FluidDissipation.Examples.Applications.HeatTransfer.BaseClasses.StraightPipe.Overall
-    constrainedby FluidDissipation.Examples.Applications.HeatTransfer.BaseClasses.StraightPipe.Overall "Characteristic of convective heat transfer"
-                                                 annotation (Dialog(group=
+    constrainedby
+    FluidDissipation.Examples.Applications.HeatTransfer.BaseClasses.StraightPipe.Overall
+    "Characteristic of convective heat transfer" annotation (Dialog(group=
           "Heat transfer", enable=fluidFlowRegime == FluidDissipation.Utilities.Types.FluidFlowRegime.Overall), choicesAllMatching=
         true);
   replaceable package HeatTransferTurb =
       FluidDissipation.Examples.Applications.HeatTransfer.BaseClasses.StraightPipe.Turbulent
-    constrainedby FluidDissipation.Examples.Applications.HeatTransfer.BaseClasses.StraightPipe.Turbulent "Characteristic of convective heat transfer"
-                                                 annotation (Dialog(group=
+    constrainedby
+    FluidDissipation.Examples.Applications.HeatTransfer.BaseClasses.StraightPipe.Turbulent
+    "Characteristic of convective heat transfer" annotation (Dialog(group=
           "Heat transfer", enable=fluidFlowRegime == FluidDissipation.Utilities.Types.FluidFlowRegime.Turbulent), choicesAllMatching=
         true);
   parameter FluidDissipation.Utilities.Types.FluidFlowRegime fluidFlowRegime=
-      FluidDissipation.Utilities.Types.FluidFlowRegime.Overall "Choice of fluid flow regime"
-                                  annotation (Dialog(group="Heat transfer"));
+      FluidDissipation.Utilities.Types.FluidFlowRegime.Overall
+    "Choice of fluid flow regime" annotation (Dialog(group="Heat transfer"));
 
   //straightPipe
   parameter FluidDissipation.Utilities.Types.HeatTransferBoundary target=
-      FluidDissipation.Utilities.Types.HeatTransferBoundary.UWTuDFF "Choice of heat transfer boundary condition"
-                                                 annotation (Dialog(group=
+      FluidDissipation.Utilities.Types.HeatTransferBoundary.UWTuDFF
+    "Choice of heat transfer boundary condition" annotation (Dialog(group=
           "Straight pipe", enable=if fluidFlowRegime == FluidDissipation.Utilities.Types.FluidFlowRegime.Laminar
            or fluidFlowRegime == FluidDissipation.Utilities.Types.FluidFlowRegime.Overall
            then true else false));
   parameter FluidDissipation.Utilities.Types.Roughness roughness=
-      FluidDissipation.Utilities.Types.Roughness.Considered "Choice of considering surface roughness"
-                                              annotation (Dialog(group=
+      FluidDissipation.Utilities.Types.Roughness.Considered
+    "Choice of considering surface roughness" annotation (Dialog(group=
           "Straight pipe", enable=if not (fluidFlowRegime == FluidDissipation.Utilities.Types.FluidFlowRegime.Laminar)
            then true else false));
 
@@ -95,7 +100,8 @@ protected
   SI.Density rho=Medium.density(stateForHeatTransfer.state);
   SI.Temp_K T=Medium.temperature(stateForHeatTransfer.state);
 
-  SI.Velocity velocity=abs(m_flow)/max(Modelica.Constants.eps, (rho*A_cross)) "Mean velocity";
+  SI.Velocity velocity=abs(m_flow)/max(Modelica.Constants.eps, (rho*A_cross))
+    "Mean velocity";
   SI.ReynoldsNumber Re=rho*velocity*d_hyd/eta;
   SI.NusseltNumber Nu=kc*d_hyd/lambda;
 

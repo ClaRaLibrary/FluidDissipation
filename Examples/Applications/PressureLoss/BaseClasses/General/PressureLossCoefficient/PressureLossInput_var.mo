@@ -1,7 +1,9 @@
 within FluidDissipation.Examples.Applications.PressureLoss.BaseClasses.General.PressureLossCoefficient;
-record PressureLossInput_var "Input record for generic function with pressure loss coefficient dependence"
+record PressureLossInput_var
+  "Input record for generic function with pressure loss coefficient dependence"
 
-  extends FluidDissipation.PressureLoss.General.dp_pressureLossCoefficient_IN_var;
+  extends
+    FluidDissipation.PressureLoss.General.dp_pressureLossCoefficient_IN_var;
 
   annotation (Documentation(info="<html>
 This record is used as <b> input record </b> for the pressure loss of the <a  

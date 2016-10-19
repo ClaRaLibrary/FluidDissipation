@@ -4,7 +4,7 @@ record TwoPhaseFlow_con "Base record for two phase Flow"
 
   SI.Area A_cross=PI*0.1^2/4 "Cross sectional area"
     annotation (Dialog(group="Geometry"));
-  SI.Length perimeter=PI*0.1 "Wettet perimeter"
+  SI.Length perimeter=PI*0.1 "Wetted perimeter"
     annotation (Dialog(group="Geometry"));
   SI.Length length=1 "Length in fluid flow direction"
     annotation (Dialog(group="Geometry"));

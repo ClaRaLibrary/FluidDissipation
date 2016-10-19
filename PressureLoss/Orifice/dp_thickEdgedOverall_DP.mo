@@ -1,5 +1,6 @@
 within FluidDissipation.PressureLoss.Orifice;
-function dp_thickEdgedOverall_DP "Pressure loss of thick and sharp edged orifice | calculate pressure loss | overall flow regime | constant influence of friction  | arbitrary cross sectional area"
+function dp_thickEdgedOverall_DP
+  "Pressure loss of thick and sharp edged orifice | calculate pressure loss | overall flow regime | constant influence of friction  | arbitrary cross sectional area"
   extends Modelica.Icons.Function;
   //SOURCE_1: Idelchik, I.E.: HANDBOOK OF HYDRAULIC RESISTANCE, 3rd edition, 2006.
   //Notation of equations according to SOURCES
@@ -8,9 +9,11 @@ function dp_thickEdgedOverall_DP "Pressure loss of thick and sharp edged orifice
   import SMOOTH = FluidDissipation.Utilities.Functions.General.Stepsmoother;
 
   //input records
-  input FluidDissipation.PressureLoss.Orifice.dp_thickEdgedOverall_IN_con IN_con "Input record for function dp_thickEdgedOverall_DP"
+  input FluidDissipation.PressureLoss.Orifice.dp_thickEdgedOverall_IN_con IN_con
+    "Input record for function dp_thickEdgedOverall_DP"
     annotation (Dialog(group="Constant inputs"));
-  input FluidDissipation.PressureLoss.Orifice.dp_thickEdgedOverall_IN_var IN_var "Input record for function dp_thickEdgedOverall_DP"
+  input FluidDissipation.PressureLoss.Orifice.dp_thickEdgedOverall_IN_var IN_var
+    "Input record for function dp_thickEdgedOverall_DP"
     annotation (Dialog(group="Variable inputs"));
 
   input SI.MassFlowRate m_flow "Mass flow rate"
@@ -22,14 +25,17 @@ function dp_thickEdgedOverall_DP "Pressure loss of thick and sharp edged orifice
 protected
   Real MIN=Modelica.Constants.eps;
 
-  TYP.DarcyFrictionFactor lambda_FRI=0.02 "Assumption for Darcy friction factor in vena contraction according to SOURCE_1";
+  TYP.DarcyFrictionFactor lambda_FRI=0.02
+    "Assumption for Darcy friction factor in vena contraction according to SOURCE_1";
   SI.ReynoldsNumber Re_min=1;
   SI.ReynoldsNumber Re_lim=1e3 "Limitation for laminar regime if dp is target";
 
   SI.Area A_0=IN_con.A_0 "Cross sectional area of vena contraction";
   SI.Area A_1=IN_con.A_1 "Cross sectional area of large cross sectional area";
-  SI.Diameter d_hyd_0=max(MIN, 4*A_0/IN_con.C_0) "Hydraulic diameter of vena contraction";
-  SI.Diameter d_hyd_1=max(MIN, 4*A_1/IN_con.C_1) "Hydraulic diameter of large cross sectional area";
+  SI.Diameter d_hyd_0=max(MIN, 4*A_0/IN_con.C_0)
+    "Hydraulic diameter of vena contraction";
+  SI.Diameter d_hyd_1=max(MIN, 4*A_1/IN_con.C_1)
+    "Hydraulic diameter of large cross sectional area";
   SI.Length l=IN_con.L "Length of vena contraction";
   Real l_bar=IN_con.L/d_hyd_0;
 
@@ -39,9 +45,11 @@ protected
 
   TYP.PressureLossCoefficient zeta_TOT_1=max(MIN, (0.5*(1 - A_0/A_1)^0.75 + tau
       *(1 - A_0/A_1)^1.375 + (1 - A_0/A_1)^2 + lambda_FRI*l/d_hyd_0)*(A_1/A_0)^
-      2) "Pressure loss coefficient w.r.t. to flow velocity in large cross sectional area";
+      2)
+    "Pressure loss coefficient w.r.t. to flow velocity in large cross sectional area";
   SI.Velocity v_0=m_flow/(IN_var.rho*A_0) "Mean velocity in vena contraction";
-  SI.ReynoldsNumber Re=IN_var.rho*v_0*d_hyd_0/max(MIN, IN_var.eta) "Reynolds number in vena contraction";
+  SI.ReynoldsNumber Re=IN_var.rho*v_0*d_hyd_0/max(MIN, IN_var.eta)
+    "Reynolds number in vena contraction";
 
   //Documentation
 
@@ -157,7 +165,7 @@ The pressure loss <b> DP </b> of an thick edged orifice in dependence of the mas
  
 <h4><font color=\"#EF9B13\">References</font></h4> 
 <dl>
- <dt>Elmquist,H., M.Otter and S.E. Cellier:</dt>
+ <dt>Elmqvist,H., M.Otter and S.E. Cellier:</dt>
     <dd><b>Inline integration: A new mixed
 symbolic / numeric approach for solving differential-algebraic equation systems.</b>.
     In Proceedings of European Simulation MultiConference, Praque, 1995.</dd>

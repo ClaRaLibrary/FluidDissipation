@@ -1,5 +1,6 @@
 within FluidDissipation.PressureLoss.HeatExchanger;
-function dp_flatTube_DP "Air-side pressure loss of heat exchanger with flat tubes and several fin geometries | calculate DP (incompressible)"
+function dp_flatTube_DP
+  "Air-side pressure loss of heat exchanger with flat tubes and several fin geometries | calculate DP (incompressible)"
   extends Modelica.Icons.Function;
   //SOURCE: A.M. Jacobi, Y. Park, D. Tafti, X. Zhang. AN ASSESSMENT OF THE STATE OF THE ART, AND POTENTIAL DESIGN IMPROVEMENTS, FOR FLAT-TUBE HEAT EXCHANGERS IN AIR CONDITIONING AND REFRIGERATION APPLICATIONS - PHASE I
   //Notation of equations according to SOURCE
@@ -8,9 +9,11 @@ function dp_flatTube_DP "Air-side pressure loss of heat exchanger with flat tube
   import SMOOTH = FluidDissipation.Utilities.Functions.General.Stepsmoother;
 
   //input records
-  input FluidDissipation.PressureLoss.HeatExchanger.dp_flatTube_IN_con IN_con "Input record for function dp_flatTube_DP"
+  input FluidDissipation.PressureLoss.HeatExchanger.dp_flatTube_IN_con IN_con
+    "Input record for function dp_flatTube_DP"
     annotation (Dialog(group="Constant inputs"));
-  input FluidDissipation.PressureLoss.HeatExchanger.dp_flatTube_IN_var IN_var "Input record for function dp_flatTube_DP"
+  input FluidDissipation.PressureLoss.HeatExchanger.dp_flatTube_IN_var IN_var
+    "Input record for function dp_flatTube_DP"
     annotation (Dialog(group="Variable inputs"));
   input SI.MassFlowRate m_flow "Mass flow rate"
     annotation (Dialog(group="Input"));
@@ -23,25 +26,31 @@ protected
 
   SI.Conversions.NonSIunits.Angle_deg Phi=IN_con.Phi*180/PI;
 
-  SI.ReynoldsNumber Re_Dh=max(1e-3, abs(m_flow)*IN_con.D_h/(IN_var.eta*A_c)) "Reynolds number based on hydraulic diameter";
-  SI.ReynoldsNumber Re_Lp=max(1e-3, abs(m_flow)*IN_con.L_p/(IN_var.eta*A_c)) "Reynolds number based on louver pitch";
+  SI.ReynoldsNumber Re_Dh=max(1e-3, abs(m_flow)*IN_con.D_h/(IN_var.eta*A_c))
+    "Reynolds number based on hydraulic diameter";
+  SI.ReynoldsNumber Re_Lp=max(1e-3, abs(m_flow)*IN_con.L_p/(IN_var.eta*A_c))
+    "Reynolds number based on louver pitch";
   Real f "Fanning friction factor";
   /*SI.Velocity v_fr=m_flow/(IN_var.rho*IN_con.A_fr) "Frontal velocity";*/
-  SI.Velocity v_c=m_flow/(IN_var.rho*A_c) "Velocity at minimum flow cross-sectional area";
+  SI.Velocity v_c=m_flow/(IN_var.rho*A_c)
+    "Velocity at minimum flow cross-sectional area";
 
   SI.Area A_c=if IN_con.geometry ==FluidDissipation.Utilities.Types.HTXGeometry_flatTubes.LouverFin
                                                                                                then
             IN_con.A_fr*((IN_con.F_l - IN_con.delta_f)*(IN_con.F_p - IN_con.delta_f)
       /((IN_con.F_l + IN_con.D_m)*IN_con.F_p)) else if IN_con.geometry ==
       FluidDissipation.Utilities.Types.HTXGeometry_flatTubes.RectangularFin then
-            IN_con.A_fr*(h*s/((h + t + IN_con.D_m)*(s + t))) else 0 "Minimum flow cross-sectional area";
+            IN_con.A_fr*(h*s/((h + t + IN_con.D_m)*(s + t))) else 0
+    "Minimum flow cross-sectional area";
   SI.Length D_h=if IN_con.geometry ==FluidDissipation.Utilities.Types.HTXGeometry_flatTubes.LouverFin
                                                                                                then
             4*A_c/(IN_con.A_fr*(2*(IN_con.F_p - IN_con.delta_f + IN_con.F_l -
-      IN_con.delta_f)/(IN_con.F_p*(IN_con.F_l + IN_con.D_m)))) else 0 "Hydraulic diameter";
+      IN_con.delta_f)/(IN_con.F_p*(IN_con.F_l + IN_con.D_m)))) else 0
+    "Hydraulic diameter";
   SI.Length h=if IN_con.geometry ==FluidDissipation.Utilities.Types.HTXGeometry_flatTubes.RectangularFin
                                                                                                then
-            IN_con.D_h*(1 + IN_con.alpha)/(2*IN_con.alpha) else 0 "Free flow height";
+            IN_con.D_h*(1 + IN_con.alpha)/(2*IN_con.alpha) else 0
+    "Free flow height";
   SI.Length l=if IN_con.geometry ==FluidDissipation.Utilities.Types.HTXGeometry_flatTubes.RectangularFin
                                                                                                then
             t/IN_con.delta else 0 "Fin length";

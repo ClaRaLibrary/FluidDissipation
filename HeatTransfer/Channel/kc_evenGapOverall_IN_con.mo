@@ -1,5 +1,6 @@
 within FluidDissipation.HeatTransfer.Channel;
-record kc_evenGapOverall_IN_con "Input record for function kc_evenGapOverall and kc_evenGapOverall_KC"
+record kc_evenGapOverall_IN_con
+  "Input record for function kc_evenGapOverall and kc_evenGapOverall_KC"
 
   //even gap variables
   extends FluidDissipation.Utilities.Records.HeatTransfer.EvenGap;

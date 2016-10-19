@@ -1,5 +1,5 @@
 within ;
-package FluidDissipation 
+package FluidDissipation
 import PI = Modelica.Constants.pi;
 import REC = FluidDissipation.Utilities.Records;
 import SI = Modelica.SIunits;
@@ -7,6 +7,14 @@ import TYP = FluidDissipation.Utilities.Types;
 
 
 extends FluidDissipation.Utilities.Icons.Package;
+
+
+
+
+
+
+
+
 
 
 
@@ -77,19 +85,23 @@ ensure that this library is always loaded with <b> Modelica Standard Library ver
  
 <h2> <font color=\"#EF9B13\"> Acknowledgements </font></h2>
 The following people contributed to the FluidDissipation library (alphabetical list):
-J&ouml;rg Eiden, Ole Engel, Friedrich Gottelt, Nina Peci, Sven Rutkowski, Thorben Vahlenkamp, Stefan 
+J&ouml;rg Eiden, Ole Engel, Friedrich Gottelt, Timm Hoppe, Nina Peci, Sven Rutkowski, Thorben Vahlenkamp, Stefan 
 Wischhusen. 
  
 <p>
 The development of the FluidDissipation library was founded within the ITEA research 
 project EuroSysLib-D by German Federal Ministry of Education and Research (promotional 
-reference 01IS07022B). The project ended in June 2010. 
+reference 01IS07022B). The project ended in June 2010.<br>
+<br>
+Furthermore, funding was received in the projects DynCap and DynStart from the
+German Federal Ministry for Economic Affairs and Energy (promotional references 
+03ET2009C and 03ET7060D)
 </p>
  
 <h2> <font color=\"#EF9B13\"> Licence condition </font></h2>
 <p>
 <b>Licensed by XRG-Simulation GmbH under the Modelica License 2</b><br>
-Copyright &copy; 2007-2015, XRG Simulation GmbH.
+Copyright &copy; 2007-2016, XRG Simulation GmbH.
 </p>
  
 <p>

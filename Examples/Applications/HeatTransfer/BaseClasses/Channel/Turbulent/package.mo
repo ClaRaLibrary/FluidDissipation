@@ -1,6 +1,7 @@
 within FluidDissipation.Examples.Applications.HeatTransfer.BaseClasses.Channel;
 package Turbulent "FluidDissipation: Turbulent fluid flow in an even gap"
-extends FluidDissipation.Examples.Applications.HeatTransfer.BaseClasses.Channel.BaseChannelHT;
+extends
+  FluidDissipation.Examples.Applications.HeatTransfer.BaseClasses.Channel.BaseChannelHT;
 constant String fluidFlowRegime="turbulent regime";
 
 

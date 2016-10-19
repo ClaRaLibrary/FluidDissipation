@@ -1,5 +1,6 @@
 within FluidDissipation.Examples.Applications.PressureLoss.BaseClasses.Orifice.SuddenChange;
-record PressureLossInput_var "Input record for dp_suddenChangeSectionBidirectionalTurbulentSmooth"
+record PressureLossInput_var
+  "Input record for dp_suddenChangeSectionBidirectionalTurbulentSmooth"
 
   extends FluidDissipation.PressureLoss.Orifice.dp_suddenChange_IN_var;
 

@@ -10,7 +10,8 @@ model dp_roundTube_DP "Verification of function dp_roundTube_DP"
   //heat exchanger variables geometry no.1
 
   parameter Modelica.SIunits.Length D_c_1=0.01023 "Fin collar diameter";
-  parameter Modelica.SIunits.Length F_p_1=0.00177 "Fin pitch, fin spacing + fin thickness";
+  parameter Modelica.SIunits.Length F_p_1=0.00177
+    "Fin pitch, fin spacing + fin thickness";
   parameter Modelica.SIunits.Length L_1=N_1*P_l_1 "Heat exchanger length";
   parameter Integer N_1=2 "Number of tube rows";
   parameter Modelica.SIunits.Length P_l_1=0.022 "Longitudinal tube pitch";
@@ -21,7 +22,8 @@ model dp_roundTube_DP "Verification of function dp_roundTube_DP"
   //heat exchanger variables geometry no.2
 
   parameter Modelica.SIunits.Length D_c_2=0.01042 "Fin collar diameter";
-  parameter Modelica.SIunits.Length F_p_2=0.00205 "Fin pitch, fin spacing + fin thickness";
+  parameter Modelica.SIunits.Length F_p_2=0.00205
+    "Fin pitch, fin spacing + fin thickness";
   parameter Modelica.SIunits.Length L_2=N_2*P_l_2 "Heat exchanger length";
   parameter Modelica.SIunits.Length L_h_2=0.0014 "Louver height";
   parameter Modelica.SIunits.Length L_p_2=0.0024 "Louver pitch";
@@ -34,7 +36,8 @@ model dp_roundTube_DP "Verification of function dp_roundTube_DP"
   //heat exchanger variables geometry no.3
 
   parameter Modelica.SIunits.Length D_c_3=0.01034 "Fin collar diameter";
-  parameter Modelica.SIunits.Length F_p_3=0.00246 "Fin pitch, fin spacing + fin thickness";
+  parameter Modelica.SIunits.Length F_p_3=0.00246
+    "Fin pitch, fin spacing + fin thickness";
   parameter Modelica.SIunits.Length L_3=N_3*P_l_3 "Heat exchanger length";
   parameter Integer N_3=2 "Number of tube rows";
   parameter Modelica.SIunits.Length P_l_3=0.022 "Longitudinal tube pitch";
@@ -45,13 +48,16 @@ model dp_roundTube_DP "Verification of function dp_roundTube_DP"
   //heat exchanger variables geometry no.4
 
   parameter Modelica.SIunits.Length D_c_4=0.0103 "Fin collar diameter";
-  parameter Modelica.SIunits.Length F_p_4=0.00169 "Fin pitch, fin spacing + fin thickness";
+  parameter Modelica.SIunits.Length F_p_4=0.00169
+    "Fin pitch, fin spacing + fin thickness";
   parameter Modelica.SIunits.Length L_4=N_4*P_l_4 "Heat exchanger length";
   parameter Integer N_4=2 "Number of tube rows";
-  parameter Modelica.SIunits.Length P_d_4=0.0015 "Pattern depth of wavy fin, wave height";
+  parameter Modelica.SIunits.Length P_d_4=0.0015
+    "Pattern depth of wavy fin, wave height";
   parameter Modelica.SIunits.Length P_l_4=0.01905 "Longitudinal tube pitch";
   parameter Modelica.SIunits.Length P_t_4=0.0254 "Transverse tube pitch";
-  parameter Modelica.SIunits.Length X_f_4=0.0047625 "Half wave length of wavy fin";
+  parameter Modelica.SIunits.Length X_f_4=0.0047625
+    "Half wave length of wavy fin";
 
   parameter Modelica.SIunits.Length delta_f_4=0.0001 "Fin thickness";
 
@@ -74,9 +80,10 @@ model dp_roundTube_DP "Verification of function dp_roundTube_DP"
   //output variables
   Modelica.SIunits.Pressure DP[n] "Pressure loss in [bar]"
                                     annotation (Dialog(group="Output"));
-  Real zeta_TOT[n]={2*abs(DP[i])/(max(rho*(v_c[i])^2, MIN)) for i in 1:n} "Pressure loss coefficients"
-                                 annotation (Dialog(group="Output"));
-  Real lambda_FRI[n]={zeta_TOT[i]*D_h[i]/L[i] for i in 1:n} "Frictional resistance coefficient";
+  Real zeta_TOT[n]={2*abs(DP[i])/(max(rho*(v_c[i])^2, MIN)) for i in 1:n}
+    "Pressure loss coefficients" annotation (Dialog(group="Output"));
+  Real lambda_FRI[n]={zeta_TOT[i]*D_h[i]/L[i] for i in 1:n}
+    "Frictional resistance coefficient";
       //plotting
   Real DP_plot[n]={DP[i] for i in 1:n} "Pressure loss [Pa]";
 
@@ -84,13 +91,15 @@ protected
   constant Real MIN=Modelica.Constants.eps;
 
   Modelica.SIunits.Velocity v_c[n]={abs(Re)*eta/(rho*D_c_1),abs(Re)*eta/(rho*
-      D_c_2),abs(Re)*eta/(rho*D_c_3),abs(Re)*eta/(rho*D_c_4)} "Velocity at minimum flow cross-sectional area";
+      D_c_2),abs(Re)*eta/(rho*D_c_3),abs(Re)*eta/(rho*D_c_4)}
+    "Velocity at minimum flow cross-sectional area";
 
   Modelica.SIunits.Area A_c[n]={A_fr*((F_p_1*P_t_1 - F_p_1*D_c_1 - (P_t_1 -
       D_c_1)*delta_f_1)/(F_p_1*P_t_1)),A_fr*((F_p_2*P_t_2 - F_p_2*D_c_2 - (
       P_t_2 - D_c_2)*delta_f_2)/(F_p_2*P_t_2)),A_fr*((F_p_3*P_t_3 - F_p_3*D_c_3
        - (P_t_3 - D_c_3)*delta_f_3)/(F_p_3*P_t_3)),A_fr*((F_p_4*P_t_4 - F_p_4*
-      D_c_4 - (P_t_4 - D_c_4)*delta_f_4)/(F_p_4*P_t_4))} "Minimum flow cross-sectional area";
+      D_c_4 - (P_t_4 - D_c_4)*delta_f_4)/(F_p_4*P_t_4))}
+    "Minimum flow cross-sectional area";
 
   Modelica.SIunits.Area A_tot[n]={A_fr*((N_1*Modelica.Constants.pi*D_c_1*(F_p_1
        - delta_f_1) + 2*(P_t_1*L_1 - N_1*Modelica.Constants.pi*D_c_1^2/4))/(
@@ -102,7 +111,8 @@ protected
       Modelica.Constants.pi*D_c_4^2/4)*(sqrt(X_f_4^2 + P_d_4^2)/X_f_4))/(P_t_4*
       F_p_4))} "Total heat transfer area";
 
-  Modelica.SIunits.Length D_h[n]={4*A_c[i]*L[i]/A_tot[i] for i in 1:n} "Hydraulic diameter";
+  Modelica.SIunits.Length D_h[n]={4*A_c[i]*L[i]/A_tot[i] for i in 1:n}
+    "Hydraulic diameter";
 
   Modelica.SIunits.Length L[n]={L_1,L_2,L_3,L_4} "Heat exchanger length";
 
@@ -199,8 +209,8 @@ equation
       m_flow_4);
 
   annotation (__Dymola_Commands(file=
-          "modelica://FluidDissipation/Extras/Scripts/pressureLoss/heatExchanger/dp_roundTube_DP.mos" "Verification of dp_roundTube_DP"),
-                                            Diagram(coordinateSystem(
+          "modelica://FluidDissipation/Extras/Scripts/pressureLoss/heatExchanger/dp_roundTube_DP.mos"
+        "Verification of dp_roundTube_DP"), Diagram(coordinateSystem(
           preserveAspectRatio=false, extent={{-100,-100},{100,100}}),
         graphics={Text(
             extent={{-100,50},{100,75}},

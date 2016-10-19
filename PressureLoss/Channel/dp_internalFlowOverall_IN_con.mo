@@ -1,8 +1,10 @@
 within FluidDissipation.PressureLoss.Channel;
-record dp_internalFlowOverall_IN_con "Input record for function dp_internalFlowOverall"
+record dp_internalFlowOverall_IN_con
+  "Input record for function dp_internalFlowOverall"
 
   //channel variables
-  FluidDissipation.Utilities.Types.Roughness roughness=FluidDissipation.Utilities.Types.Roughness.Considered "Choice of considering surface roughness"
+  FluidDissipation.Utilities.Types.Roughness roughness=FluidDissipation.Utilities.Types.Roughness.Considered
+    "Choice of considering surface roughness"
     annotation (Dialog(group="Channel"));
   extends FluidDissipation.Utilities.Records.PressureLoss.Geometry;
 

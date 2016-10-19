@@ -1,5 +1,6 @@
 within FluidDissipation.PressureLoss.Diffuser;
-record dp_conicalOverall_IN_var "Input record for function dp_conicalOverall, dp_conicalOverall_DP"
+record dp_conicalOverall_IN_var
+  "Input record for function dp_conicalOverall, dp_conicalOverall_DP"
 
   //fluid property variables
   extends FluidDissipation.Utilities.Records.General.FluidProperties(final cp=0,

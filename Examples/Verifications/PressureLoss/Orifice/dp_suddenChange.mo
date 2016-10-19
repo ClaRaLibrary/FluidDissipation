@@ -1,5 +1,6 @@
 within FluidDissipation.Examples.Verifications.PressureLoss.Orifice;
-model dp_suddenChange "Verification of function dp_suddenChange_DP AND dp_suddenChange_MFLOW"
+model dp_suddenChange
+  "Verification of function dp_suddenChange_DP AND dp_suddenChange_MFLOW"
 
   constant Real MIN=Modelica.Constants.eps;
 
@@ -10,16 +11,20 @@ model dp_suddenChange "Verification of function dp_suddenChange_DP AND dp_sudden
   //orifice variables
   SI.Area A_1=A_2*frac_A1toA2 "Small cross sectional area of orifice";
   SI.Area A_2=1e-2 "Large cross sectional area of orifice";
-  SI.Length C_1=sqrt(4*A_1/PI)*PI "Perimeter of small cross sectional area of orifice";
-  SI.Length C_2=sqrt(4*A_2/PI)*PI "Perimeter of large cross sectional area of orifice";
+  SI.Length C_1=sqrt(4*A_1/PI)*PI
+    "Perimeter of small cross sectional area of orifice";
+  SI.Length C_2=sqrt(4*A_2/PI)*PI
+    "Perimeter of large cross sectional area of orifice";
 
   //fluid property variables
   SI.DynamicViscosity eta=1e-3 "Dynamic viscosity of fluid";
   SI.Density rho=1000 "Density of fluid";
 
   //intended input variables for records
-  SI.MassFlowRate input_mdot(start=0) = m_flowoo*input_mflow_0.y "(Input) mass flow rate (for intended incompressible case)";
-  SI.Pressure input_dp=DP "(Input) pressure loss (for intended compressible case)";
+  SI.MassFlowRate input_mdot(start=0) = m_flowoo*input_mflow_0.y
+    "(Input) mass flow rate (for intended incompressible case)";
+  SI.Pressure input_dp=DP
+    "(Input) pressure loss (for intended compressible case)";
 
   //input record
   //target == DP (incompressible)
@@ -53,8 +58,10 @@ model dp_suddenChange "Verification of function dp_suddenChange_DP AND dp_sudden
   SI.MassFlowRate M_FLOW "mass flow rate" annotation (Dialog(group="Output"));
 
   //plotting
-  SI.Diameter d_hyd=4*A_1/max(MIN, C_1) "Hydraulic diameter of small cross sectional area of orifice";
-  SI.Velocity velocity=abs(M_FLOW)/(rho*max(MIN, A_1)) "Mean velocity in small cross sectional area";
+  SI.Diameter d_hyd=4*A_1/max(MIN, C_1)
+    "Hydraulic diameter of small cross sectional area of orifice";
+  SI.Velocity velocity=abs(M_FLOW)/(rho*max(MIN, A_1))
+    "Mean velocity in small cross sectional area";
   SI.ReynoldsNumber Re=rho*velocity*d_hyd/eta;
 
   FluidDissipation.Utilities.Records.PressureLoss.PressureLossInput chosenTarget_DP(m_flow=
@@ -101,7 +108,8 @@ equation
     chosenTarget_MFLOW);
 
   annotation (
-    __Dymola_Commands(file="modelica://FluidDissipation/Extras/Scripts/pressureLoss/orifice/dp_suddenChange.mos" "Verification of dp_suddenChange"),
+    __Dymola_Commands(file="modelica://FluidDissipation/Extras/Scripts/pressureLoss/orifice/dp_suddenChange.mos"
+        "Verification of dp_suddenChange"),
     Diagram(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},{100,
             100}}), graphics={Text(
           extent={{-100,50},{100,75}},

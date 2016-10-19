@@ -1,39 +1,48 @@
 within FluidDissipation.PressureLoss.Orifice;
-function dp_suddenChange "Pressure loss of orifice with sudden change in cross sectional area | turbulent flow regime | smooth surface | arbitrary cross sectional area | without buffles | sharp edge"
+function dp_suddenChange
+  "Pressure loss of orifice with sudden change in cross sectional area | turbulent flow regime | smooth surface | arbitrary cross sectional area | without buffles | sharp edge"
   extends Modelica.Icons.Function;
   //SOURCE_1: Idelchik, I.E.: HANDBOOK OF HYDRAULIC RESISTANCE, 3rd edition, 2006.
   //Notation of equations according to SOURCES
 
   //input records
-  input FluidDissipation.PressureLoss.Orifice.dp_suddenChange_IN_con IN_con "Input record for function dp_suddenChange"
+  input FluidDissipation.PressureLoss.Orifice.dp_suddenChange_IN_con IN_con
+    "Input record for function dp_suddenChange"
     annotation (Dialog(group="Constant inputs"));
-  input FluidDissipation.PressureLoss.Orifice.dp_suddenChange_IN_var IN_var "Input record for function dp_suddenChange"
+  input FluidDissipation.PressureLoss.Orifice.dp_suddenChange_IN_var IN_var
+    "Input record for function dp_suddenChange"
     annotation (Dialog(group="Variable inputs"));
-  input FluidDissipation.Utilities.Records.PressureLoss.PressureLossInput chosenTarget "Target variable of calculation"
-                                     annotation (Dialog(group="Input"));
+  input FluidDissipation.Utilities.Records.PressureLoss.PressureLossInput chosenTarget
+    "Target variable of calculation" annotation (Dialog(group="Input"));
 
   //output variables
   output SI.Pressure DP "pressure loss" annotation (Dialog(group="Output"));
   output SI.MassFlowRate M_FLOW "mass flow rate"
     annotation (Dialog(group="Output"));
-  output Utilities.Types.PressureLossCoefficient zeta_TOT "Pressure loss coefficient"
-                                annotation (Dialog(group="Output"));
+  output Utilities.Types.PressureLossCoefficient zeta_TOT
+    "Pressure loss coefficient" annotation (Dialog(group="Output"));
   output SI.ReynoldsNumber Re "Reynolds number"
     annotation (Dialog(group="Output"));
   final output SI.PrandtlNumber Pr=0 "Prandtl number"
     annotation (Dialog(group="Output"));
-  output Real failureStatus "0== boundary conditions fulfilled | 1== failure >> check if still meaningful results"
+  output Real failureStatus
+    "0== boundary conditions fulfilled | 1== failure >> check if still meaningful results"
     annotation (Dialog(group="Output"));
 
   //Documentation
 protected
   Real MIN=Modelica.Constants.eps;
 
-  SI.Area A_1=max(MIN, min(IN_con.A_1, IN_con.A_2)) "Small cross sectional area of orifice";
-  SI.Area A_2=max(MIN, max(IN_con.A_1, IN_con.A_2)) "Large cross sectional area of orifice";
-  SI.Length C_1=max(MIN, min(IN_con.C_1, IN_con.C_2)) "Perimeter of small cross sectional area of orifice";
-  SI.Length C_2=max(MIN, max(IN_con.C_1, IN_con.C_2)) "perimeter of large cross sectional area of orifice";
-  SI.Diameter d_hyd_1=4*A_1/C_1 "Hydraulic diameter of small cross sectional area of orifice";
+  SI.Area A_1=max(MIN, min(IN_con.A_1, IN_con.A_2))
+    "Small cross sectional area of orifice";
+  SI.Area A_2=max(MIN, max(IN_con.A_1, IN_con.A_2))
+    "Large cross sectional area of orifice";
+  SI.Length C_1=max(MIN, min(IN_con.C_1, IN_con.C_2))
+    "Perimeter of small cross sectional area of orifice";
+  SI.Length C_2=max(MIN, max(IN_con.C_1, IN_con.C_2))
+    "perimeter of large cross sectional area of orifice";
+  SI.Diameter d_hyd_1=4*A_1/C_1
+    "Hydraulic diameter of small cross sectional area of orifice";
 
   SI.Velocity velocity "Mean velocity";
 

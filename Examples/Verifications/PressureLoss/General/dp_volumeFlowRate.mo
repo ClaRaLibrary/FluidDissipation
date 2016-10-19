@@ -3,11 +3,12 @@ model dp_volumeFlowRate "Verification of function dp_volumeFlowRate"
 
   parameter Integer n=size(a, 1);
 
-  SI.VolumeFlowRate V_flow[n]={input_mdot[i]/rho for i in 1:n} "Input volume flow rate";
+  SI.VolumeFlowRate V_flow[n]={input_mdot[i]/rho for i in 1:n}
+    "Input volume flow rate";
 
   //general variables
-  parameter Real a[:](unit="(Pa.s2)/m6") = {15,30,45} "coefficient for quadratic term"
-                                     annotation (Dialog(group="Input"));
+  parameter Real a[:](unit="(Pa.s2)/m6") = {15,30,45}
+    "coefficient for quadratic term" annotation (Dialog(group="Input"));
   parameter Real b(unit="(Pa.s)/m3") = 0 "coefficient for linear term"
     annotation (Dialog(group="Input"));
 
@@ -16,8 +17,10 @@ model dp_volumeFlowRate "Verification of function dp_volumeFlowRate"
 
   //target variables (here: mass flow rate as input for inverse calculation)
   //intended input variables for records
-  SI.MassFlowRate input_mdot[n](start=zeros(n)) = ones(n)*input_mflow_0.y "(Input) mass flow rate (for intended incompressible case)";
-  SI.Pressure input_dp[n]={DP[i] for i in 1:n} "(Input) pressure loss (for intended compressible case)";
+  SI.MassFlowRate input_mdot[n](start=zeros(n)) = ones(n)*input_mflow_0.y
+    "(Input) mass flow rate (for intended incompressible case)";
+  SI.Pressure input_dp[n]={DP[i] for i in 1:n}
+    "(Input) pressure loss (for intended compressible case)";
 
   //input record
   //compressible fluid flow
@@ -89,8 +92,8 @@ equation
   end for;
 
   annotation (__Dymola_Commands(file=
-          "modelica://FluidDissipation/Extras/Scripts/pressureLoss/general/dp_volumeFlowRate.mos" "Verification of dp_volumeFlowRate"),
-                                              Diagram(coordinateSystem(
+          "modelica://FluidDissipation/Extras/Scripts/pressureLoss/general/dp_volumeFlowRate.mos"
+        "Verification of dp_volumeFlowRate"), Diagram(coordinateSystem(
           preserveAspectRatio=false, extent={{-100,-100},{100,100}}), graphics={
            Text(
           extent={{-100,50},{100,75}},

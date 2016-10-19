@@ -1,5 +1,6 @@
 within FluidDissipation.Utilities.Records.General;
-record NominalPressureLossLawDensity_var "Base record for generic pressure loss function"
+record NominalPressureLossLawDensity_var
+  "Base record for generic pressure loss function"
 
   extends Modelica.Icons.Record;
 

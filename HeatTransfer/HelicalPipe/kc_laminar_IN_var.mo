@@ -1,5 +1,6 @@
 within FluidDissipation.HeatTransfer.HelicalPipe;
-record kc_laminar_IN_var "Input record for function kc_laminar and kc_laminar_KC"
+record kc_laminar_IN_var
+  "Input record for function kc_laminar and kc_laminar_KC"
 
   extends FluidDissipation.HeatTransfer.HelicalPipe.kc_overall_IN_var;
 

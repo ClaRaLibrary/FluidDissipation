@@ -1,5 +1,6 @@
 within FluidDissipation.PressureLoss.StraightPipe;
-record dp_twoPhaseOverall_IN_var "Input record for function dp_twoPhaseOverall_DP"
+record dp_twoPhaseOverall_IN_var
+  "Input record for function dp_twoPhaseOverall_DP"
 
   Real x_flow_end=0 "Mass flow rate quality at end of length"
     annotation (Dialog(group="Fluid properties"));

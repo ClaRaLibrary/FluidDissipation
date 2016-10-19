@@ -1,15 +1,19 @@
 within FluidDissipation.Examples.Applications.PressureLoss.BaseClasses.General.IdealGas;
-model IdealGasFlowModel "IdealGas: Application flow model for generic function in Modelica.Fluid"
+model IdealGasFlowModel
+  "IdealGas: Application flow model for generic function in Modelica.Fluid"
 
   //base flow model
-  extends FluidDissipation.Examples.Applications.PressureLoss.BaseClasses.General.BaseGeneralPL.BaseGeneralModel;
+  extends
+    FluidDissipation.Examples.Applications.PressureLoss.BaseClasses.General.BaseGeneralPL.BaseGeneralModel;
 
   //pressure loss calculation
   parameter Real exp=2 "Exponent of pressure loss law"
     annotation (Dialog(group="Generic variables"));
-  parameter Real Km=R_s*(2e3)/((10)^exp/rho_m) "Coefficient for pressure loss law [(Pa)^2/{(kg/s)^exp*K}]"
+  parameter Real Km=R_s*(2e3)/((10)^exp/rho_m)
+    "Coefficient for pressure loss law [(Pa)^2/{(kg/s)^exp*K}]"
     annotation (Dialog(group="Generic variables"));
-  parameter SI.SpecificHeatCapacity R_s=287 "Specific gas constant of ideal gas"
+  parameter SI.SpecificHeatCapacity R_s=287
+    "Specific gas constant of ideal gas"
     annotation (Dialog(group="Generic variables"));
   parameter SI.Density rho_m=p_m/(R_s*T_m) "Mean density of ideal gas"
     annotation (Dialog(group="Generic variables"));
@@ -19,7 +23,8 @@ model IdealGasFlowModel "IdealGas: Application flow model for generic function i
     annotation (Dialog(group="Generic variables"));
 
   //linearisation
-  parameter SI.Pressure dp_smooth=1e-3 "Start linearisation for decreasing pressure loss"
+  parameter SI.Pressure dp_smooth=1e-3
+    "Start linearisation for decreasing pressure loss"
     annotation (Dialog(group="Linearisation"));
 
   FluidDissipation.Examples.Applications.PressureLoss.BaseClasses.General.IdealGas.PressureLossInput_con

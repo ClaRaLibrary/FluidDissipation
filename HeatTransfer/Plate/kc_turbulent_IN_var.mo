@@ -1,5 +1,6 @@
 within FluidDissipation.HeatTransfer.Plate;
-record kc_turbulent_IN_var "Input record for function kc_turbulent and kc_turbulent_KC"
+record kc_turbulent_IN_var
+  "Input record for function kc_turbulent and kc_turbulent_KC"
 
   extends FluidDissipation.HeatTransfer.Plate.kc_overall_IN_var;
 

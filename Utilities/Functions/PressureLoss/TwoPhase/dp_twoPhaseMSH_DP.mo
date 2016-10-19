@@ -1,5 +1,6 @@
 within FluidDissipation.Utilities.Functions.PressureLoss.TwoPhase;
-function dp_twoPhaseMSH_DP "Two phase flow frictional pressure loss according to Mueller-Steinhagen and Heck (1986)| calculate pressure loss| overall flow regime"
+function dp_twoPhaseMSH_DP
+  "Two phase flow frictional pressure loss according to Mueller-Steinhagen and Heck (1986)| calculate pressure loss| overall flow regime"
   input FluidDissipation.Utilities.Records.General.TwoPhaseFlow_con
     IN_con "Input record for constant values";
   input FluidDissipation.Utilities.Records.General.TwoPhaseFlow_var
@@ -13,21 +14,32 @@ function dp_twoPhaseMSH_DP "Two phase flow frictional pressure loss according to
 protected
   Real Re_lam "Reynolds number for determination of flow regime";
   Real Re_trans "Reynolds number for flow regime transition";
-  Modelica.SIunits.Length d_hyd = 4*IN_con.A_cross/IN_con.perimeter "Hydraulic diameter";
+  Modelica.SIunits.Length d_hyd = 4*IN_con.A_cross/IN_con.perimeter
+    "Hydraulic diameter";
 
 algorithm
   Re_trans := 1187;
-  Re_lam := min(4*m_flow/(d_hyd*IN_var.eta_l*Modelica.Constants.pi),4*m_flow/(d_hyd*IN_var.eta_g*Modelica.Constants.pi));
+  Re_lam := 4*m_flow/(d_hyd*IN_var.eta_l*Modelica.Constants.pi);
 
   DP:= SMOOTH(
     Re_trans,
     Re_trans + 100,
+    Re_lam)*
+    SMOOTH(
+    -Re_trans,
+    -Re_trans - 100,
     Re_lam)*FluidDissipation.Utilities.Functions.PressureLoss.TwoPhase.dp_twoPhaseLaminarMSH_DP(
     IN_con,
     IN_var,
     m_flow) + SMOOTH(
     Re_trans + 100,
     Re_trans,
+    Re_lam)*FluidDissipation.Utilities.Functions.PressureLoss.TwoPhase.dp_twoPhaseTurbulentMSH_DP(
+    IN_con,
+    IN_var,
+    m_flow) + SMOOTH(
+    -Re_trans - 100,
+    -Re_trans,
     Re_lam)*FluidDissipation.Utilities.Functions.PressureLoss.TwoPhase.dp_twoPhaseTurbulentMSH_DP(
     IN_con,
     IN_var,

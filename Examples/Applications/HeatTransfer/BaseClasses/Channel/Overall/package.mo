@@ -1,6 +1,7 @@
 within FluidDissipation.Examples.Applications.HeatTransfer.BaseClasses.Channel;
 package Overall "FluidDissipation: Overall fluid flow of an even gap"
-extends FluidDissipation.Examples.Applications.HeatTransfer.BaseClasses.Channel.BaseChannelHT;
+extends
+  FluidDissipation.Examples.Applications.HeatTransfer.BaseClasses.Channel.BaseChannelHT;
 constant String fluidFlowRegime="overall regime";
 
 

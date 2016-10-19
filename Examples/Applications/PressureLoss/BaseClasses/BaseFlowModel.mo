@@ -1,5 +1,6 @@
 within FluidDissipation.Examples.Applications.PressureLoss.BaseClasses;
-partial model BaseFlowModel "Base flow model for pressure loss functions in Modelica.Fluid"
+partial model BaseFlowModel
+  "Base flow model for pressure loss functions in Modelica.Fluid"
 
   //icon
   extends FluidDissipation.Utilities.Icons.PressureLoss.FlowModel;
@@ -11,18 +12,21 @@ partial model BaseFlowModel "Base flow model for pressure loss functions in Mode
   Medium.ThermodynamicState state;
 
   //fluid properties
-  parameter Boolean use_nominal=false "= true, if eta_nominal and rho_nominal are used, otherwise computed from medium"
+  parameter Boolean use_nominal=false
+    "= true, if eta_nominal and rho_nominal are used, otherwise computed from medium"
     annotation (Evaluate=true, Dialog(group="Fluid properties"));
   parameter SI.DynamicViscosity eta_nominal=Medium.dynamicViscosity(
       Medium.setState_pTX(
       Medium.p_default,
       Medium.T_default,
-      Medium.X_default)) "Nominal dynamic viscosity (e.g. eta_liquidWater = 1e-3, eta_air = 1.8e-5)"
+      Medium.X_default))
+    "Nominal dynamic viscosity (e.g. eta_liquidWater = 1e-3, eta_air = 1.8e-5)"
     annotation (Dialog(enable=use_nominal, group="Fluid properties"));
   parameter SI.Density rho_nominal=Medium.density_pTX(
       Medium.p_default,
       Medium.T_default,
-      Medium.X_default) "Nominal density (e.g. d_liquidWater = 995, d_air = 1.2)"
+      Medium.X_default)
+    "Nominal density (e.g. d_liquidWater = 995, d_air = 1.2)"
     annotation (Dialog(enable=use_nominal, group="Fluid properties"));
 
   SI.Density rho_a=if use_nominal then rho_nominal else Medium.density(state_a);
@@ -38,9 +42,11 @@ partial model BaseFlowModel "Base flow model for pressure loss functions in Mode
       Medium.dynamicViscosity(state);
   //SI.DynamicViscosity eta=(eta_a + eta_b)/2;
 
-  parameter Boolean from_dp=true "= true, use m_flow = f(dp) else dp = f(m_flow)"
+  parameter Boolean from_dp=true
+    "= true, use m_flow = f(dp) else dp = f(m_flow)"
     annotation (Evaluate=true, Dialog(tab="Advanced"));
-  parameter Medium.AbsolutePressure dp_small=system.dp_small "Default small pressure drop for regularization of laminar and zero flow"
+  parameter Medium.AbsolutePressure dp_small=system.dp_small
+    "Default small pressure drop for regularization of laminar and zero flow"
     annotation (Dialog(tab="Advanced"));
 
   // Has to be defined in top-level:
@@ -68,7 +74,7 @@ equation
     end if;
   else
     state = state_a;
-    end if;
+  end if;
 
   annotation (Diagram(coordinateSystem(
         preserveAspectRatio=true,

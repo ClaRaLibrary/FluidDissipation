@@ -1,15 +1,16 @@
 within FluidDissipation.PressureLoss.Valve;
-record dp_severalGeometryOverall_IN_con "Input record for function dp_severalGeometryOverall, dp_severalGeometryOverall_DP and dp_severalGeometryOverall_MFLOW"
+record dp_severalGeometryOverall_IN_con
+  "Input record for function dp_severalGeometryOverall, dp_severalGeometryOverall_DP and dp_severalGeometryOverall_MFLOW"
 
   extends Modelica.Icons.Record;
 
-  FluidDissipation.Utilities.Types.ValveGeometry geometry=FluidDissipation.Utilities.Types.ValveGeometry.Ball "Choice of geometry for valve"
-                                   annotation (Dialog(group="Valve", enable=if
+  FluidDissipation.Utilities.Types.ValveGeometry geometry=FluidDissipation.Utilities.Types.ValveGeometry.Ball
+    "Choice of geometry for valve" annotation (Dialog(group="Valve", enable=if
           not (valveCoefficient == FluidDissipation.Utilities.Types.ValveCoefficient.OP)
            then true else false));
   FluidDissipation.Utilities.Types.ValveCoefficient valveCoefficient=
-      FluidDissipation.Utilities.Types.ValveCoefficient.AV "Choice of valve coefficient"
-                                  annotation (Dialog(group="Valve"));
+      FluidDissipation.Utilities.Types.ValveCoefficient.AV
+    "Choice of valve coefficient" annotation (Dialog(group="Valve"));
 
   //valve variables
   Real Av=PI*0.1^2/4 "Av (metric) flow coefficient [Av]=m^2" annotation (Dialog(
@@ -40,7 +41,8 @@ record dp_severalGeometryOverall_IN_con "Input record for function dp_severalGeo
     annotation (Dialog(group="Valve"));
 
   //numerical aspects
-  SI.Pressure dp_small=0.01*dp_nominal "Linearisation for a pressure loss smaller then dp_small"
+  SI.Pressure dp_small=0.01*dp_nominal
+    "Linearisation for a pressure loss smaller then dp_small"
     annotation (Dialog(group="Linearisation"));
 
   annotation (Documentation(info="<html>

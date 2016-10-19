@@ -1,36 +1,43 @@
 within FluidDissipation.PressureLoss.Orifice;
-function dp_thickEdgedOverall "Pressure loss of thick and sharp edged orifice | overall flow regime | constant influence of friction | arbitrary cross sectional area"
+function dp_thickEdgedOverall
+  "Pressure loss of thick and sharp edged orifice | overall flow regime | constant influence of friction | arbitrary cross sectional area"
   extends Modelica.Icons.Function;
   //SOURCE_1: Idelchik, I.E.: HANDBOOK OF HYDRAULIC RESISTANCE, 3rd edition, 2006.
   //Notation of equations according to SOURCES
 
   //input records
-  input FluidDissipation.PressureLoss.Orifice.dp_thickEdgedOverall_IN_con IN_con "Input record for function dp_thickEdgedOverall"
+  input FluidDissipation.PressureLoss.Orifice.dp_thickEdgedOverall_IN_con IN_con
+    "Input record for function dp_thickEdgedOverall"
     annotation (Dialog(group="Constant inputs"));
-  input FluidDissipation.PressureLoss.Orifice.dp_thickEdgedOverall_IN_var IN_var "Input record for function dp_thickEdgedOverall"
+  input FluidDissipation.PressureLoss.Orifice.dp_thickEdgedOverall_IN_var IN_var
+    "Input record for function dp_thickEdgedOverall"
     annotation (Dialog(group="Variable inputs"));
-  input FluidDissipation.Utilities.Records.PressureLoss.PressureLossInput chosenTarget "Target variable of calculation"
-                                     annotation (Dialog(group="Input"));
+  input FluidDissipation.Utilities.Records.PressureLoss.PressureLossInput chosenTarget
+    "Target variable of calculation" annotation (Dialog(group="Input"));
 
   //output variables
   output SI.Pressure DP "pressure loss" annotation (Dialog(group="Output"));
   output SI.MassFlowRate M_FLOW "mass flow rate"
     annotation (Dialog(group="Output"));
-  output Utilities.Types.PressureLossCoefficient zeta_TOT "Pressure loss coefficient"
-                                annotation (Dialog(group="Output"));
+  output Utilities.Types.PressureLossCoefficient zeta_TOT
+    "Pressure loss coefficient" annotation (Dialog(group="Output"));
   output SI.ReynoldsNumber Re "Reynolds number"
     annotation (Dialog(group="Output"));
   final output SI.PrandtlNumber Pr=0 "Prandtl number"
     annotation (Dialog(group="Output"));
-  output Real failureStatus "0== boundary conditions fulfilled | 1== failure >> check if still meaningful results"
+  output Real failureStatus
+    "0== boundary conditions fulfilled | 1== failure >> check if still meaningful results"
     annotation (Dialog(group="Output"));
 
 protected
   Real MIN=Modelica.Constants.eps;
 
-  SI.Area A_cross=max(MIN, IN_con.A_1) "Cross sectional area of large cross sectional area";
-  SI.Diameter d_hyd_0=4*IN_con.A_0/max(MIN, IN_con.C_0) "Hydraulic diameter of vena contraction";
-  SI.Diameter d_hyd_1=4*A_cross/max(MIN, IN_con.C_1) "Hydraulic diameter of large cross sectional area";
+  SI.Area A_cross=max(MIN, IN_con.A_1)
+    "Cross sectional area of large cross sectional area";
+  SI.Diameter d_hyd_0=4*IN_con.A_0/max(MIN, IN_con.C_0)
+    "Hydraulic diameter of vena contraction";
+  SI.Diameter d_hyd_1=4*A_cross/max(MIN, IN_con.C_1)
+    "Hydraulic diameter of large cross sectional area";
 
   SI.ReynoldsNumber Re_0 "Reynolds number in vena contraction";
   SI.Velocity velocity "Mean velocity";

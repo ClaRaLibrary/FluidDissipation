@@ -5,7 +5,6 @@ model FlowModel "icon for flow model in Modelica_Fluid applications"
             {100,100}}), graphics={
         Polygon(
           points={{-60,50},{-60,-50},{60,-50},{60,50},{-60,50}},
-          smooth=Smooth.None,
           fillColor={255,255,255},
           fillPattern=FillPattern.Solid,
           pattern=LinePattern.None),
@@ -13,7 +12,7 @@ model FlowModel "icon for flow model in Modelica_Fluid applications"
         Line(
           points={{-60,50},{-60,-50},{60,50},{60,-50},{-60,50}},
           color={0,0,0},
-          smooth=Smooth.None,
           thickness=0.5),
         Line(points={{60,0},{100,0}}, color={0,127,255})}));
+
 end FlowModel;

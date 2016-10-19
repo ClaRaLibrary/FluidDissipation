@@ -1,5 +1,6 @@
 within FluidDissipation.HeatTransfer.Channel;
-record kc_evenGapTurbulent_IN_con "Input record for function kc_evenGapTurbulentRoughness and kc_evenGapTurbulentRoughness_KC"
+record kc_evenGapTurbulent_IN_con
+  "Input record for function kc_evenGapTurbulentRoughness and kc_evenGapTurbulentRoughness_KC"
 
   extends FluidDissipation.HeatTransfer.Channel.kc_evenGapOverall_IN_con(final
       target=FluidDissipation.Utilities.Types.kc_evenGap.DevBoth);

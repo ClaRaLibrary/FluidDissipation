@@ -1,8 +1,10 @@
 within FluidDissipation.PressureLoss.General;
-record dp_nominalPressureLossLawDensity_IN_var "Input record for function dp_nominalPressureLossLawDensity, dp_nominalPressureLossLawDensity_DP and dp_nominalPressureLossLawDensity_MFLOW"
+record dp_nominalPressureLossLawDensity_IN_var
+  "Input record for function dp_nominalPressureLossLawDensity, dp_nominalPressureLossLawDensity_DP and dp_nominalPressureLossLawDensity_MFLOW"
 
   //generic variables
-  extends FluidDissipation.Utilities.Records.General.NominalPressureLossLawDensity_var;
+  extends
+    FluidDissipation.Utilities.Records.General.NominalPressureLossLawDensity_var;
 
   //fluid property variables
   extends FluidDissipation.Utilities.Records.General.FluidProperties(

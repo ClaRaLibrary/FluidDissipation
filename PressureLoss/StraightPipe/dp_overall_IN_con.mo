@@ -1,7 +1,9 @@
 within FluidDissipation.PressureLoss.StraightPipe;
-record dp_overall_IN_con "Input record for function dp_overall, dp_overall_DP and dp_overall_MFLOW"
+record dp_overall_IN_con
+  "Input record for function dp_overall, dp_overall_DP and dp_overall_MFLOW"
 
-  FluidDissipation.Utilities.Types.Roughness roughness=FluidDissipation.Utilities.Types.Roughness.Neglected "Choice of considering surface roughness"
+  FluidDissipation.Utilities.Types.Roughness roughness=FluidDissipation.Utilities.Types.Roughness.Neglected
+    "Choice of considering surface roughness"
     annotation (Dialog(group="Straight pipe"));
 
   //straight pipe variables

@@ -1,16 +1,21 @@
 within FluidDissipation.Examples.Verifications.HeatTransfer.General;
-model kc_approxForcedConvection "Verification of function kc_approxForcedConvection"
+model kc_approxForcedConvection
+  "Verification of function kc_approxForcedConvection"
   parameter Integer n=size(cp, 1);
 
   //generic variables
-  parameter SI.Area A_cross=Modelica.Constants.pi*0.1^2/4 "Cross sectional area";
+  parameter SI.Area A_cross=Modelica.Constants.pi*0.1^2/4
+    "Cross sectional area";
   parameter SI.Length perimeter=Modelica.Constants.pi*0.1 "Wetted perimeter";
   //parameter SI.Diameter d_hyd=4*A_cross/perimeter "Hydraulic diameter";
 
   //fluid property variables
-  parameter SI.SpecificHeatCapacityAtConstantPressure cp[:]={1007,4189,3384.550} "Specific heat capacity at constant pressure of fluid";
-  parameter SI.DynamicViscosity eta[:]={18.24e-6,1001.6e-6,0.114} "Dynamic viscosity of fluid";
-  parameter SI.ThermalConductivity lambda[:]={25.69e-3,598.5e-3,0.387} "Thermal conductivity of fluid";
+  parameter SI.SpecificHeatCapacityAtConstantPressure cp[:]={1007,4189,3384.550}
+    "Specific heat capacity at constant pressure of fluid";
+  parameter SI.DynamicViscosity eta[:]={18.24e-6,1001.6e-6,0.114}
+    "Dynamic viscosity of fluid";
+  parameter SI.ThermalConductivity lambda[:]={25.69e-3,598.5e-3,0.387}
+    "Thermal conductivity of fluid";
   parameter SI.Density rho[:]={1.188,998.21,1037.799} "Density of fluid";
 
   //input record
@@ -99,8 +104,8 @@ equation
       m_flow_IN_con_3[i], m_flow_IN_var_3[i]);
   end for;
   annotation (__Dymola_Commands(file=
-          "modelica://FluidDissipation/Extras/Scripts/heatTransfer/general/kc_approxForcedConvection.mos" "Verification of kc_approxForcedConvection"),
-                                                     Diagram(coordinateSystem(
+          "modelica://FluidDissipation/Extras/Scripts/heatTransfer/general/kc_approxForcedConvection.mos"
+        "Verification of kc_approxForcedConvection"),Diagram(coordinateSystem(
           preserveAspectRatio=true, extent={{-100,-100},{100,100}}), graphics={
           Text(
           extent={{-92,12},{-32,6}},

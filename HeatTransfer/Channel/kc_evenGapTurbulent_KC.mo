@@ -1,16 +1,20 @@
 within FluidDissipation.HeatTransfer.Channel;
-function kc_evenGapTurbulent_KC "Mean heat transfer coefficient of even gap | turbulent flow regime | developed fluid flow | heat transfer at BOTH sides | identical and constant wall temperatures"
+function kc_evenGapTurbulent_KC
+  "Mean heat transfer coefficient of even gap | turbulent flow regime | developed fluid flow | heat transfer at BOTH sides | identical and constant wall temperatures"
   extends Modelica.Icons.Function;
   //SOURCE: VDI-Waermeatlas, 9th edition, Springer-Verlag, 2002, Section Gb 7
 
   //input records
-  input FluidDissipation.HeatTransfer.Channel.kc_evenGapTurbulent_IN_con IN_con "Input record for function kc_evenGapTurbulent_KC"
+  input FluidDissipation.HeatTransfer.Channel.kc_evenGapTurbulent_IN_con IN_con
+    "Input record for function kc_evenGapTurbulent_KC"
     annotation (Dialog(group="Constant inputs"));
-  input FluidDissipation.HeatTransfer.Channel.kc_evenGapTurbulent_IN_var IN_var "Input record for function kc_evenGapTurbulent_KC"
+  input FluidDissipation.HeatTransfer.Channel.kc_evenGapTurbulent_IN_var IN_var
+    "Input record for function kc_evenGapTurbulent_KC"
     annotation (Dialog(group="Variable inputs"));
 
   //output variables
-  output SI.CoefficientOfHeatTransfer kc "Output for function kc_evenGapTurbulentRoughness_KC";
+  output SI.CoefficientOfHeatTransfer kc
+    "Output for function kc_evenGapTurbulentRoughness_KC";
 
 protected
   Real MIN=Modelica.Constants.eps "Limiter";
@@ -18,12 +22,16 @@ protected
   SI.Area A_cross=max(MIN, IN_con.s*IN_con.h) "Cross sectional area of gap";
   SI.Diameter d_hyd=2*IN_con.s "Hydraulic diameter";
 
-  SI.Velocity velocity=abs(IN_var.m_flow)/max(MIN, IN_var.rho*A_cross) "Mean velocity in gap";
-  SI.ReynoldsNumber Re=max(MIN, (IN_var.rho*velocity*d_hyd/max(MIN, IN_var.eta))) "Reynolds number";
-  SI.PrandtlNumber Pr=abs(IN_var.eta*IN_var.cp/max(MIN, IN_var.lambda)) "Prandtl number";
+  SI.Velocity velocity=abs(IN_var.m_flow)/max(MIN, IN_var.rho*A_cross)
+    "Mean velocity in gap";
+  SI.ReynoldsNumber Re=max(MIN, (IN_var.rho*velocity*d_hyd/max(MIN, IN_var.eta)))
+    "Reynolds number";
+  SI.PrandtlNumber Pr=abs(IN_var.eta*IN_var.cp/max(MIN, IN_var.lambda))
+    "Prandtl number";
 
   //SOURCE: p.Ga 5, eq. 27
-  Real zeta=1/max(MIN, 1.8*Modelica.Math.log10(abs(Re)) - 1.5)^2 "Pressure loss coefficient";
+  Real zeta=1/max(MIN, 1.8*Modelica.Math.log10(abs(Re)) - 1.5)^2
+    "Pressure loss coefficient";
 
   //SOURCE: p.Gb 5, eq. 26
   //assumption according to Gb 7, sec. 2.4

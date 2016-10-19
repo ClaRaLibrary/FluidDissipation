@@ -1,12 +1,15 @@
 within FluidDissipation.HeatTransfer.StraightPipe;
-function kc_overall_KC "Mean heat transfer coefficient of straight pipe | uniform wall temperature or uniform heat flux | hydrodynamically developed or undeveloped overall flow regime| pressure loss dependence"
+function kc_overall_KC
+  "Mean heat transfer coefficient of straight pipe | uniform wall temperature or uniform heat flux | hydrodynamically developed or undeveloped overall flow regime| pressure loss dependence"
   extends Modelica.Icons.Function;
   import SMOOTH = FluidDissipation.Utilities.Functions.General.Stepsmoother;
 
   //input records
-  input FluidDissipation.HeatTransfer.StraightPipe.kc_overall_IN_con IN_con "Input record for function kc_overall_KC"
+  input FluidDissipation.HeatTransfer.StraightPipe.kc_overall_IN_con IN_con
+    "Input record for function kc_overall_KC"
     annotation (Dialog(group="Constant inputs"));
-  input FluidDissipation.HeatTransfer.StraightPipe.kc_overall_IN_var IN_var "Input record for function kc_overall_KC"
+  input FluidDissipation.HeatTransfer.StraightPipe.kc_overall_IN_var IN_var
+    "Input record for function kc_overall_KC"
     annotation (Dialog(group="Variable inputs"));
 
   //output variables
@@ -19,13 +22,17 @@ protected
 
   SI.Area A_cross=PI*IN_con.d_hyd^2/4 "Cross sectional area";
 
-  SI.Velocity velocity=abs(IN_var.m_flow)/max(MIN, IN_var.rho*A_cross) "Mean velocity";
+  SI.Velocity velocity=abs(IN_var.m_flow)/max(MIN, IN_var.rho*A_cross)
+    "Mean velocity";
   SI.ReynoldsNumber Re=(IN_var.rho*velocity*IN_con.d_hyd/max(MIN,
       IN_var.eta)) "Reynolds number";
-  SI.PrandtlNumber Pr=abs(IN_var.eta*IN_var.cp/max(MIN, IN_var.lambda)) "Prandtl number";
+  SI.PrandtlNumber Pr=abs(IN_var.eta*IN_var.cp/max(MIN, IN_var.lambda))
+    "Prandtl number";
 
-  kc_turbulent_IN_con IN_con_turb(d_hyd=IN_con.d_hyd, L= IN_con.L, roughness = IN_con.roughness, K=IN_con.K) "Constant input parameter record for turbulent flow conditions";
-  kc_laminar_IN_con IN_con_lam(d_hyd=IN_con.d_hyd, L= IN_con.L, target=IN_con.target) "Constant input parameter record for laminar flow conditions";
+  kc_turbulent_IN_con IN_con_turb(d_hyd=IN_con.d_hyd, L= IN_con.L, roughness = IN_con.roughness, K=IN_con.K)
+    "Constant input parameter record for turbulent flow conditions";
+  kc_laminar_IN_con IN_con_lam(d_hyd=IN_con.d_hyd, L= IN_con.L, target=IN_con.target)
+    "Constant input parameter record for laminar flow conditions";
 
 algorithm
   kc := SMOOTH(

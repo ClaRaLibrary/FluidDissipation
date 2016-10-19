@@ -1,10 +1,13 @@
 within FluidDissipation.HeatTransfer.StraightPipe;
-function kc_laminar "Mean heat transfer coefficient of straight pipe | uniform wall temperature or uniform heat flux | hydrodynamically developed or undeveloped laminar flow regime"
+function kc_laminar
+  "Mean heat transfer coefficient of straight pipe | uniform wall temperature or uniform heat flux | hydrodynamically developed or undeveloped laminar flow regime"
   extends Modelica.Icons.Function;
   //input records
-  input FluidDissipation.HeatTransfer.StraightPipe.kc_laminar_IN_con IN_con "Input record for function kc_laminar"
+  input FluidDissipation.HeatTransfer.StraightPipe.kc_laminar_IN_con IN_con
+    "Input record for function kc_laminar"
     annotation (Dialog(group="Constant inputs"));
-  input FluidDissipation.HeatTransfer.StraightPipe.kc_laminar_IN_var IN_var "Input record for function kc_laminar"
+  input FluidDissipation.HeatTransfer.StraightPipe.kc_laminar_IN_var IN_var
+    "Input record for function kc_laminar"
     annotation (Dialog(group="Variable inputs"));
 
   //output variables
@@ -15,7 +18,8 @@ function kc_laminar "Mean heat transfer coefficient of straight pipe | uniform w
     annotation (Dialog(group="Output"));
   output SI.NusseltNumber Nu "Nusselt number"
     annotation (Dialog(group="Output"));
-  output Real failureStatus "0== boundary conditions fulfilled | 1== failure >> check if still meaningful results"
+  output Real failureStatus
+    "0== boundary conditions fulfilled | 1== failure >> check if still meaningful results"
     annotation (Dialog(group="Output"));
 
 protected
@@ -27,7 +31,8 @@ protected
 
   SI.Area A_cross=PI*IN_con.d_hyd^2/4 "Cross sectional area";
 
-  SI.Velocity velocity=abs(IN_var.m_flow)/max(MIN, IN_var.rho*A_cross) "Mean velocity";
+  SI.Velocity velocity=abs(IN_var.m_flow)/max(MIN, IN_var.rho*A_cross)
+    "Mean velocity";
 
   //failure status
   Real fstatus[2] "check of expected boundary conditions";

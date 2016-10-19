@@ -1,18 +1,24 @@
 within FluidDissipation.HeatTransfer.HeatExchanger;
-function kc_tubeBundle_1ph "Heat transfer for a lateral flow through a tube row or a bundle of staggered or inline tube rows (laminar and turbulent flow schemes)"
+function kc_tubeBundle_1ph
+  "Heat transfer for a lateral flow through a tube row or a bundle of staggered or inline tube rows (laminar and turbulent flow schemes)"
   extends Modelica.Icons.Function;
   //SOURCE: Gnielinski, V.. Heat Transfer in laterally passed single tube rows and tube bundles (in German). in VDI-Waermeatlas, 9th edition, VDI-Verlag, 2002.
   //input records
-  input FluidDissipation.HeatTransfer.HeatExchanger.kc_tubeBundle_1ph_IN_con IN_con "Input record for function kc_FilmCondensationTubeBundle"
+  input FluidDissipation.HeatTransfer.HeatExchanger.kc_tubeBundle_1ph_IN_con IN_con
+    "Input record for function kc_FilmCondensationTubeBundle"
     annotation (Dialog(group="Constant inputs"));
-  input FluidDissipation.HeatTransfer.HeatExchanger.kc_tubeBundle_1ph_IN_var IN_var "Input record for function kc_FilmCondensationTubeBundle"
+  input FluidDissipation.HeatTransfer.HeatExchanger.kc_tubeBundle_1ph_IN_var IN_var
+    "Input record for function kc_FilmCondensationTubeBundle"
     annotation (Dialog(group="Variable inputs"));
 
-  output Modelica.SIunits.CoefficientOfHeatTransfer kc "Heat transfer coefficient";
+  output Modelica.SIunits.CoefficientOfHeatTransfer kc
+    "Heat transfer coefficient";
   output Modelica.SIunits.PrandtlNumber Pr "Prandtl number of fluid";
   output Modelica.SIunits.ReynoldsNumber Re_L "Reynolds number";
-  output Modelica.SIunits.NusseltNumber Nu_L_B "Nusselt number of row or bundle";
-  output Real failureStatus "0== boundary conditions fulfilled | 1== failure >> check if still meaningful results";
+  output Modelica.SIunits.NusseltNumber Nu_L_B
+    "Nusselt number of row or bundle";
+  output Real failureStatus
+    "0== boundary conditions fulfilled | 1== failure >> check if still meaningful results";
 
 protected
   Real MIN=1e-5 "Limiter";

@@ -1,13 +1,16 @@
 within FluidDissipation.HeatTransfer.General;
-function kc_approxForcedConvection "Mean convective heat transfer coefficient for forced convection | approximation | turbulent regime | hydrodynamically developed fluid flow"
+function kc_approxForcedConvection
+  "Mean convective heat transfer coefficient for forced convection | approximation | turbulent regime | hydrodynamically developed fluid flow"
   extends Modelica.Icons.Function;
   //SOURCE: A Bejan and A.D. Kraus. Heat Transfer handbook.John Wiley & Sons, 2nd edition, 2003. (p.424 ff)
   //Notation of equations according to SOURCE
 
   //input records
-  input FluidDissipation.HeatTransfer.General.kc_approxForcedConvection_IN_con IN_con "Input record for function kc_approxForcedConvection"
+  input FluidDissipation.HeatTransfer.General.kc_approxForcedConvection_IN_con IN_con
+    "Input record for function kc_approxForcedConvection"
     annotation (Dialog(group="Constant inputs"));
-  input FluidDissipation.HeatTransfer.General.kc_approxForcedConvection_IN_var IN_var "Input record for function kc_approxForcedConvection"
+  input FluidDissipation.HeatTransfer.General.kc_approxForcedConvection_IN_var IN_var
+    "Input record for function kc_approxForcedConvection"
     annotation (Dialog(group="Variable inputs"));
 
   //output variables
@@ -18,7 +21,8 @@ function kc_approxForcedConvection "Mean convective heat transfer coefficient fo
     annotation (Dialog(group="Output"));
   output SI.NusseltNumber Nu "Nusselt number"
     annotation (Dialog(group="Output"));
-  output Real failureStatus "0== boundary conditions fulfilled | 1== failure >> check if still meaningful results"
+  output Real failureStatus
+    "0== boundary conditions fulfilled | 1== failure >> check if still meaningful results"
     annotation (Dialog(group="Output"));
 
 protected
@@ -31,7 +35,8 @@ protected
   Real reynoldsMax[3]={1.24e5,1e6,1e6} "Maximum Reynolds number";
   Real reynoldsMin[3]={2500,1e4,3e3} "Minimum Reynolds number";
 
-  SI.Diameter d_hyd=max(MIN, 4*IN_con.A_cross/max(MIN, IN_con.perimeter)) "Hydraulic diameter";
+  SI.Diameter d_hyd=max(MIN, 4*IN_con.A_cross/max(MIN, IN_con.perimeter))
+    "Hydraulic diameter";
 
   //failure status
   Real fstatus[2] "Check of expected boundary conditions";

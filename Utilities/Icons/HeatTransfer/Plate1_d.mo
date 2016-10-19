@@ -10,7 +10,6 @@ partial model Plate1_d "icon for plate"
           fillColor={255,255,170}),Line(
           points={{-100,-20},{100,-20}},
           color={0,0,0},
-          smooth=Smooth.None,
           arrow={Arrow.Filled,Arrow.Filled}),Text(
           extent={{-14,-20},{12,-30}},
           lineColor={0,0,0},
@@ -20,7 +19,6 @@ partial model Plate1_d "icon for plate"
           textString="L"),Line(
           points={{-20,16},{20,16}},
           color={0,0,0},
-          smooth=Smooth.None,
           arrow={Arrow.None,Arrow.Filled}),Text(
           extent={{-14,26},{12,16}},
           lineColor={0,0,0},
@@ -28,4 +26,5 @@ partial model Plate1_d "icon for plate"
           fillColor={255,255,255},
           fillPattern=FillPattern.Solid,
           textString="velocity")}));
+
 end Plate1_d;

@@ -1,8 +1,10 @@
 within FluidDissipation.PressureLoss.General;
-record dp_nominalPressureLossLawDensity_IN_con "Input record for function dp_nominalPressureLossLawDensity, dp_nominalPressureLossLawDensity_DP and dp_nominalPressureLossLawDensity_MFLOW"
+record dp_nominalPressureLossLawDensity_IN_con
+  "Input record for function dp_nominalPressureLossLawDensity, dp_nominalPressureLossLawDensity_DP and dp_nominalPressureLossLawDensity_MFLOW"
 
   //generic variables
-  extends FluidDissipation.Utilities.Records.General.NominalPressureLossLawDensity_con;
+  extends
+    FluidDissipation.Utilities.Records.General.NominalPressureLossLawDensity_con;
 
   annotation (Documentation(info="<html>
 This record is used as <b> input record </b> for the pressure loss function <a href=\"Modelica://FluidDissipation.PressureLoss.General.dp_nominalPressureLossLawDensity\"> dp_nominalPressureLosslawDensity </a>,

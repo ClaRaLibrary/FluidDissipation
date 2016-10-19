@@ -9,15 +9,19 @@ model kc_evenGapTurbulent_KC "Verification of function kc_evenGapTurbulent_KC"
   //even gap variables
   parameter SI.Length h=0.1 "Height of cross sectional area"
     annotation (Dialog(group="Geometry"));
-  parameter SI.Length s=0.05 "Distance between parallel plates in cross sectional area"
+  parameter SI.Length s=0.05
+    "Distance between parallel plates in cross sectional area"
     annotation (Dialog(group="Geometry"));
   parameter SI.Length L=1 "Overflowed length of gap"
     annotation (Dialog(group="Geometry"));
 
   //fluid property variables
-  parameter SI.SpecificHeatCapacityAtConstantPressure cp[:]={1007,4189,3384.550} "Specific heat capacity at constant pressure of fluid";
-  parameter SI.DynamicViscosity eta[:]={18.24e-6,1001.6e-6,0.114} "Dynamic viscosity of fluid";
-  parameter SI.ThermalConductivity lambda[:]={25.69e-3,598.5e-3,0.387} "Thermal conductivity of fluid";
+  parameter SI.SpecificHeatCapacityAtConstantPressure cp[:]={1007,4189,3384.550}
+    "Specific heat capacity at constant pressure of fluid";
+  parameter SI.DynamicViscosity eta[:]={18.24e-6,1001.6e-6,0.114}
+    "Dynamic viscosity of fluid";
+  parameter SI.ThermalConductivity lambda[:]={25.69e-3,598.5e-3,0.387}
+    "Thermal conductivity of fluid";
   parameter SI.Density rho[:]={1.188,998.21,1037.799} "Density of fluid";
 
   //target variables

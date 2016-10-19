@@ -8,32 +8,39 @@ function dp_Tjunction "pressure loss of general T-junction"
   import SMOOTH = FluidDissipation.Utilities.Functions.General.Stepsmoother;
 
   //records
-  input FluidDissipation.PressureLoss.Junction.dp_Tjunction_IN_con IN_con "input record for function dp_Tjunction"
+  input FluidDissipation.PressureLoss.Junction.dp_Tjunction_IN_con IN_con
+    "input record for function dp_Tjunction"
     annotation (Placement(transformation(extent={{-100,12},{-80,32}})));
 
-  input FluidDissipation.PressureLoss.Junction.dp_Tjunction_IN_var IN_var "input record for function dp_Tjunction"
+  input FluidDissipation.PressureLoss.Junction.dp_Tjunction_IN_var IN_var
+    "input record for function dp_Tjunction"
     annotation (Placement(transformation(extent={{-80,12},{-60,32}})));
 
-  input SI.MassFlowRate m_flow[3] "mass flow rate in passages [left,right,bottom] | (pos == flow into component)"
+  input SI.MassFlowRate m_flow[3]
+    "mass flow rate in passages [left,right,bottom] | (pos == flow into component)"
     annotation (Dialog(group="Input"));
   /*input SI.Pressure p_junction[4] 
     "pressures at ports of junction [left,right,bottom,internal]" 
     annotation (Dialog(group="Input"));*/
 
   //output variables
-  output SI.Pressure DP[3] "(thermodynamic) pressure loss [left-internal,internal-right,internal-bottom]"
+  output SI.Pressure DP[3]
+    "(thermodynamic) pressure loss [left-internal,internal-right,internal-bottom]"
     annotation (Dialog(group="Output"));
 
   output SI.MassFlowRate M_FLOW[ 3] "mass flow rate [side,straight,total]"
     annotation (Dialog(group="Output"));
 
-  output TYP.LocalResistanceCoefficient zeta_LOC[2] "local resistance coefficient [side,straight]"
+  output TYP.LocalResistanceCoefficient zeta_LOC[2]
+    "local resistance coefficient [side,straight]"
     annotation (Dialog(group="Output"));
 
-  output Real cases[6] "fluid flow situation at Tjunction according to online documentation"
+  output Real cases[6]
+    "fluid flow situation at Tjunction according to online documentation"
     annotation (Dialog(group="Output"));
 
-  output Real failureStatus "0== boundary conditions fulfilled | 1== failure >> check if still meaningful results"
+  output Real failureStatus
+    "0== boundary conditions fulfilled | 1== failure >> check if still meaningful results"
     annotation (Dialog(group="Output"));
 
   /*output SI.Velocity velocity[3] 
@@ -41,12 +48,14 @@ function dp_Tjunction "pressure loss of general T-junction"
   annotation (Dialog(group="Output"));*/
 
 protected
-  parameter Integer I[3, 3]=identity(3) "identity matrix for mass flow rate order operation";
+  parameter Integer I[3, 3]=identity(3)
+    "identity matrix for mass flow rate order operation";
 
   /*parameter Boolean caseRequest=IN_con.caseRequest 
     "true == case request depending on mass flow rates at ports (exact) | false == driving pressure difference (fast)";*/
 
-  parameter SI.Pressure dp_min=IN_con.dp_min "restriction for smoothing while changing of fluid flow situation";
+  parameter SI.Pressure dp_min=IN_con.dp_min
+    "restriction for smoothing while changing of fluid flow situation";
 
   //estimate fluid flow situation
   /*Real dp_i[3]={p_junction[1] - p_junction[4],p_junction[4] - p_junction[
@@ -62,7 +71,8 @@ protected
     IN_con.flowSituation ==FluidDissipation.Utilities.Types.JunctionFlowSituation.Tjoin_Left then  1 else if
     IN_con.flowSituation ==FluidDissipation.Utilities.Types.JunctionFlowSituation.Tjoin_Right then  1 else if
     IN_con.flowSituation ==FluidDissipation.Utilities.Types.JunctionFlowSituation.Tjoin_Symmetric
-                                                                                               then  1 else 0 "fluid flow situation | 1 == joint";
+                                                                                               then  1 else 0
+    "fluid flow situation | 1 == joint";
 
   /*Real case_1=if caseRequest then if integer(abs(sign(m_flow[1]) -
       sign(m_flow[2]) - sign(m_flow[3]))) > 2 then 1 else 0 else 
@@ -83,15 +93,18 @@ protected
 
   Real case_1=if
     IN_con.flowSituation ==FluidDissipation.Utilities.Types.JunctionFlowSituation.Tjoin_Left or
-    IN_con.flowSituation ==FluidDissipation.Utilities.Types.JunctionFlowSituation.Split_Left then  1 else 0 "fluid flow situation | 1 == case_1";
+    IN_con.flowSituation ==FluidDissipation.Utilities.Types.JunctionFlowSituation.Split_Left then  1 else 0
+    "fluid flow situation | 1 == case_1";
   Real case_2=if
     IN_con.flowSituation ==FluidDissipation.Utilities.Types.JunctionFlowSituation.Tjoin_Right or
-    IN_con.flowSituation ==FluidDissipation.Utilities.Types.JunctionFlowSituation.Split_Right then  1 else 0 "fluid flow situation | 1 == case_2";
+    IN_con.flowSituation ==FluidDissipation.Utilities.Types.JunctionFlowSituation.Split_Right then  1 else 0
+    "fluid flow situation | 1 == case_2";
   Real case_3=if
     IN_con.flowSituation ==FluidDissipation.Utilities.Types.JunctionFlowSituation.Tjoin_Symmetric
                                                                                                or
     IN_con.flowSituation ==FluidDissipation.Utilities.Types.JunctionFlowSituation.Split_Symmetric
-                                                                                               then  1 else 0 "fluid flow situation | 1 == case_3";
+                                                                                               then  1 else 0
+    "fluid flow situation | 1 == case_3";
 
   //mass flow rate order operation
   /*Real order[3, 3]=if integer(case_1) == 1 then I else if integer(case_2)
@@ -105,14 +118,18 @@ protected
             {I[2, :],I[1, :],I[3, :]} else I "mass flow rate order operation";
 
   //convert mass flow rates from fixed geometry [left,right,bottom] to general fluid flow situation [total,straight,side]
-  SI.MassFlowRate mdot[3]=order*{m_flow[1],m_flow[2],m_flow[3]} "mass flow rates at T-junction [total,straight,side]";
+  SI.MassFlowRate mdot[3]=order*{m_flow[1],m_flow[2],m_flow[3]}
+    "mass flow rates at T-junction [total,straight,side]";
   //mass flow rates order for functional input
-  SI.MassFlowRate mdot_function[3]={mdot[3],mdot[2],mdot[1]} "mass flow rates at T-junction [side,straight,total]";
+  SI.MassFlowRate mdot_function[3]={mdot[3],mdot[2],mdot[1]}
+    "mass flow rates at T-junction [side,straight,total]";
 
   // SW 09.05.10: convert diameter vector:
   //hydraulic diameter order in function:
-  SI.Length d_hyd[3]=order*IN_con.d_hyd "hydraulic diameters at T-junction [total,straight,side]";
-  SI.Length d_hyd_function[3]={d_hyd[3], d_hyd[2], d_hyd[1]} "hydraulic diameters at T-junction [side,straight,total]";
+  SI.Length d_hyd[3]=order*IN_con.d_hyd
+    "hydraulic diameters at T-junction [total,straight,side]";
+  SI.Length d_hyd_function[3]={d_hyd[3], d_hyd[2], d_hyd[1]}
+    "hydraulic diameters at T-junction [side,straight,total]";
 
   //internal input record for functions
   FluidDissipation.PressureLoss.Junction.dp_Tjoin_IN_con intern_IN_con(
@@ -130,13 +147,15 @@ protected
   /*SI.Pressure intern_DP[3] 
     "(thermodynamic) pressure loss [left-internal,internal-right,internal-bottom]"
     annotation (Dialog(group="Output"));*/
-  SI.Pressure intern_DP[2] "(thermodynamic) pressure loss [left-internal,internal-right,internal-bottom]"
+  SI.Pressure intern_DP[2]
+    "(thermodynamic) pressure loss [left-internal,internal-right,internal-bottom]"
     annotation (Dialog(group="Output"));
 
   SI.MassFlowRate intern_M_FLOW[3] "mass flow rate [side,straight,total]"
     annotation (Dialog(group="Output"));
 
-  TYP.LocalResistanceCoefficient intern_zeta_LOC[2] "local resistance coefficient [side,straight]"
+  TYP.LocalResistanceCoefficient intern_zeta_LOC[2]
+    "local resistance coefficient [side,straight]"
     annotation (Dialog(group="Output"));
 
   SI.ReynoldsNumber intern_Re[3] "Reynolds number"
@@ -144,10 +163,12 @@ protected
   final SI.PrandtlNumber intern_Pr=0 "Prandtl number"
     annotation (Dialog(group="Output"));
 
-  Real intern_cases[6] "fluid flow situation at Tjunction according to online documentation"
+  Real intern_cases[6]
+    "fluid flow situation at Tjunction according to online documentation"
     annotation (Dialog(group="Output"));
 
-  Real intern_failureStatus "0== boundary conditions fulfilled | 1== failure >> check if still meaningful results"
+  Real intern_failureStatus
+    "0== boundary conditions fulfilled | 1== failure >> check if still meaningful results"
     annotation (Dialog(group="Output"));
 
   /*output SI.Velocity intern_velocity[3] 

@@ -1,5 +1,6 @@
 within FluidDissipation.HeatTransfer.HeatExchanger;
-record kc_roundTube_IN_var "Input record for function kc_roundTube and kc_roundTube_KC"
+record kc_roundTube_IN_var
+  "Input record for function kc_roundTube and kc_roundTube_KC"
   extends Modelica.Icons.Record;
 
   //fluid property variables

@@ -6,7 +6,6 @@ partial model BendEdged_d "icon for edged bend"
           Polygon(
           points={{-81.3173,-30.4056},{50,-30},{50,30},{-81.3173,28.9914},{-81.3173,
             -30.4056}},
-          smooth=Smooth.None,
           fillColor={255,255,255},
           fillPattern=FillPattern.Solid,
           origin={-14,-17},
@@ -14,56 +13,46 @@ partial model BendEdged_d "icon for edged bend"
           pattern=LinePattern.None),Polygon(
           points={{-57.2756,-10.6066},{-57.2756,9.19239},{49,10},{49,-10},{-57.2756,
             -10.6066}},
-          smooth=Smooth.None,
           fillColor={255,255,170},
           fillPattern=FillPattern.Forward,
           origin={-3,-62},
           rotation=45,
           pattern=LinePattern.None),Polygon(
           points={{0,40},{-8,60},{100,60},{100,40},{0,40}},
-          smooth=Smooth.None,
           fillColor={255,255,170},
           fillPattern=FillPattern.Forward,
           pattern=LinePattern.None),Line(
           points={{-92,-54},{-50,-96}},
-          color={0,0,0},
-          smooth=Smooth.None),Polygon(
+          color={0,0,0}),Polygon(
           points={{0,-20},{100,-20},{100,40},{0,40},{0,-20}},
-          smooth=Smooth.None,
           pattern=LinePattern.None,
           lineColor={0,0,0},
           fillColor={255,255,255},
           fillPattern=FillPattern.Solid),Polygon(
           points={{-91,-10},{-91,10},{49,10},{49,-10},{-91,-10}},
-          smooth=Smooth.None,
           fillColor={255,255,170},
           fillPattern=FillPattern.Forward,
           origin={-35,18},
           rotation=45,
           pattern=LinePattern.None),Polygon(
           points={{30,-40},{24,-20},{100,-20},{100,-40},{30,-40}},
-          smooth=Smooth.None,
           fillColor={255,255,170},
           fillPattern=FillPattern.Forward,
           pattern=LinePattern.None),Polygon(
           points={{100,40},{100,60},{-8,60},{-106,-40},{-92,-54},{2,40},{100,40}},
           lineColor={0,0,0},
-          smooth=Smooth.None,
           lineThickness=1),Polygon(
           points={{100,-40},{100,-20},{24,-20},{-50,-96},{-36,-110},{34,-40},{
             100,-40}},
           lineColor={0,0,0},
-          smooth=Smooth.None,
           lineThickness=1),Line(
           points={{60,40},{60,-20}},
           color={0,0,0},
           thickness=0.5,
-          smooth=Smooth.None,
           arrow={Arrow.Filled,Arrow.Filled}),Line(
           points={{0,30},{0,-30}},
           color={0,0,0},
           thickness=0.5,
-          smooth=Smooth.None,
           arrow={Arrow.Filled,Arrow.Filled},
           origin={-50,-54},
           rotation=45),Rectangle(
@@ -76,7 +65,6 @@ partial model BendEdged_d "icon for edged bend"
           rotation=45),Line(
           points={{-21,21},{21,-21}},
           color={0,0,0},
-          smooth=Smooth.None,
           origin={100,10},
           rotation=-45),Ellipse(
           extent={{7,15},{21,1}},
@@ -101,13 +89,11 @@ partial model BendEdged_d "icon for edged bend"
           fillPattern=FillPattern.Solid),Line(
           points={{100,8},{14,8},{-70,-76}},
           color={0,0,0},
-          smooth=Smooth.None,
           thickness=0.5),Line(
           points={{14,8},{10,20}},
           color={0,0,0},
-          thickness=0.5,
-          smooth=Smooth.None),
-                       Rectangle(
+          thickness=0.5),
+          Rectangle(
           extent={{48,16},{76,2}},
           lineThickness=0.5,
           fillColor={255,255,255},

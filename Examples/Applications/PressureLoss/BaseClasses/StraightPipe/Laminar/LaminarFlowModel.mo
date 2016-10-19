@@ -1,8 +1,10 @@
 within FluidDissipation.Examples.Applications.PressureLoss.BaseClasses.StraightPipe.Laminar;
-model LaminarFlowModel "Straight pipe (laminar): Application flow model for straight pipe function in Modelica.Fluid"
+model LaminarFlowModel
+  "Straight pipe (laminar): Application flow model for straight pipe function in Modelica.Fluid"
 
   //base flow model
-  extends FluidDissipation.Examples.Applications.PressureLoss.BaseClasses.StraightPipe.BaseStraightPipePL.BaseStraightPipeModel;
+  extends
+    FluidDissipation.Examples.Applications.PressureLoss.BaseClasses.StraightPipe.BaseStraightPipePL.BaseStraightPipeModel;
 
   //pressure loss calculation
   parameter SI.Diameter d_hyd=0.1 "Hydraulic diameter"

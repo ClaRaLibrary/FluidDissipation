@@ -1,11 +1,16 @@
 within FluidDissipation.Examples.Verifications.PressureLoss.HeatExchanger;
-model dp_corrugatedPlate_1ph_DP "Verification of function dp_corrugatedPlate_1ph_DP"
+model dp_corrugatedPlate_1ph_DP
+  "Verification of function dp_corrugatedPlate_1ph_DP"
   parameter Integer n=5 "Number of various plate geometries";
 
-  parameter Integer channels(min = 1) = 1 "number of parallel channels per fluid";
-  parameter Modelica.SIunits.Length Length(min=1e-2)=0.3 "length of the heat exchanger plates in flow direction (header center to header center)";
-  parameter Modelica.SIunits.Length Width(min=1e-2)=0.1 "width of the heat exchanger plates in flow direction";
-  parameter Modelica.SIunits.Length amp(min=1e-10)=2e-3 "amplitude of corrugated plate";
+  parameter Integer channels(min = 1) = 1
+    "number of parallel channels per fluid";
+  parameter Modelica.SIunits.Length Length(min=1e-2)=0.3
+    "length of the heat exchanger plates in flow direction (header center to header center)";
+  parameter Modelica.SIunits.Length Width(min=1e-2)=0.1
+    "width of the heat exchanger plates in flow direction";
+  parameter Modelica.SIunits.Length amp(min=1e-10)=2e-3
+    "amplitude of corrugated plate";
   parameter Modelica.SIunits.Length Lambda(min=1e-10)=2*PI*
     amp "wave length of corrugated plate";
   parameter Modelica.SIunits.Conversions.NonSIunits.Angle_deg[n] phi={23,34,45,57,68}
@@ -28,9 +33,10 @@ model dp_corrugatedPlate_1ph_DP "Verification of function dp_corrugatedPlate_1ph
   //output variables
   Modelica.SIunits.Pressure DP[n] "Pressure loss in [bar]"
                                     annotation (Dialog(group="Output"));
-  Real zeta_TOT[n]={2*abs(DP[i])/(max(rho*(w)^2, MIN)) for i in 1:n} "Pressure loss coefficients"
-                                 annotation (Dialog(group="Output"));
-  Real lambda_FRI[n]={zeta_TOT[i]*D_h/Length for i in 1:n} "Frictional resistance coefficient";
+  Real zeta_TOT[n]={2*abs(DP[i])/(max(rho*(w)^2, MIN)) for i in 1:n}
+    "Pressure loss coefficients" annotation (Dialog(group="Output"));
+  Real lambda_FRI[n]={zeta_TOT[i]*D_h/Length for i in 1:n}
+    "Frictional resistance coefficient";
 
   //plotting
   Real DP_plot[n]={DP[i] for i in 1:n} "Pressure loss [Pa]";
@@ -151,8 +157,8 @@ equation
       m_flow);
 
   annotation (__Dymola_Commands(file=
-          "modelica://FluidDissipation/Extras/Scripts/pressureLoss/heatExchanger/dp_corrugatedPlate_1ph_DP.mos" "Verification of dp_corrugatedPlate_1ph_DP"),
-                                                      Diagram(coordinateSystem(
+          "modelica://FluidDissipation/Extras/Scripts/pressureLoss/heatExchanger/dp_corrugatedPlate_1ph_DP.mos"
+        "Verification of dp_corrugatedPlate_1ph_DP"), Diagram(coordinateSystem(
           preserveAspectRatio=false, extent={{-100,-100},{100,100}}),
         graphics={                               Text(
             extent={{-100,56},{100,66}},

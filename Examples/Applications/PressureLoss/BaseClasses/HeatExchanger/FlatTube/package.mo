@@ -1,14 +1,17 @@
 within FluidDissipation.Examples.Applications.PressureLoss.BaseClasses.HeatExchanger;
 package FlatTube "FluidDissipation: Flat tube heat exchanger with several fin geometries"
-  extends FluidDissipation.Examples.Applications.PressureLoss.BaseClasses.HeatExchanger.BaseHeatExchangerPL;
+  extends
+  FluidDissipation.Examples.Applications.PressureLoss.BaseClasses.HeatExchanger.BaseHeatExchangerPL;
 
 
   redeclare function extends pressureLoss_mflow
 
     //input records for heat exchanger function
-    input FluidDissipation.Examples.Applications.PressureLoss.BaseClasses.HeatExchanger.FlatTube.PressureLossInput_con
+    input
+    FluidDissipation.Examples.Applications.PressureLoss.BaseClasses.HeatExchanger.FlatTube.PressureLossInput_con
     IN_con annotation (Placement(transformation(extent={{-80,20},{-60,40}})));
-    input FluidDissipation.Examples.Applications.PressureLoss.BaseClasses.HeatExchanger.FlatTube.PressureLossInput_var
+    input
+    FluidDissipation.Examples.Applications.PressureLoss.BaseClasses.HeatExchanger.FlatTube.PressureLossInput_var
     IN_var annotation (Placement(transformation(extent={{-60,20},{-40,40}})));
     input SI.MassFlowRate m_flow "Mass flow rate"
       annotation (Dialog(tab="Input"));

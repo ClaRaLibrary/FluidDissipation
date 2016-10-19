@@ -1,5 +1,6 @@
 within FluidDissipation.Utilities.Functions.PressureLoss.TwoPhase;
-function dp_twoPhaseMSH_MFLOW "Two phase flow friction loss according to Mueller-Steinhagen and Heck (1986)| calculate mass flow rate| overall flow regime"
+function dp_twoPhaseMSH_MFLOW
+  "Two phase flow friction loss according to Mueller-Steinhagen and Heck (1986)| calculate mass flow rate| overall flow regime"
   input FluidDissipation.Utilities.Records.General.TwoPhaseFlow_con
     IN_con "Input record for constant values";
   input FluidDissipation.Utilities.Records.General.TwoPhaseFlow_var
@@ -13,16 +14,21 @@ function dp_twoPhaseMSH_MFLOW "Two phase flow friction loss according to Mueller
 protected
   Real beta_lam "Model variable";
   Real Re_trans "Reynolds number for flow regime transition";
-  Modelica.SIunits.Length d_hyd = 4*IN_con.A_cross/IN_con.perimeter "Hydraulic diameter";
+  Modelica.SIunits.Length d_hyd = 4*IN_con.A_cross/IN_con.perimeter
+    "Hydraulic diameter";
   Real Re_lam "Reynolds number for determination of flow regime";
 algorithm
   beta_lam := max(IN_con.length*64/(2*d_hyd^2)*((IN_var.eta_l/max(Modelica.Constants.eps, IN_var.rho_l) + 2*IN_var.x_flow*(IN_var.eta_g/max(Modelica.Constants.eps, IN_var.rho_g) - IN_var.eta_l/max(Modelica.Constants.eps, IN_var.rho_l)))*(max(1 - IN_var.x_flow, Modelica.Constants.eps)^(1/3)) + IN_var.eta_g/max(Modelica.Constants.eps, IN_var.rho_g)*IN_var.x_flow^3), Modelica.Constants.eps);
   Re_trans := 1187;
-  Re_lam := min(dp*d_hyd/beta_lam/IN_var.eta_l,dp*d_hyd/beta_lam/IN_var.eta_g);
+  Re_lam := dp*d_hyd/beta_lam/IN_var.eta_l;
 
   M_FLOW :=SMOOTH(
     Re_trans,
     Re_trans + 100,
+    Re_lam)*
+    SMOOTH(
+    -Re_trans,
+    -Re_trans - 100,
     Re_lam)*
     Utilities.Functions.PressureLoss.TwoPhase.dp_twoPhaseLaminarMSH_MFLOW(
     IN_con,
@@ -30,6 +36,14 @@ algorithm
     dp) + SMOOTH(
     Re_trans + 100,
     Re_trans,
+    Re_lam)*
+    Utilities.Functions.PressureLoss.TwoPhase.dp_twoPhaseTurbulentMSH_MFLOW(
+    IN_con,
+    IN_var,
+    dp)
+    + SMOOTH(
+    -Re_trans - 100,
+    -Re_trans,
     Re_lam)*
     Utilities.Functions.PressureLoss.TwoPhase.dp_twoPhaseTurbulentMSH_MFLOW(
     IN_con,

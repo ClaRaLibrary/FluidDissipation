@@ -1,14 +1,17 @@
 within FluidDissipation.PressureLoss.Valve;
-function dp_severalGeometryOverall_MFLOW "Pressure loss of valve | calculate mass flow rate | several geometries | overall flow regime"
+function dp_severalGeometryOverall_MFLOW
+  "Pressure loss of valve | calculate mass flow rate | several geometries | overall flow regime"
   extends Modelica.Icons.Function;
   import FD = FluidDissipation.PressureLoss.Valve;
   import SMOOTH = FluidDissipation.Utilities.Functions.General.Stepsmoother;
   import TYP = FluidDissipation.Utilities.Types;
 
   //input records
-  input FluidDissipation.PressureLoss.Valve.dp_severalGeometryOverall_IN_con IN_con "Input record for function dp_severalGeometryOverall_MFLOW"
+  input FluidDissipation.PressureLoss.Valve.dp_severalGeometryOverall_IN_con IN_con
+    "Input record for function dp_severalGeometryOverall_MFLOW"
     annotation (Dialog(group="Constant inputs"));
-  input FluidDissipation.PressureLoss.Valve.dp_severalGeometryOverall_IN_var IN_var "Input record for function dp_severalGeometryOverall_MFLOW"
+  input FluidDissipation.PressureLoss.Valve.dp_severalGeometryOverall_IN_var IN_var
+    "Input record for function dp_severalGeometryOverall_MFLOW"
     annotation (Dialog(group="Variable inputs"));
   input SI.Pressure dp "Pressure loss" annotation (Dialog(group="Input"));
 
@@ -25,7 +28,8 @@ protected
       IN_con.valveCoefficient == TYP1.KV then IN_con.Kv*27.7e-6 else if IN_con.valveCoefficient
        == TYP1.CV then IN_con.Cv*24e-6 else if IN_con.valveCoefficient == TYP1.OP then
             IN_con.m_flow_nominal*(IN_var.opening/max(MIN, IN_con.opening_nominal)
-      *(IN_con.rho_nominal*IN_con.dp_nominal)^0.5) else MIN "Av (metric) flow coefficient [Av]=m^2";
+      *(IN_con.rho_nominal*IN_con.dp_nominal)^0.5) else MIN
+    "Av (metric) flow coefficient [Av]=m^2";
 
   TYP.PressureLossCoefficient zeta_bal=SMOOTH(
       0.05,
@@ -67,10 +71,12 @@ protected
             2 else if IN_con.geometry == TYP2.Ball then zeta_bal else if IN_con.geometry
        == TYP2.Diaphragm then zeta_dia else if IN_con.geometry == TYP2.Butterfly then
             zeta_but else if IN_con.geometry == TYP2.Gate then zeta_gat else
-      if IN_con.geometry == TYP2.Sluice then zeta_slu else 0 "Pressure loss coefficient of chosen valve";
+      if IN_con.geometry == TYP2.Sluice then zeta_slu else 0
+    "Pressure loss coefficient of chosen valve";
 
   Real valveCharacteristic=(2/min(IN_con.zeta_tot_max, max(MIN, max(IN_con.zeta_tot_min,
-      abs(zeta_tot)))))^0.5 "Valve characteristic considering opening of chosen valve";
+      abs(zeta_tot)))))^0.5
+    "Valve characteristic considering opening of chosen valve";
 
   //Documentation
 

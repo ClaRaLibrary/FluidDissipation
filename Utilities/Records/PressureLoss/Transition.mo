@@ -2,7 +2,8 @@ within FluidDissipation.Utilities.Records.PressureLoss;
 record Transition "Input for transitions"
   extends Modelica.Icons.Record;
 
-  SI.Length L_trans=L_1 "Length of transition section (parallel to bulk fluid flow)"
+  SI.Length L_trans=L_1
+    "Length of transition section (parallel to bulk fluid flow)"
     annotation (Dialog(group="Transition"));
   SI.Area A_1=PI*0.01^2/4 "Cross-sectional area 1"
     annotation (Dialog(group="Transition"));
@@ -19,10 +20,13 @@ record Transition "Input for transitions"
     annotation (Dialog(group="Straight pipe"));
 
   //numerical aspects
-  SI.Velocity velocity_small=1e-8 "Regularisation for a velocity smaller then velocity_small"
+  SI.Velocity velocity_small=1e-8
+    "Regularisation for a velocity smaller then velocity_small"
     annotation (Dialog(group="Numerical aspects"));
-  TYP.PressureLossCoefficient zeta_tot_min=1e-3 "Minimal pressure loss coefficient"
+  TYP.PressureLossCoefficient zeta_tot_min=1e-3
+    "Minimal pressure loss coefficient"
     annotation (Dialog(group="Numerical aspects"));
-  TYP.PressureLossCoefficient zeta_tot_max=1e2 "Maximum pressure loss coefficient"
+  TYP.PressureLossCoefficient zeta_tot_max=1e2
+    "Maximum pressure loss coefficient"
     annotation (Dialog(group="Numerical aspects"));
 end Transition;

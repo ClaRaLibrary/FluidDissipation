@@ -60,16 +60,18 @@ public
 
   FluidDissipation.Examples.Applications.PressureLoss.BendFlowModel from_dp(
       redeclare package Medium =
-        Modelica.Media.Water.ConstantPropertyLiquidWater, redeclare model FlowModel =
-        FluidDissipation.Examples.Applications.PressureLoss.BaseClasses.Bend.EdgedBend.EdgedBendFlowModel (
-         K=0, d_hyd=0.015)) "Calculate mass flow rate from pressure loss"
+        Modelica.Media.Water.ConstantPropertyLiquidWater, redeclare model
+      FlowModel =
+        FluidDissipation.Examples.Applications.PressureLoss.BaseClasses.Bend.EdgedBend.EdgedBendFlowModel
+        (K=0, d_hyd=0.015)) "Calculate mass flow rate from pressure loss"
     annotation (Placement(transformation(extent={{-24,-4},{24,44}})));
 
   FluidDissipation.Examples.Applications.PressureLoss.BendFlowModel from_mflow(
       redeclare package Medium =
-        Modelica.Media.Water.ConstantPropertyLiquidWater, redeclare model FlowModel =
-        FluidDissipation.Examples.Applications.PressureLoss.BaseClasses.Bend.EdgedBend.EdgedBendFlowModel (
-         d_hyd=0.015, K=0)) "Calculate pressure loss from mass flow rate"
+        Modelica.Media.Water.ConstantPropertyLiquidWater, redeclare model
+      FlowModel =
+        FluidDissipation.Examples.Applications.PressureLoss.BaseClasses.Bend.EdgedBend.EdgedBendFlowModel
+        (d_hyd=0.015, K=0)) "Calculate pressure loss from mass flow rate"
     annotation (Placement(transformation(extent={{-24,-64},{24,-16}})));
 equation
   connect(IN_p.ports[1], from_dp.port_a) annotation (Line(

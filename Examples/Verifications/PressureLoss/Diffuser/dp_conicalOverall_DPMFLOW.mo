@@ -206,8 +206,8 @@ equation
     input_mdot_4[i]) for i in 1:n};
 
   annotation (__Dymola_Commands(file=
-          "modelica://FluidDissipation/Extras/Scripts/pressureLoss/diffuser/dp_conicalOverall_DPMFLOW.mos" "Verification of dp_conicalOverall_DP"),
-                                                 Diagram(coordinateSystem(
+          "modelica://FluidDissipation/Extras/Scripts/pressureLoss/diffuser/dp_conicalOverall_DPMFLOW.mos"
+        "Verification of dp_conicalOverall_DP"), Diagram(coordinateSystem(
           preserveAspectRatio=false, extent={{-100,-100},{100,100}}), graphics={
         Text(
           extent={{-101,51},{99,76}},

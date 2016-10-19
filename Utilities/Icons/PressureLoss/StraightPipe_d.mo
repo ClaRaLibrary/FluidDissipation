@@ -11,7 +11,6 @@ partial model StraightPipe_d "icon for straight pipe"
           fillColor={255,255,170}),
         Polygon(
           points={{-80,-54},{-80,46},{80,46},{80,-54},{-80,-54}},
-          smooth=Smooth.None,
           fillColor={255,255,170},
           fillPattern=FillPattern.Forward,
           lineThickness=0.5,
@@ -19,7 +18,6 @@ partial model StraightPipe_d "icon for straight pipe"
         Line(
           points={{-80,52},{80,52}},
           color={0,0,0},
-          smooth=Smooth.None,
           thickness=0.5,
           arrow={Arrow.Filled,Arrow.Filled}),
         Rectangle(
@@ -44,7 +42,6 @@ partial model StraightPipe_d "icon for straight pipe"
           points={{0,26},{0,-34}},
           color={0,0,0},
           thickness=0.5,
-          smooth=Smooth.None,
           arrow={Arrow.Filled,Arrow.Filled}),
         Rectangle(
           extent={{-6,-74},{10,-86}},
@@ -67,29 +64,24 @@ partial model StraightPipe_d "icon for straight pipe"
         Line(
           points={{-80,46},{80,46}},
           pattern=LinePattern.Solid,
-          thickness=0.5,
-          smooth=Smooth.None),
+          thickness=0.5),
         Line(
           points={{-80,-54},{80,-54}},
           pattern=LinePattern.Solid,
-          thickness=0.5,
-          smooth=Smooth.None),
+          thickness=0.5),
         Line(
           points={{-80,26},{80,26}},
           pattern=LinePattern.Dash,
           thickness=0.5,
-          smooth=Smooth.None,
           color={0,0,0}),
         Line(
           points={{-80,-34},{80,-34}},
           thickness=0.5,
-          smooth=Smooth.None,
           color={0,0,0},
           pattern=LinePattern.Dash),
         Line(
           points={{-62,-4},{98,-4}},
           color={0,0,0},
-          smooth=Smooth.None,
           thickness=0.5),
         Rectangle(
           extent={{-12,2},{10,-8}},

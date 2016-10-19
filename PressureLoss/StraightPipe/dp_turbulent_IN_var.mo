@@ -1,5 +1,6 @@
 within FluidDissipation.PressureLoss.StraightPipe;
-record dp_turbulent_IN_var "Input record for function function dp_turbulent, dp_turbulent_DP and dp_turbulent_MFLOW"
+record dp_turbulent_IN_var
+  "Input record for function function dp_turbulent, dp_turbulent_DP and dp_turbulent_MFLOW"
 
   extends FluidDissipation.PressureLoss.StraightPipe.dp_overall_IN_var;
 

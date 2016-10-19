@@ -1,10 +1,12 @@
 within FluidDissipation.HeatTransfer.HeatExchanger;
-record kc_tubeBundleFilmCondensation_lam_IN_var "Input record for function kc_tubeBundleFilmCondensation_lam and kc_tubeBundleFilmCondensation_lam_KC"
+record kc_tubeBundleFilmCondensation_lam_IN_var
+  "Input record for function kc_tubeBundleFilmCondensation_lam and kc_tubeBundleFilmCondensation_lam_KC"
 
   extends Modelica.Icons.Record;
 
   //fluid properties
-  SI.SpecificHeatCapacityAtConstantPressure cp_l "Specific heat capacity of liquid"
+  SI.SpecificHeatCapacityAtConstantPressure cp_l
+    "Specific heat capacity of liquid"
     annotation (Dialog(group="Fluid properties"));
   SI.ThermalConductivity lambda_l "Thermal conductivity of liquid"
     annotation (Dialog(group="Fluid properties"));

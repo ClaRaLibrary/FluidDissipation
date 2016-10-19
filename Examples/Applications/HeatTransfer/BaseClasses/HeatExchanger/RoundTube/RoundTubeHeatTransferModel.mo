@@ -1,10 +1,12 @@
 within FluidDissipation.Examples.Applications.HeatTransfer.BaseClasses.HeatExchanger.RoundTube;
-model RoundTubeHeatTransferModel "Round tube heat exchanger: Application heat transfer model for round tube function in Modelica.Fluid"
-  extends FluidDissipation.Examples.Applications.HeatTransfer.BaseClasses.HeatExchanger.BaseHeatExchangerHT.BaseHeatExchangerModel;
+model RoundTubeHeatTransferModel
+  "Round tube heat exchanger: Application heat transfer model for round tube function in Modelica.Fluid"
+  extends
+    FluidDissipation.Examples.Applications.HeatTransfer.BaseClasses.HeatExchanger.BaseHeatExchangerHT.BaseHeatExchangerModel;
 
   FluidDissipation.Utilities.Types.HTXGeometry_roundTubes geometry=
-      FluidDissipation.Utilities.Types.HTXGeometry_roundTubes.PlainFin "Choice of fin geometry"
-                             annotation (Dialog(group="HeatExchanger"));
+      FluidDissipation.Utilities.Types.HTXGeometry_roundTubes.PlainFin
+    "Choice of fin geometry" annotation (Dialog(group="HeatExchanger"));
 
   parameter SI.Area A_fr=1 "Frontal Area"
     annotation (Dialog(group="HeatExchanger"));
@@ -84,10 +86,12 @@ model RoundTubeHeatTransferModel "Round tube heat exchanger: Application heat tr
     m_flow=m_flow)
     annotation (Placement(transformation(extent={{-60,20},{-40,40}})));
 
-  SI.Area A_cross=A_fr*((F_p*P_t - F_p*D_c - (P_t - D_c)*delta_f)/(F_p*P_t)) "Minimum flow cross-sectional area";
+  SI.Area A_cross=A_fr*((F_p*P_t - F_p*D_c - (P_t - D_c)*delta_f)/(F_p*P_t))
+    "Minimum flow cross-sectional area";
   SI.Length D_h=if geometry ==FluidDissipation.Utilities.Types.HTXGeometry_roundTubes.LouverFin
                                                                                        then
-            4*A_cross/(A_fr*(2*(P_t - D_c + F_p)/(F_p*(P_t - D_c)))) else 0 "Hydraulic diameter";
+            4*A_cross/(A_fr*(2*(P_t - D_c + F_p)/(F_p*(P_t - D_c)))) else 0
+    "Hydraulic diameter";
 
   SI.Area A_kc=if geometry ==FluidDissipation.Utilities.Types.HTXGeometry_roundTubes.PlainFin
        or geometry ==FluidDissipation.Utilities.Types.HTXGeometry_roundTubes.LouverFin
@@ -96,11 +100,14 @@ model RoundTubeHeatTransferModel "Round tube heat exchanger: Application heat tr
       F_p)) else if geometry ==FluidDissipation.Utilities.Types.HTXGeometry_roundTubes.WavyFin
                                                                                        then
             A_fr*((N*PI*D_c*(F_p - delta_f) + 2*(P_t*L - N*PI*D_c^2/4)*(sqrt(
-      X_f^2 + P_d^2)/X_f))/(P_t*F_p)) else 0 "Heat transfer area for convective heat transfer coefficient (kc)";
+      X_f^2 + P_d^2)/X_f))/(P_t*F_p)) else 0
+    "Heat transfer area for convective heat transfer coefficient (kc)";
 
-  SI.Velocity velocity=abs(m_flow)/max(Modelica.Constants.eps, (rho*A_cross)) "Mean velocity";
+  SI.Velocity velocity=abs(m_flow)/max(Modelica.Constants.eps, (rho*A_cross))
+    "Mean velocity";
 
-  SI.ReynoldsNumber Re=rho*velocity*D_c/eta "Reynolds number based on fin collar diameter";
+  SI.ReynoldsNumber Re=rho*velocity*D_c/eta
+    "Reynolds number based on fin collar diameter";
   SI.NusseltNumber Nu=kc*D_c/lambda "Nusselt number";
 
 equation

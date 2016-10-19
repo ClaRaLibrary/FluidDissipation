@@ -3,11 +3,14 @@ function kc_flatTube_KC
   extends Modelica.Icons.Function;
   //SOURCE: A.M. Jacobi, Y. Park, D. Tafti, X. Zhang. AN ASSESSMENT OF THE STATE OF THE ART, AND POTENTIAL DESIGN IMPROVEMENTS, FOR FLAT-TUBE HEAT EXCHANGERS IN AIR CONDITIONING AND REFRIGERATION APPLICATIONS - PHASE I
   //input records
-  input FluidDissipation.HeatTransfer.HeatExchanger.kc_flatTube_IN_con IN_con "Input record for function kc_flatTube_KC";
-  input FluidDissipation.HeatTransfer.HeatExchanger.kc_flatTube_IN_var IN_var "Input record for function kc_flatTube_KC";
+  input FluidDissipation.HeatTransfer.HeatExchanger.kc_flatTube_IN_con IN_con
+    "Input record for function kc_flatTube_KC";
+  input FluidDissipation.HeatTransfer.HeatExchanger.kc_flatTube_IN_var IN_var
+    "Input record for function kc_flatTube_KC";
 
   //output variables
-  output SI.CoefficientOfHeatTransfer kc "Output for function kc_flatTubePlateFin_KC";
+  output SI.CoefficientOfHeatTransfer kc
+    "Output for function kc_flatTubePlateFin_KC";
 
   import TYP = FluidDissipation.Utilities.Types.HTXGeometry_flatTubes;
 
@@ -21,12 +24,13 @@ protected
   SI.ReynoldsNumber Re_Lp=max(MIN, (abs(IN_var.m_flow)*IN_con.L_p/(IN_var.eta*
       A_c))) "Reynolds number based on louver pitch";
   SI.PrandtlNumber Pr=IN_var.eta*IN_var.cp/IN_var.lambda "Prandtl number";
-  Real j "Colburn j faktor";
+  Real j "Colburn j factor";
 
   SI.Area A_c=if IN_con.geometry == TYP.LouverFin then IN_con.A_fr*((IN_con.F_l
        - IN_con.delta_f)*(IN_con.F_p - IN_con.delta_f)/((IN_con.F_l + IN_con.D_m)
       *IN_con.F_p)) else if IN_con.geometry == TYP.RectangularFin then IN_con.A_fr
-      *(h*s/((h + t + IN_con.D_m)*(s + t))) else 0 "Minimum flow cross-sectional area";
+      *(h*s/((h + t + IN_con.D_m)*(s + t))) else 0
+    "Minimum flow cross-sectional area";
   SI.Length h=if IN_con.geometry == TYP.RectangularFin then IN_con.D_h*(1 +
       IN_con.alpha)/(2*IN_con.alpha) else 0 "Free flow height";
   SI.Length l=if IN_con.geometry == TYP.RectangularFin then t/IN_con.delta else
