@@ -1,4 +1,4 @@
-within FluidDissipation.PressureLoss.HeatExchanger;
+ï»¿within FluidDissipation.PressureLoss.HeatExchanger;
 function dp_corrugatedPlate_1ph_DP
   "1-phase pressure loss of corrugated plate heat exchanger"
   extends Modelica.Icons.Function;
@@ -30,8 +30,8 @@ protected
     "Reynolds number based on hydraulic diameter";
 
   Real xi "pressure loss coefficient";
-  Real xi_0 "pressure loss coefficient if phi=0°";
-  Real xi_1 "pressure loss coefficient if phi=90°";
+  Real xi_0 "pressure loss coefficient if phi=0 deg";
+  Real xi_1 "pressure loss coefficient if phi=90 deg";
 
   SI.Velocity w=max(MIN, abs(m_flow)/(IN_var.rho*A_c)) "Velocity";
 
@@ -42,7 +42,7 @@ protected
   Real Phi = 1/6*(1+sqrt(1+X^2)+4*sqrt(1+0.5*X^2)) "area enhancement factor";
 
 algorithm
-  //pressure loss coefficient if phi=0°
+  //pressure loss coefficient if phi=0ï¿½
   xi_0 := SMOOTH(
     2000+100,
     2000-100,
@@ -52,7 +52,7 @@ algorithm
     2000+100,
     Re)*(64/Re);
 
-  //pressure loss coefficient if phi=90°
+  //pressure loss coefficient if phi=90ï¿½
   xi_1 := IN_con.a*(SMOOTH(
     2000+100,
     2000-100,
@@ -175,14 +175,14 @@ The pressure loss coefficient <b> xi </b> for different corrugation angles is in
 
 <p>
 <ul>
-  <li> xi_0(<b>phi = 0°</b>):
+  <li> xi_0(<b>phi = 0 deg</b>):
      <pre>
         <table>
         <tr><td>   xi_0 = 64 / Re                        </td><td> for <b>Re &lt; 2000</b>,</td></tr>
         <tr><td>   xi_0 = 1 / (1.8 * lg(Re) - 1.5)^2        </td><td> for <b>Re &ge; 2000</b>,</td></tr>
         </table>
      </pre>
-  <li> xi_1(<b>phi = 90°</b>):
+  <li> xi_1(<b>phi = 90 deg</b>):
      <pre>
         <table>
         <tr><td>   xi_1 = a * 597 / Re + 3.85                </td><td> for <b>Re &lt; 2000</b>,</td></tr>
@@ -222,7 +222,7 @@ The pressure loss of the same type of heat exchangers with three different corru
 
 <h4><font color=\"#EF9B13\">References</font></h4> 
 <dl>
-<dl><dt>A. Leveque, E.-U. Schlünder and h. Martin </dt>
+<dl><dt>A. Leveque, E.-U. Schluender and h. Martin </dt>
 <dd><b>Pressure Loss and Heat Transfer in Plate Heat Exchangers</b> (in German). in VDI-Waermeatlas, 10th edition,  VDI-Verlag, 2006.</dd>
 </dl>
 

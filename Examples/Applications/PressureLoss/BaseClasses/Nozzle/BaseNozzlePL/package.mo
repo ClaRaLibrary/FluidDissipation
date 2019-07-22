@@ -10,5 +10,4 @@ package BaseNozzlePL "Base package for all pressure loss functions of a nozzle"
     output SI.Pressure DP_tot "Total pressure loss";
 
   end pressureLoss_mflow;
-
 end BaseNozzlePL;

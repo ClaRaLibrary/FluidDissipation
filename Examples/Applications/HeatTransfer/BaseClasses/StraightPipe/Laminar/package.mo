@@ -12,7 +12,6 @@ algorithm
 
 end coefficientOfHeatTransfer;
 
-
 annotation (Documentation(info="<html>
 <p>
 In this package the heat transfer function <a href=\"Modelica://FluidDissipation.HeatTransfer.StraightPipe.kc_laminar_KC\"> kc_laminar_KC </a> of a straight pipe out of the <b> FluidDissipation </b> library is implemented into an usable form for replaceable calculations of convective heat transfer coefficients. All functions for <a href=\"Modelica://FluidDissipation.Examples.Applications.StraightPipe\"> straight pipes </a> are integrated within the <b>Modelica_Fluid </b> library as thermo-hydraulic framework.

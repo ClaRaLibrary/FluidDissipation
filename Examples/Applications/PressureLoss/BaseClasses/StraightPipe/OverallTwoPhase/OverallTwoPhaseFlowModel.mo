@@ -5,8 +5,9 @@ model OverallTwoPhaseFlowModel
   //base flow model
   extends
     FluidDissipation.Examples.Applications.PressureLoss.BaseClasses.StraightPipe.BaseStraightPipePL.BaseStraightPipeModel(redeclare
-      package                                                                                                                               Medium =
-        Modelica.Media.Water.WaterIF97_ph);
+      replaceable package                                                                                                       Medium =
+        Modelica.Media.Water.WaterIF97_ph constrainedby
+      Modelica.Media.Interfaces.PartialTwoPhaseMedium);
 
   //pressure loss calculation
   parameter SI.Area A_cross=PI*0.1^2/4 "Cross sectional area";
@@ -14,21 +15,21 @@ model OverallTwoPhaseFlowModel
   parameter SI.Length length=1 "Length in fluid flow direction";
 
 
-  Modelica.SIunits.SpecificEnthalpy h_dew_a = Medium.specificEnthalpy(Medium.setDewState(sat_a));
-  Modelica.SIunits.SpecificEnthalpy h_bub_a = Medium.specificEnthalpy(Medium.setBubbleState(sat_a));
-  Modelica.SIunits.SpecificEnthalpy h_dew_b = Medium.specificEnthalpy(Medium.setDewState(sat_b));
-  Modelica.SIunits.SpecificEnthalpy h_bub_b = Medium.specificEnthalpy(Medium.setBubbleState(sat_b));
+  Modelica.SIunits.SpecificEnthalpy h_dew_a = Medium.specificEnthalpy(Medium.setDewState(Medium.SaturationProperties(Tsat=Medium.saturationTemperature(state_a.p), psat=Medium.pressure(state_a))));
+  Modelica.SIunits.SpecificEnthalpy h_bub_a = Medium.specificEnthalpy(Medium.setBubbleState(Medium.SaturationProperties(Tsat=Medium.saturationTemperature(state_a.p), psat=Medium.pressure(state_a))));
+  Modelica.SIunits.SpecificEnthalpy h_dew_b = Medium.specificEnthalpy(Medium.setDewState(Medium.SaturationProperties(Tsat=Medium.saturationTemperature(state_b.p), psat=Medium.pressure(state_b))));
+  Modelica.SIunits.SpecificEnthalpy h_bub_b = Medium.specificEnthalpy(Medium.setBubbleState(Medium.SaturationProperties(Tsat=Medium.saturationTemperature(state_b.p), psat=Medium.pressure(state_b))));
   Real x_flow_end = (Medium.specificEnthalpy(state_b)-h_bub_b)/(h_dew_b-h_bub_b);
   Real x_flow_sta = (Medium.specificEnthalpy(state_a)-h_bub_a)/(h_dew_a-h_bub_a);
-  Modelica.SIunits.Density rho_g = Medium.dewDensity(sat);
-  Modelica.SIunits.Density rho_l = Medium.bubbleDensity(sat);
-  Modelica.SIunits.DynamicViscosity eta_g = Medium.dynamicViscosity(state=Medium.setDewState(sat));
-  Modelica.SIunits.DynamicViscosity eta_l = Medium.dynamicViscosity(state=Medium.setBubbleState(sat));
-  Modelica.SIunits.SurfaceTension sigma = Medium.surfaceTension(sat);
+  Modelica.SIunits.Density rho_g = Medium.dewDensity(Medium.SaturationProperties(Tsat=Medium.saturationTemperature(state.p), psat=Medium.pressure(state)));
+  Modelica.SIunits.Density rho_l = Medium.bubbleDensity(Medium.SaturationProperties(Tsat=Medium.saturationTemperature(state.p), psat=Medium.pressure(state)));
+  Modelica.SIunits.DynamicViscosity eta_g = Medium.dynamicViscosity(state=Medium.setDewState(Medium.SaturationProperties(Tsat=Medium.saturationTemperature(state.p), psat=Medium.pressure(state))));
+  Modelica.SIunits.DynamicViscosity eta_l = Medium.dynamicViscosity(state=Medium.setBubbleState(Medium.SaturationProperties(Tsat=Medium.saturationTemperature(state.p), psat=Medium.pressure(state))));
+  Modelica.SIunits.SurfaceTension sigma = Medium.surfaceTension(Medium.SaturationProperties(Tsat=Medium.saturationTemperature(state.p), psat=Medium.pressure(state)));
 
-  Modelica.Media.R134a.R134a_ph.SaturationProperties sat = Medium.SaturationProperties(Tsat=Medium.saturationTemperature(state.p), psat=Medium.pressure(state));
-  Modelica.Media.R134a.R134a_ph.SaturationProperties sat_a = Medium.SaturationProperties(Tsat=Medium.saturationTemperature(state_a.p), psat=Medium.pressure(state_a));
-  Modelica.Media.R134a.R134a_ph.SaturationProperties sat_b = Medium.SaturationProperties(Tsat=Medium.saturationTemperature(state_b.p), psat=Medium.pressure(state_b));
+  //Modelica.Media.R134a.R134a_ph.SaturationProperties sat = Medium.SaturationProperties(Tsat=Medium.saturationTemperature(state.p), psat=Medium.pressure(state));
+ // Modelica.Media.R134a.R134a_ph.SaturationProperties sat_a = Medium.SaturationProperties(Tsat=Medium.saturationTemperature(state_a.p), psat=Medium.pressure(state_a));
+  //Modelica.Media.R134a.R134a_ph.SaturationProperties sat_b = Medium.SaturationProperties(Tsat=Medium.saturationTemperature(state_b.p), psat=Medium.pressure(state_b));
 
   FluidDissipation.Examples.Applications.PressureLoss.BaseClasses.StraightPipe.OverallTwoPhase.PressureLossInput_con
     IN_con(

@@ -46,6 +46,9 @@ model dp_pressureLossCoefficient
   //target == M_FLOW (compressible)
   SI.MassFlowRate M_FLOW[n] "mass flow rate" annotation (Dialog(group="Output"));
 
+  Real ZETA_TOT_COMP[n] "darcy friction factor comp. flow" annotation (Dialog(group="Output"));
+  Real ZETA_TOT_INCOMP[n] "darcy friction factor incomp. flow" annotation (Dialog(group="Output"));
+
   FluidDissipation.Utilities.Records.PressureLoss.PressureLossInput chosenTarget_DP[n](m_flow=
        input_mdot, each target=FluidDissipation.Utilities.Types.PressureLossTarget.PressureLoss)
     annotation (Placement(transformation(extent={{-110,-8},{-90,12}})));
@@ -64,8 +67,8 @@ model dp_pressureLossCoefficient
     phase=0,
     startTime=0,
     freqHz=1,
-    amplitude=1) annotation (Placement(
-        transformation(extent={{-40,-80},{-20,-60}})));
+    amplitude=1)
+    annotation (Placement(transformation(extent={{-40,-80},{-20,-60}})));
   Modelica.Blocks.Sources.Exponentials input_mflow_2(
     offset=0,
     startTime=0,
@@ -78,7 +81,7 @@ model dp_pressureLossCoefficient
   Real DP_plot[n]={DP[i] for i in 1:n} "Pressure loss [Pa]";
 equation
   for i in 1:n loop
-    (,M_FLOW[i],,,,) =
+    (,M_FLOW[i],ZETA_TOT_COMP[i],,,) =
       FluidDissipation.PressureLoss.General.dp_pressureLossCoefficient(
       dp_IN_con[i],
       dp_IN_var[i],
@@ -86,7 +89,7 @@ equation
   end for;
 
   for i in 1:n loop
-    (DP[i],,,,,) =
+    (DP[i],,ZETA_TOT_INCOMP[i],,,) =
       FluidDissipation.PressureLoss.General.dp_pressureLossCoefficient(
       m_flow_IN_con[i],
       m_flow_IN_var[i],

@@ -32,11 +32,12 @@ function dp_Tjoin_symmetric
   output TYP.LocalResistanceCoefficient zeta_LOC[2]
     "local resistance coefficient [left-bottom,right-bottom]"
     annotation (Dialog(group="Output"));
-  output SI.ReynoldsNumber Re[3] "Reynolds number"
+  // Re has no meaning for this function
+  final output SI.ReynoldsNumber Re[3] = zeros(3) "Reynolds number"
     annotation (Dialog(group="Output"));
   final output SI.PrandtlNumber Pr=0 "Prandtl number"
     annotation (Dialog(group="Output"));
-  output Integer failureStatus
+  output Real failureStatus
     "0== boundary conditions fulfilled | 1== failure >> check if still meaningful results"
     annotation (Dialog(group="Output"));
 
@@ -104,12 +105,12 @@ protected
 
 algorithm
   //coefficient for different angles of branching
-  //SOURCE: p.418 sec. 7-16 (united_converging_crossection == false)
+  //SOURCE: p.418 sec. 7-16 (united_converging_cross_section == false)
   A := {if frac_Across[i] <= 0.35 then 1 else if frac_Across[i] > 0.35 then
           max(min(-0.6527*(frac_Vflow[i])^3 + 1.6970*(frac_Vflow[i])^2 -
     1.4058*(frac_Vflow[i]) + 0.9166, 1), 0.5) else 0 for i in 1:2};
   /*for i in 1:2 loop
-    A[i] := if IN_con.united_converging_crossection then 1 else if frac_Across[i]
+    A[i] := if IN_con.united_converging_cross_section then 1 else if frac_Across[i]
        <= 0.35 and frac_Vflow[i] <= 1 then 1 else if frac_Across[i] > 0.35 and
       frac_Vflow[i] <= 0.4 then 0.9*(1 - frac_Vflow[i]) else if frac_Across[i]
        > 0.35 and frac_Vflow[i] > 0.4 then 0.55 else 0;
@@ -173,7 +174,7 @@ algorithm
   //OUT.M_FLOW := m_flow;
 
   //failure status
-  fstatus[1] := if not (IN_con.united_converging_crossection) then if abs(
+  fstatus[1] := if not (IN_con.united_converging_cross_section) then if abs(
     A_cross[2] - A_cross[3]) < minimum then 0 else 1 else 0;
   fstatus[2] := if abs(m_flow[1] + m_flow[2] + m_flow[3]) <
     minimum then 0 else 1 "check of mass balance";
@@ -191,7 +192,7 @@ algorithm
 
   //joint := if sign(m_flow[3]) < 0 then 1 else 0;
 
-  annotation (Inline=false, smoothOrder(normallyConstant=IN_con) = 2,Documentation(info="<html>
+  annotation (Inline=false, smoothOrder(normallyConstant=IN_con) = 2,Documentation(info = "<html>
 <p>
 Calculation of pressure loss in a symmetric T-junction acting as T-join for merging the incompressible fluid flow entering through side branches into a total fluid flow at the bottom passage.
 This T-split can be calculated for a standard geometry with an equal and constant crossectional area at a branching angle of 90&deg;.
@@ -321,6 +322,8 @@ The corresponding (thermodynamic) pressure losses w.r.t the prior pressure loss 
 <dt>Idelchik,I.E.:</dt>
     <dd><b>Handbook of hydraulic resistance</b>.
     Jaico Publishing House,Mumbai,3rd edition, 2006.</dd>
-</html>
-"));
+</html>", revisions = "<html>
+2017-03-24 Stefan Wischhusen: Provided reasonable outputs for all outputs of the function.
+2017-03-24 Stefan Wischhusen: Changed type of failureStatus to Real.
+</html>"));
 end dp_Tjoin_symmetric;

@@ -12,5 +12,4 @@ package BaseHeatExchangerHT "Base package for all heat transfer functions of a h
     "convective heat transfer coefficient";
 
   end coefficientOfHeatTransfer;
-
 end BaseHeatExchangerHT;

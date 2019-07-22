@@ -19,8 +19,8 @@ public
   Modelica.Blocks.Sources.Sine input_mflow(
     offset=0,
     freqHz=1,
-    amplitude=10) annotation (Placement(
-        transformation(extent={{-200,-12},{-180,8}})));
+    amplitude=10)
+    annotation (Placement(transformation(extent={{-200,-12},{-180,8}})));
 
 public
   Modelica.Blocks.Sources.RealExpression input_p(y=from_mflow.port_a.p)

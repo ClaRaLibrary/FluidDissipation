@@ -89,8 +89,8 @@ model dp_idealGas "Verification of function dp_idealGas"
     phase=0,
     startTime=0,
     freqHz=1,
-    amplitude=1) annotation (Placement(
-        transformation(extent={{-40,-80},{-20,-60}})));
+    amplitude=1)
+    annotation (Placement(transformation(extent={{-40,-80},{-20,-60}})));
   Modelica.Blocks.Sources.Exponentials input_mflow_2(
     offset=0,
     startTime=0,

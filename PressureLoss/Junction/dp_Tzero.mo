@@ -25,16 +25,18 @@ function dp_Tzero "zero mass flow rate through general T-junction"
     annotation (Dialog(group="Output"));
   final output SI.PrandtlNumber Pr=0 "Prandtl number"
     annotation (Dialog(group="Output"));
-  output Integer failureStatus
+  output Real failureStatus
     "0== boundary conditions fulfilled | 1== failure >> check if still meaningful results"
     annotation (Dialog(group="Output"));
 
 algorithm
-  failureStatus := 1;
+  failureStatus := 1.0;
   //joint := 0;
   zeta_LOC := zeros(2);
+  Re := zeros(3);
   DP := zeros(2);
   M_FLOW := zeros(3);
   //velocity := zeros(3);
-annotation (Inline=true, smoothOrder(normallyConstant=IN_con) = 2);
+annotation (Inline=true, smoothOrder(normallyConstant=IN_con) = 2,
+    Documentation);
 end dp_Tzero;

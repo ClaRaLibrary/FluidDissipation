@@ -1,5 +1,5 @@
 within FluidDissipation.Utilities.Functions.HeatTransfer;
-package TwoPhase 
-extends Icons.Package;
+package TwoPhase
+extends Modelica.Icons.FunctionsPackage;
 
 end TwoPhase;

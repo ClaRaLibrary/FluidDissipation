@@ -44,5 +44,4 @@ href=\"Modelica://FluidDissipation.Examples.TestCases.PressureLoss.Orifice\"> Te
 </html>
 "));
 end massFlowRate_dp;
-
 end ThickEdgedOverall;

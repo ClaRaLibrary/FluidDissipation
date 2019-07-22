@@ -1,4 +1,4 @@
 within FluidDissipation.Utilities.Functions;
-package HeatTransfer 
-extends Icons.Package;
+package HeatTransfer
+extends Modelica.Icons.FunctionsPackage;
 end HeatTransfer;

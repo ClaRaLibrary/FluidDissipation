@@ -7,7 +7,7 @@ model dp_volumeFlowRate "Verification of function dp_volumeFlowRate"
     "Input volume flow rate";
 
   //general variables
-  parameter Real a[:](unit="(Pa.s2)/m6") = {15,30,45}
+  parameter Real a[:](each unit="(Pa.s2)/m6") = {15,30,45}
     "coefficient for quadratic term" annotation (Dialog(group="Input"));
   parameter Real b(unit="(Pa.s)/m3") = 0 "coefficient for linear term"
     annotation (Dialog(group="Input"));
@@ -64,8 +64,8 @@ model dp_volumeFlowRate "Verification of function dp_volumeFlowRate"
     phase=0,
     startTime=0,
     freqHz=1,
-    amplitude=1) annotation (Placement(
-        transformation(extent={{-40,-80},{-20,-60}})));
+    amplitude=1)
+    annotation (Placement(transformation(extent={{-40,-80},{-20,-60}})));
   Modelica.Blocks.Sources.Exponentials input_mflow_2(
     offset=0,
     startTime=0,

@@ -9,8 +9,7 @@ public
     freqHz=1,
     offset=0,
     amplitude=0.001)
-                 annotation (Placement(
-        transformation(extent={{-100,-50},{-80,-30}})));
+    annotation (Placement(transformation(extent={{-100,-50},{-80,-30}})));
 
 public
   Modelica.Blocks.Sources.RealExpression input_p(y=from_mflow.port_a.p)

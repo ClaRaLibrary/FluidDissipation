@@ -30,17 +30,18 @@ function dp_Tsplit
   output TYP.LocalResistanceCoefficient zeta_LOC[2]
     "local resistance coefficient [total-side,total-straight]"
     annotation (Dialog(group="Output"));
-  output SI.ReynoldsNumber Re[3] "Reynolds number"
+  // Re has no meaning for this function
+  final output SI.ReynoldsNumber Re[3] = zeros(3) "Reynolds number"
     annotation (Dialog(group="Output"));
   final output SI.PrandtlNumber Pr=0 "Prandtl number"
     annotation (Dialog(group="Output"));
-  output Integer failureStatus
+  output Real failureStatus
     "0== boundary conditions fulfilled | 1== failure >> check if still meaningful results"
     annotation (Dialog(group="Output"));
 
 protected
   constant Real coef[3]={2.2511,-3.3072,1.2258}
-    "polynomial coefficients for split AND united_converging_crossection == true (least square method with data out of SOURCE at p.455";
+    "polynomial coefficients for split AND united_converging_cross_section == true (least square method with data out of SOURCE at p.455";
   constant Real coef_2[3]={-2.9720,5.2720,-2.0594}
     "polynomial coefficients for tau_st in split (least square method with data out of SOURCE at p.453";
   constant Real minimum=Modelica.Constants.eps;
@@ -111,17 +112,17 @@ protected
 algorithm
   //parameter of split
   //SOURCE: p.418 table 7-4
-  /*A_div := if IN_con.united_converging_crossection then 1 else if frac_Across[1]
+  /*A_div := if IN_con.united_converging_cross_section then 1 else if frac_Across[1]
      <= 0.35 and frac_Vflow[1] <= 0.4 then 1.1 - 0.7*frac_Vflow[1] else if
     frac_Across[1] <= 0.35 and frac_Vflow[1] > 0.4 then 0.85 else if
     frac_Across[1] > 0.35 and frac_Vflow[1] <= 0.6 then 1.0 - 0.6*frac_Vflow[1]
      else if frac_Across[1] > 0.35 and frac_Vflow[1] > 0.6 then 0.6 else 0;*/
   // polynom out of data from SOURCE: p.418 table 7-4 (least square method)
-  /*A_div := if IN_con.united_converging_crossection then 1 else if frac_Across[
+  /*A_div := if IN_con.united_converging_cross_section then 1 else if frac_Across[
     1] <= 0.35 then max(min(1.1 - 0.7*frac_Vflow[1], 1.1), 0.85) else if
     frac_Across[1] > 0.35 then max(min(1.0 - 0.6*frac_Vflow[1], 1), 0.6) else
           0;*/
-  A_div := if IN_con.united_converging_crossection then 1 else if frac_Across[
+  A_div := if IN_con.united_converging_cross_section then 1 else if frac_Across[
     1] <= 0.35 then SMOOTH_2(
           0.3,
           0.41,
@@ -137,18 +138,18 @@ algorithm
           frac_Vflow[1])*0.6 else 0;
 
   //SOURCE: p.419 table 7-5
-  /*K_s1_div := if IN_con.united_converging_crossection then if alpha <= 15 then
+  /*K_s1_div := if IN_con.united_converging_cross_section then if alpha <= 15 then
           0.04 else if alpha <= 30 then 0.16 else if alpha <= 45 then
     0.36 else if alpha <= 60 then 0.64 else if alpha <= 90 then 1.0 else
     0 else 0;*/
   //polynom out of data from SOURCE: p.419 table 7-5 (least square method)
-  K_s1_div := if IN_con.united_converging_crossection then max(min(0.0133*
+  K_s1_div := if IN_con.united_converging_cross_section then max(min(0.0133*
     alpha - 0.2, 1), 0) else 0;
 
   //SOURCE: p.453 diagram 7-20
 
   //polynom out of data from SOURCE: SOURCE: p.453 diagram 7-20 (least square method)
-  if not IN_con.united_converging_crossection and frac_Across[1]==1 then
+  if not IN_con.united_converging_cross_section and frac_Across[1]==1 then
   tau_st := if frac_Across[1] <= 0.4 then 0.4 else
           if frac_Across[1] > 0.4 and frac_Vflow[1] <= 0.5 then 2*(2*frac_Vflow[1] - 1) else if frac_Across[1] > 0.4 and frac_Vflow[1] >
     0.5 then 0.3*(2*frac_Vflow[1] - 1) else 0;
@@ -166,16 +167,16 @@ algorithm
     180)) - K_s1_div*(frac_v[1])^2)));
 
   //local resistance coefficient for straight branch
-  //a) united_converging_crossection == true
+  //a) united_converging_cross_section == true
   //SOURCE: p.455 diagram 7-20 (table)
-  //ASSUMPTION: Calculation independent of united_converging_crosssection (no equation in Idelchik for: SPLIT = true AND united_converging_crossection == true*/
-  //b) united_converging_crossection == false
+  //ASSUMPTION: Calculation independent of united_converging_crosssection (no equation in Idelchik for: SPLIT = true AND united_converging_cross_section == true*/
+  //b) united_converging_cross_section == false
   //SOURCE: p.453 diagram 7-20 (table)
-  zeta_LOC_straight := max(zeta_LOC_min, min(zeta_LOC_max, if IN_con.united_converging_crossection
+  zeta_LOC_straight := max(zeta_LOC_min, min(zeta_LOC_max, if IN_con.united_converging_cross_section
      and IN_con.velocity_reference_branches then min(4, (coef[3]*frac_v_inv[2]
-    ^2 + coef[2]*frac_v_inv[2] + coef[1])) else if IN_con.united_converging_crossection
+    ^2 + coef[2]*frac_v_inv[2] + coef[1])) else if IN_con.united_converging_cross_section
      and not (IN_con.velocity_reference_branches) then min(4, coef[3] + coef[
-    2]*frac_v[2] + coef[1]*frac_v[2]*frac_v[2]) else if not (IN_con.united_converging_crossection)
+    2]*frac_v[2] + coef[1]*frac_v[2]*frac_v[2]) else if not (IN_con.united_converging_cross_section)
      and IN_con.velocity_reference_branches then (tau_st*(frac_Vflow[1])^2)*
     frac_v_inv[2]^2 else tau_st*(frac_Vflow[1])^2));
   zeta_LOC := {zeta_LOC_side,zeta_LOC_straight};
@@ -224,7 +225,7 @@ algorithm
   //OUT.M_FLOW := m_flow;
 
   //failure status
-  fstatus[1] := if not (IN_con.united_converging_crossection) then if abs(
+  fstatus[1] := if not (IN_con.united_converging_cross_section) then if abs(
     A_cross[2] - A_cross[3]) < minimum then 0 else 1 else 0;
   fstatus[2] := if abs(m_flow[1] + m_flow[2] + m_flow[3]) <
     minimum then 0 else 1 "check of mass balance";
@@ -241,7 +242,7 @@ algorithm
      == 1 or fstatus[4] == 1 then 1 else 0;
 
   //OUT.joint := if sign(m_flow[3]) < 0 then 1 else 0;
-  annotation (Inline=false, smoothOrder(normallyConstant=IN_con) = 2,Documentation(info="<html>
+  annotation (Inline=false, smoothOrder(normallyConstant=IN_con) = 2,Documentation(info = "<html>
 <p>
 Calculation of pressure loss in a T-junction acting as split for separating an incompressible fluid flow through a total passage into a side branch and a straight passage.
 This T-split can be calculated for standard geometries with varying branching angle of the side branch and different hydraulic diameters of the passages.
@@ -452,7 +453,7 @@ Note that this function delivers a failure status without terminating the simula
  
 <ul>
  <li> check of geometry:
-      failure status is true if united_converging_crossection is not used and the crossectional areas of the total passage and the straight passage have not the same hydraulic diameter
+      failure status is true if united_converging_cross_section is not used and the crossectional areas of the total passage and the straight passage have not the same hydraulic diameter
  <li> check of mass balance:
       failure status is true the mass balance is temporarily not fulfilled
  <li> check of flow situation:
@@ -472,6 +473,8 @@ Note that this function delivers a failure status without terminating the simula
     <dd><b>VDI - W&auml;rmeatlas: Berechnungsbl&auml;tter f&uuml;r den W&auml;rme&uuml;bergang</b>.
     Springer Verlag, 9th edition, 2002.</dd>
 </dl>
-</html>
-"));
+</html>", revisions = "<html>
+2017-03-24 Stefan Wischhusen: Provided reasonable outputs for all outputs of the function.
+2017-03-24 Stefan Wischhusen: Changed type of failureStatus to Real.
+</html>"));
 end dp_Tsplit;

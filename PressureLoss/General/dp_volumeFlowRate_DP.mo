@@ -20,24 +20,25 @@ function dp_volumeFlowRate_DP
   output SI.Pressure DP "Output for function dp_volumeFlowRate_DP";
 
 protected
-  Real a=max(Modelica.Constants.eps, abs(IN_con.a));
-  Real b=max(Modelica.Constants.eps, abs(IN_con.b));
+  Real a=abs(IN_con.a);
+  Real b=abs(IN_con.b);
 
   SI.VolumeFlowRate V_flow=m_flow/max(Modelica.Constants.eps, IN_var.rho)
     "Volume flow rate";
   SI.Pressure dp_min=IN_con.dp_min
     "Start of approximation for decreasing pressure loss";
-  SI.VolumeFlowRate V_flow_smooth=if IN_con.a > 0 then -(b/(2*a) + ((-b/(2*a))^
-      2 + dp_min/a)^0.5) else dp_min/b
+  SI.VolumeFlowRate V_flow_smooth=if a > 0 then -b/(2*a) + ((b/(2*a))^
+    2 + dp_min/a)^0.5 else if a<=0 and b > 0 then dp_min/b else 0
     "Start of approximation for decreasing volume flow rate";
 
   //Documentation
 
 algorithm
-  DP := a*FluidDissipation.Utilities.Functions.General.SmoothPower(
-    V_flow,
-    V_flow_smooth,
-    2) + b*V_flow;
+   assert(a+b>0, "Please provide non-zero factors for either a or b of function dp=a*V_flow^2 + b*V_flow");
+   DP := a*(if a>0 then FluidDissipation.Utilities.Functions.General.SmoothPower(
+                V_flow,
+                V_flow_smooth,
+                2) else 0) + b*V_flow;
   annotation (Inline=false,
     smoothOrder(normallyConstant=IN_con) = 2,
     inverse(m_flow=FluidDissipation.PressureLoss.General.dp_volumeFlowRate_MFLOW(
@@ -108,5 +109,7 @@ The generic pressure loss <b> dp </b> for different coefficients <b> a </b> as p
     <dd><b>Dynamische Simulation zur wirtschaftlichen Bewertung von komplexen Energiesystemen.</b>.
     PhD thesis, Technische Universit&auml;t Hamburg-Harburg, 2005.</dd>
 </dl>
+</html>", revisions="<html>
+2018-11-21 Stefan Wischhusen: Fixed problem for linear case (a=0 and b>0).
 </html>"));
 end dp_volumeFlowRate_DP;

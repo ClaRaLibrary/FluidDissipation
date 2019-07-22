@@ -43,5 +43,4 @@ href=\"Modelica://FluidDissipation.Examples.TestCases.PressureLoss.Channel\"> Te
 </html>
 "));
 end massFlowRate_dp;
-
 end Overall;

@@ -9,7 +9,7 @@ record Bend "Input for bend"
   SI.Diameter d_hyd(min=Modelica.Constants.eps) = 0.1 "Hydraulic diameter"
     annotation (Dialog(group="Bend"));
   SI.Length K=0 "Roughness (average height of surface asperities)" annotation (
-      Dialog(group="Bend", enable=roughness == FluidDissipation.Utilities.Types.Roughness.considered));
+      Dialog(group="Bend", enable=roughness == FluidDissipation.Utilities.Types.Roughness.Considered));
   SI.Length L=10*d_hyd
     "Length of the straight starting section before the bend"
     annotation (Dialog(group="Bend"));

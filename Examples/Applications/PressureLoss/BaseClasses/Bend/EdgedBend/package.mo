@@ -43,5 +43,4 @@ href=\"Modelica://FluidDissipation.Examples.TestCases.PressureLoss.Bend\"> Test:
 </html>
 "));
 end massFlowRate_dp;
-
 end EdgedBend;

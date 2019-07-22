@@ -44,5 +44,4 @@ href=\"Modelica://FluidDissipation.Examples.TestCases.PressureLoss.HeatExchanger
 </html>
 "));
   end pressureLoss_mflow;
-
 end FlatTube;

@@ -23,15 +23,18 @@ extends FluidDissipation.Utilities.Icons.Package;
 
 annotation (
   preferredView="info",
-  version="1.1.8",
-  uses(Modelica(version="3.2.2")),
+  version="1.1.9",
+  uses(Modelica(version="3.2.3")),
   conversion(
  from(version="1.0 Beta 8a", script="./Extras/Scripts/ConvertFluidDissipation_from_Beta8_to_Beta9.mos"),
   from(version="1.0 Beta 8b", script="./Extras/Scripts/ConvertFluidDissipation_from_Beta8_to_Beta9.mos"),
     from(version="1.0 Beta 8c", script="./Extras/Scripts/ConvertFluidDissipation_from_Beta8_to_Beta9.mos"),
-    noneFromVersion="1.0",
     from(version="1.1.4", script="./Extras/Scripts/ConvertFluidDissipation_from_1.1.4_to1.1.5.mos"),
-    from(version="1.1.7", script="./Extras/Scripts/ConvertFluidDissipation_from_1.1.7_to1.1.8.mos")),
+    from(version="1.1.7", script="./Extras/Scripts/ConvertFluidDissipation_from_1.1.7_to1.1.8.mos"),
+    from(
+      version="1.1.8",
+      script="./Extras/Scripts/ConvertFluidDissipation_from_1.1.8_to1.1.9.mos",
+      version="1.0")),
   Documentation(info="<html>
 <div align=\"center\">
  
@@ -81,7 +84,7 @@ For the following applications functions are provided:
 The library is a non-commercial product of XRG Simulation GmbH. It makes use of external, 
 non-commercial models supplied by Modelica Standard Library. In order to work correctly, 
 ensure that this library is always loaded with <b> Modelica Standard Library version 
-3.2.1</b>.<br>
+3.2.2</b>.<br>
  
 <h2> <font color=\"#EF9B13\"> Acknowledgements </font></h2>
 The following people contributed to the FluidDissipation library (alphabetical list):
@@ -98,22 +101,20 @@ German Federal Ministry for Economic Affairs and Energy (promotional references
 03ET2009C and 03ET7060D)
 </p>
  
-<h2> <font color=\"#EF9B13\"> Licence condition </font></h2>
+<h2> <font color=\"#EF9B13\"> License condition </font></h2>
 <p>
-<b>Licensed by XRG-Simulation GmbH under the Modelica License 2</b><br>
-Copyright &copy; 2007-2016, XRG Simulation GmbH.
+<strong>Licensed by XRG Simulation GmbH under the 3-Clause BSD License</strong><br>
+Copyright &copy; 2007-2019, XRG Simulation GmbH.
 </p>
  
 <p>
 <i>This Modelica package is <u>free</u> software and
 the use is completely at <u>your own risk</u>;
 it can be redistributed and/or modified under the terms of the
-Modelica license 2, see the license conditions (including the
+3-Clause BSD License, see the license conditions (including the
 disclaimer of warranty)
-<a href=\"Modelica://FluidDissipation.UsersGuide.ModelicaLicense2\">here</a></u>
-or at
-<a href=\"https://www.Modelica.org/licenses/ModelicaLicense2\">
-http://www.Modelica.org/licenses/ModelicaLicense2</a>.</i>
+<a href=\"https://opensource.org/licenses/BSD-3-Clause\">here</a>
+</i>
 </p><br>
  
 <h2> <font color=\"#EF9B13\"> Contact </font></h2>

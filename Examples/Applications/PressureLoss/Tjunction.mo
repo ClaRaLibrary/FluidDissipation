@@ -22,7 +22,7 @@ model Tjunction "Tjunction model for different constant flow situations"
   parameter Modelica.SIunits.Conversions.NonSIunits.Angle_deg alpha(min=0, max=90)=90
     "branching angle"
     annotation (Dialog(tab="General", group="Geometry"));
-  parameter Boolean united_converging_crossection=false
+  parameter Boolean united_converging_cross_section=false
     "true == A_cross_conv = A_cross_straight + A_cross_side | false == A_cross_conv > A_cross_straight + A_cross_side"
     annotation (Dialog(tab="General", group="Geometry"));
   parameter SI.Length d_hyd_1(min=Modelica.Constants.eps)=1e-1
@@ -47,7 +47,7 @@ model Tjunction "Tjunction model for different constant flow situations"
     annotation (Dialog(group="Restriction"));
   parameter Real zeta_TOT_max(min=Modelica.Constants.eps)=100
     "restriction for maximum value of total resistance coefficient"
-    annotation (Dialog(group="Restriction",enable=velocity_reference_branches));
+    annotation (Dialog(group="Restriction",enable=false));
 
   //interfaces
   Modelica.Fluid.Interfaces.FluidPort_b port_3(redeclare package Medium =
@@ -63,7 +63,7 @@ model Tjunction "Tjunction model for different constant flow situations"
   //side branch
   BaseClasses.pressureLoss_Tjunction dp_3(
     redeclare package Medium = Medium,
-    final united_converging_crossection=united_converging_crossection,
+    final united_converging_cross_section=united_converging_cross_section,
     final alpha=alpha,
     final d_hyd=d_hyd,
     final dp_min=dp_min,
@@ -82,7 +82,7 @@ model Tjunction "Tjunction model for different constant flow situations"
   //right passage according to general geometry of T-junction
   BaseClasses.pressureLoss_Tjunction dp_2(
     redeclare package Medium = Medium,
-    final united_converging_crossection=united_converging_crossection,
+    final united_converging_cross_section=united_converging_cross_section,
     final alpha=alpha,
     final d_hyd=d_hyd,
     final dp_i=2,
@@ -99,7 +99,7 @@ model Tjunction "Tjunction model for different constant flow situations"
   //left passage according to general geometry of T-junction
   BaseClasses.pressureLoss_Tjunction dp_1(
     redeclare package Medium = Medium,
-    final united_converging_crossection=united_converging_crossection,
+    final united_converging_cross_section=united_converging_cross_section,
     final alpha=alpha,
     final d_hyd=d_hyd,
     final dp_min=dp_min,

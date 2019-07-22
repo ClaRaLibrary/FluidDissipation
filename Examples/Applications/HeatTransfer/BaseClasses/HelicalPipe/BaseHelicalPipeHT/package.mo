@@ -19,5 +19,4 @@ replaceable partial function coefficientOfHeatTransfer
   output SI.CoefficientOfHeatTransfer kc "convective heat transfer coefficient";
 
 end coefficientOfHeatTransfer;
-
 end BaseHelicalPipeHT;

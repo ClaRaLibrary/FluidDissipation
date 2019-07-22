@@ -6,10 +6,10 @@ model dp_suddenChange
 
   parameter Real m_flowoo=1;
 
-  Real frac_A1toA2 "Ratio of small to large cross sectional area";
+  Real frac_A1toA2(start=0) "Ratio of small to large cross sectional area";
 
   //orifice variables
-  SI.Area A_1=A_2*frac_A1toA2 "Small cross sectional area of orifice";
+  SI.Area A_1=A_2*min(frac_A1toA2,1) "Small cross sectional area of orifice";
   SI.Area A_2=1e-2 "Large cross sectional area of orifice";
   SI.Length C_1=sqrt(4*A_1/PI)*PI
     "Perimeter of small cross sectional area of orifice";
@@ -82,8 +82,8 @@ model dp_suddenChange
     startTime=0,
     freqHz=1,
     amplitude=200,
-    offset=200) annotation (Placement(
-        transformation(extent={{-40,-80},{-20,-60}})));
+    offset=200)
+    annotation (Placement(transformation(extent={{-40,-80},{-20,-60}})));
   Modelica.Blocks.Sources.Exponentials input_mflow_2(
     offset=0,
     startTime=0,

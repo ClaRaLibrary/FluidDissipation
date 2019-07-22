@@ -8,8 +8,8 @@ public
   Modelica.Blocks.Sources.Sine input_mflow(
     freqHz=1,
     offset=0,
-    amplitude=1) annotation (Placement(
-        transformation(extent={{-100,-10},{-80,10}})));
+    amplitude=1)
+    annotation (Placement(transformation(extent={{-100,-10},{-80,10}})));
 
   Modelica.Fluid.Sources.FixedBoundary OUT_mflow(
     p=system.p_ambient,

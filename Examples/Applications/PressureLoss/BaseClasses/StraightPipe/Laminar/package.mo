@@ -43,5 +43,4 @@ href=\"Modelica://FluidDissipation.Examples.TestCases.PressureLoss.StraightPipe\
 </html>
 "));
 end massFlowRate_dp;
-
 end Laminar;

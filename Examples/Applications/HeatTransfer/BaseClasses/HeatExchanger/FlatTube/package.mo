@@ -19,5 +19,4 @@ package FlatTube "FluidDissipation: Heat Exchanger with flat tubes"
     IN_var);
 
   end coefficientOfHeatTransfer;
-
 end FlatTube;

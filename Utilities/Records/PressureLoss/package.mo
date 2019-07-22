@@ -1,5 +1,5 @@
 within FluidDissipation.Utilities.Records;
-package PressureLoss 
-  extends Icons.Package;
+package PressureLoss
+  extends Modelica.Icons.RecordsPackage;
 
 end PressureLoss;

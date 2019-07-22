@@ -4,14 +4,14 @@ model dp_conicalOverall_DPMFLOW "Verification of function dp_concialOverall_DP"
   Real MIN=Modelica.Constants.eps;
   SI.ReynoldsNumber input_Re=input_Re_0.y;
 
-  //diffuser variables
+//diffuser variables
   Real AR[6]={1.5,2,4,6,8,10};
 
-  //fluid property variables
+//fluid property variables
   SI.DynamicViscosity eta=17.1e-6 "Dynamic viscosity of fluid";
   SI.Density rho=1.2 "Density of fluid";
 
-  //target 1: zeta_loc_lam = f(Re_lam) for different alpha at constant AR
+//target 1: zeta_loc_lam = f(Re_lam) for different alpha at constant AR
   parameter Integer n=size(alpha, 1);
   SI.Diameter d_hyd_1_1=10e-3;
   SI.Diameter d_hyd_2_1=(A_2_1*4/PI)^0.5;
@@ -34,7 +34,7 @@ model dp_conicalOverall_DPMFLOW "Verification of function dp_concialOverall_DP"
   Real zeta_loc_1[n]={2*abs(DP_plot_1[i])/(max(rho*(velocity_1[i])^2, IN_con_1[
       1].velocity_small)) for i in 1:n};
 
-  //target 2: zeta_tot = f(Re) for different alpha at constant AR
+//target 2: zeta_tot = f(Re) for different alpha at constant AR
   SI.Diameter d_hyd_1_2=10e-3;
   SI.Diameter d_hyd_2_2=(A_2_2*4/PI)^0.5;
   Real AR_2=2;
@@ -54,7 +54,7 @@ model dp_conicalOverall_DPMFLOW "Verification of function dp_concialOverall_DP"
   Real zeta_tot_2[n]={2*abs(DP_plot_2[i])/(max(rho*(velocity_2[i])^2, IN_con_2[
       1].velocity_small)) for i in 1:n};
 
-  //target 3: zeta_tot = f(alpha) for different Re at constant AR
+//target 3: zeta_tot = f(alpha) for different Re at constant AR
   parameter Integer m=size(Re_3, 1);
   SI.Diameter d_hyd_1_3=10e-3;
   SI.Diameter d_hyd_2_3=(A_2_3*4/PI)^0.5;
@@ -78,7 +78,7 @@ model dp_conicalOverall_DPMFLOW "Verification of function dp_concialOverall_DP"
   Real zeta_tot_3[m]={2*abs(DP_plot_3[i])/(max(rho*(velocity_3[i])^2, IN_con_3[
       1].velocity_small)) for i in 1:m};
 
-  //target 4: dp_tot = f(m_flow) for different alpha at constant AR
+//target 4: dp_tot = f(m_flow) for different alpha at constant AR
   SI.Diameter d_hyd_1_4=1e-1;
   SI.Diameter d_hyd_2_4=(A_2_4*4/PI)^0.5;
   Real AR_4=2;
@@ -98,7 +98,7 @@ model dp_conicalOverall_DPMFLOW "Verification of function dp_concialOverall_DP"
   Real zeta_tot_4[n]={2*abs(DP_plot_4[i])/(max(rho*(velocity_4[i])^2, IN_con_4[
       1].velocity_small)) for i in 1:n};
 
-  //record
+//record
   //target 1: zeta_loc_lam = f(Re_lam) for different alpha at constant AR
   FluidDissipation.PressureLoss.Diffuser.dp_conicalOverall_IN_con IN_con_1[n](
     each L_1=L_1_1,
@@ -113,7 +113,7 @@ model dp_conicalOverall_DPMFLOW "Verification of function dp_concialOverall_DP"
       eta=eta, each rho=rho)
     annotation (Placement(transformation(extent={{-60,20},{-40,40}})));
 
-  //target 2: zeta_tot = f(Re) for different alpha at constant AR
+//target 2: zeta_tot = f(Re) for different alpha at constant AR
   FluidDissipation.PressureLoss.Diffuser.dp_conicalOverall_IN_con IN_con_2[n](
     each L_1=L_1_2,
     each A_1=A_1_2,
@@ -128,7 +128,7 @@ model dp_conicalOverall_DPMFLOW "Verification of function dp_concialOverall_DP"
       eta=eta, each rho=rho)
     annotation (Placement(transformation(extent={{-40,-20},{-20,0}})));
 
-  //target 3: zeta_tot = f(alpha) for different Re at constant AR
+//target 3: zeta_tot = f(alpha) for different Re at constant AR
   FluidDissipation.PressureLoss.Diffuser.dp_conicalOverall_IN_var IN_var_3[m](each
       eta=eta, each rho=rho)
     annotation (Placement(transformation(extent={{20,20},{40,40}})));
@@ -142,7 +142,7 @@ model dp_conicalOverall_DPMFLOW "Verification of function dp_concialOverall_DP"
     each L_2=L_2_3,
     each K=0) annotation (Placement(transformation(extent={{0,20},{20,40}})));
 
-  //target 4: dp_tot = f(m_flow) for different alpha at constant AR
+//target 4: dp_tot = f(m_flow) for different alpha at constant AR
   FluidDissipation.PressureLoss.Diffuser.dp_conicalOverall_IN_con IN_con_4[n](
     L_d=L_d_4,
     each A_1=A_1_4,
@@ -171,8 +171,7 @@ model dp_conicalOverall_DPMFLOW "Verification of function dp_concialOverall_DP"
   Modelica.Blocks.Sources.Sine input_Re_1(
     offset=0,
     startTime=0,
-    freqHz=1) annotation (Placement(transformation(
-          extent={{-66,-80},{-46,-60}})));
+    freqHz=1) annotation (Placement(transformation(extent={{-66,-80},{-46,-60}})));
   Modelica.Blocks.Sources.Exponentials input_Re_2(
     offset=0,
     startTime=0,
@@ -181,30 +180,14 @@ model dp_conicalOverall_DPMFLOW "Verification of function dp_concialOverall_DP"
     outMax=1) annotation (Placement(transformation(
           extent={{-30,-80},{-10,-60}})));
 equation
-  //target 1: zeta_loc_lam = f(Re_lam) for different alpha at constant AR
-  DP_1 = {FluidDissipation.PressureLoss.Diffuser.dp_conicalOverall_DP(
-    IN_con_1[i],
-    IN_var_1[i],
-    input_mdot_1[i]) for i in 1:n};
-
-  //target 2: zeta_tot = f(Re) for different alpha at constant AR
-  DP_2 = {FluidDissipation.PressureLoss.Diffuser.dp_conicalOverall_DP(
-    IN_con_2[i],
-    IN_var_2[i],
-    input_mdot_2[i]) for i in 1:n};
-
-  //target 3: zeta_tot = f(alpha) for different Re at constant AR
-  DP_3 = {FluidDissipation.PressureLoss.Diffuser.dp_conicalOverall_DP(
-    IN_con_3[i],
-    IN_var_3[i],
-    input_mdot_3[i]) for i in 1:m};
-
-  //target 4: dp_tot = f(m_flow) for different alpha at constant AR
-  DP_4 = {FluidDissipation.PressureLoss.Diffuser.dp_conicalOverall_DP(
-    IN_con_4[i],
-    IN_var_4[i],
-    input_mdot_4[i]) for i in 1:n};
-
+//target 1: zeta_loc_lam = f(Re_lam) for different alpha at constant AR
+  DP_1 = {FluidDissipation.PressureLoss.Diffuser.dp_conicalOverall_DP(IN_con_1[i], IN_var_1[i], input_mdot_1[i]) for i in 1:n};
+//target 2: zeta_tot = f(Re) for different alpha at constant AR
+  DP_2 = {FluidDissipation.PressureLoss.Diffuser.dp_conicalOverall_DP(IN_con_2[i], IN_var_2[i], input_mdot_2[i]) for i in 1:n};
+//target 3: zeta_tot = f(alpha) for different Re at constant AR
+  DP_3 = {FluidDissipation.PressureLoss.Diffuser.dp_conicalOverall_DP(IN_con_3[i], IN_var_3[i], input_mdot_3[i]) for i in 1:m};
+//target 4: dp_tot = f(m_flow) for different alpha at constant AR
+  DP_4 = {FluidDissipation.PressureLoss.Diffuser.dp_conicalOverall_DP(IN_con_4[i], IN_var_4[i], input_mdot_4[i]) for i in 1:n};
   annotation (__Dymola_Commands(file=
           "modelica://FluidDissipation/Extras/Scripts/pressureLoss/diffuser/dp_conicalOverall_DPMFLOW.mos"
         "Verification of dp_conicalOverall_DP"), Diagram(coordinateSystem(
@@ -235,5 +218,6 @@ equation
           extent={{-100,-54},{100,-29}},
           lineColor={0,0,255},
           textString=
-            "here: unintended input variables for creation of nonlinear equations (proof analytical Jacobians)")}));
+            "here: unintended input variables for creation of nonlinear equations (proof analytical Jacobians)")}),
+    experiment(StartTime = 0, StopTime = 1, Tolerance = 1e-05, Interval = 0.002));
 end dp_conicalOverall_DPMFLOW;

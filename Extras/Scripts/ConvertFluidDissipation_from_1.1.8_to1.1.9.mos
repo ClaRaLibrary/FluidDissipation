@@ -1,0 +1,2 @@
+convertModifiers("FluidDissipation.Examples.Applications.PressureLoss.Tjunction", {"united_converging_crossection"}, {"united_converging_cross_section"});
+convertModifiers("FluidDissipation.Examples.Applications.PressureLoss.pressureLoss_Tjunction", {"united_converging_crossection"}, {"united_converging_cross_section"});

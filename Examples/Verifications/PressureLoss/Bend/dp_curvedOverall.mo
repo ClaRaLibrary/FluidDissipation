@@ -38,8 +38,9 @@ model dp_curvedOverall "Verification of function dp_curvedOverall"
     R_0=R_0,
     each K=K) annotation (Placement(transformation(extent={{-92,20},{-72,40}})));
 
-  FluidDissipation.PressureLoss.Bend.dp_curvedOverall_IN_var m_flow_IN_var_1[n](each
-      eta=eta, each rho=rho)
+  FluidDissipation.PressureLoss.Bend.dp_curvedOverall_IN_var m_flow_IN_var_1[n](
+    each eta=eta,
+    each rho=rho)
     annotation (Placement(transformation(extent={{-72,20},{-52,40}})));
 
   FluidDissipation.PressureLoss.Bend.dp_curvedOverall_IN_con m_flow_IN_con_2[m](
@@ -50,8 +51,9 @@ model dp_curvedOverall "Verification of function dp_curvedOverall"
     each R_0=R_0[1])
     annotation (Placement(transformation(extent={{10,20},{30,40}})));
 
-  FluidDissipation.PressureLoss.Bend.dp_curvedOverall_IN_var m_flow_IN_var_2[m](each
-      eta=eta, each rho=rho)
+  FluidDissipation.PressureLoss.Bend.dp_curvedOverall_IN_var m_flow_IN_var_2[m](
+    each eta=eta,
+    each rho=rho)
     annotation (Placement(transformation(extent={{30,20},{50,40}})));
 
   //target == M_FLOW (compressible)
@@ -62,8 +64,9 @@ model dp_curvedOverall "Verification of function dp_curvedOverall"
     each K=K,
     R_0=R_0) annotation (Placement(transformation(extent={{-50,20},{-30,40}})));
 
-  FluidDissipation.PressureLoss.Bend.dp_curvedOverall_IN_var dp_IN_var_1[n](each
-      eta=eta, each rho=rho)
+  FluidDissipation.PressureLoss.Bend.dp_curvedOverall_IN_var dp_IN_var_1[n](
+    each eta=eta,
+    each rho=rho)
     annotation (Placement(transformation(extent={{-30,20},{-10,40}})));
 
   FluidDissipation.PressureLoss.Bend.dp_curvedOverall_IN_con dp_IN_con_2[m](
@@ -74,8 +77,9 @@ model dp_curvedOverall "Verification of function dp_curvedOverall"
     each R_0=R_0[1])
     annotation (Placement(transformation(extent={{52,20},{72,40}})));
 
-  FluidDissipation.PressureLoss.Bend.dp_curvedOverall_IN_var dp_IN_var_2[m](each
-      eta=eta, each rho=rho)
+  FluidDissipation.PressureLoss.Bend.dp_curvedOverall_IN_var dp_IN_var_2[m](
+    each eta=eta,
+    each rho=rho)
     annotation (Placement(transformation(extent={{72,20},{92,40}})));
 
   FluidDissipation.Utilities.Records.PressureLoss.PressureLossInput chosenTarget_DP_1[n](m_flow=
@@ -117,8 +121,8 @@ model dp_curvedOverall "Verification of function dp_curvedOverall"
     phase=0,
     startTime=0,
     freqHz=1,
-    amplitude=100) annotation (Placement(
-        transformation(extent={{-40,-80},{-20,-60}})));
+    amplitude=100)
+    annotation (Placement(transformation(extent={{-40,-80},{-20,-60}})));
   Modelica.Blocks.Sources.Exponentials input_mflow_2(
     offset=0,
     startTime=0,

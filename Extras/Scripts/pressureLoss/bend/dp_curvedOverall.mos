@@ -92,9 +92,9 @@ createPlot(id = 3,
  logX = true,
  logY = true,	
  legends = {
-	"Angle of curvature delta= 30°",
-    "delta= 45°",
-	"delta= 90°"
+	"Angle of curvature delta= 30deg",
+    "delta= 45deg",
+	"delta= 90deg"
 },
 leftTitle = "Pressure loss coefficient (zeta_TOT [-])",
  bottomTitle = "Reynolds number [-]");
@@ -118,9 +118,9 @@ range = {1e0, 2e3, 1e2, 1},
  online = false,
   filename = "dp_curvedOverall.mat",
  legends = {
-	"Angle of curvature delta = 30°", 
-	"delta = 45°",
-	"delta = 90°"
+	"Angle of curvature delta = 30deg", 
+	"delta = 45deg",
+	"delta = 90deg"
 },
 leftTitle = "Pressure loss [Pa]",
 bottomTitle = "Mass flow rate [kg/s]");

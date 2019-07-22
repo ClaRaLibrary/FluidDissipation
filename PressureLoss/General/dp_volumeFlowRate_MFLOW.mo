@@ -19,20 +19,27 @@ function dp_volumeFlowRate_MFLOW
   output SI.MassFlowRate M_FLOW "Output for function dp_volumeFlowRate_MFLOW";
 
 protected
-  Real a=max(Modelica.Constants.eps, abs(IN_con.a));
-  Real b=max(Modelica.Constants.eps, abs(IN_con.b));
+  Real a=abs(IN_con.a);
+  Real b=abs(IN_con.b);
 
-  SI.Pressure dp_min=IN_con.dp_min
-    "Start of approximation for decreasing pressure loss";
+  SI.Pressure dp_min=max(Modelica.Constants.eps, abs(IN_con.dp_min))
+        "Start of approximation for decreasing pressure loss";
 
   //Documentation
 
 algorithm
-  M_FLOW := IN_var.rho*(-b/(2*a) +
-    FluidDissipation.Utilities.Functions.General.SmoothPower(
-    (b/(2*a))^2 + (1/a)*dp,
-    (b/(2*a))^2 + (1/a)*dp_min,
-    0.5));
+
+        assert(a+b>0, "Please provide non-zero factors for either a or b of function dp=a*V_flow^2 + b*V_flow");
+       if b>0 then
+         M_FLOW := IN_var.rho*(if a>0 then (-b/(2*a) +
+                sqrt((b/(2*a))^2 + (1/a)*dp)) else b*dp);
+       else
+         M_FLOW := IN_var.rho*sqrt(1/a)*
+                FluidDissipation.Utilities.Functions.General.SmoothPower(
+                dp,
+                dp_min,
+                0.5);
+       end if;
   annotation (Inline=true,
     smoothOrder(normallyConstant=IN_con) = 2,
     inverse(dp=FluidDissipation.PressureLoss.General.dp_volumeFlowRate_DP(
@@ -102,5 +109,7 @@ Note that the verification for <a href=\"Modelica://FluidDissipation.PressureLos
     PhD thesis, Technische Universit&auml;t Hamburg-Harburg, 2005.</dd>
 </dl>
 </html>
-"));
+", revisions="<html>
+2018-11-21 Stefan Wischhusen: Fixed problem for linear case (a=0 and b>0).
+</html>"));
 end dp_volumeFlowRate_MFLOW;

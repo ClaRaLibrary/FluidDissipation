@@ -1,6 +1,6 @@
 within FluidDissipation.Utilities;
-package Icons 
-extends Icons.Package;
+package Icons
+extends Modelica.Icons.IconsPackage;
 
 
   class Package "Icon for a package"
@@ -19,5 +19,4 @@ extends Icons.Package;
             extent={{-100.0,-100.0},{100.0,100.0}},
             radius=25.0)}));
   end Package;
-
 end Icons;

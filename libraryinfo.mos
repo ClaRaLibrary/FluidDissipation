@@ -3,12 +3,12 @@ LibraryInfoMenuSeparator(
   pos=4000)
 LibraryInfoMenuCommand(
   category="libraries",
-  text="FluidDissipation 1.1.8",
+  text="FluidDissipation 1.1.9",
   reference="FluidDissipation",
-  version="1.1.8",
+  version="1.1.9",
   isModel=true,
-  description="FluidDissipation Library (version 1.1.8)",
-  ModelicaVersion=">=3.2.2",
+  description="FluidDissipation Library (version 1.1.9)",
+  ModelicaVersion=">=3.2.3",
   pos=4030)
  LibraryInfoMenuSeparator(
   category="libraries",

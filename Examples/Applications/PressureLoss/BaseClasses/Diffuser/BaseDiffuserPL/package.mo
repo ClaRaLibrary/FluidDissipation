@@ -10,5 +10,4 @@ replaceable partial function pressureLoss_mflow
   output SI.Pressure DP_tot "Total pressure loss";
 
 end pressureLoss_mflow;
-
 end BaseDiffuserPL;

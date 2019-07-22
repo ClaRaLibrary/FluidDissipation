@@ -1,5 +1,5 @@
 within FluidDissipation.Utilities.Functions;
-package General 
-  extends Icons.Package;
+package General
+  extends Modelica.Icons.FunctionsPackage;
 
 end General;

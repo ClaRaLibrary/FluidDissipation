@@ -46,5 +46,4 @@ href=\"Modelica://FluidDissipation.Examples.TestCases.PressureLoss.General\"> Te
 </html>
 "));
 end massFlowRate_dp;
-
 end NominalPressureLossLawDensity;

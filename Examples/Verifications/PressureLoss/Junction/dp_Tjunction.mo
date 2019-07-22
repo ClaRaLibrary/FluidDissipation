@@ -8,10 +8,10 @@ model dp_Tjunction "verification of function dp_Tjunction"
 
   parameter SI.Diameter d_hyd_conv[3]={((4/PI*1e-3)/2)^0.5,((4/PI*
       1e-3)/2)^0.5,(4/PI*1e-3)^0.5}
-    "hydraulic diameter united_converging_crossection=true"
+    "hydraulic diameter united_converging_cross_section=true"
     annotation (Dialog(group="T-junction"));
   parameter Real d_hyd_noconv[3]={((4/PI*1e-3))^0.5,((4/PI*1e-3))^0.5,
-      (4/PI*1e-3)^0.5} "hydraulic diameter united_converging_crossection=false";
+      (4/PI*1e-3)^0.5} "hydraulic diameter united_converging_cross_section=false";
   parameter SI.MassFlowRate m_flow_min=1e-6
     "restriction for smoothing at reverse fluid flow"
     annotation (Dialog(group="restriction"));
@@ -66,7 +66,7 @@ model dp_Tjunction "verification of function dp_Tjunction"
     dp_min=dp_min,
     m_flow_min=m_flow_min,
     v_max=v_max,
-    united_converging_crossection=false,
+    united_converging_cross_section=false,
     d_hyd=d_hyd_noconv,
     flowSituation=FluidDissipation.Utilities.Types.JunctionFlowSituation.Split_Left)
     annotation (Placement(transformation(extent={{-60,40},{-40,60}})));
@@ -80,7 +80,7 @@ model dp_Tjunction "verification of function dp_Tjunction"
     dp_min=dp_min,
     m_flow_min=m_flow_min,
     v_max=v_max,
-    united_converging_crossection=false,
+    united_converging_cross_section=false,
     d_hyd=d_hyd_noconv,
     flowSituation=FluidDissipation.Utilities.Types.JunctionFlowSituation.Split_Right)
     annotation (Placement(transformation(extent={{-10,40},{10,60}})));
@@ -93,7 +93,7 @@ model dp_Tjunction "verification of function dp_Tjunction"
     dp_min=dp_min,
     m_flow_min=m_flow_min,
     v_max=v_max,
-    united_converging_crossection=false,
+    united_converging_cross_section=false,
     d_hyd=d_hyd_noconv,
     flowSituation=FluidDissipation.Utilities.Types.JunctionFlowSituation.Split_Symmetric)
     annotation (Placement(transformation(extent={{40,40},{60,60}})));
@@ -107,7 +107,7 @@ model dp_Tjunction "verification of function dp_Tjunction"
     dp_min=dp_min,
     m_flow_min=m_flow_min,
     v_max=v_max,
-    united_converging_crossection=false,
+    united_converging_cross_section=false,
     d_hyd=d_hyd_noconv,
     flowSituation=FluidDissipation.Utilities.Types.JunctionFlowSituation.Tjoin_Left)
     annotation (Placement(transformation(extent={{-60,-34},{-40,-14}})));
@@ -121,7 +121,7 @@ model dp_Tjunction "verification of function dp_Tjunction"
     dp_min=dp_min,
     m_flow_min=m_flow_min,
     v_max=v_max,
-    united_converging_crossection=false,
+    united_converging_cross_section=false,
     d_hyd=d_hyd_noconv,
     flowSituation=FluidDissipation.Utilities.Types.JunctionFlowSituation.Tjoin_Right)
     annotation (Placement(transformation(extent={{-10,-34},{10,-14}})));
@@ -135,7 +135,7 @@ model dp_Tjunction "verification of function dp_Tjunction"
     dp_min=dp_min,
     m_flow_min=m_flow_min,
     v_max=v_max,
-    united_converging_crossection=false,
+    united_converging_cross_section=false,
     d_hyd=d_hyd_noconv,
     flowSituation=FluidDissipation.Utilities.Types.JunctionFlowSituation.Tjoin_Symmetric)
     annotation (Placement(transformation(extent={{40,-34},{60,-14}})));
@@ -162,8 +162,8 @@ model dp_Tjunction "verification of function dp_Tjunction"
     freqHz=1/100,
     phase=0,
     offset=0,
-    startTime=0) annotation (Placement(
-        transformation(extent={{-40,-100},{-20,-80}})));
+    startTime=0)
+    annotation (Placement(transformation(extent={{-40,-100},{-20,-80}})));
   Modelica.Blocks.Sources.Exponentials input_mflow_2(
     outMax=100,
     riseTime=1e-1,

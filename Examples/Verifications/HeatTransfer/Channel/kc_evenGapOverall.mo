@@ -103,8 +103,7 @@ public
     height=1e4) annotation (Placement(
         transformation(extent={{-80,-80},{-60,-60}})));
   Modelica.Blocks.Sources.Sine input_mflow_1(amplitude=100, freqHz=1)
-    annotation (Placement(transformation(extent={{
-            -40,-80},{-20,-60}})));
+    annotation (Placement(transformation(extent={{-40,-80},{-20,-60}})));
   Modelica.Blocks.Sources.Exponentials input_mflow_2(
     outMax=100,
     riseTime=1e-1,

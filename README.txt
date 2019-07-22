@@ -1,6 +1,6 @@
 **************************************************************************************
 *                                                                                    *
-*          README for installation of FluidDissipation library 1.1.8                 *
+*          README for installation of FluidDissipation library 1.1.9                 *
 *                                                                                    *
 **************************************************************************************
 
@@ -8,7 +8,7 @@
 _______________________
 
 
- 	1. Unzip the file FluidDissipation 1.1.8.zip. If you have a Dymola licence you
+ 	1. Unzip the file FluidDissipation 1.1.9.zip. If you have a Dymola license you
 	   should install the library in the subfolder $Dymola\Modelica\Library. It will
 	   be listed in the libraries menue of Dymola.
 	    
@@ -65,25 +65,36 @@ project EuroSysLib-D by German Federal Ministry of Education and Research (promo
 reference 01IS07022B). The project ended in June 2010. 
 
  
-******Licence condition******
+******License condition******
 _____________________________
 
-Licensed by XRG Simulation GmbH under the Modelica License 2
+Licensed by XRG Simulation GmbH under the 3-clause BSD license
 
-Copyright 2007-2016, XRG Simulation GmbH.
+Copyright 2007-2019, XRG Simulation GmbH.
 
 This Modelica package is free software and the use is completely at your own risk
-it can be redistributed and/or modified under the terms of the Modelica license 2, 
+it can be redistributed and/or modified under the terms of the BSD license, 
 see the license conditions (including the disclaimer of warranty)
 
-Hamburg, Sept. 5th, 2016
+Hamburg, July 22nd, 2019
 
 XRG Simulation GmbH
 Stefan Wischhusen
 info@xrg-simulation.de
 
-
 ******Revision history******
+____________________________
+Version 1.1.9, 2019-07-22
+
+New license conditions:
+FluidDissipation is now licensed under the open source 3-clause BSD. 
+
+New feature: 
+-Added heat transfer correlation for boiling in horizontal or vertical pipes FluidDissipation.HeatTransfer.StraightPipe.kc_boilingOverall.
+
+Revisions:
+-Renamed internal functions FluidDissipation.Utilities.Functions.General.CubicInterpolation_LAMBDA and FluidDissipation.Utilities.Functions.General.CubicInterpolation_DP. 
+-Enabled linear parameterization (a=0) of function FluidDissipation.PressureLoss.General.dp_volumeFlowRate. 
 ____________________________
 Version 1.1.8, 2016-09-05
 

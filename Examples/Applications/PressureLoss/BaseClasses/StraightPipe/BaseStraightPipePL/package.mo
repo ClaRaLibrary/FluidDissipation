@@ -10,5 +10,4 @@ replaceable partial function massFlowRate_dp
   output SI.MassFlowRate M_FLOW;
 
 end massFlowRate_dp;
-
 end BaseStraightPipePL;

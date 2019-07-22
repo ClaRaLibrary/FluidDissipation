@@ -2,6 +2,19 @@ within FluidDissipation.UsersGuide;
 class ReleaseNotes "Release notes"
 extends Modelica.Icons.Information;
   annotation (Documentation(info="<html>
+<h4><font color=\"#008000\">Version 1.1.9, 2019-07-22</font></h4>
+ 
+<p>
+<ul>
+<li> FluidDissipation is now licensed under the open source 3-clause BSD. 
+</ul>
+List of revisions:
+<ul>
+<li>Added heat transfer correlation for boiling in horizontal or vertical pipes <a href=modelica://FluidDissipation.HeatTransfer.StraightPipe.kc_boilingOverall>FluidDissipation.HeatTransfer.StraightPipe.kc_boilingOverall</a>.</li>
+<li>Renamed internal functions <a href=modelica://FluidDissipation.Utilities.Functions.General.CubicInterpolation_LAMBDA>FluidDissipation.Utilities.Functions.General.CubicInterpolation_LAMBDA</a> and <a href=modelica://FluidDissipation.Utilities.Functions.General.CubicInterpolation_LAMBDA>FluidDissipation.Utilities.Functions.General.CubicInterpolation_DP</a>.</li>
+<li>Enabled linear parameterization (a=0) of function <a href=modelica://FluidDissipation.PressureLoss.General.dp_volumeFlowRate>FluidDissipation.PressureLoss.General.dp_volumeFlowRate</a>.</li>
+</ul>
+</p>
 
 <p><b><span style=\"color: #008000;\">Version 1.1.8, 2016-09-05</span></b> </p>
 <p>List of revisions: </p>

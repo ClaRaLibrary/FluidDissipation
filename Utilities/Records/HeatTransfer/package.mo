@@ -1,5 +1,5 @@
 within FluidDissipation.Utilities.Records;
-package HeatTransfer 
-  extends Icons.Package;
+package HeatTransfer
+  extends Modelica.Icons.RecordsPackage;
 
 end HeatTransfer;

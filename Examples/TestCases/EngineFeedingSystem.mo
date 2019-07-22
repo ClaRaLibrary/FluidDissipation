@@ -3,8 +3,7 @@ model EngineFeedingSystem "Test cases of an aircraft engine feeding system"
   import SI = Modelica.SIunits;
   inner Modelica.Fluid.System system(
     p_ambient(displayUnit="Pa") = 100000,
-    m_flow_small=0.01,
-    allowFlowReversal=false) annotation (Placement(transformation(extent={{80, -100}, {100, -80}})));
+    m_flow_small=0.01)       annotation (Placement(transformation(extent={{80, -100}, {100, -80}})));
 
   Modelica.Fluid.Sources.MassFlowSource_T engineLeft(
     T=system.T_ambient,
@@ -138,7 +137,7 @@ model EngineFeedingSystem "Test cases of an aircraft engine feeding system"
     V=1e-3,
     nParallel=2,
     N_nominal=1500) annotation (Placement(transformation(
-        extent={{-10,-10},{10,10}},
+        extent={{-10,10},{10,-10}},
         rotation=180,
         origin={40,50})));
 
@@ -151,19 +150,23 @@ model EngineFeedingSystem "Test cases of an aircraft engine feeding system"
   Modelica.Blocks.Logical.Switch pressure
     annotation (Placement(transformation(extent={{81,-50},{91,-40}})));
   Modelica.Blocks.Logical.GreaterThreshold blowof(threshold=0.99)
-    annotation (Placement(transformation(extent={{19,-12},{29,-2}})));
-  Modelica.Fluid.Fittings.TeeJunctionIdeal join1(redeclare package Medium =
-        Modelica.Media.Water.ConstantPropertyLiquidWater) annotation (Placement(
+    annotation (Placement(transformation(extent={{19,8},{29,18}})));
+  Applications.PressureLoss.Tjunction      join1(redeclare package Medium =
+        Modelica.Media.Water.ConstantPropertyLiquidWater, flowSituation=
+        FluidDissipation.Utilities.Types.JunctionFlowSituation.Tjoin_Right)
+                                                          annotation (Placement(
         transformation(
-        extent={{-8,-8},{4,4}},
+        extent={{-8,8},{4,-4}},
         rotation=0,
-        origin={42,-18})));
-  Modelica.Fluid.Fittings.TeeJunctionIdeal join2(redeclare package Medium =
-        Modelica.Media.Water.ConstantPropertyLiquidWater) annotation (Placement(
+        origin={42,-22})));
+  Applications.PressureLoss.Tjunction      join2(redeclare package Medium =
+        Modelica.Media.Water.ConstantPropertyLiquidWater, flowSituation=
+        FluidDissipation.Utilities.Types.JunctionFlowSituation.Split_Right)
+                                                          annotation (Placement(
         transformation(
-        extent={{-8,-8},{4,4}},
+        extent={{-8,8},{4,-4}},
         rotation=270,
-        origin={38,-42})));
+        origin={34,-42})));
   Modelica.Blocks.Sources.Constant fuel(k=100e2)
     annotation (Placement(transformation(extent={{64,-98},{74,-88}})));
 equation
@@ -212,7 +215,7 @@ equation
       color={0,127,255},
       smooth=Smooth.None));
   connect(pumpSpeedRight.flange, rightPump.shaft) annotation (Line(
-      points={{-22,72},{40,72},{40,40}},
+      points={{-22,72},{40,72},{40,60}},
       color={0,0,0},
       smooth=Smooth.None));
   connect(rightPump.port_a, rightTank.ports[1]) annotation (Line(
@@ -236,11 +239,11 @@ equation
       color={0,0,127},
       smooth=Smooth.None));
   connect(valveOpening.y, blowof.u) annotation (Line(
-      points={{-9.5,-5},{14,-5},{14,-7},{18,-7}},
+      points={{-9.5,-5},{14,-5},{14,13},{18,13}},
       color={0,0,127},
       smooth=Smooth.None));
   connect(blowof.y, pressure.u2) annotation (Line(
-      points={{29.5,-7},{96,-7},{96,-45},{80,-45}},
+      points={{29.5,13},{96,13},{96,-45},{80,-45}},
       color={255,0,255},
       smooth=Smooth.None));
   connect(valve_78.port_b, join1.port_1) annotation (Line(

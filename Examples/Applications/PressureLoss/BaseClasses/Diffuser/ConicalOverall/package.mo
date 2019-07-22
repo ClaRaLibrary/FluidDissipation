@@ -43,5 +43,4 @@ href=\"Modelica://FluidDissipation.Examples.TestCases.PressureLoss.Diffuser\"> T
 </html>
 "));
 end pressureLoss_mflow;
-
 end ConicalOverall;

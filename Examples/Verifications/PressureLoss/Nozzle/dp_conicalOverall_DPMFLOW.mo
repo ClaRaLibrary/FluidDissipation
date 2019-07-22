@@ -172,8 +172,7 @@ model dp_conicalOverall_DPMFLOW "Verification of function dp_concialOverall_DP"
   Modelica.Blocks.Sources.Sine input_Re_1(
     offset=0,
     startTime=0,
-    freqHz=1) annotation (Placement(transformation(
-          extent={{-66,-80},{-46,-60}})));
+    freqHz=1) annotation (Placement(transformation(extent={{-66,-80},{-46,-60}})));
   Modelica.Blocks.Sources.Exponentials input_Re_2(
     offset=0,
     startTime=0,

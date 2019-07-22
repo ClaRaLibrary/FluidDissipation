@@ -32,11 +32,12 @@ function dp_Tsplit_symmetric
   output TYP.LocalResistanceCoefficient zeta_LOC[2]
     "local resistance coefficient [left-bottom,right-bottom]"
     annotation (Dialog(group="Output"));
-  output SI.ReynoldsNumber Re[3] "Reynolds number"
+  // Re has no meaning for this function
+  output SI.ReynoldsNumber Re[3] = zeros(3) "Reynolds number"
     annotation (Dialog(group="Output"));
   final output SI.PrandtlNumber Pr=0 "Prandtl number"
     annotation (Dialog(group="Output"));
-  output Integer failureStatus
+  output Real failureStatus
     "0== boundary conditions fulfilled | 1== failure >> check if still meaningful results"
     annotation (Dialog(group="Output"));
 
@@ -154,7 +155,7 @@ algorithm
   //OUT.M_FLOW := m_flow;
 
   //failure status
-  fstatus[1] := if not (IN_con.united_converging_crossection) then if abs(
+  fstatus[1] := if not (IN_con.united_converging_cross_section) then if abs(
     A_cross[2] - A_cross[3]) < minimum then 0 else 1 else 0;
   fstatus[2] := if abs(m_flow[1] + m_flow[2] + m_flow[3]) <
     minimum then 0 else 1 "check of mass balance";
@@ -172,7 +173,7 @@ algorithm
 
   //joint := if sign(m_flow[3]) < 0 then 1 else 0;
 
-  annotation (Inline=false, smoothOrder(normallyConstant=IN_con) = 2,Documentation(info="<html>
+  annotation (Inline=false, smoothOrder(normallyConstant=IN_con) = 2,Documentation(info = "<html>
 <p>
 Calculation of pressure losses in a T-junction acting as symmetric split for the splitting of an incompressible total fluid flow in the bottom passage into two symmetrical side branches.
 This T-split can be calculated with a constant branching angle of 90&deg; and identical hydraulic diameters.
@@ -272,6 +273,8 @@ The corresponding (thermodynamic) pressure losses w.r.t the prior pressure loss 
     <dd><b>Handbook of hydraulic resistance</b>.
     Jaico Publishing House,Mumbai,3rd edition, 2006.</dd>
 </dl>
-</html>
-"));
+</html>", revisions = "<html>
+2017-03-24 Stefan Wischhusen: Provided reasonable outputs for all outputs of the function.
+2017-03-24 Stefan Wischhusen: Changed type of failureStatus to Real.
+</html>"));
 end dp_Tsplit_symmetric;

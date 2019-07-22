@@ -8,7 +8,7 @@ model dp_volumeFlowRate_DPMFLOW
     "Input volume flow rate";
 
   //general variables
-  parameter Real a[:](unit="(Pa.s2)/m6") = {15,30,45}
+  parameter Real a[:](each unit="(Pa.s2)/m6") = {15,30,45}
     "Coefficient for quadratic term";
   parameter Real b(unit="(Pa.s)/m3") = 0 "Coefficient for linear term";
 

@@ -1,5 +1,5 @@
 within FluidDissipation.Utilities.Functions.PressureLoss;
-package TwoPhase 
-  extends Icons.Package;
+package TwoPhase
+  extends Modelica.Icons.FunctionsPackage;
 
 end TwoPhase;

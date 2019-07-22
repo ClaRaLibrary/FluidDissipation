@@ -44,8 +44,7 @@ model kc_overall "Verification of function kc_overall"
     phase=0,
     startTime=0,
     amplitude=10,
-    freqHz=1/10) annotation (Placement(
-        transformation(extent={{-40,-80},{-20,-60}})));
+    freqHz=1/10) annotation (Placement(transformation(extent={{-40,-80},{-20,-60}})));
   Modelica.Blocks.Sources.Exponentials input_v_2(
     offset=0,
     riseTime=1e-1,

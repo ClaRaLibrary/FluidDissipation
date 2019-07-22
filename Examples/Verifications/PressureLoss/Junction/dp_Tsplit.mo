@@ -6,10 +6,10 @@ model dp_Tsplit "verification of function dp_Tsplit"
 
   parameter SI.Diameter d_hyd_conv[3]={((4/PI*1e-3)/2)^0.5,((4/PI*
       1e-3)/2)^0.5,(4/PI*1e-3)^0.5}
-    "hydraulic diameter united_converging_crossection=true"
+    "hydraulic diameter united_converging_cross_section=true"
     annotation (Dialog(group="T-junction"));
   parameter Real d_hyd_noconv[3]={((4/PI*1e-3))^0.5,((4/PI*1e-3))^0.5,
-      (4/PI*1e-3)^0.5} "hydraulic diameter united_converging_crossection=false";
+      (4/PI*1e-3)^0.5} "hydraulic diameter united_converging_cross_section=false";
   parameter SI.MassFlowRate m_flow_min=1e-6
     "restriction for smoothing at reverse fluid flow"
     annotation (Dialog(group="restriction"));
@@ -33,7 +33,7 @@ model dp_Tsplit "verification of function dp_Tsplit"
   //input record
   //incompressible fluid flow (A_side + A_straight = A_total)
   FluidDissipation.PressureLoss.Junction.dp_Tsplit_IN_con m_flow_IN_con_1(
-    united_converging_crossection=true,
+    united_converging_cross_section=true,
     alpha=alpha[1],
     d_hyd=d_hyd_conv,
     m_flow_min=m_flow_min,
@@ -47,7 +47,7 @@ model dp_Tsplit "verification of function dp_Tsplit"
   //incompressible fluid flow (A_side + A_straight > A_total)
   FluidDissipation.PressureLoss.Junction.dp_Tsplit_IN_con m_flow_IN_con_2(
     alpha=alpha[1],
-    united_converging_crossection=false,
+    united_converging_cross_section=false,
     d_hyd=d_hyd_noconv,
     m_flow_min=m_flow_min,
     v_max=v_max,
@@ -76,8 +76,8 @@ public
     freqHz=1/100,
     phase=0,
     offset=0,
-    startTime=0) annotation (Placement(
-        transformation(extent={{-40,-80},{-20,-60}})));
+    startTime=0)
+    annotation (Placement(transformation(extent={{-40,-80},{-20,-60}})));
   Modelica.Blocks.Sources.Exponentials input_mflow_2(
     outMax=100,
     riseTime=1e-1,

@@ -10,10 +10,10 @@ model dp_nominalPressureLossLawDensity
     annotation (Dialog(group="Generic variables"));
   SI.Area A_cross=A_cross_nom "Cross sectional area"
     annotation (Dialog(group="Generic variables"));
-  SI.Area A_cross_nom=Modelica.Constants.pi*0.1^2/4
+  SI.Area A_cross_nom=0.01
     "Nominal cross sectional area"
     annotation (Dialog(group="Generic variables"));
-  SI.Pressure dp_nom=50
+  SI.Pressure dp_nom=5
     "Nominal pressure loss (at nominal values of mass flow rate and density)"
     annotation (Dialog(group="Generic variables"));
   SI.MassFlowRate m_flow_nom=1
@@ -24,7 +24,7 @@ model dp_nominalPressureLossLawDensity
   SI.VolumeFlowRate V_flow_nom=m_flow_nom/rho_nom
     "Nominal volume flow rate (at nominal values of pressure loss and density)"
     annotation (Dialog(group="Generic variables"));
-  FluidDissipation.Utilities.Types.PressureLossCoefficient zeta_TOT=0.05*1/0.1
+  FluidDissipation.Utilities.Types.PressureLossCoefficient zeta_TOT=0.5
     "Pressure loss coefficient" annotation (Dialog(group="Generic variables"));
   FluidDissipation.Utilities.Types.PressureLossCoefficient zeta_TOT_nom=1
     "Nominal pressure loss coefficient (for nominal values)"
@@ -87,6 +87,9 @@ model dp_nominalPressureLossLawDensity
   //incompressible fluid flow
   SI.Pressure DP[n] "pressure loss" annotation (Dialog(group="Output"));
 
+  Real ZETA_TOT_COMP[n] "darcy friction factor comp. flow" annotation (Dialog(group="Output"));
+  Real ZETA_TOT_INCOMP[n] "darcy friction factor incomp. flow" annotation (Dialog(group="Output"));
+
   FluidDissipation.Utilities.Records.PressureLoss.PressureLossInput chosenTarget_DP[n](m_flow=
        input_mdot, each target=FluidDissipation.Utilities.Types.PressureLossTarget.PressureLoss)
     annotation (Placement(transformation(extent={{-110,-8},{-90,12}})));
@@ -105,8 +108,8 @@ model dp_nominalPressureLossLawDensity
     phase=0,
     startTime=0,
     freqHz=1,
-    amplitude=100) annotation (Placement(
-        transformation(extent={{-40,-80},{-20,-60}})));
+    amplitude=100)
+    annotation (Placement(transformation(extent={{-40,-80},{-20,-60}})));
   Modelica.Blocks.Sources.Exponentials input_mflow_2(
     offset=0,
     startTime=0,
@@ -119,7 +122,7 @@ model dp_nominalPressureLossLawDensity
   Real DP_plot[n]={DP[i] for i in 1:n} "Pressure loss [Pa]";
 equation
   for i in 1:n loop
-    (,M_FLOW[i],,,,) =
+    (,M_FLOW[i],ZETA_TOT_COMP[i],,,) =
       FluidDissipation.PressureLoss.General.dp_nominalPressureLossLawDensity(
       dp_IN_con[i],
       dp_IN_var[i],
@@ -127,7 +130,7 @@ equation
   end for;
 
   for i in 1:n loop
-    (DP[i],,,,,) =
+    (DP[i],,ZETA_TOT_INCOMP[i],,,) =
       FluidDissipation.PressureLoss.General.dp_nominalPressureLossLawDensity(
       m_flow_IN_con[i],
       m_flow_IN_var[i],

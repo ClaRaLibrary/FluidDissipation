@@ -8,7 +8,8 @@ model pressureLoss_Tjunction
   //icon
   extends FluidDissipation.Utilities.Icons.PressureLoss.FlowModel;
 
-  extends Modelica.Fluid.Interfaces.PartialTwoPortTransport(redeclare package
+  extends Modelica.Fluid.Interfaces.PartialTwoPortTransport(redeclare
+      replaceable package
       Medium = Modelica.Media.Air.DryAirNasa);
 
   //fluid flow situation
@@ -17,7 +18,7 @@ model pressureLoss_Tjunction
     "fluid flow situation" annotation (Dialog(group="FlowSituation"));
 
   //geometry
-  parameter Boolean united_converging_crossection=false
+  parameter Boolean united_converging_cross_section=false
     "true == A_cross_conv = A_cross_straight + A_cross_side | false == A_cross_conv > A_cross_straight + A_cross_side"
     annotation (Dialog(group="Geometry"));
 
@@ -49,10 +50,10 @@ model pressureLoss_Tjunction
     annotation (Dialog(group="Restriction"));
   parameter Real zeta_TOT_max=100
     "restriction for maximum value of total resistance coefficient"
-    annotation (Dialog(group="Restriction",enable=velocity_reference_branches));
+    annotation (Dialog(group="Restriction",enable=m_flow_IN_con.velocity_reference_branches));
 
   FluidDissipation.PressureLoss.Junction.dp_Tjunction_IN_con m_flow_IN_con(
-    final united_converging_crossection=united_converging_crossection,
+    final united_converging_cross_section=united_converging_cross_section,
     final alpha=alpha,
     final d_hyd=d_hyd,
     final dp_min=dp_min,

@@ -43,5 +43,4 @@ href=\"Modelica://FluidDissipation.Examples.TestCases.PressureLoss.Nozzle\"> Tes
 </html>
 "));
 end pressureLoss_mflow;
-
 end ConicalOverall;

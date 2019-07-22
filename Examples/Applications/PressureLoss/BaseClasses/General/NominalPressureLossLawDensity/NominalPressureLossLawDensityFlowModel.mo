@@ -27,7 +27,7 @@ model NominalPressureLossLawDensityFlowModel
   parameter SI.VolumeFlowRate V_flow_nom=m_flow_nom/rho_nom
     "Nominal volume flow rate (at nominal values of pressure loss and density)"
     annotation (Dialog(group="Generic variables",enable=not (
-          NominalMassFlowRate)));
+          target==FluidDissipation.Utilities.Types.MassOrVolumeFlowRate.MassFlowRate)));
   parameter SI.Density rho_nom=1e3
     "Nominal density (at nominal values of mass flow rate and pressure loss)"
     annotation (Dialog(group="Generic variables"));

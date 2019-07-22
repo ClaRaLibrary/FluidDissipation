@@ -30,11 +30,12 @@ function dp_Tjoin
   output TYP.LocalResistanceCoefficient zeta_LOC[2]
     "local resistance coefficient [side,straight]"
     annotation (Dialog(group="Output"));
-  output SI.ReynoldsNumber Re[3] "Reynolds number"
+  // Re has no meaning for this function
+  final output SI.ReynoldsNumber Re[3] = zeros(3) "Reynolds number"
     annotation (Dialog(group="Output"));
   final output SI.PrandtlNumber Pr=0 "Prandtl number"
     annotation (Dialog(group="Output"));
-  output Integer failureStatus
+  output Real failureStatus
     "0== boundary conditions fulfilled | 1== failure >> check if still meaningful results"
     annotation (Dialog(group="Output"));
 
@@ -105,18 +106,18 @@ protected
 algorithm
   //parameter of joint
   //SOURCE: p.417 table 7-1
-  /*A := if IN_con.united_converging_crossection then 1 else if frac_Across[1]
+  /*A := if IN_con.united_converging_cross_section then 1 else if frac_Across[1]
      <= 0.35 then 1 else if frac_Across[1] > 0.35
      and frac_Vflow[1] <= 0.4 then 0.9*(1 - frac_Vflow[1]) else if
     frac_Across[1] > 0.35 and frac_Vflow[1] > 0.4 then 0.55 else 0;*/
   // polynom out of data from SOURCE: p.417 table 7-1 (least square method)
-  A := if IN_con.united_converging_crossection then 1 else if frac_Across[1]
+  A := if IN_con.united_converging_cross_section then 1 else if frac_Across[1]
      <= 0.35 then 1 else if frac_Across[1] > 0.35 then max(min(-0.6527*(
     frac_Vflow[1])^3 + 1.6970*(frac_Vflow[1])^2 - 1.4058*(frac_Vflow[1])
      + 0.9166, 1), 0.5) else 0;
 
   //SOURCE: p.417 table 7-2
-  K_s := if not (IN_con.united_converging_crossection) then 0 else if
+  K_s := if not (IN_con.united_converging_cross_section) then 0 else if
     frac_Across[1] < 0.2 then 0 else if frac_Across[1] < 0.33 and alpha
      == 90 then 0.1 else if frac_Across[1] < 0.5 and alpha == 90 then 0.2 else
           if frac_Across[1] == 0.5 and alpha == 60 then 0.1 else if
@@ -154,19 +155,19 @@ algorithm
     frac_Vflow[1])^2*cos(alpha*PI/180)) + K_s));
 
   //local resistance coefficient for straight branch
-  //a) united_converging_crossection == true
+  //a) united_converging_cross_section == true
   //SOURCE: p.418 eq. 7-2
-  //b) united_converging_crossection == false
+  //b) united_converging_cross_section == false
   //SOURCE: p.417 eq. 7-2
-  zeta_LOC_straight := max(zeta_LOC_min, min(zeta_LOC_max, if IN_con.united_converging_crossection
+  zeta_LOC_straight := max(zeta_LOC_min, min(zeta_LOC_max, if IN_con.united_converging_cross_section
      and IN_con.velocity_reference_branches then (1 + ((1/frac_Across[2]))^2*
     (1 - frac_Vflow[1])^2 - 2*(1/frac_Across[2])*(1 - frac_Vflow[1])^2 -
     2*((1/frac_Across[1]))*(frac_Vflow[1])^2*cos(alpha*PI/180) + K_st2)/(
-    max(minimum, frac_v[2])^2) else if IN_con.united_converging_crossection
+    max(minimum, frac_v[2])^2) else if IN_con.united_converging_cross_section
      and not (IN_con.velocity_reference_branches) then 1 + ((1/frac_Across[2]))
     ^2*(1 - frac_Vflow[1])^2 - 2*(1/frac_Across[2])*(1 - frac_Vflow[1])^2
      - 2*((1/frac_Across[1]))*(frac_Vflow[1])^2*cos(alpha*PI/180) + K_st2 else
-          if not (IN_con.united_converging_crossection) and IN_con.velocity_reference_branches then
+          if not (IN_con.united_converging_cross_section) and IN_con.velocity_reference_branches then
           (1 - (1 - frac_Vflow[1])^2 - (1.4 - frac_Vflow[1])*(frac_Vflow[
     1])^2*sin(alpha*PI/180) - 2*K_st1*((1/frac_Across[1]))*(frac_Vflow[1])
     *cos(alpha*PI/180))/(max(minimum, frac_v[2])^2) else 1 - (1 -
@@ -219,7 +220,7 @@ algorithm
   //OUT.M_FLOW := m_flow;
 
   //failure status
-  fstatus[1] := if not (IN_con.united_converging_crossection) then if abs(
+  fstatus[1] := if not (IN_con.united_converging_cross_section) then if abs(
     A_cross[2] - A_cross[3]) < minimum then 0 else 1 else 0;
   fstatus[2] := if abs(m_flow[1] + m_flow[2] + m_flow[3]) <
     minimum then 0 else 1 "check of mass balance";
@@ -237,7 +238,7 @@ algorithm
 
   //joint := if sign(m_flow[3]) < 0 then 1 else 0;
 
-  annotation (Inline=false, smoothOrder(normallyConstant=IN_con) = 2,Documentation(info="<html>
+  annotation (Inline=false, smoothOrder(normallyConstant=IN_con) = 2,Documentation(info = "<html>
 <p>
 Calculation of pressure loss in a T-junction acting as Tjoin for merging the incompressible fluid flow of a side branch and a straight passage into a total fluid flow.
 This T-split can be calculated for standard geometries with a varying branching angle of the side branch and hydraulic diameters at the edges as parameters.
@@ -437,7 +438,7 @@ Note that this function delivers a failure status without terminating the simula
  
 <ul>
  <li> check of geometry:
-      failure status is true if united_converging_crossection is not used and the crossectional areas of the total passage and the straight passage have not the same hydraulic diameter
+      failure status is true if united_converging_cross_section is not used and the crossectional areas of the total passage and the straight passage have not the same hydraulic diameter
  <li> check of mass balance:
       failure status is true the mass balance is temporarily not fulfilled
  <li> check of flow situation:
@@ -456,6 +457,8 @@ Note that this function delivers a failure status without terminating the simula
     <dd><b>VDI - W&auml;rmeatlas: Berechnungsbl&auml;tter f&uuml;r den W&auml;rme&uuml;bergang</b>.
     Springer Verlag, 9th edition, 2002.</dd>
 </dl>
-</html>
-"));
+</html>", revisions = "<html>
+2017-03-24 Stefan Wischhusen: Provided reasonable outputs for all outputs of the function.
+2017-03-24 Stefan Wischhusen: Changed type of failureStatus to Real.
+</html>"));
 end dp_Tjoin;

@@ -3,7 +3,7 @@ record Tjunction "Input for T-junction"
   extends Modelica.Icons.Record;
 
   //T-junction variables
-  Boolean united_converging_crossection=true
+  Boolean united_converging_cross_section=true
     "true == A_cross_total = 2*A_cross_branch | false == A_cross_total > 2*A_cross_branch"
     annotation (Dialog(group="T-junction"));
   Boolean velocity_reference_branches=true

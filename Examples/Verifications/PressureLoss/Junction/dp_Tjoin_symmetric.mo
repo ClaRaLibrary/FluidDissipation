@@ -54,8 +54,8 @@ public
     freqHz=1/100,
     phase=0,
     offset=0,
-    startTime=0) annotation (Placement(
-        transformation(extent={{-40,-80},{-20,-60}})));
+    startTime=0)
+    annotation (Placement(transformation(extent={{-40,-80},{-20,-60}})));
   Modelica.Blocks.Sources.Exponentials input_mflow_2(
     outMax=100,
     riseTime=1e-1,

@@ -10,5 +10,4 @@ partial package BaseHeatExchangerPL "Base package for all pressure loss function
     output SI.Pressure DP;
 
   end pressureLoss_mflow;
-
 end BaseHeatExchangerPL;

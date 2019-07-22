@@ -128,8 +128,8 @@ public
     each phase=0,
     each startTime=0,
     each freqHz=1,
-    each amplitude=100) annotation (Placement(
-        transformation(extent={{-40,-80},{-20,-60}})));
+    each amplitude=100)
+    annotation (Placement(transformation(extent={{-40,-80},{-20,-60}})));
   Modelica.Blocks.Sources.Exponentials input_mflow_2[n](
     each offset=0,
     each startTime=0,

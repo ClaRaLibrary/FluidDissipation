@@ -6,10 +6,10 @@ model dp_Tjoin "verification of function dp_Tjoin"
 
   parameter SI.Diameter d_hyd_conv[3]={((4/PI*1e-3)/2)^0.5,((4/PI*
       1e-3)/2)^0.5,(4/PI*1e-3)^0.5}
-    "hydraulic diameter united_converging_crossection=true"
+    "hydraulic diameter united_converging_cross_section=true"
     annotation (Dialog(group="T-junction"));
   parameter Real d_hyd_noconv[3]={((4/PI*1e-3))^0.5,((4/PI*1e-3))^0.5,
-      (4/PI*1e-3)^0.5} "hydraulic diameter united_converging_crossection=false";
+      (4/PI*1e-3)^0.5} "hydraulic diameter united_converging_cross_section=false";
   parameter SI.MassFlowRate m_flow_min=1e-6
     "restriction for smoothing at reverse fluid flow"
     annotation (Dialog(group="restriction"));
@@ -38,7 +38,7 @@ model dp_Tjoin "verification of function dp_Tjoin"
     m_flow_min=m_flow_min,
     v_max=v_max,
     zeta_TOT_max=zeta_TOT_max,
-    united_converging_crossection=true)
+    united_converging_cross_section=true)
     annotation (Placement(transformation(extent={{-70,20},{-50,40}})));
   FluidDissipation.PressureLoss.Junction.dp_Tjoin_IN_var m_flow_IN_var_1(rho=rho)
     annotation (Placement(transformation(extent={{-50,20},{-30,40}})));
@@ -50,7 +50,7 @@ model dp_Tjoin "verification of function dp_Tjoin"
     m_flow_min=m_flow_min,
     v_max=v_max,
     zeta_TOT_max=zeta_TOT_max,
-    united_converging_crossection=false)
+    united_converging_cross_section=false)
     annotation (Placement(transformation(extent={{30,20},{50,40}})));
   FluidDissipation.PressureLoss.Junction.dp_Tjoin_IN_var m_flow_IN_var_2(rho=rho)
     annotation (Placement(transformation(extent={{50,20},{70,40}})));
@@ -78,8 +78,8 @@ public
     freqHz=1/100,
     phase=0,
     offset=0,
-    startTime=0) annotation (Placement(
-        transformation(extent={{-40,-80},{-20,-60}})));
+    startTime=0)
+    annotation (Placement(transformation(extent={{-40,-80},{-20,-60}})));
   Modelica.Blocks.Sources.Exponentials input_mflow_2(
     outMax=100,
     riseTime=1e-1,

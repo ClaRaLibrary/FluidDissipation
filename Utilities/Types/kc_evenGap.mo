@@ -8,7 +8,3 @@ type kc_evenGap = enumeration(
       "Hydrodynamic and thermal START of laminar flow regime AND heat transfer at ONE side",
     UndevBoth
       "Hydrodynamic and thermal START of laminar flow regime AND heat transfer at BOTH side");
-
-
-
-

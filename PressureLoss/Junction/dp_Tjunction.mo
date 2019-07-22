@@ -133,7 +133,7 @@ protected
 
   //internal input record for functions
   FluidDissipation.PressureLoss.Junction.dp_Tjoin_IN_con intern_IN_con(
-    final united_converging_crossection=IN_con.united_converging_crossection,
+    final united_converging_cross_section=IN_con.united_converging_cross_section,
     final alpha=IN_con.alpha,
     final d_hyd=d_hyd_function,
     final m_flow_min=IN_con.m_flow_min,
@@ -160,7 +160,7 @@ protected
 
   SI.ReynoldsNumber intern_Re[3] "Reynolds number"
     annotation (Dialog(group="Output"));
-  final SI.PrandtlNumber intern_Pr=0 "Prandtl number"
+  SI.PrandtlNumber intern_Pr "Prandtl number"
     annotation (Dialog(group="Output"));
 
   Real intern_cases[6]
@@ -175,24 +175,24 @@ protected
     "average fluid flow velocity [side,straight,total]";
   annotation (Dialog(group="Output"));*/
 
-  dp_Tjoin_IN_con IN_con_Tjoin(final united_converging_crossection=IN_con.united_converging_crossection,
+  dp_Tjoin_IN_con IN_con_Tjoin(final united_converging_cross_section=IN_con.united_converging_cross_section,
     final alpha=IN_con.alpha,
     final d_hyd=d_hyd_function,
     final m_flow_min=IN_con.m_flow_min,
     final v_max=IN_con.v_max,
     final zeta_TOT_max=IN_con.zeta_TOT_max);
-  dp_Tjoin_symmetric_IN_con IN_con_Tjoin_symmetric(final united_converging_crossection=IN_con.united_converging_crossection,
+  dp_Tjoin_symmetric_IN_con IN_con_Tjoin_symmetric(final united_converging_cross_section=IN_con.united_converging_cross_section,
     final d_hyd=d_hyd_function,
     final m_flow_min=IN_con.m_flow_min,
     final v_max=IN_con.v_max,
     final zeta_TOT_max=IN_con.zeta_TOT_max);
-  dp_Tsplit_IN_con IN_con_Tsplit(final united_converging_crossection=IN_con.united_converging_crossection,
+  dp_Tsplit_IN_con IN_con_Tsplit(final united_converging_cross_section=IN_con.united_converging_cross_section,
     final alpha=IN_con.alpha,
     final d_hyd=d_hyd_function,
     final m_flow_min=IN_con.m_flow_min,
     final v_max=IN_con.v_max,
     final zeta_TOT_max=IN_con.zeta_TOT_max);
-  dp_Tsplit_symmetric_IN_con IN_con_Tsplit_symmetric(final united_converging_crossection=IN_con.united_converging_crossection,
+  dp_Tsplit_symmetric_IN_con IN_con_Tsplit_symmetric(final united_converging_cross_section=IN_con.united_converging_cross_section,
     final d_hyd=d_hyd_function,
     final m_flow_min=IN_con.m_flow_min,
     final v_max=IN_con.v_max,
@@ -402,7 +402,7 @@ algorithm
 
   zeta_LOC := intern_zeta_LOC;
 
-  annotation (Inline=false, smoothOrder(normallyConstant=IN_con) = 2,Documentation(info="<html>
+  annotation (Inline=false, smoothOrder(normallyConstant=IN_con) = 2,Documentation(info= "<html>
 <p>
 Calculation of pressure loss in a T-junction either acting as T-join for merging incompressible fluid flows or acting as split for separating these.
 This T-junction can be calculated for standard geometries with a varying branching angle of the side branch and hydraulic diameters at the edges as parameters.
@@ -560,7 +560,7 @@ Note that this function delivers a failure status without terminating the simula
  
 <ul>
  <li> check of geometry:
-      failure status is true if united_converging_crossection is not used and the crossectional areas of the total passage and the straight passage have not the same hydraulic diameter
+      failure status is true if united_converging_cross_section is not used and the crossectional areas of the total passage and the straight passage have not the same hydraulic diameter
  <li> check of mass balance:
       failure status is true the mass balance is temporarily not fulfilled
  <li> check of flow situation:
@@ -590,6 +590,5 @@ An implementation of this general T-junction into Modelica_Fluid as thermo-hydra
     Springer Verlag, 9th edition, 2002.</dd>
 </dl>
  
-</html>
-"));
+</html>"));
 end dp_Tjunction;

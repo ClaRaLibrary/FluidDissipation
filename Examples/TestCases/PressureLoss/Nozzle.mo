@@ -9,8 +9,7 @@ public
     freqHz=1,
     offset=0,
     amplitude=0.05)
-                 annotation (Placement(
-        transformation(extent={{-100,-10},{-80,10}})));
+    annotation (Placement(transformation(extent={{-100,-10},{-80,10}})));
 
   Modelica.Fluid.Sources.FixedBoundary OUT_mflow(
     p=system.p_ambient,
